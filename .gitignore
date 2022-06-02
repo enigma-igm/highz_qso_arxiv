@@ -139,7 +139,7 @@ dmypy.json
 *.fits.*
 *.zip
 *.png
-*report/*
+*.key
 *.log
 *.html
 
