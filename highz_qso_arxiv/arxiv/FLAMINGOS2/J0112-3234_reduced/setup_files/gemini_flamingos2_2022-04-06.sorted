@@ -1,0 +1,50 @@
+##########################################################
+Setup A
+    dispname: JH_G5801
+    dichroic: JH_G0809
+      decker: 4pix-slit
+#---------------------------------------------------------
+|                filename |        frametype |          ra |          dec |                 target | dispname |    decker | binning |            mjd | airmass | exptime | dichroic | calib | comb_id | bkg_id |
+| S20210827S0202.fits.bz2 |  pixelflat,trace |   19.815075 | -59.18925278 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59453.19921875 |   1.315 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210827S0211.fits.bz2 |  pixelflat,trace |   20.434725 | -52.07650833 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59453.19921875 |   1.238 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210827S0440.fits.bz2 |  pixelflat,trace | 20.88732917 | -35.31931667 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59453.30078125 |   1.004 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210827S0460.fits.bz2 |  pixelflat,trace |  26.5217625 | -38.03456944 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59453.30078125 |   1.017 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210829S0070.fits.bz2 |  pixelflat,trace |    0.230575 | -30.06416667 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59455.19921875 |    1.28 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210829S0105.fits.bz2 |  pixelflat,trace |    0.230575 | -30.06416667 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59455.19921875 |   1.036 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210905S0088.fits.bz2 |             None | 18.11083333 | -32.56803889 |                     Ar | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.039 |    15.0 | JH_G0809 |  None |      -1 |     -1 |
+| S20210905S0087.fits.bz2 |  pixelflat,trace | 18.11083333 | -32.56803889 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |    1.04 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210905S0086.fits.bz2 | arc,science,tilt | 18.11083333 | -32.56803889 | J011226.600-323404.938 | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.042 |   200.0 | JH_G0809 |     0 |       6 |     -1 |
+| S20210905S0085.fits.bz2 | arc,science,tilt | 18.11083333 | -32.56803889 | J011226.600-323404.938 | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.047 |   200.0 | JH_G0809 |     0 |       5 |     -1 |
+| S20210905S0084.fits.bz2 | arc,science,tilt | 18.11083333 | -32.56803889 | J011226.600-323404.938 | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.051 |   200.0 | JH_G0809 |     0 |       4 |     -1 |
+| S20210905S0069.fits.bz2 |         standard |   10.583525 | -31.91661944 |                HIP3320 | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.108 |    15.0 | JH_G0809 |     0 |       1 |     -1 |
+| S20210905S0070.fits.bz2 |         standard |   10.583525 | -31.91661944 |                HIP3320 | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.106 |    15.0 | JH_G0809 |     0 |       2 |     -1 |
+| S20210905S0096.fits.bz2 |  pixelflat,trace | 14.86068333 | -31.96528333 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |    1.01 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210905S0066.fits.bz2 |             None |   10.583525 | -31.91661944 |                     Ar | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.117 |    15.0 | JH_G0809 |  None |      -1 |     -1 |
+| S20210905S0065.fits.bz2 |  pixelflat,trace |   10.583525 | -31.91661944 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.119 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+| S20210905S0083.fits.bz2 | arc,science,tilt | 18.11083333 | -32.56803889 | J011226.600-323404.938 | JH_G5801 | 4pix-slit |     1,1 | 59462.19921875 |   1.057 |   200.0 | JH_G0809 |     0 |       3 |     -1 |
+| S20210905S0112.fits.bz2 |  pixelflat,trace | 16.30558333 | -32.63262778 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59462.30078125 |   1.004 |     4.0 | JH_G0809 |     0 |      -1 |     -1 |
+##########################################################
+Setup B
+    dispname: DK_G5804
+    dichroic: H_G0803
+      decker: 2-pix_grid
+#---------------------------------------------------------
+|                filename | frametype |    ra |  dec | target | dispname |     decker | binning |           mjd | airmass | exptime | dichroic | calib | comb_id | bkg_id |
+| S20210828S0285.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59454.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210828S0286.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59454.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210828S0287.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59454.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210828S0288.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59454.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210828S0289.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59454.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210828S0290.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59454.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210828S0291.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59454.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210905S0342.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59462.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210905S0341.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59462.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210905S0340.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59462.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210905S0337.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59462.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210905S0338.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59462.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210905S0336.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59462.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210905S0339.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 |       59462.5 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210911S0049.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 | 59468.3984375 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210911S0048.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 | 59468.3984375 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+| S20210911S0050.fits.bz2 |      None | 147.0 | 89.9 |   Dark | DK_G5804 | 2-pix_grid |     1,1 | 59468.3984375 |     1.0 |     4.0 |  H_G0803 |  None |      -1 |     -1 |
+##end

@@ -1,0 +1,56 @@
+A:
+  --:
+    dispname: spec
+  2:
+    align: []
+    arc:
+    - ../../raw/NIRES/s190519_0067.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/NIRES/s190519_0067.fits
+    sky: []
+    standard:
+    - ../../raw/NIRES/s190519_0059.fits
+    - ../../raw/NIRES/s190519_0060.fits
+    tilt:
+    - ../../raw/NIRES/s190519_0067.fits
+    trace: []
+  4:
+    align: []
+    arc:
+    - ../../raw/NIRES/s190519_0068.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/NIRES/s190519_0068.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/NIRES/s190519_0068.fits
+    trace: []
+  7:
+    align: []
+    arc: []
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat:
+    - ../../raw/NIRES/s190519_0010.fits
+    - ../../raw/NIRES/s190519_0012.fits
+    - ../../raw/NIRES/s190519_0014.fits
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - ../../raw/NIRES/s190519_0010.fits
+    - ../../raw/NIRES/s190519_0012.fits
+    - ../../raw/NIRES/s190519_0014.fits

@@ -1,0 +1,12 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev44+g106ab49ed
+# 2022-04-07
+
+# User-defined execution parameters
+[rdx]
+    spectrograph = gemini_flamingos2
+
+# Read in the data
+data read
+ J0210-2844/*.fits*
+data end
+

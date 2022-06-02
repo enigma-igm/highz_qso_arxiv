@@ -1,0 +1,63 @@
+J:
+  --:
+    decker: LONGSLIT-46x1
+    dispname: Y-spectroscopy
+    filter1: Y
+  524288:
+    align: []
+    arc:
+    - ../../raw/./m220409_0186.fits
+    - ../../raw/./m220409_0187.fits
+    - ../../raw/./m220409_0188.fits
+    - ../../raw/./m220409_0189.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0186.fits
+    - ../../raw/./m220409_0187.fits
+    - ../../raw/./m220409_0188.fits
+    - ../../raw/./m220409_0189.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0186.fits
+    - ../../raw/./m220409_0187.fits
+    - ../../raw/./m220409_0188.fits
+    - ../../raw/./m220409_0189.fits
+    trace: []
+  1048575:
+    align: []
+    arc: []
+    bias: []
+    dark:
+    - ../../raw/./m220409_0007.fits
+    - ../../raw/./m220409_0012.fits
+    - ../../raw/./m220409_0013.fits
+    - ../../raw/./m220409_0014.fits
+    - ../../raw/./m220409_0015.fits
+    illumflat:
+    - ../../raw/./m220409_0006.fits
+    - ../../raw/./m220409_0008.fits
+    - ../../raw/./m220409_0009.fits
+    - ../../raw/./m220409_0010.fits
+    - ../../raw/./m220409_0011.fits
+    pinhole: []
+    pixelflat:
+    - ../../raw/./m220409_0006.fits
+    - ../../raw/./m220409_0008.fits
+    - ../../raw/./m220409_0009.fits
+    - ../../raw/./m220409_0010.fits
+    - ../../raw/./m220409_0011.fits
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - ../../raw/./m220409_0006.fits
+    - ../../raw/./m220409_0008.fits
+    - ../../raw/./m220409_0009.fits
+    - ../../raw/./m220409_0010.fits
+    - ../../raw/./m220409_0011.fits

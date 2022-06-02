@@ -1,0 +1,56 @@
+Q:
+  --:
+    amp: '4'
+    binning: 2,2
+    cenwave: 0.0
+    decker: direct
+    dichroic: '560'
+    dispangle: 13.702031
+    dispname: mirror
+  1:
+    align: []
+    arc:
+    - ../../raw_red/./r220305_00017.fits
+    - ../../raw_red/./r220305_00018.fits
+    bias:
+    - ../../raw_red/./r220305_00050.fits
+    - ../../raw_red/./r220305_00051.fits
+    - ../../raw_red/./r220305_00052.fits
+    - ../../raw_red/./r220305_00053.fits
+    - ../../raw_red/./r220305_00054.fits
+    - ../../raw_red/./r220305_00055.fits
+    - ../../raw_red/./r220305_00056.fits
+    - ../../raw_red/./r220305_00057.fits
+    - ../../raw_red/./r220305_00058.fits
+    dark: []
+    illumflat:
+    - ../../raw_red/./r220305_00019.fits
+    - ../../raw_red/./r220305_00020.fits
+    - ../../raw_red/./r220305_00021.fits
+    - ../../raw_red/./r220305_00022.fits
+    - ../../raw_red/./r220305_00023.fits
+    - ../../raw_red/./r220305_00024.fits
+    pinhole: []
+    pixelflat:
+    - ../../raw_red/./r220305_00019.fits
+    - ../../raw_red/./r220305_00020.fits
+    - ../../raw_red/./r220305_00021.fits
+    - ../../raw_red/./r220305_00022.fits
+    - ../../raw_red/./r220305_00023.fits
+    - ../../raw_red/./r220305_00024.fits
+    science:
+    - ../../raw_red/./r220305_00190.fits
+    - ../../raw_red/./r220305_00191.fits
+    - ../../raw_red/./r220305_00206.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw_red/./r220305_00017.fits
+    - ../../raw_red/./r220305_00018.fits
+    trace:
+    - ../../raw_red/./r220305_00019.fits
+    - ../../raw_red/./r220305_00020.fits
+    - ../../raw_red/./r220305_00021.fits
+    - ../../raw_red/./r220305_00022.fits
+    - ../../raw_red/./r220305_00023.fits
+    - ../../raw_red/./r220305_00024.fits

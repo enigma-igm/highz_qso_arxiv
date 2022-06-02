@@ -1,0 +1,26 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev86+g649552d6c
+# 2022-04-19
+
+# User-defined execution parameters
+[coadd1d]
+  coaddfile = YOUR_OUTPUT_FILE_NAME # Please set your output file name
+  sensfuncfile = YOUR_SENSFUNC_FILE # Please set your SENSFUNC file name. Only required for Echelle
+  wave_method = linear # creates a uniformly space grid in lambda
+
+# This file includes all extracted objects. You need to figure out which object you want to 
+# coadd before running pypeit_coadd_1dspec!!!
+
+# Read in the coadd1d
+coadd1d read
+ Science/spec1d_m220409_0036-J0841+3814_OFF_MOSFIRE_20220409T064407.772.fits SPAT0770-SLIT1022-DET01
+ Science/spec1d_m220409_0036-J0841+3814_OFF_MOSFIRE_20220409T064407.772.fits SPAT1324-SLIT1022-DET01
+ Science/spec1d_m220409_0036-J0841+3814_OFF_MOSFIRE_20220409T064407.772.fits SPAT1543-SLIT1022-DET01
+ Science/spec1d_m220409_0037-J0841+3814_OFF_MOSFIRE_20220409T064710.362.fits SPAT0793-SLIT1022-DET01
+ Science/spec1d_m220409_0037-J0841+3814_OFF_MOSFIRE_20220409T064710.362.fits SPAT1346-SLIT1022-DET01
+ Science/spec1d_m220409_0037-J0841+3814_OFF_MOSFIRE_20220409T064710.362.fits SPAT1566-SLIT1022-DET01
+ Science/spec1d_m220409_0218-LDS749B_MOSFIRE_20220409T153212.032.fits SPAT0987-SLIT1022-DET01
+ Science/spec1d_m220409_0218-LDS749B_MOSFIRE_20220409T153212.032.fits SPAT2021-SLIT1022-DET01
+ Science/spec1d_m220409_0219-LDS749B_MOSFIRE_20220409T153444.012.fits SPAT1052-SLIT1022-DET01
+ Science/spec1d_m220409_0219-LDS749B_MOSFIRE_20220409T153444.012.fits SPAT1683-SLIT1022-DET01
+coadd1d end
+

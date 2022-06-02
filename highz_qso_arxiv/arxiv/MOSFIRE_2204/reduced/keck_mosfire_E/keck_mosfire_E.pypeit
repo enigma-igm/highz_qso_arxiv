@@ -1,0 +1,36 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev95+g9ee533d34
+# 2022-04-09
+
+# User-defined execution parameters
+[rdx]
+spectrograph = keck_mosfire
+
+# Setup
+setup read
+    Setup E:
+          decker: LONGSLIT-46x1
+        dispname: J2-spectroscopy
+         filter1: J2
+setup end
+
+# Read in the data
+data read
+ path ./raw/.
+|          filename |                 frametype |           ra |         dec |         target |        dispname |        decker | binning |            mjd |    airmass |   exptime | filter1 | lampstat01 |  dithpat | dithpos | dithoff | frameno | calib | comb_id | bkg_id |
+| m220409_0016.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24233058 | 1.41291034 |   1.45479 |      J2 |         on |    Stare |  object |     0.0 |      16 |     4 |      -1 |     -1 |
+| m220409_0017.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24454412 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      17 |     4 |      -1 |     -1 |
+| m220409_0018.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24475662 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      18 |     4 |      -1 |     -1 |
+| m220409_0019.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24498093 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      19 |     4 |      -1 |     -1 |
+| m220409_0020.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24518753 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      20 |     4 |      -1 |     -1 |
+| m220409_0021.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24540003 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      21 |     4 |      -1 |     -1 |
+| m220409_0022.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24685211 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      22 |     4 |      -1 |     -1 |
+| m220409_0023.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.24706461 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      23 |     4 |      -1 |     -1 |
+| m220409_0024.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.2472594 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      24 |     4 |      -1 |     -1 |
+| m220409_0025.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.2474719 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      25 |     4 |      -1 |     -1 |
+| m220409_0026.fits | pixelflat,illumflat,trace |        230.0 |        45.0 |     DOME FLATS | J2-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.2476844 | 1.41291034 |   8.72874 |      J2 |         on |    Stare |  object |     0.0 |      26 |     4 |      -1 |     -1 |
+| m220409_0036.fits | pixelflat,illumflat,trace | 130.40902942 | 38.23560416 | J0841+3814_OFF | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.28064551 | 1.07237603 | 149.84337 |      J2 |         on | Mask Nod |       A |     2.0 |      36 |     4 |      -1 |     -1 |
+| m220409_0037.fits | pixelflat,illumflat,trace | 130.40769261 | 38.23524084 | J0841+3814_OFF | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.28275882 | 1.07496581 | 149.84337 |      J2 |         on | Mask Nod |       B |    -2.0 |      37 |     4 |      -1 |     -1 |
+| m220409_0038.fits | pixelflat,illumflat,trace | 130.40902942 | 38.23560416 | J0841+3814_OFF | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.28488371 | 1.07757213 | 149.84337 |      J2 |         on | Mask Nod |       A |     2.0 |      38 |     4 |      -1 |     -1 |
+| m220409_0039.fits | pixelflat,illumflat,trace | 130.40769261 | 38.23524084 | J0841+3814_OFF | J2-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.28700871 | 1.08043669 | 149.84337 |      J2 |         on | Mask Nod |       B |    -2.0 |      39 |     4 |      -1 |     -1 |
+data end
+

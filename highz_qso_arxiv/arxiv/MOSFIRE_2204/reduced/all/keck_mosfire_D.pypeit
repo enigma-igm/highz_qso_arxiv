@@ -1,0 +1,119 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev95+g9ee533d34
+# 2022-04-11
+
+# User-defined execution parameters
+[rdx]
+    spectrograph = keck_mosfire
+[baseprocess]
+    use_pixelflat=False
+    use_illumflat=False
+[calibrations]
+    [[flatfield]]
+        tweak_slits = False
+    [[traceframe]]
+         [[[process]]]
+                use_darkimage = True
+    [[slitedges]]
+        fit_min_spec_length = 0.3
+[reduce]
+    [[findobj]]
+         find_trim_edge = 10,10 
+
+# Setup
+setup read
+    Setup D:
+          decker: LONGSLIT-46x1
+        dispname: Y-spectroscopy
+         filter1: Y
+setup end
+
+# Read in the data
+data read
+ path ../../raw/.
+|          filename |                 frametype |           ra |         dec |         target |       dispname |        decker | binning |            mjd |    airmass |   exptime | filter1 | lampstat01 |  dithpat | dithpos | dithoff | frameno | calib | comb_id | bkg_id |
+| m220409_0006.fits |                     trace |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.2083601 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |     0.0 |       6 |   all |      -1 |     -1 |
+| m220409_0008.fits |                     trace |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |   59678.210916 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |     0.0 |       8 |   all |      -1 |     -1 |
+| m220409_0009.fits |                     trace |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.21116982 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |     0.0 |       9 |   all |      -1 |     -1 |
+| m220409_0010.fits |                     trace |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.21141183 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |     0.0 |      10 |   all |      -1 |     -1 |
+| m220409_0011.fits |                     trace |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.21165385 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |     0.0 |      11 |   all |      -1 |     -1 |
+| m220409_0007.fits |                      dark |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.20882641 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |     0.0 |       7 |   all |      -1 |     -1 |
+| m220409_0012.fits |                      dark |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.21209655 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |     0.0 |      12 |   all |      -1 |     -1 |
+| m220409_0013.fits |                      dark |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.21233857 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |     0.0 |      13 |   all |      -1 |     -1 |
+| m220409_0014.fits |                      dark |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.21258058 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |     0.0 |      14 |   all |      -1 |     -1 |
+| m220409_0015.fits |                      dark |        230.0 |        45.0 |     DOME FLATS | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.21281079 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |     0.0 |      15 |   all |      -1 |     -1 |
+| m220409_0068.fits |          arc,science,tilt | 177.70217656 | -1.71886797 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.34637885 | 1.09702571 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |      68 |     1 |       0 |      1 |
+| m220409_0069.fits |          arc,science,tilt | 177.70112211 | -1.71851625 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.34849204 | 1.09422089 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |      69 |     1 |       1 |      0 |
+| m220409_0070.fits |          arc,science,tilt | 177.70217656 | -1.71886797 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.35061704 | 1.09162036 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |      70 |     1 |       0 |      1 |
+| m220409_0071.fits |          arc,science,tilt | 177.70112211 | -1.71851625 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.35273023 | 1.08925509 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |      71 |     1 |       1 |      0 |
+| m220409_0072.fits |          arc,science,tilt | 177.70336281 | -1.71926365 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |   59678.354991 | 1.08687274 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |      72 |     2 |       2 |      3 |
+| m220409_0073.fits |          arc,science,tilt | 177.69993585 | -1.71812057 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.3571278 | 1.08485437 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |      73 |     2 |       3 |      2 |
+| m220409_0074.fits |          arc,science,tilt | 177.70336281 | -1.71926365 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |   59678.359241 | 1.08311199 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |      74 |     2 |       2 |      3 |
+| m220409_0075.fits |          arc,science,tilt | 177.69993585 | -1.71812057 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |   59678.361366 | 1.08157755 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |      75 |     2 |       3 |      2 |
+| m220409_0076.fits |          arc,science,tilt | 177.70230836 | -1.71891193 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.36353822 | 1.08015238 | 149.84337 |       Y |         on | Mask Nod |       A |     2.5 |      76 |     3 |       4 |      5 |
+| m220409_0077.fits |          arc,science,tilt |  177.7009903 | -1.71847228 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.36565141 | 1.07895589 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.5 |      77 |     3 |       5 |      4 |
+| m220409_0078.fits |          arc,science,tilt | 177.70230836 | -1.71891193 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.36776461 | 1.07798014 | 149.84337 |       Y |         on | Mask Nod |       A |     2.5 |      78 |     3 |       4 |      5 |
+| m220409_0079.fits |          arc,science,tilt |  177.7009903 | -1.71847228 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.3698719 | 1.07719983 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.5 |      79 |     3 |       5 |      4 |
+| m220409_0080.fits |          arc,science,tilt | 177.70362643 | -1.71935158 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.37203822 | 1.07660213 | 149.84337 |       Y |         on | Mask Nod |       A |     7.5 |      80 |     4 |       6 |      7 |
+| m220409_0081.fits |          arc,science,tilt | 177.69967222 | -1.71803263 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.37417503 | 1.07620066 | 149.84337 |       Y |         on | Mask Nod |       B |    -7.5 |      81 |     4 |       7 |      6 |
+| m220409_0082.fits |          arc,science,tilt | 177.70362643 | -1.71935158 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.37628822 | 1.07597657 | 149.84337 |       Y |         on | Mask Nod |       A |     7.5 |      82 |     4 |       6 |      7 |
+| m220409_0083.fits |          arc,science,tilt | 177.69967222 | -1.71803263 | J1150-0143_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.37841322 | 1.07596604 | 149.84337 |       Y |         on | Mask Nod |       B |    -7.5 |      83 |     4 |       7 |      6 |
+| m220409_0088.fits |          arc,science,tilt | 180.66777641 |  1.48453207 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.38768058 | 1.05431765 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |      88 |     5 |       8 |      9 |
+| m220409_0089.fits |          arc,science,tilt |  180.6671466 |   1.4854476 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.38979378 | 1.05458028 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |      89 |     5 |       9 |      8 |
+| m220409_0090.fits |          arc,science,tilt | 180.66777641 |  1.48453207 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.39191878 | 1.05503202 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |      90 |     5 |       8 |      9 |
+| m220409_0091.fits |          arc,science,tilt |  180.6671466 |   1.4854476 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.39403197 | 1.05563675 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |      91 |     5 |       9 |      8 |
+| m220409_0092.fits |          arc,science,tilt | 180.66785513 |  1.48441763 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.39619239 | 1.05653485 | 149.84337 |       Y |         on | Mask Nod |       A |     2.5 |      92 |     6 |      10 |     11 |
+| m220409_0093.fits |          arc,science,tilt | 180.66706788 |  1.48556203 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.39831148 | 1.05753603 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.5 |      93 |     6 |      11 |     10 |
+| m220409_0094.fits |          arc,science,tilt | 180.66785513 |  1.48441763 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.40041878 | 1.05871728 | 149.84337 |       Y |         on | Mask Nod |       A |     2.5 |      94 |     6 |      10 |     11 |
+| m220409_0095.fits |          arc,science,tilt | 180.66706788 |  1.48556203 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.40253197 | 1.06011114 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.5 |      95 |     6 |      11 |     10 |
+| m220409_0096.fits |          arc,science,tilt |  180.6678079 |   1.4844863 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.4047101 | 1.06174625 | 149.84337 |       Y |         on | Mask Nod |       A |     2.2 |      96 |     7 |      12 |     13 |
+| m220409_0097.fits |          arc,science,tilt | 180.66711511 |  1.48549337 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.40682329 | 1.06358704 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.2 |      97 |     7 |      13 |     12 |
+| m220409_0098.fits |          arc,science,tilt |  180.6678079 |   1.4844863 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.40893648 | 1.06554983 | 149.84337 |       Y |         on | Mask Nod |       A |     2.2 |      98 |     7 |      12 |     13 |
+| m220409_0099.fits |          arc,science,tilt | 180.66711511 |  1.48549337 | J1202+0129_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.41104378 | 1.06769109 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.2 |      99 |     7 |      13 |     12 |
+| m220409_0114.fits |          arc,science,tilt | 199.67560158 |  29.5489968 | J1318+2932_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.43244725 | 1.01480778 | 149.84337 |       Y |         on | Mask Nod |       A |     2.6 |     114 |     8 |      14 |     15 |
+| m220409_0115.fits |          arc,science,tilt | 199.67469977 | 29.55020964 | J1318+2932_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.43456044 | 1.01446867 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.6 |     115 |     8 |      15 |     14 |
+| m220409_0116.fits |          arc,science,tilt | 199.67560158 |  29.5489968 | J1318+2932_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.43668544 | 1.01427905 | 149.84337 |       Y |         on | Mask Nod |       A |     2.6 |     116 |     8 |      14 |     15 |
+| m220409_0117.fits |          arc,science,tilt | 199.67469977 | 29.55020964 | J1318+2932_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.43879864 | 1.01422856 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.6 |     117 |     8 |      15 |     14 |
+| m220409_0127.fits |          arc,science,tilt | 198.95359564 | 15.56503978 | J1315+1533_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.47535141 | 1.03122249 | 149.84337 |       Y |         on | Mask Nod |       A |     2.6 |     127 |     9 |      16 |     17 |
+| m220409_0128.fits |          arc,science,tilt | 198.95356125 | 15.56359572 | J1315+1533_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.47747364 | 1.03442937 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.6 |     128 |     9 |      17 |     16 |
+| m220409_0135.fits |          arc,science,tilt | 203.40582836 |  9.32746661 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.49155512 | 1.05358578 | 149.84337 |       Y |         on | Mask Nod |       A |     2.6 |     135 |    10 |      18 |     19 |
+| m220409_0136.fits |          arc,science,tilt | 203.40668475 |  9.32629516 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.49367676 | 1.05729055 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.6 |     136 |    11 |      19 |     18 |
+| m220409_0137.fits |          arc,science,tilt | 203.40582836 |  9.32746661 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.49580176 | 1.06126658 | 149.84337 |       Y |         on | Mask Nod |       A |     2.6 |     137 |    10 |      18 |     19 |
+| m220409_0138.fits |          arc,science,tilt | 203.40668475 |  9.32629516 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.49791496 | 1.06545909 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.6 |     138 |    10 |      19 |     18 |
+| m220409_0139.fits |          arc,science,tilt | 203.40518608 |  9.32834519 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.50009308 | 1.07001728 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |     139 |    11 |      20 |     21 |
+| m220409_0140.fits |          arc,science,tilt | 203.40732703 |  9.32541657 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.50221808 | 1.07464933 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |     140 |    11 |      21 |     20 |
+| m220409_0141.fits |          arc,science,tilt | 203.40518608 |  9.32834519 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.50434308 |  1.0795078 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |     141 |    11 |      20 |     21 |
+| m220409_0142.fits |          arc,science,tilt | 203.40732703 |  9.32541657 | J1333+0919_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.50645628 | 1.08451912 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |     142 |    11 |      21 |     20 |
+| m220409_0147.fits |          arc,science,tilt | 203.23648917 |   1.8431926 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.51740593 | 1.15905951 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |     147 |    12 |      22 |     23 |
+| m220409_0148.fits |          arc,science,tilt | 203.23476332 |  1.84002011 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.51951912 | 1.16634766 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |     148 |    12 |      23 |     22 |
+| m220409_0149.fits |          arc,science,tilt | 203.23648917 |   1.8431926 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.52165593 | 1.17392918 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |     149 |    12 |      22 |     23 |
+| m220409_0150.fits |          arc,science,tilt | 203.23476332 |  1.84002011 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.52375732 | 1.18172119 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |     150 |    12 |      23 |     22 |
+| m220409_0151.fits |          arc,science,tilt | 203.23589176 |  1.84209443 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.52590593 | 1.19002121 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |     151 |    13 |      24 |     25 |
+| m220409_0152.fits |          arc,science,tilt | 203.23536073 |  1.84111828 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.52802503 | 1.19850695 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |     152 |    13 |      25 |     24 |
+| m220409_0153.fits |          arc,science,tilt | 203.23589176 |  1.84209443 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.53014412 | 1.20732585 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |     153 |    13 |      24 |     25 |
+| m220409_0154.fits |          arc,science,tilt | 203.23536073 |  1.84111828 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.53225732 | 1.21654555 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |     154 |    13 |      25 |     24 |
+| m220409_0155.fits |          arc,science,tilt | 203.23662193 |  1.84343663 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.53450628 | 1.22664484 | 149.84337 |       Y |         on | Mask Nod |       A |     7.5 |     155 |    14 |      26 |     27 |
+| m220409_0156.fits |          arc,science,tilt | 203.23463056 |  1.83977606 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.53661947 | 1.23651709 | 149.84337 |       Y |         on | Mask Nod |       B |    -7.5 |     156 |    14 |      27 |     26 |
+| m220409_0157.fits |          arc,science,tilt | 203.23662193 |  1.84343663 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.53874447 | 1.24685541 | 149.84337 |       Y |         on | Mask Nod |       A |     7.5 |     157 |    14 |      26 |     27 |
+| m220409_0158.fits |          arc,science,tilt | 203.23463056 |  1.83977606 | J1332+0150_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.54086947 | 1.25763509 | 149.84337 |       Y |         on | Mask Nod |       B |    -7.5 |     158 |    14 |      27 |     26 |
+| m220409_0166.fits |          arc,science,tilt | 227.94302351 |   3.7348488 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.55267503 | 1.06799896 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |     166 |    15 |      28 |     29 |
+| m220409_0167.fits |          arc,science,tilt | 227.94396835 |  3.73543671 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.55478822 | 1.07126317 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |     167 |    15 |      29 |     28 |
+| m220409_0168.fits |          arc,science,tilt | 227.94302351 |   3.7348488 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.55690141 | 1.07476823 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |     168 |    15 |      28 |     29 |
+| m220409_0169.fits |          arc,science,tilt | 227.94396835 |  3.73543671 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.55901461 | 1.07851997 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |     169 |    15 |      29 |     28 |
+| m220409_0170.fits |          arc,science,tilt | 227.94196057 |   3.7341874 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.56117503 | 1.08257754 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |     170 |    16 |      30 |     31 |
+| m220409_0171.fits |          arc,science,tilt | 227.94503129 |   3.7360981 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.56328822 | 1.08665255 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |     171 |    16 |      31 |     30 |
+| m220409_0172.fits |          arc,science,tilt | 227.94196057 |   3.7341874 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.56540732 | 1.09114054 | 149.84337 |       Y |         on | Mask Nod |       A |     6.5 |     172 |    16 |      30 |     31 |
+| m220409_0173.fits |          arc,science,tilt | 227.94503129 |   3.7360981 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.56753232 | 1.09567178 | 149.84337 |       Y |         on | Mask Nod |       B |    -6.5 |     173 |    16 |      31 |     30 |
+| m220409_0174.fits |          arc,science,tilt | 227.94290541 |  3.73477531 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.56969864 | 1.10072392 | 149.84337 |       Y |         on | Mask Nod |       A |     2.5 |     174 |    17 |      32 |     33 |
+| m220409_0175.fits |          arc,science,tilt | 227.94408645 |  3.73551019 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.57182364 | 1.10576939 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.5 |     175 |    17 |      33 |     32 |
+| m220409_0176.fits |          arc,science,tilt | 227.94290541 |  3.73477531 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.57394864 | 1.11117383 | 149.84337 |       Y |         on | Mask Nod |       A |     2.5 |     176 |    17 |      32 |     33 |
+| m220409_0177.fits |          arc,science,tilt | 227.94408645 |  3.73551019 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.57606183 | 1.11672413 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.5 |     177 |    17 |      33 |     32 |
+| m220409_0178.fits |          arc,science,tilt | 227.94172436 |  3.73404042 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.57825766 | 1.12273201 | 149.84337 |       Y |         on | Mask Nod |       A |     7.5 |     178 |    18 |      34 |     35 |
+| m220409_0179.fits |          arc,science,tilt | 227.94526752 |  3.73624509 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.58038266 | 1.12888876 | 149.84337 |       Y |         on | Mask Nod |       B |    -7.5 |     179 |    18 |      35 |     34 |
+| m220409_0180.fits |          arc,science,tilt | 227.94172436 |  3.73404042 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.58250766 | 1.13527461 | 149.84337 |       Y |         on | Mask Nod |       A |     7.5 |     180 |    18 |      34 |     35 |
+| m220409_0181.fits |          arc,science,tilt | 227.94526752 |  3.73624509 | J1511+0344_OFF | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.58462086 | 1.14184624 | 149.84337 |       Y |         on | Mask Nod |       B |    -7.5 |     181 |    18 |      35 |     34 |
+| m220409_0186.fits |          arc,science,tilt | 216.20292707 | 25.46364652 | z7_J1424+2527o | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |  59678.5925601 | 1.24276922 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |     186 |    19 |      36 |     37 |
+| m220409_0187.fits |          arc,science,tilt |  216.2038046 | 25.46442553 | z7_J1424+2527o | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.59467329 | 1.25401276 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |     187 |    19 |      37 |     36 |
+| m220409_0188.fits |          arc,science,tilt | 216.20292707 | 25.46364652 | z7_J1424+2527o | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.59678648 | 1.26557558 | 149.84337 |       Y |         on | Mask Nod |       A |     2.0 |     188 |    19 |      36 |     37 |
+| m220409_0189.fits |          arc,science,tilt |  216.2038046 | 25.46442553 | z7_J1424+2527o | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59678.59889968 |  1.2774901 | 149.84337 |       Y |         on | Mask Nod |       B |    -2.0 |     189 |    19 |      37 |     36 |
+data end
+

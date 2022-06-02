@@ -136,8 +136,10 @@ dmypy.json
 # Data (important!)
 # only want to store scripts and Pypeit files (maybe some plots)
 *.fits
-*.fits.gz
+*.fits.*
 *.zip
 *.png
 *report/*
 *.log
+*.html
+

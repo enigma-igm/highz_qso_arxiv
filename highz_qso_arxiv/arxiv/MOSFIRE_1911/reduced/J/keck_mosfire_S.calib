@@ -1,0 +1,63 @@
+S:
+  --:
+    decker: LONGSLIT-46x1
+    dispname: J-spectroscopy
+    filter1: J
+  2:
+    align: []
+    arc:
+    - ../../raw/./MF.20191119.47387.fits.gz
+    - ../../raw/./MF.20191119.47600.fits.gz
+    - ../../raw/./MF.20191119.47810.fits.gz
+    - ../../raw/./MF.20191119.48021.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191119.47387.fits.gz
+    - ../../raw/./MF.20191119.47600.fits.gz
+    - ../../raw/./MF.20191119.47810.fits.gz
+    - ../../raw/./MF.20191119.48021.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191119.47387.fits.gz
+    - ../../raw/./MF.20191119.47600.fits.gz
+    - ../../raw/./MF.20191119.47810.fits.gz
+    - ../../raw/./MF.20191119.48021.fits.gz
+    trace: []
+  3:
+    align: []
+    arc: []
+    bias: []
+    dark:
+    - ../../raw/./MF.20191120.54475.fits.gz
+    - ../../raw/./MF.20191120.54492.fits.gz
+    - ../../raw/./MF.20191120.54508.fits.gz
+    - ../../raw/./MF.20191120.54524.fits.gz
+    - ../../raw/./MF.20191120.54540.fits.gz
+    - ../../raw/./MF.20191120.54555.fits.gz
+    - ../../raw/./MF.20191120.54572.fits.gz
+    - ../../raw/./MF.20191120.54589.fits.gz
+    - ../../raw/./MF.20191120.54605.fits.gz
+    - ../../raw/./MF.20191120.54622.fits.gz
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - ../../raw/./MF.20191120.54294.fits.gz
+    - ../../raw/./MF.20191120.54311.fits.gz
+    - ../../raw/./MF.20191120.54327.fits.gz
+    - ../../raw/./MF.20191120.54343.fits.gz
+    - ../../raw/./MF.20191120.54359.fits.gz
+    - ../../raw/./MF.20191120.54375.fits.gz
+    - ../../raw/./MF.20191120.54392.fits.gz
+    - ../../raw/./MF.20191120.54409.fits.gz
+    - ../../raw/./MF.20191120.54425.fits.gz
+    - ../../raw/./MF.20191120.54441.fits.gz
