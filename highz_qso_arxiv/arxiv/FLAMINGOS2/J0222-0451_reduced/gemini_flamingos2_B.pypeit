@@ -1,0 +1,45 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev44+g106ab49ed
+# 2022-04-08
+
+# User-defined execution parameters
+[rdx]
+spectrograph = gemini_flamingos2
+
+# Setup
+setup read
+    Setup B:
+        dispname: JH_G5801
+        dichroic: JH_G0816
+          decker: 4pix-slit
+setup end
+
+# Read in the data
+data read
+ path ../J0222-0451
+|                filename |        frametype |               ra |                dec |                 target | dispname |    decker | binning |            mjd |          airmass | exptime | dichroic | calib | comb_id | bkg_id |
+| S20220208S0052.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.46245028000491 |   200.0 | JH_G0816 |     1 |       1 |      0 |
+| S20220208S0053.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.49583515035846 |   150.0 | JH_G0816 |     1 |       0 |      1 |
+| S20220208S0054.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.52301836057903 |   120.0 | JH_G0816 |     1 |       0 |      1 |
+| S20220208S0055.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.54198796862061 |   120.0 | JH_G0816 |     1 |       1 |      0 |
+| S20220208S0056.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.55857711802374 |   120.0 | JH_G0816 |     1 |       1 |      0 |
+| S20220208S0057.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.57599233631735 |   120.0 | JH_G0816 |     1 |       0 |      1 |
+| S20220208S0058.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.59394123117023 |   120.0 | JH_G0816 |     1 |       0 |      1 |
+| S20220208S0059.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.61279553214356 |   120.0 | JH_G0816 |     1 |       1 |      0 |
+| S20220208S0060.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 |   1.632120822721 |   120.0 | JH_G0816 |     1 |       1 |      0 |
+| S20220208S0061.fits.bz2 | arc,science,tilt |        35.561125 |  -4.86133333333333 | J022214.666-045140.798 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.65186429529526 |   120.0 | JH_G0816 |     1 |       0 |      1 |
+| S20220208S0062.fits.bz2 |  pixelflat,trace |        35.561125 |  -4.86133333333333 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.66464192905726 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220208S0064.fits.bz2 |  pixelflat,trace |        35.561125 |  -4.86133333333333 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.69554777470042 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220208S0072.fits.bz2 |  pixelflat,trace |       33.4235375 |  -29.8860194444444 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.52016477874321 |    15.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220208S0083.fits.bz2 |  pixelflat,trace |        32.747875 |  -28.7398916666667 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59618.1015625 | 1.84082945397027 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220208S0107.fits.bz2 |  pixelflat,trace | 92.1411791666667 |   20.7726694444444 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59618.1015625 | 1.73917564174851 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220209S0051.fits.bz2 |  pixelflat,trace | 45.5685833333333 |  -35.3107083333333 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59619.1015625 | 1.42374951534989 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220209S0053.fits.bz2 |  pixelflat,trace | 45.5685833333333 |  -35.3107083333333 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59619.1015625 | 1.43743659023488 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220209S0065.fits.bz2 |  pixelflat,trace |          46.1806 |  -34.1801444444444 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59619.1015625 | 1.55751298409527 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220209S0081.fits.bz2 |  pixelflat,trace |          132.898 | -0.171513888888889 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59619.19921875 | 1.16663495209455 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+| S20220209S0090.fits.bz2 |  pixelflat,trace | 133.480191666667 |  -41.8273861111111 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59619.19921875 | 1.02393702710406 |     4.0 | JH_G0816 |   all |      -1 |     -1 |
+# | S20220208S0068.fits.bz2 | science,standard |       33.4235375 |  -29.8860194444444 |              HIP 10381 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.48858013585661 |    30.0 | JH_G0816 |     1 |      11 |     -1 |
+# | S20220208S0069.fits.bz2 | science,standard |       33.4235375 |  -29.8860194444444 |              HIP 10381 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.50139543063443 |    30.0 | JH_G0816 |     1 |      12 |     -1 |
+# | S20220208S0070.fits.bz2 | science,standard |       33.4235375 |  -29.8860194444444 |              HIP 10381 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.50911156739302 |    30.0 | JH_G0816 |     1 |      13 |     -1 |
+# | S20220208S0071.fits.bz2 | science,standard |       33.4235375 |  -29.8860194444444 |              HIP 10381 | JH_G5801 | 4pix-slit |     1,1 |        59618.0 | 1.51510843157821 |    30.0 | JH_G0816 |     1 |      14 |     -1 |
+data end
+

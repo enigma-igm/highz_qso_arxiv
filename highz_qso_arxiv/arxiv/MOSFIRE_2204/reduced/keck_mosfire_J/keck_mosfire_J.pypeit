@@ -1,0 +1,23 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev95+g9ee533d34
+# 2022-04-12
+
+# User-defined execution parameters
+[rdx]
+spectrograph = keck_mosfire
+
+# Setup
+setup read
+    Setup J:
+          decker: LONGSLIT-46x5
+        dispname: Y-spectroscopy
+         filter1: Y
+setup end
+
+# Read in the data
+data read
+ path ./raw/.
+|          filename |                 frametype |           ra |        dec | target |       dispname |        decker | binning |            mjd |    airmass |   exptime | filter1 | lampstat01 |  dithpat | dithpos | dithoff | frameno | calib | comb_id | bkg_id |
+| m220409_0220.fits | pixelflat,illumflat,trace | 323.06782305 | 0.25447328 | LDS749 | Y-spectroscopy | LONGSLIT-46x5 |     1,1 | 59678.65136357 | 1.53565179 | 119.29278 |       Y |         on | Mask Nod |       A |     6.5 |     220 |     9 |      -1 |     -1 |
+| m220409_0221.fits | pixelflat,illumflat,trace | 323.07133583 | 0.25363616 | LDS749 | Y-spectroscopy | LONGSLIT-46x5 |     1,1 |  59678.6531344 | 1.51818353 | 119.29278 |       Y |         on | Mask Nod |       B |    -6.5 |     221 |     9 |      -1 |     -1 |
+data end
+

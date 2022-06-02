@@ -1,0 +1,9 @@
+[coadd1d]
+coaddfile = J1200+0112_coadd.fits
+sensfuncfile = ../GD153_IR_sens.fits
+wave_method = linear 
+coadd1d read
+ ../Science/spec1d_r220305_00183-J1200+0112_OFF_LRISr_20220305T135650.842.fits SPAT0928-SLIT1037-DET01
+ ../Science/spec1d_r220305_00184-J1200+0112_OFF_LRISr_20220305T140228.493.fits SPAT0928-SLIT1037-DET01
+ ../Science/spec1d_r220305_00185-J1200+0112_OFF_LRISr_20220305T140754.826.fits SPAT0927-SLIT1037-DET01
+coadd1d end

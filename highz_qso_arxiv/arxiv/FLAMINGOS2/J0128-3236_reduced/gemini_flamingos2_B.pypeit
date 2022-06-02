@@ -1,0 +1,39 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev44+g106ab49ed
+# 2022-04-06
+
+# User-defined execution parameters
+[rdx]
+spectrograph = gemini_flamingos2
+
+# Setup
+setup read
+    Setup B:
+        dispname: JH_G5801
+        dichroic: JH_G0809
+          decker: 4pix-slit
+setup end
+
+# Read in the data
+data read
+ path ../J0128-3236
+|                filename |        frametype |           ra |          dec |                 target | dispname |    decker | binning |            mjd | airmass | exptime | dichroic | calib | comb_id | bkg_id |
+| S20211224S0106.fits.bz2 |         standard |  22.35889583 |   -33.320475 |                HIP6942 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.196 |    10.0 | JH_G0809 |     1 |       2 |      3 |
+| S20211224S0107.fits.bz2 |         standard |  22.35889583 |   -33.320475 |                HIP6942 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.198 |    10.0 | JH_G0809 |     1 |       3 |      2 |
+| S20211224S0108.fits.bz2 |         standard |  22.35889583 |   -33.320475 |                HIP6942 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |     1.2 |    10.0 | JH_G0809 |     1 |       3 |      2 |
+| S20211224S0109.fits.bz2 |         standard |  22.35889583 |   -33.320475 |                HIP6942 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.201 |    10.0 | JH_G0809 |     1 |       2 |      3 |
+| S20211224S0093.fits.bz2 | arc,science,tilt |  22.15454167 | -32.61251111 | J012837.092-323645.037 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.124 |   200.0 | JH_G0809 |     1 |       1 |      0 |
+| S20211224S0094.fits.bz2 | arc,science,tilt |  22.15454167 | -32.61251111 | J012837.092-323645.037 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.132 |   200.0 | JH_G0809 |     1 |       0 |      1 |
+| S20211224S0095.fits.bz2 | arc,science,tilt |  22.15454167 | -32.61251111 | J012837.092-323645.037 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.141 |   200.0 | JH_G0809 |     1 |       0 |      1 |
+| S20211224S0096.fits.bz2 | arc,science,tilt |  22.15454167 | -32.61251111 | J012837.092-323645.037 | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |    1.15 |   200.0 | JH_G0809 |     1 |       1 |      0 |
+| S20211201S0097.fits.bz2 |  pixelflat,trace |  94.26955417 |     -55.4147 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59549.30078125 |   1.105 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211201S0125.fits.bz2 |  pixelflat,trace | 100.04310833 | -57.13026667 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59549.30078125 |    1.14 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211215S0249.fits.bz2 |  pixelflat,trace |      129.116 |   2.28603889 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59563.30078125 |   1.216 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211215S0251.fits.bz2 |  pixelflat,trace |      129.116 |   2.28603889 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59563.30078125 |   1.214 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211215S0264.fits.bz2 |  pixelflat,trace | 130.80614583 |   3.39866389 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59563.30078125 |    1.21 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211215S0275.fits.bz2 |  pixelflat,trace | 128.76379167 |   2.16646944 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 | 59563.30078125 |   1.183 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211215S0287.fits.bz2 |  pixelflat,trace | 130.80614583 |   3.39866389 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59563.3984375 |   1.204 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211215S0297.fits.bz2 |  pixelflat,trace | 130.80614583 |   3.39866389 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59563.3984375 |   1.211 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211224S0097.fits.bz2 |  pixelflat,trace |  22.15454167 | -32.61251111 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.156 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+| S20211224S0110.fits.bz2 |  pixelflat,trace |  22.35889583 |   -33.320475 |               GCALflat | JH_G5801 | 4pix-slit |     1,1 |  59572.1015625 |   1.203 |     4.0 | JH_G0809 |   all |      -1 |     -1 |
+data end
+

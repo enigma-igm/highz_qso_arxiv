@@ -1,0 +1,3 @@
+[telluric]
+    objmodel = poly
+    polyorder = 3

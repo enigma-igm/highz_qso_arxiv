@@ -1,0 +1,95 @@
+# Auto-generated PypeIt file
+# Tue 19 Feb 2019 00:26:07
+
+# User-defined execution parameters
+[rdx]
+    spectrograph = keck_nires
+[calibrations]
+    [[biasframe]]
+        number = 0
+    [[pixelflatframe]]
+        number = 10
+    [[arcframe]]
+        number = 1
+    [[pinholeframe]]
+        number = 0
+    [[traceframe]]
+        number = 10
+    [[standardframe]]
+        number = 0
+    [[slitedges]]
+        edge_thresh = 13
+[reduce]
+    [[findobj]]
+        sig_thresh = 3.0
+
+# Setup
+setup read
+ Setup A
+setup end
+
+# Read in the data
+data read
+path /Users/pgomez/NIRESDATA/XMM/ALL/
+| filename             | frametype       | target | exptime | setup | calib | bkg_id | comb_id |
+| s181127_0001.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0002.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0003.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0004.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0005.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0006.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0007.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0008.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0009.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0010.fits.gz | trace,pixelflat | flat | 100.0 |     A | 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 | -1 | -1 |
+| s181127_0024.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 0 | 1 | 0 |
+| s181127_0025.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 1 | 0 | 1 |
+| s181127_0026.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 1 | 0 | 1 |
+| s181127_0027.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 0 | 1 | 0 |
+| s181127_0028.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 2 | 3 | 2 |
+| s181127_0029.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 3 | 2 | 3 |
+| s181127_0030.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 3 | 2 | 3 |
+| s181127_0031.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 2 | 3 | 2 |
+| s181127_0032.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 4 | 5 | 4 |
+| s181127_0033.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 5 | 4 | 5 |
+| s181127_0034.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 5 | 4 | 5 |
+| s181127_0035.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 4 | 5 | 4 |
+| s181127_0036.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 6 | 7 | 6 |
+| s181127_0037.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 7 | 6 | 7 |
+| s181127_0038.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 7 | 6 | 7 |
+| s181127_0039.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 6 | 7 | 6 |
+| s181127_0040.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 8 | 9 | 8 |
+| s181127_0041.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 9 | 8 | 9 |
+| s181127_0042.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 9 | 8 | 9 |
+| s181127_0043.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 8 | 9 | 8 |
+| s181127_0044.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 10 | 11 | 10 |
+| s181127_0045.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 11 | 10 | 11 |
+| s181127_0046.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 11 | 10 | 11 |
+| s181127_0047.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 10 | 11 | 10 |
+| s181127_0048.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 12 | 13 | 12 |
+| s181127_0049.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 13 | 12 | 13 |
+| s181127_0050.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 13 | 12 | 13 |
+| s181127_0051.fits.gz | science,arc,tilt | 2962 | 300.0 |     A | 12 | 13 | 12 |
+| s181127_0060.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 14 | 15 | 14 |
+| s181127_0061.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 15 | 14 | 15 |
+| s181127_0062.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 15 | 14 | 15 |
+| s181127_0063.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 14 | 15 | 14 |
+| s181127_0064.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 16 | 17 | 16 |
+| s181127_0065.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 17 | 16 | 17 |
+| s181127_0066.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 17 | 16 | 17 |
+| s181127_0067.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 16 | 17 | 16 |
+| s181127_0068.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 18 | 19 | 18 |
+| s181127_0069.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 19 | 18 | 19 |
+| s181127_0070.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 19 | 18 | 19 |
+| s181127_0071.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 18 | 19 | 18 |
+| s181127_0072.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 20 | 21 | 20 |
+| s181127_0073.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 21 | 20 | 21 |
+| s181127_0074.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 21 | 20 | 21 |
+| s181127_0075.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 20 | 21 | 20 |
+| s181127_0076.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 22 | 23 | 22 |
+| s181127_0077.fits.gz | science,arc,tilt | xmm2962 | 300.0 | A | 23 | 22 | 23 |
+
+data end
+
+
+
