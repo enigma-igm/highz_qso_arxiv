@@ -132,3 +132,12 @@ dmypy.json
 *._*
 .DS_Store
 */DS_Store
+
+# Data (important!)
+# only want to store scripts and Pypeit files (maybe some plots)
+*.fits
+*.fits.gz
+*.zip
+*.png
+*report/*
+*.log
