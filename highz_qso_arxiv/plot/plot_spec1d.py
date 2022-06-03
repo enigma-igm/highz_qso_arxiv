@@ -1,5 +1,4 @@
-from highz_qso_arxiv.util import ivarsmooth
-from pypeit.utils import calc_ivar
+from highz_qso_arxiv.util import ivarsmooth, inverse
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -40,7 +39,7 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, tel
     mask = wave>0
     flux_sm, flux_ivar_sm = ivarsmooth(flux, flux_ivar, smooth_window)
     axis.plot(wave[mask], flux_sm[mask], label=name, color="black", lw=1.5)
-    axis.plot(wave[mask], calc_ivar(flux_ivar_sm)[mask], 
+    axis.plot(wave[mask], inverse(np.sqrt(flux_ivar_sm[mask])), 
               lw=1, color="red", alpha=0.6)
     axis.set_xlabel(r"wavelength ($\AA$)", fontsize=15)
     axis.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=15)
@@ -49,8 +48,8 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, tel
     axis.legend(loc="upper right", frameon=True)
     if telluric:
         hdul_tell = fits.open(telluric_fits_file)
-        output = Table(hdul[1].data)
-        wave, flux = output["WAVE"].value[0], output["TELLURIC"].value[0]
+        data = Table(hdul_tell[1].data)
+        wave, flux = data["WAVE"].value[0], data["TELLURIC"].value[0]
         ax2 = axis.twinx()
         ax2.plot(wave[mask], flux[mask], color="navy", zorder=1, alpha=0.4)
         ax2.set_ylim(-2,1.)
@@ -79,7 +78,7 @@ def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, telluric_
     if plot:
         plt.show()
     if save_file:
-        plt.savefig(save_file)
+        fig.savefig(save_file)
     return fig, ax
 
 def plot_series(name_list, fits_list, idx_list, smooth_window=5, plot=True, save_file=""):
@@ -105,7 +104,7 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, plot=True, save
     if plot:
         plt.show()
     if save_file:
-        plt.savefig(save_file)
+        fig.savefig(save_file)
     return fig, axs
 
 if __name__ == "__main__":
