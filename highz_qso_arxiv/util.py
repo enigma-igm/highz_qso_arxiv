@@ -1,5 +1,8 @@
 import numpy as np
+from IPython import embed
 
+def inverse(array):
+    return (array > 0.0)/(np.abs(array) + (array == 0.0))
 
 def ivarsmooth(flux, ivar, window):
     """

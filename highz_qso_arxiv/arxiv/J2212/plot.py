@@ -8,6 +8,8 @@ from pypeit.utils import calc_ivar
 import warnings
 warnings.filterwarnings("ignore")
 
+from IPython import embed
+
 def inverse(array):
     return (array > 0.0)/(np.abs(array) + (array == 0.0))
     
@@ -77,6 +79,7 @@ hdul = fits.open("J2212+2040_LRIS_coadd1d_tellcorr.fits")
 output = Table(hdul[1].data)
 wave, flux, flux_ivar = output["wave"], output["flux"], output["ivar"]
 # mask = (wave<9400)
+embed()
 mask = wave>0
 flux_sm, flux_ivar_sm = ivarsmooth(flux[mask], flux_ivar[mask], 3)
 ax.plot(wave[mask], flux_sm, color="black", alpha=0.8, lw=1, label="LRIS")
@@ -94,7 +97,7 @@ ax.set_ylim(np.mean(flux_sm)-2*np.std(flux_sm),np.mean(flux_sm)+2*np.std(flux_sm
 # ax.set_xlim(7300, 9400)
 ax.set_xlabel(r"wavelength ($\AA$)", fontsize=15)
 ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=15)
-plt.savefig("J2212+2040_LRIS.pdf")
+# plt.savefig("J2212+2040_LRIS.pdf")
 
 """
     MOSFIRE
@@ -105,6 +108,8 @@ hdul = fits.open("J2212_MOSFIRE_coadd_tellcorr.fits")
 output = Table(hdul[1].data)
 wave, flux, flux_ivar = output["wave"], output["flux"], output["ivar"]
 mask = (wave>9700)
+embed()
+
 # mask = wave>0
 flux_sm, flux_ivar_sm = ivarsmooth(flux[mask], flux_ivar[mask], 3)
 ax.plot(wave[mask], flux_sm, color="black", alpha=0.8, lw=1, label="MOSFIRE")
