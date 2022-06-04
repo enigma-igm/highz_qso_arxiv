@@ -37,6 +37,7 @@ def get_acq_image(path, prefix, obj_frame, sky_frame, cut_min=None, cut_max=None
     cut_max = med_sky + sig_max*sigma_sky if cut_max is None else cut_max
 
     image = diff * median_box
+    # image_cutout = image[1035+1:1070,1037+1:1051]
     if plot_ds9:
         try:
             d = DS9()

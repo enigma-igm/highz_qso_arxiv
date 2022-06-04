@@ -44,7 +44,11 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, tel
     axis.set_xlabel(r"wavelength ($\AA$)", fontsize=15)
     axis.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=15)
     axis.set_xlim(np.min(wave), np.max(wave))
-    axis.set_ylim(np.mean(flux_sm)-2*np.std(flux_sm),np.mean(flux_sm)+2*np.std(flux_sm))
+
+    # always want to include the noise vector
+    ymin = np.mean(flux_sm)-2*np.std(flux_sm)
+    if ymin > 0: ymin = 0
+    axis.set_ylim(ymin,np.mean(flux_sm)+2*np.std(flux_sm))
     axis.legend(loc="upper right", frameon=True)
     if telluric:
         hdul_tell = fits.open(telluric_fits_file)
