@@ -1,5 +1,5 @@
 from unicodedata import name
-from highz_qso_arxiv.plot.plot_spec1d import plot_single, plot_series
+from highz_qso_arxiv.plot import plot_single, plot_series
 from IPython import embed
 
 plot_single("J2212 LRIS", "J2212+2040_LRIS_coadd1d_tellcorr.fits", 1, 
