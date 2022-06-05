@@ -1,10 +1,9 @@
-from highz_qso_arxiv.util import ivarsmooth, inverse
+from ..util import ivarsmooth, inverse
 
 import numpy as np
 import matplotlib.pyplot as plt
 from astropy.io import fits
 from astropy.table import Table
-plt.style.use('science')
 
 import warnings
 warnings.filterwarnings("ignore")

@@ -1,1 +1,1 @@
-Files in this folder are mainly fits file in the arxiv. So they won't show up in github repository.
+Files in this folder are mainly fits file in the arxiv. So they won't show up in github repository. But I want this folder to show up in github, that's why I make this readme.

@@ -55,7 +55,7 @@ def create_coadd1d_file(coadd1d_file, sens_file):
         # end
         f_out.write(f[idx_end])
         f_out.close()
-    return True
+    return
 
 if __name__ == "__main__":
     create_coadd1d_file(sys.argv[1], sys.argv[2])
