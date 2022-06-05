@@ -5,7 +5,7 @@ import matplotlib as mpl
 mpl.rcParams['image.interpolation'] = 'nearest'
 mpl.rcParams['image.origin'] = 'lower'
 
-def plot_acq(image, peak_pos=None, fig=None, ax=None, display=False):
+def plot_acq(image, peak_pos=None, fig=None, ax=None, display=False, save_file=""):
     if ax == None:
         fig, ax = plt.subplots(figsize=(6,6))
     im = ax.imshow(image)
@@ -18,10 +18,11 @@ def plot_acq(image, peak_pos=None, fig=None, ax=None, display=False):
     ax.set_ylabel("y [pix]", fontsize=15)
     if display:
         plt.show()
-        return
+    if save_file:
+        fig.savefig(save_file)
     return fig, ax
 
-def plot_hist(image, bins=20, fig=None, ax=None, display=False):
+def plot_hist(image, bins=20, fig=None, ax=None, display=False, save_file=""):
     """plot 1d hist of an image
        help us understand the background
 
@@ -35,14 +36,18 @@ def plot_hist(image, bins=20, fig=None, ax=None, display=False):
     ax.set_xlabel("counts", fontsize=15)
     if display:
         plt.show()
-        return
+    if save_file:
+        fig.savefig(save_file)
     return fig, ax
 
-def plot_acq_and_hist(image, peak_pos=None, bins=20, display=False):
+def plot_acq_and_hist(image, peak_pos=None, bins=20, title="", display=False, save_file=""):
     fig, axs = plt.subplots(1, 2, figsize=(20,6))
     plot_acq(image, peak_pos, fig, axs[0])
     plot_hist(image, bins, fig, axs[1])
+    if title:
+        plt.suptitle(title, fontsize=15)
     if display:
         plt.show()
-        return
+    if save_file:
+        fig.savefig(save_file)
     return fig, axs

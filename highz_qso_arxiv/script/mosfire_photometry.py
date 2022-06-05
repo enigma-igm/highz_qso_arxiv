@@ -7,7 +7,7 @@ from highz_qso_arxiv.util import mjd_to_unix
 from highz_qso_arxiv.util.photutil import find_peak, r_theta, get_mosfire_acq, circle_mask, naive_bkg_subtract, sigma_clipping_bkg_subtract
 from highz_qso_arxiv.crawler import get_skyprobe_extinction
 from highz_qso_arxiv.resource.zero_points import mosfire_ZP
-from highz_qso_arxiv.plot import plot_acq, plot_hist, plot_acq_and_hist, plot_extinction
+from highz_qso_arxiv.plot import plot_acq_and_hist, plot_extinction
 
 path = "../resource"
 # 204 - star sky / 205 - star obj
@@ -20,8 +20,8 @@ star_hdr = fits.getheader(f"{path}/m220111_0205.fits")
 star_peak = find_peak(star_acq)
 qso_peak = find_peak(qso_acq)
 
-plot_acq_and_hist(star_acq, star_peak, display=True)
-plot_acq_and_hist(qso_acq, qso_peak, display=True)
+plot_acq_and_hist(star_acq, star_peak, title="star aquisition", display=True, save_file="test_star.pdf")
+plot_acq_and_hist(qso_acq, qso_peak, title="qso aquisition", display=True, save_file="test_qso.pdf")
 
 star_medsub = naive_bkg_subtract(star_acq, method="biweight")
 star_sigmaclip = sigma_clipping_bkg_subtract(star_acq, mask_radius=10)
@@ -56,4 +56,4 @@ print(f"star observing time: {star_unix}")
 print(f"qso observing time: {qso_unix}")
 print(extinction_data)
 
-plot_extinction(extinction_data, star_unix, qso_unix, offset=0.03, display=True)
+plot_extinction(extinction_data, star_unix, qso_unix, offset=0.03, display=True, save_file="test_extinction.pdf")

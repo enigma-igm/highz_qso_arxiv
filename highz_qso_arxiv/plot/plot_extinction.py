@@ -1,7 +1,7 @@
 from ..util import unix_to_iso
 import matplotlib.pyplot as plt
 
-def plot_extinction(extinction_data, star_unix, qso_unix, offset=0, display=False):
+def plot_extinction(extinction_data, star_unix, qso_unix, offset=0, display=False, save_file=""):
     """plot extinction curve
 
     Args:
@@ -32,5 +32,6 @@ def plot_extinction(extinction_data, star_unix, qso_unix, offset=0, display=Fals
     ax.set_xlabel("extinction [mag]", fontsize=15)
     if display:
         plt.show()
-        return 
+    if save_file:
+        fig.savefig(save_file)
     return fig, ax

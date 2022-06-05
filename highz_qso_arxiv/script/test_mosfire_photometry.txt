@@ -1,0 +1,22 @@
+Star Magnitute with median subtraction: 18.2597362368396
+Star Magnitute with sigma clipping: 18.299202856586525
+qso Magnitute with median subtraction: 22.673713632514122
+qso Magnitute with sigma clipping: 22.80748938371048
+star observing time: 1641898131.6853442
+qso observing time: 1641898313.7560637
+   time    extinction scatter
+   UNIX       mag       mag  
+---------- ---------- -------
+1641897850      0.071   0.005
+1641897909      0.046   0.005
+1641897970       0.06   0.006
+1641898027      0.064   0.005
+1641898087       0.06   0.006
+1641898146      0.043   0.005
+1641898210      0.064   0.006
+1641898270      0.045   0.005
+1641898330      0.041   0.006
+1641898389      0.045   0.006
+1641898450      0.039   0.006
+1641898510      0.052   0.006
+1641898569      0.049   0.006

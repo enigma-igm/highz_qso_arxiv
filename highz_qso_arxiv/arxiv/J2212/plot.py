@@ -4,15 +4,15 @@ from IPython import embed
 
 plot_single("J2212 LRIS", "J2212+2040_LRIS_coadd1d_tellcorr.fits", 1, 
             telluric=True, telluric_fits_file="J2212+2040_LRIS_coadd1d_tellmodel.fits", 
-            plot=True, save_file="J2212+2040_LRIS.pdf")
+            display=True, save_file="J2212+2040_LRIS.pdf")
 
 plot_single("J2212 MOSFIRE", "J2212_MOSFIRE_coadd_tellcorr.fits", 1, 
             telluric=True, telluric_fits_file="J2212_MOSFIRE_coadd_tellmodel.fits", 
-            plot=True, save_file="J2212+2040_MOSFIRE.pdf")
+            display=True, save_file="J2212+2040_MOSFIRE.pdf")
 
 plot_single("J2212 NIRES", "J2212+2040_NIRES_coadd1d_tellcorr.fits", 1, 
             telluric=True, telluric_fits_file="J2212+2040_NIRES_coadd1d_tellmodel.fits", 
-            plot=True, save_file="J2212+2040_NIRES.pdf")
+            display=True, save_file="J2212+2040_NIRES.pdf")
 
 # """
 #     LRIS+MOSFIRE+NIRES

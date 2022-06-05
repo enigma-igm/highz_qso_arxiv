@@ -60,7 +60,7 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, tel
 
     return axis
 
-def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, telluric_fits_file="", plot=True, save_file=""):
+def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, telluric_fits_file="", display=True, save_file=""):
     """Plot single spectrum given fits file and other parameters
 
     Args:
@@ -78,13 +78,13 @@ def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, telluric_
     """
     fig, ax = plt.subplots(figsize=(20,6))
     plot_spec1d(name, fits_file, idx, ax, smooth_window, telluric, telluric_fits_file)
-    if plot:
+    if display:
         plt.show()
     if save_file:
         fig.savefig(save_file)
     return fig, ax
 
-def plot_series(name_list, fits_list, idx_list, smooth_window=5, plot=True, save_file=""):
+def plot_series(name_list, fits_list, idx_list, smooth_window=5, display=True, save_file=""):
     """Plot a series of spectrum given fits files and other parameters
 
     Args:
@@ -104,7 +104,7 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, plot=True, save
         # TODO: telluric for each plot
         plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window)
     fig.tight_layout()
-    if plot:
+    if display:
         plt.show()
     if save_file:
         fig.savefig(save_file)
