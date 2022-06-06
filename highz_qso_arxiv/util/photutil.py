@@ -1,3 +1,4 @@
+from gettext import find
 import imp
 import os
 import numpy as np
@@ -7,10 +8,13 @@ import numpy as np
 
 from IPython import embed
 
-__all__ = ["find_peak", "r_theta", "get_mosfire_acq", "circle_mask",
+__all__ = ["find_peak", "r_theta", "get_mosfire_acq", "get_mosfire_acq_proc", 
+           "circle_mask",
            "naive_bkg_subtract", "sigma_clipping_bkg_subtract"]
 
 def find_peak(image, sig_thresh=3.0, sig_clip=3.0, box_size=5, max_only=True):
+    # TODO: spike bug
+    # perhaps we can convolve first
     from photutils.detection import find_peaks
     mean, median, std = sigma_clipped_stats(image, sigma=sig_clip)
     threshold = median + (sig_thresh * std)
@@ -66,7 +70,23 @@ def get_mosfire_acq(path, skyfile, objfile, cut_min=None, cut_max=None, sig_min=
     image_cutout = image[1035+1:1070,1037+1:1051]
     return image_cutout
 
-def naive_bkg_subtract(image, method="median"):
+def get_mosfire_acq_proc(path, skyfile, objfile):
+    from pypeit.spectrographs.util import load_spectrograph
+    from pypeit.images import buildimage
+    sky_file = os.path.join(path, skyfile)
+    obj_file = os.path.join(path, objfile)
+    spectrograph = load_spectrograph("keck_mosfire")
+    par = spectrograph.default_pypeit_par()['calibrations']['biasframe']
+    det = 1
+    img = buildimage.buildimage_fromlist(spectrograph, det, par,
+                                         [obj_file], mosaic=False)
+    bkg_img = buildimage.buildimage_fromlist(spectrograph, det, par, 
+                                            [sky_file], mosaic=False)
+    img = img.sub(bkg_img, par['process'])
+    # hardcode acq box here
+    return img.image[1031:1050,1029:1063]
+
+def naive_bkg_subtract(image, method="median", mask_source=False, mask_radius=6):
     """Naive background subtraction
        Subtracting a scalar, either median or biweight of the image
 
@@ -81,13 +101,19 @@ def naive_bkg_subtract(image, method="median"):
         _type_: _description_
     """
     # TODO: uncertainty
+    if mask_source:
+        peak = find_peak(image)
+        mask = circle_mask(image, peak[0], peak[1], mask_radius)
+    else:
+        # array with all elements == False
+        mask = (image == True)
     if method == "median":
         # return np.median(image)
-        return image - np.median(image)
+        return image - np.median(image*~mask)
     elif method == "biweight":
         from astropy.stats import biweight_location
         # return biweight_location(image)
-        return image - biweight_location(image)
+        return image - biweight_location(image*~mask)
     else:
         raise ValueError("No such method!")
 

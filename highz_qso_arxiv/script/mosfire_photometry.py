@@ -1,10 +1,8 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from astropy.stats import sigma_clipped_stats
 from astropy.io import fits
 
 from highz_qso_arxiv.util import mjd_to_unix
-from highz_qso_arxiv.util.photutil import find_peak, r_theta, get_mosfire_acq, circle_mask, naive_bkg_subtract, sigma_clipping_bkg_subtract
+from highz_qso_arxiv.util.photutil import find_peak, get_mosfire_acq, get_mosfire_acq_proc, circle_mask, naive_bkg_subtract, sigma_clipping_bkg_subtract
 from highz_qso_arxiv.crawler import get_skyprobe_extinction
 from highz_qso_arxiv.resource.zero_points import mosfire_ZP
 from highz_qso_arxiv.plot import plot_acq_and_hist, plot_extinction
@@ -12,8 +10,8 @@ from highz_qso_arxiv.plot import plot_acq_and_hist, plot_extinction
 path = "../resource"
 # 204 - star sky / 205 - star obj
 # 206 - qso sky / 207 - qso obj
-star_acq = get_mosfire_acq(path, "m220111_0204.fits", "m220111_0205.fits")
-qso_acq = get_mosfire_acq(path, "m220111_0206.fits", "m220111_0207.fits")
+star_acq = get_mosfire_acq_proc(path, "m220111_0204.fits", "m220111_0205.fits")
+qso_acq = get_mosfire_acq_proc(path, "m220111_0206.fits", "m220111_0207.fits")
 qso_hdr = fits.getheader(f"{path}/m220111_0207.fits")
 star_hdr = fits.getheader(f"{path}/m220111_0205.fits")
 

@@ -1,7 +1,7 @@
-Star Magnitute with median subtraction: 18.2597362368396
-Star Magnitute with sigma clipping: 18.299202856586525
-qso Magnitute with median subtraction: 22.673713632514122
-qso Magnitute with sigma clipping: 22.80748938371048
+Star Magnitute with median subtraction: 17.40750487713076
+Star Magnitute with sigma clipping: 17.450779744745624
+qso Magnitute with median subtraction: 21.837591624007217
+qso Magnitute with sigma clipping: 21.95223816608885
 star observing time: 1641898131.6853442
 qso observing time: 1641898313.7560637
    time    extinction scatter

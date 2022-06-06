@@ -1,7 +1,7 @@
 from ..util import unix_to_iso
 import matplotlib.pyplot as plt
 
-def plot_extinction(extinction_data, star_unix, qso_unix, offset=0, display=False, save_file=""):
+def plot_extinction(extinction_data, star_unix=None, qso_unix=None, offset=0, display=False, save_file=""):
     """plot extinction curve
 
     Args:
@@ -25,8 +25,10 @@ def plot_extinction(extinction_data, star_unix, qso_unix, offset=0, display=Fals
     ax.set_yticklabels(ylabel, rotation=0)
 
     xmin, xmax = ax.get_xlim()
-    ax.hlines(star_unix, xmin, xmax, ls="dashed", label="star", color="red")
-    ax.hlines(qso_unix, xmin, xmax, ls="dashed", label="qso", color="blue")
+    if star_unix is not None:
+        ax.hlines(star_unix, xmin, xmax, ls="dashed", label="star", color="red")
+    if qso_unix is not None:
+        ax.hlines(qso_unix, xmin, xmax, ls="dashed", label="qso", color="blue")
     ax.set_xlim(xmin, xmax)
     ax.legend()
     ax.set_xlabel("extinction [mag]", fontsize=15)
