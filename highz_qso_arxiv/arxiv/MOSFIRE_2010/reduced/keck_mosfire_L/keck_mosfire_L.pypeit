@@ -1,0 +1,50 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-06-10
+
+# User-defined execution parameters
+[rdx]
+spectrograph = keck_mosfire
+
+# Setup
+setup read
+    Setup L:
+          decker: LONGSLIT-46x1
+        dispname: K-spectroscopy
+         filter1: K
+setup end
+
+# Read in the data
+data read
+ path ./raw/.
+|                  filename |                 frametype |           ra |         dec |          target |       dispname |        decker | binning |            mjd |    airmass |   exptime | filter1 | lampstat01 |  dithpat | dithpos | dithoff | frameno | calib | comb_id | bkg_id |
+| MF.20201022.18456.fits.gz |          arc,science,tilt | 327.36562274 | -8.98353532 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.21362194 | 1.18311753 | 149.84337 |       K |        off | Mask Nod |       A |     4.0 |     107 |    11 |       9 |     -1 |
+| MF.20201022.18640.fits.gz |          arc,science,tilt | 327.36548915 | -8.98575362 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.21574694 | 1.17880017 | 149.84337 |       K |        off | Mask Nod |       B |    -4.0 |     108 |    11 |      10 |     -1 |
+| MF.20201022.18824.fits.gz |          arc,science,tilt | 327.36562274 | -8.98353532 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.21787194 |  1.1745488 | 149.84337 |       K |        off | Mask Nod |       A |     4.0 |     109 |    11 |      11 |     -1 |
+| MF.20201022.19006.fits.gz |          arc,science,tilt | 327.36548915 | -8.98575362 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.21997923 | 1.17071036 | 149.84337 |       K |        off | Mask Nod |       B |    -4.0 |     110 |    11 |      12 |     -1 |
+| MF.20201022.19193.fits.gz |          arc,science,tilt | 327.36563944 | -8.98325803 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.22215145 | 1.16695598 | 149.84337 |       K |        off | Mask Nod |       A |     5.0 |     111 |    11 |      13 |     -1 |
+| MF.20201022.19375.fits.gz |          arc,science,tilt | 327.36547245 | -8.98603091 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.22425875 | 1.16362444 | 149.84337 |       K |        off | Mask Nod |       B |    -5.0 |     112 |    11 |      14 |     -1 |
+| MF.20201022.19558.fits.gz |          arc,science,tilt | 327.36563944 | -8.98325803 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.22637194 | 1.16044301 | 149.84337 |       K |        off | Mask Nod |       A |     5.0 |     113 |    11 |      15 |     -1 |
+| MF.20201022.19741.fits.gz |          arc,science,tilt | 327.36547245 | -8.98603091 | HE2QSJ2149-0859 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.22848513 | 1.15762658 | 149.84337 |       K |        off | Mask Nod |       B |    -5.0 |     114 |    11 |      16 |     -1 |
+| MF.20201023.56751.fits.gz |          arc,science,tilt |  88.11551694 | 15.88787635 |            GD71 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59145.65684208 | 1.09591089 |  59.64639 |       K |        off | Mask Nod |       A |     8.0 |     233 |    11 |     450 |     -1 |
+| MF.20201023.56844.fits.gz |          arc,science,tilt |  88.11524257 | 15.88343976 |            GD71 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59145.65792229 | 1.09913156 |  59.64639 |       K |        off | Mask Nod |       B |    -8.0 |     234 |    11 |     451 |     -1 |
+| MF.20201023.56958.fits.gz |          arc,science,tilt |  88.11551694 | 15.88787635 |            GD71 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59145.65924451 | 1.10303796 |  59.64639 |       K |        off | Mask Nod |       A |     8.0 |     235 |    11 |     452 |     -1 |
+| MF.20201023.57051.fits.gz |          arc,science,tilt |  88.11524257 | 15.88343976 |            GD71 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59145.66031291 | 1.10638666 |  59.64639 |       K |        off | Mask Nod |       B |    -8.0 |     236 |    11 |     453 |     -1 |
+| MF.20201024.56554.fits.gz |          arc,science,tilt |  88.11385989 | 15.88477186 |           gd 71 | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59146.65457159 | 1.09734261 |  59.64639 |       K |        off | Mask Nod |       A |     8.0 |     234 |    11 |     687 |     -1 |
+| MF.20201024.56647.fits.gz |          arc,science,tilt |  88.11756983 | 15.88742149 |           gd 71 | K-spectroscopy | LONGSLIT-46x1 |     1,1 |    59146.65564 | 1.10036983 |  59.64639 |       K |        off | Mask Nod |       B |    -8.0 |     235 |    11 |     688 |     -1 |
+| MF.20201022.12899.fits.gz |                  arc,tilt |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.14930527 | 1.41291034 |   1.45479 |       K |         Ne |    Stare |  object |     0.0 |      87 |    11 |      -1 |     -1 |
+| MF.20201022.12911.fits.gz |                  arc,tilt |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.14943513 | 1.41291034 |   1.45479 |       K |         Ne |    Stare |  object |     0.0 |      88 |    11 |      -1 |     -1 |
+| MF.20201022.12949.fits.gz |                  arc,tilt |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.14988375 | 1.41291034 |   1.45479 |       K |         Ar |    Stare |  object |     0.0 |      89 |    11 |      -1 |     -1 |
+| MF.20201022.12960.fits.gz |                  arc,tilt |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 |  59144.1500077 | 1.41291034 |   1.45479 |       K |         Ar |    Stare |  object |     0.0 |      90 |    11 |      -1 |     -1 |
+| MF.20201022.13124.fits.gz | pixelflat,illumflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 |  59144.1519084 | 1.41291034 |   7.27395 |       K |         on |    Stare |  object |     0.0 |      91 |    11 |      -1 |     -1 |
+| MF.20201022.13141.fits.gz | pixelflat,illumflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15210319 | 1.41291034 |   7.27395 |       K |         on |    Stare |  object |     0.0 |      92 |    11 |      -1 |     -1 |
+| MF.20201022.13157.fits.gz | pixelflat,illumflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15228618 | 1.41291034 |   7.27395 |       K |         on |    Stare |  object |     0.0 |      93 |    11 |      -1 |     -1 |
+| MF.20201022.13173.fits.gz | pixelflat,illumflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15246916 | 1.41291034 |   7.27395 |       K |         on |    Stare |  object |     0.0 |      94 |    11 |      -1 |     -1 |
+| MF.20201022.13189.fits.gz | pixelflat,illumflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15265215 | 1.41291034 |   7.27395 |       K |         on |    Stare |  object |     0.0 |      95 |    11 |      -1 |     -1 |
+| MF.20201022.12817.fits.gz |           pixelflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.14835493 | 1.41291034 |   7.27395 |       K |        off |    Stare |  object |     0.0 |      86 |    11 |      -1 |     -1 |
+| MF.20201022.13233.fits.gz |           pixelflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15316569 | 1.41291034 |   7.27395 |       K |        off |    Stare |  object |     0.0 |      96 |    11 |      -1 |     -1 |
+| MF.20201022.13250.fits.gz |           pixelflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15336048 | 1.41291034 |   7.27395 |       K |        off |    Stare |  object |     0.0 |      97 |    11 |      -1 |     -1 |
+| MF.20201022.13266.fits.gz |           pixelflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15354347 | 1.41291034 |   7.27395 |       K |        off |    Stare |  object |     0.0 |      98 |    11 |      -1 |     -1 |
+| MF.20201022.13282.fits.gz |           pixelflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15373826 | 1.41291034 |   7.27395 |       K |        off |    Stare |  object |     0.0 |      99 |    11 |      -1 |     -1 |
+| MF.20201022.13300.fits.gz |           pixelflat,trace |        230.0 |        45.0 |         unknown | K-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.15394486 | 1.41291034 |   7.27395 |       K |        off |    Stare |  object |     0.0 |     100 |    11 |      -1 |     -1 |
+data end
+

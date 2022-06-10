@@ -1,0 +1,7 @@
+[fluxcalib]
+   use_archived_sens = True
+
+flux read
+  Science/spec1d_MF.20191119.46465-HE2QSJ0916+2408_MOSFIRE_20191119T125425.887.fits 
+  Science/spec1d_MF.20191119.46678-HE2QSJ0916+2408_MOSFIRE_20191119T125758.557.fits
+flux end

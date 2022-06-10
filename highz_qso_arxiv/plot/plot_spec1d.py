@@ -35,14 +35,14 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, tel
         wave, flux, flux_ivar = data["OPT_WAVE"], data["OPT_FLAM"], data["OPT_FLAM_IVAR"]
     
     # TODO: mask
-    mask = wave>0
+    mask = wave>1.
     flux_sm, flux_ivar_sm = ivarsmooth(flux, flux_ivar, smooth_window)
     axis.plot(wave[mask], flux_sm[mask], label=name, color="black", lw=1.5)
     axis.plot(wave[mask], inverse(np.sqrt(flux_ivar_sm[mask])), 
               lw=1, color="red", alpha=0.6)
     axis.set_xlabel(r"wavelength ($\AA$)", fontsize=15)
     axis.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=15)
-    axis.set_xlim(np.min(wave), np.max(wave))
+    axis.set_xlim(np.min(wave[mask]), np.max(wave[mask]))
 
     # always want to include the noise vector
     ymin = np.mean(flux_sm)-2*np.std(flux_sm)
