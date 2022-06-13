@@ -22,7 +22,7 @@ setup end
 
 # Read in the data
 data read
- path ../../raw_red/.
+ path ../../raw/.
 |           filename |                 frametype |                 ra |                 dec |         target |  dispname |   decker | binning |          mjd | airmass |       exptime | dichroic | dispangle |     cenwave | amp | frameno |
 | r220127_00023.fits |                  arc,tilt | 229.99999999999997 |                45.0 |        unknown | 600/10000 | long_1.0 |     2,2 | 59606.122011 |    1.41 |   1.000126208 |      680 | 31.071106 | 8926.487689 |   4 |      23 |
 | r220127_00024.fits |                  arc,tilt | 229.99999999999997 |                45.0 |        unknown | 600/10000 | long_1.0 |     2,2 | 59606.124112 |    1.41 |   1.000126208 |      680 | 31.071106 | 8926.487689 |   4 |      24 |

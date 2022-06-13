@@ -1,0 +1,4 @@
+[telluric]
+     objmodel = star
+     star_type = DA1 # ???
+     star_mag = 13.35

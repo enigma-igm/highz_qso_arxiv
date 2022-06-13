@@ -22,7 +22,7 @@ setup end
 
 # Read in the data
 data read
- path ../../raw_red/.
+ path ../../raw/.
 |           filename |                 frametype |                 ra |                 dec |         target |  dispname |   decker | binning |          mjd | airmass |       exptime | dichroic | dispangle |     cenwave | amp | frameno |
 | r220305_00050.fits |                      bias | 229.99999999999997 | 0.04                | unknown        |   mirror  | direct   |     2,2 | 59643.178243 |   13.37 | 0.000124928   |      560 | 13.702031 |     0.0     |   4 |      50 |
 | r220305_00051.fits |                      bias | 229.99999999999997 | 0.04                | unknown        |   mirror  | direct   |     2,2 | 59643.178514 |   13.37 | 0.000125184   |      560 | 13.702031 |     0.0     |   4 |      51 |

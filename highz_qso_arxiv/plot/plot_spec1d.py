@@ -12,7 +12,7 @@ from IPython import embed
 
 ARXIV_PATH = "../arxiv/"
 
-def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, telluric_fits_file=""):
+def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False):
     """Plot single spectrum to axis
 
     Args:
@@ -46,13 +46,21 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, tel
 
     # always want to include the noise vector
     ymin = np.mean(flux_sm)-2*np.std(flux_sm)
+    ymax = np.mean(flux_sm)+2*np.std(flux_sm)
     if ymin > 0: ymin = 0
-    axis.set_ylim(ymin,np.mean(flux_sm)+2*np.std(flux_sm))
+    if ymax < np.max(flux_sm[mask]): ymax =  np.mean(flux_sm)+3*np.std(flux_sm)
+    axis.set_ylim(ymin, ymax)
     axis.legend(loc="upper right", frameon=True)
     if telluric:
-        hdul_tell = fits.open(telluric_fits_file)
-        data = Table(hdul_tell[1].data)
-        wave, flux = data["WAVE"].value[0], data["TELLURIC"].value[0]
+        # hdul_tell = fits.open(telluric_fits_file)
+        # data = Table(hdul_tell[1].data)
+        # wave, flux = data["WAVE"].value[0], data["TELLURIC"].value[0]
+        # ax2 = axis.twinx()
+        # ax2.plot(wave[mask], flux[mask], color="navy", zorder=1, alpha=0.4)
+        # ax2.set_ylim(-2,1.)
+        # ax2.set_yticks([0,0.5,1])
+
+        flux =data["telluric"]
         ax2 = axis.twinx()
         ax2.plot(wave[mask], flux[mask], color="navy", zorder=1, alpha=0.4)
         ax2.set_ylim(-2,1.)
@@ -60,7 +68,7 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, telluric=False, tel
 
     return axis
 
-def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, telluric_fits_file="", display=True, save_file=""):
+def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, display=True, save_file=""):
     """Plot single spectrum given fits file and other parameters
 
     Args:
@@ -77,14 +85,14 @@ def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, telluric_
         _type_: _description_
     """
     fig, ax = plt.subplots(figsize=(20,6))
-    plot_spec1d(name, fits_file, idx, ax, smooth_window, telluric, telluric_fits_file)
+    plot_spec1d(name, fits_file, idx, ax, smooth_window, telluric)
     if display:
         plt.show()
     if save_file:
         fig.savefig(save_file)
     return fig, ax
 
-def plot_series(name_list, fits_list, idx_list, smooth_window=5, display=True, save_file=""):
+def plot_series(name_list, fits_list, idx_list, smooth_window=5, telluric=False, display=True, save_file=""):
     """Plot a series of spectrum given fits files and other parameters
 
     Args:
@@ -102,7 +110,7 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, display=True, s
     fig, axs = plt.subplots(num, 1, figsize=(12,3*num))
     for i, ax in enumerate(axs):
         # TODO: telluric for each plot
-        plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window)
+        plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, telluric=telluric)
     fig.tight_layout()
     if display:
         plt.show()
