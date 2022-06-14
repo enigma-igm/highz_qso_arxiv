@@ -24,7 +24,7 @@
         resolution = 3000.0
         trans_thresh = 0.9
     [[IR]]
-        telgridfile = /Users/topol/github/PypeIt/pypeit/data/telluric/atm_grids/TelFit_MaunaKea_3100_26100_R20000.fits
+        telgridfile = TelFit_MaunaKea_3100_26100_R20000.fits
         sn_clip = 30.0
         resln_guess = None
         resln_frac_bounds = (0.5, 1.5)
@@ -44,7 +44,7 @@
         objmodel = None
         redshift = 0.0
         delta_redshift = 0.1
-        pca_file = /Users/topol/github/PypeIt/pypeit/data/telluric/models/qso_pca_1200_3100.fits
+        pca_file = qso_pca_1200_3100.fits
         npca = 8
         bal_wv_min_max = None
         bounds_norm = (0.1, 3.0)

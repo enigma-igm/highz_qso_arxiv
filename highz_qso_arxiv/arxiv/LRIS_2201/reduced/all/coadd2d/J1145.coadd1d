@@ -1,0 +1,17 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-06-14
+
+# User-defined execution parameters
+[coadd1d]
+  coaddfile = J1145+0933_coadd.fits # Please set your output file name
+  sensfuncfile = ../GD153_IR_sens.fits # Please set your SENSFUNC file name. Only required for Echelle
+  wave_method = linear # creates a uniformly space grid in lambda
+
+# This file includes all extracted objects. You need to figure out which object you want to 
+# coadd before running pypeit_coadd_1dspec!!!
+
+# Read in the coadd1d
+coadd1d read
+ Science_coadd/spec1d_r220127-r220127-J1145+0933.fits SPAT0242-SLIT0336-DET01
+coadd1d end
+
