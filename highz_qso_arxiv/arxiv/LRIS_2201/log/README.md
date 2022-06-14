@@ -2,4 +2,4 @@
 
 **J0820+2412**: wrong target (true target unobserverd)
 
-**J1145+0933**: no flux in LRIS (see spectrum and noise plot in ``plot``)
+**J1145+0933**: another coadd2d target; no flux in LRIS (see spectrum and noise plot in ``plot``)
