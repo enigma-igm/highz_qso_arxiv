@@ -16,8 +16,8 @@
     recombination = 0.7
     polish = True
     disp = False
-    objmodel = qso
-    redshift = 3.24
+    objmodel = poly
+    redshift = 0.0
     delta_redshift = 0.1
     pca_file = qso_pca_1200_3100.fits
     npca = 8
@@ -34,6 +34,6 @@
     mask_abs_lines = True
     func = legendre
     model = exp
-    polyorder = 3
+    polyorder = 5
     fit_wv_min_max = None
     mask_lyman_a = True
