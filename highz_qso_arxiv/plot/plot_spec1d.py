@@ -58,35 +58,30 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     axis.set_ylim(ymin, ymax)
 
     if template:
-        # flux scale
-        # TODO: better way to scale the template
-        mask_for_scale = (wave > 9000.) & (wave < 9200)
-        flux_scale = np.mean(flux_sm[mask_for_scale])
-
-        # template
-        from scipy.spatial import distance
         from scipy.interpolate import interp1d
         templates = ["L0", "L0.5", "L1", "L1.5", "L2", "L3", "L5", "L8", "L6",
                      "M4.5", "M5", "M6", "M7", "M8", "M9", "M9.5",
                      "T0"]
-        dist = np.inf
+        chi_sq = np.inf
         for template in templates:
             tab = ascii.read(RESOURCE_PATH+f"dwarf/keck_lris_{template}_1.dat")
             wave_template, flux_template = tab["col1"], tab["col2"]/1e-17
-            mask_for_scale = (wave_template > 9000.) & (wave_template < 9200)
-            template_scale = np.mean(flux_template[mask_for_scale])
-            flux_template = flux_template * flux_scale / template_scale
-            template_interp = interp1d(wave_template, flux_template, kind="cubic")
+            template_interp_func = interp1d(wave_template, flux_template, kind="cubic")
+            mask_for_scale = wave < min(np.max(wave_template), np.max(wave))
 
-            mask_for_corr = wave < np.max(wave_template)
-            flux_template_interp = template_interp(wave[mask_for_corr])
-            # axis.plot(wave[mask_for_corr], flux_template_interp, 
-            #           alpha=0.8, lw=0.5, label=template)
-            template_dist = np.sum((flux_sm[mask_for_corr]-flux_template_interp)**2)
-            # print(template, template_dist)
-            if template_dist < dist:
-                dist = template_dist
-                best_template = (wave[mask_for_corr], flux_template_interp, template)
+            # interpolate the template to the same wavelength as the data
+            flux_template_interp = template_interp_func(wave[mask_for_scale])
+
+            # calculate the scale factor
+            # d(chi_sq)/d(scale_factor) = 0
+            scale = np.sum(flux_sm[mask_for_scale]*flux_template_interp/flux_std[mask_for_scale]**2) / \
+                    np.sum(flux_template_interp**2/flux_std[mask_for_scale]**2)
+            chi_sq_new = np.sum((flux_sm[mask_for_scale]-scale*flux_template_interp)**2/flux_std[mask_for_scale]**2)
+
+            # choose the template with the lowest chi_sq
+            if chi_sq_new < chi_sq:
+                chi_sq = chi_sq_new
+                best_template = (wave[mask_for_scale], scale*flux_template_interp, template)
         axis.plot(best_template[0], best_template[1], alpha=0.8, label=best_template[2])
 
     if telluric:

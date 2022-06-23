@@ -73,10 +73,10 @@ ZP = {
 #star_sky_file = '/Users/joe/Downloads/MF.20200528.40360.fits'
 
 path = '../resource'
-qso_obj_file = os.path.join(path, 'qso_0001.fits')
-qso_sky_file = os.path.join(path, 'qso_0000.fits')
-star_obj_file = os.path.join(path, 'star_0001.fits')
-star_sky_file = os.path.join(path, 'star_0000.fits')
+# qso_obj_file = os.path.join(path, 'qso_0001.fits')
+# qso_sky_file = os.path.join(path, 'qso_0000.fits')
+star_obj_file = os.path.join(path, 'm220409_0032.fits')
+star_sky_file = os.path.join(path, 'm220409_0031.fits')
 
 # Build Science image
 spectrograph = load_spectrograph('keck_mosfire')
@@ -87,16 +87,17 @@ parset['scienceframe']['process']['use_pixelflat'] = False
 # Do not reject cosmics for now, it is slow
 parset['scienceframe']['process']['mask_cr'] = False
 
-qsoSkyImg = buildimage.buildimage_fromlist(
-    spectrograph, det, parset['scienceframe'], [qso_sky_file], ignore_saturation=False)
-qsoImg = buildimage.buildimage_fromlist(
-    spectrograph, det, parset['scienceframe'], [qso_obj_file], ignore_saturation=False)
+# qsoSkyImg = buildimage.buildimage_fromlist(
+#     spectrograph, det, parset['scienceframe'], [qso_sky_file], ignore_saturation=False)
+# qsoImg = buildimage.buildimage_fromlist(
+#     spectrograph, det, parset['scienceframe'], [qso_obj_file], ignore_saturation=False)
 starSkyImg = buildimage.buildimage_fromlist(
     spectrograph, det, parset['scienceframe'], [star_sky_file], ignore_saturation=False)
 starImg = buildimage.buildimage_fromlist(
     spectrograph, det, parset['scienceframe'], [star_obj_file], ignore_saturation=False)
-qso_sky_hdr = qsoSkyImg.rawheadlist[0]
+# qso_sky_hdr = qsoSkyImg.rawheadlist[0]
 star_sky_hdr = starSkyImg.rawheadlist[0]
+embed()
 plate_scale = qsoSkyImg.detector.platescale
 nspec, nspat = qsoSkyImg.shape
 
