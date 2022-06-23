@@ -12,7 +12,7 @@ def plot_acq(image, peak_pos=None, fig=None, ax=None, display=False, save_file="
     fig.colorbar(im, ax=ax)
 
     if peak_pos is not None:
-        apertures = CircularAperture(peak_pos, r=5.)
+        apertures = CircularAperture(peak_pos, r=6.)
         apertures.plot(color='#0547f9', axes=ax, lw=1.5)
     ax.set_xlabel("x [pix]", fontsize=15)
     ax.set_ylabel("y [pix]", fontsize=15)
