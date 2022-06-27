@@ -1,12 +1,9 @@
-# Auto-generated PypeIt file using PypeIt version: 1.7.1.dev544+gbb7e776b9
-# 2022-03-10
-
 # User-defined execution parameters
 [rdx]
 spectrograph = keck_lris_red_mark4
 [reduce]
     [[findobj]]
-        sig_thresh=2.0
+        snr_thresh=5.0
         
 # Setup
 setup read

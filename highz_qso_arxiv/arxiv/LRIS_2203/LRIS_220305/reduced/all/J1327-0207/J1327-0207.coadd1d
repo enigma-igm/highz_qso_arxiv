@@ -1,7 +1,7 @@
 [coadd1d]
 coaddfile = J1327-0207_coadd.fits
-sensfuncfile = ../GD153_IR_sens.fits
+sensfuncfile = ../GD153_lris_sens.fits
 wave_method = linear 
 coadd1d read
- ../Science/spec1d_r220305_00192-J1327-0207_OFF_LRISr_20220305T144445.197.fits SPAT0944-SLIT1037-DET01
+ ../Science/spec1d_r220305_00192-J1327-0207_OFF_LRISr_20220305T144445.197.fits SPAT0943-SLIT1037-DET01
 coadd1d end

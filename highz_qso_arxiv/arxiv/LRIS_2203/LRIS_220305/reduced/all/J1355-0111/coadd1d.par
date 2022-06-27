@@ -3,8 +3,13 @@
     # Spectrograph that provided the data to be reduced.  See
     # :ref:`instruments` for valid options.
     spectrograph = keck_lris_red_mark4
-    # Restrict reduction to a list of detector indices.This cannot (and
-    # should not) be used with slitspatnum.
+    # Restrict reduction to a list of detector indices. In case of
+    # mosaic reduction (currently only available for Gemini/GMOS and
+    # Keck/DEIMOS) ``detnum`` should be a list of tuples of the detector
+    # indices that are mosaiced together. E.g., for Gemini/GMOS
+    # ``detnum`` would be ``[(1,2,3)]`` and for KEck/DEIMOS it would be
+    # ``[(1, 5), (2, 6), (3, 7), (4, 8)]`` This cannot (and should not)
+    # be used with slitspatnum.
     detnum = None
     # A filename given to output the details of the sorted files.  If
     # None, the default is the root name of the pypeit file.  If off, no
@@ -20,7 +25,7 @@
     qadir = QA
     # Path to folder for performing reductions.  Default is the current
     # working directory.
-    redux_path = /Users/topol/workspace/enigma/data_reduction/LRIS_220305/reduced_red/all/J1355-0111
+    redux_path = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/reduced/all_redo/J1355-0111
     # Ignore bad headers (NOT recommended unless you know it is safe).
     ignore_bad_headers = False
     # Restrict reduction to a set of slit DET:SPAT values (closest slit
@@ -118,6 +123,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -147,6 +159,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the dark-current correction
@@ -220,6 +237,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -249,6 +273,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the wavelength calibration
@@ -322,6 +351,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -351,6 +387,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the wavelength tilts
@@ -424,6 +465,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -453,6 +501,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the pixel flat
@@ -526,6 +579,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -555,6 +615,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the pinholes
@@ -628,6 +693,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -657,6 +729,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the align frames
@@ -730,6 +807,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -759,6 +843,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # Define the procedure for the alignment of traces
@@ -772,12 +861,12 @@
         # Trim the slit by this number of pixels left/right before
         # finding alignment bars
         trim_edge = 0, 0
-        # Significance threshold for finding an alignment trace. This
+        # S/N ratio threshold for finding an alignment trace. This
         # should be a lownumber to ensure that the algorithm finds all
         # bars. The algorithm willthen only use the N most significant
         # detections, where N is the numberof elements specified in the
         # "locations" keyword argument
-        sig_thresh = 1.0
+        snr_thresh = 1.0
     # The frames and combination rules for images used for slit tracing
     [[traceframe]]
         # Frame type.  Options are: align, arc, bias, dark, pinhole,
@@ -849,6 +938,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -878,6 +974,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the illumination flat
@@ -951,6 +1052,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -980,6 +1088,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the sky background
@@ -1054,6 +1167,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -1083,6 +1203,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = False
     # The frames and combination rules for the spectrophotometric
@@ -1157,6 +1282,13 @@
             # Subtract off a dark image.  If True, one or more darks
             # must be provided.
             use_darkimage = False
+            # If designated dark frames are used and have a different
+            # exposure time than the science frames, scale the counts by
+            # the by the ratio in the exposure times to adjust the dark
+            # counts for the difference in exposure time.  WARNING: You
+            # should always take dark frames that have the same exposure
+            # time as your science frames, so use this option with care!
+            dark_expscale = False
             # If True, use the standard deviation in the overscan region
             # to measure an empirical readnoise to use in the noise
             # model.
@@ -1186,6 +1318,11 @@
             # to be sinusoidal along one direction, with a frequency
             # that is constant across the detector.
             use_pattern = False
+            # Subtract off the continuum level from an image. This
+            # parameter should only be set to True to combine arcs with
+            # multiple different lamps.For all other cases, this
+            # parameter should probably be False.
+            use_continuum = False
             # Correct slits, illumination flat, etc. for flexure
             spat_flexure_correct = True
     # Parameters used to set the flat-field procedure
@@ -1257,15 +1394,19 @@
         # slit; 'continue' - ignore the flat-field correction, but
         # continue with the reduction.
         saturated_slits = crash
-        # Generate an image of the relative spectral illuminationfor a
+        # Generate an image of the relative spectral illumination for a
         # multi-slit setup.  If you set ``use_slitillum = True`` for any
-        # of the frames that use the flat-field model, this *must* be
-        # set to True.
+        # of the frames that use the flatfield model, this *must* be set
+        # to True. Currently, this is only used for IFU reductions.
         slit_illum_relative = False
         # The index of a reference slit (0-indexed) used for estimating
         # the relative spectral sensitivity (or the relative blaze).
-        # Thisparameter is only used if ``slit_illum_relative = True``.
+        # This parameter is only used if ``slit_illum_relative = True``.
         slit_illum_ref_idx = 0
+        # The number of pixels used to determine smoothly varying
+        # relative weights is given by ``nspec/slit_illum_smooth_npix``,
+        # where nspec is the number of spectral pixels.
+        slit_illum_smooth_npix = 10
         # All values of the normalized pixel flat are set to 1 for
         # wavelengths below this value.
         pixelflat_min_wave = None
@@ -1277,19 +1418,20 @@
         # Perform wavelength calibration with an arc, sky frame.  Use
         # 'pixel' for no wavelength solution.
         reference = arc
-        # Method to use to fit the individual arc lines.  Note that most
+        # Method to use to fit the individual arc lines.  Note that some
         # of the available methods should not be used; they are unstable
         # and require significant parameter tweaking to succeed.  You
-        # should useeither 'holy-grail' or 'reidentify': 'holy-grail'
-        # attempts to get a first guess at line IDs by looking for
-        # patterns in the line locations.  It is fully automated.  When
-        # it works, it works well; however, it can fail
-        # catastrophically.  Instead, 'reidentify' is the preferred
-        # method.  It requires an archived wavelength solution for your
-        # specific instrument/grating combination as a reference.  This
-        # is used to anchor the wavelength solution for the data being
-        # reduced.  All options are: simple, semi-brute, basic, holy-
-        # grail, identify, reidentify, full_template
+        # should use one of 'holy-grail', 'reidentify', or
+        # 'full_template'.  'holy-grail' attempts to get a first guess
+        # at line IDs by looking for patterns in the line locations.  It
+        # is fully automated.  When it works, it works well; however, it
+        # can fail catastrophically.  Instead, 'reidentify' and
+        # 'full_template' are the preferred methods.  They require an
+        # archived wavelength solution for your specific
+        # instrument/grating combination as a reference.  This is used
+        # to anchor the wavelength solution for the data being reduced.
+        # All options are: simple, holy-grail, identify, reidentify,
+        # full_template.
         method = holy-grail
         # Is this an echelle spectrograph? If yes an additional 2-d fit
         # wavelength fit will be performed as a function of spectral
@@ -1313,7 +1455,8 @@
         # Name of one or more ions used for the wavelength calibration.
         # Use ``None`` for no calibration. Choose ``use_header`` to use
         # the list of lamps recorded in the header of the arc frames
-        # (this is currently available only for Keck DEIMOS).
+        # (this is currently available only for Keck DEIMOS and LDT
+        # DeVeny).
         lamps = NeI, ArI, CdI, KrI, XeI, ZnI, HgI
         # Sigma threshold above fluctuations for arc-line detection.
         # Arcs are continuum subtracted and the fluctuations are
@@ -1331,7 +1474,7 @@
         fwhm_fromlines = False
         # Name of the archival wavelength solution file that will be
         # used for the wavelength reidentification.  Only used if
-        # ``method`` is 'reidentify'
+        # ``method`` is 'reidentify' or 'full_template'.
         reid_arxiv = None
         # Minimum number of times that a given candidate reidentified
         # line must be properly matched with a line in the arxiv to be
@@ -1392,12 +1535,6 @@
         # Number of sigma for rejection for the final guess to the
         # wavelength solution.
         sigrej_final = 3.0
-        # Central wavelength. Backwards compatibility with basic and
-        # semi-brute algorithms.
-        wv_cen = 0.0
-        # Dispersion. Backwards compatibility with basic and semi-brute
-        # algorithms.
-        disp = 0.0
         # Number of brightest arc lines to search for in preliminary
         # identification
         numsearch = 20
@@ -1433,6 +1570,12 @@
         # Threshold for finding edges in the Sobel-filtered significance
         # image.
         edge_thresh = 20.0
+        # Enhance the sobel filtering? A value of 0 will not enhance the
+        # sobel filtering.Any other value > 0 will sum the sobel values.
+        # For example, a value of 3 willcombine the sobel values for the
+        # 3 nearest pixels. This is useful when a slitedge is poorly
+        # defined (e.g. vignetted).
+        sobel_enhance = 0
         # User-defined regions to exclude from the slit tracing. To set
         # this parameter, the text should be a comma separated list of
         # pixel ranges (in the x direction) to be excluded and the
@@ -1670,6 +1813,14 @@
         # extending spatially from 2121 to 2322 and another on detector
         # 3 at spec=2000 extending from 1201 to 1500.
         add_slits = None
+        # Sets the method used to predict the shape of the left and
+        # right traces for a user-defined slit inserted.  Options are
+        # (1) ``straight`` inserts traces with a constant spatial pixels
+        # position, (2) ``nearest`` inserts traces with a form identical
+        # to the automatically identified trace at the nearest spatial
+        # position to the inserted slit, or (3) ``pca`` uses the PCA
+        # decomposition to predict the shape of the traces.
+        add_predict = nearest
         # Remove one or more user-specified slits.  The syntax used to
         # define a slit to remove is: 'det:spec:spat' where
         # det=detector, spec=spectral pixel, spat=spatial pixel.  For
@@ -1812,6 +1963,13 @@
         # Subtract off a dark image.  If True, one or more darks must be
         # provided.
         use_darkimage = False
+        # If designated dark frames are used and have a different
+        # exposure time than the science frames, scale the counts by the
+        # by the ratio in the exposure times to adjust the dark counts
+        # for the difference in exposure time.  WARNING: You should
+        # always take dark frames that have the same exposure time as
+        # your science frames, so use this option with care!
+        dark_expscale = False
         # If True, use the standard deviation in the overscan region to
         # measure an empirical readnoise to use in the noise model.
         empirical_rn = False
@@ -1840,30 +1998,28 @@
         # sinusoidal along one direction, with a frequency that is
         # constant across the detector.
         use_pattern = False
+        # Subtract off the continuum level from an image. This parameter
+        # should only be set to True to combine arcs with multiple
+        # different lamps.For all other cases, this parameter should
+        # probably be False.
+        use_continuum = False
         # Correct slits, illumination flat, etc. for flexure
         spat_flexure_correct = True
 # Parameters determining sky-subtraction, object finding, and extraction
 [reduce]
     # Trim the slit by this number of pixels left/right when performing
-    # sky sub
-    trim_edge = 0, 0
+    # sky subtraction
+    trim_edge = 3, 3
     # Parameters for the find object and tracing algorithms
     [[findobj]]
         # Order of legendre polynomial fits to object traces.
         trace_npoly = 5
-        # Significance threshold for object finding.
-        sig_thresh = 10.0
+        # S/N threshold for object finding in wavelength direction
+        # smashed image.
+        snr_thresh = 10.0
         # Trim the slit by this number of pixels left/right before
         # finding objects
         find_trim_edge = 5, 5
-        # Fit a continuum to the illumination pattern across the trace
-        # rectified image (masking objects) when searching for peaks to
-        # initially identify objects
-        find_cont_fit = True
-        # Polynomial order for fitting continuum to the illumination
-        # pattern across the trace rectified image (masking objects)
-        # when searching for peaks to initially identify objects
-        find_npoly_cont = 1
         # Maximum deviation of pixels from polynomial fit to trace used
         # to reject bad pixels in trace fitting.
         find_maxdev = 2.0
@@ -1878,14 +2034,22 @@
         # modeling and so maxnumber should never be lower than the true
         # number of detectable objects on your slit. For image
         # differenced observations with positive and negative object
-        # traces, maxnumber appliesto the number of positive/negative
-        # traces individually. In other words, if you had two positive
-        # objects andone negative object, then you would set maxnumber
-        # to be equal to two (not three). Note that if manuallyextracted
-        # apertures are explicitly requested, they do not count against
-        # this maxnumber. If more than maxnumber objects are detected,
-        # then highest S/N ratio objects will be the ones that are kept.
-        maxnumber = 10
+        # traces, maxnumber appliesto the number of positive (or
+        # negative) traces individually. In other words, if you had two
+        # positive objects andone negative object, then you would set
+        # maxnumber to be equal to two (not three). Note that if
+        # manuallyextracted apertures are explicitly requested, they do
+        # not count against this maxnumber. If more than maxnumber
+        # objects are detected, then highest S/N ratio objects will be
+        # the ones that are kept. For multislit observations the choice
+        # here depends on the slit length. For echelle observations with
+        # short slits we set the default to be 1
+        maxnumber_sci = 10
+        # Maximum number of objects to extract in a standard star frame.
+        # Same functionality as maxnumber_sci documented above. For
+        # multislit observations the default here is 5, for
+        # echelleobservations the default is 1
+        maxnumber_std = 5
         # Indicates roughly the fwhm of objects in pixels for object
         # finding
         find_fwhm = 5.0
@@ -1941,13 +2105,6 @@
         # emission lines or at high redshift and the trace only shows in
         # part of the detector.
         find_min_max = None
-        # Significance threshold for peak detection for determinining
-        # which pixels to use for the iteratively fit continuum of the
-        # spectral direction smashed image. This is passed as the
-        # sigthresh parameter to core.arc.iter_continum. For extremely
-        # narrow slits that are almost filled by the object trace set
-        # this to a smaller number like 1.0
-        cont_sig_thresh = 2.0
     # Parameters for sky subtraction algorithms
     [[skysub]]
         # Break-point spacing for the bspline sky subtraction fits.
@@ -1955,8 +2112,8 @@
         # Rejection parameter for local sky subtraction
         sky_sigrej = 3.0
         # Global sky subtraction will be performed on standard stars.
-        # This should be turnedoff for example for near-IR reductions
-        # with narrow slits, since bright standards canfill the slit
+        # This should be turned off for example for near-IR reductions
+        # with narrow slits, since bright standards can fill the slit
         # causing global sky-subtraction to fail. In these situations we
         # go straight to local sky-subtraction since it is designed to
         # deal with such situations
@@ -1964,19 +2121,20 @@
         # Turn off polynomial basis (Legendre) in global sky subtraction
         no_poly = False
         # A user-defined sky regions mask can be set using this keyword.
-        # To allowthe code to identify the sky regions automatically,
-        # set this variable toan empty string. If you wish to set the
-        # sky regions, The text should bea comma separated list of
-        # percentages to apply to _all_ slits For example: The following
-        # string   :10,35:65,80:   would select thefirst 10%, the inner
-        # 30%, and the final 20% of _all_ slits.
+        # To allow the code to identify the sky regions automatically,
+        # set this variable to an empty string. If you wish to set the
+        # sky regions, The text should be a comma separated list of
+        # percentages to apply to _all_ slits  For example: The
+        # following string   :10,35:65,80:   would select the first 10%,
+        # the inner 30%, and the final 20% of _all_ slits.
         user_regions = None
         # Perform a simultaneous joint fit to sky regions using all
-        # available slits.
+        # available slits. Currently, this parameter is only used for
+        # IFU data reduction.
         joint_fit = False
         # Load a user-defined sky regions mask to be used for the sky
-        # regions. Note,if you set this to True, you must first run the
-        # pypeit_skysub_regions GUIto manually select and store the
+        # regions. Note, if you set this to True, you must first run the
+        # pypeit_skysub_regions GUI to manually select and store the
         # regions to file.
         load_mask = False
         # In global sky evaluation, mask the sky region around the
@@ -2019,76 +2177,94 @@
         # estimates the FWHM for each detected object, and uses
         # ``find_fwhm`` as initial guess.
         use_user_fwhm = False
+        # If ``True`` the negative traces will be extracted and saved to
+        # disk
+        return_negative = False
     # Parameters for cube generation algorithms
     [[cube]]
         # If the data use slits in one spatial direction, set this to
-        # True.If the data uses fibres for all spaxels, set this to
+        # True. If the data uses fibres for all spaxels, set this to
         # False.
         slit_spec = True
         # If set to True, the combined frames will use a relative
-        # weighting scheme.This only works well if there is a common
-        # continuum source in the field ofview of all input
-        # observations, and is generally only required if highrelative
+        # weighting scheme. This only works well if there is a common
+        # continuum source in the field of view of all input
+        # observations, and is generally only required if high relative
         # precision is desired.
         relative_weights = False
         # If set to True, the input frames will be combined. Otherwise,
-        # a separatedatacube will be generated for each input spec2d
-        # file.
-        combine = True
-        # Output filename of the combined datacube.
-        output_filename = datacube.fits
+        # a separate datacube will be generated for each input spec2d
+        # file, and will be saved as a spec3d file.
+        combine = False
+        # If combining multiple frames, this string sets the output
+        # filename of the combined datacube. If combine=False, the
+        # output filenames will be prefixed with "spec3d_*"
+        output_filename = 
         # Filename of a standard star datacube. This cube will be used
-        # to correctthe relative scales of the slits, and to flux
-        # calibrate the sciencedatacube.
+        # to correct the relative scales of the slits, and to flux
+        # calibrate the science datacube.
         standard_cube = None
-        # Flux calibrate the data? If True, you must also provide a
-        # standard starcube using the standard_cube parameter.
-        flux_calibrate = False
         # White light image of a previously combined datacube. The white
-        # lightimage will be used as a reference when calculating the
-        # offsets of theinput spec2d files.
+        # light image will be used as a reference when calculating the
+        # offsets of the input spec2d files.
         reference_image = None
         # Save a white light image of the combined datacube. The output
-        # filenamewill be given by the "output_filename" variable with a
-        # suffix "_whitelight".Note that the white light image collapses
-        # the flux along the wavelength axis,so some spaxels in the 2D
-        # white light image may have different wavelengthranges.
+        # filename will be given by the "output_filename" variable with
+        # a suffix "_whitelight". Note that the white light image
+        # collapses the flux along the wavelength axis, so some spaxels
+        # in the 2D white light image may have different wavelength
+        # ranges. If combine=False, the individual spec3d files will
+        # have a suffix "_whitelight".
         save_whitelight = False
         # Minimum RA to use when generating the WCS. If None, the
-        # default is minimum RAbased on the WCS of all spaxels. Units
+        # default is minimum RA based on the WCS of all spaxels. Units
         # should be degrees.
         ra_min = None
         # Maximum RA to use when generating the WCS. If None, the
-        # default is maximum RAbased on the WCS of all spaxels. Units
+        # default is maximum RA based on the WCS of all spaxels. Units
         # should be degrees.
         ra_max = None
         # Minimum DEC to use when generating the WCS. If None, the
-        # default is minimum DECbased on the WCS of all spaxels. Units
+        # default is minimum DEC based on the WCS of all spaxels. Units
         # should be degrees.
         dec_min = None
         # Maximum DEC to use when generating the WCS. If None, the
-        # default is maximum DECbased on the WCS of all spaxels. Units
+        # default is maximum DEC based on the WCS of all spaxels. Units
         # should be degrees.
         dec_max = None
         # Minimum wavelength to use when generating the WCS. If None,
-        # the default isminimum wavelength based on the WCS of all
+        # the default is minimum wavelength based on the WCS of all
         # spaxels. Units should be Angstroms.
         wave_min = None
         # Maximum wavelength to use when generating the WCS. If None,
-        # the default ismaximum wavelength based on the WCS of all
+        # the default is maximum wavelength based on the WCS of all
         # spaxels. Units should be Angstroms.
         wave_max = None
         # The spatial size of each spaxel to use when generating the WCS
-        # (in arcsec).If None, the default is set by the spectrograph
+        # (in arcsec). If None, the default is set by the spectrograph
         # file.
         spatial_delta = None
         # The wavelength step to use when generating the WCS (in
-        # Angstroms).If None, the default is set by the wavelength
+        # Angstroms). If None, the default is set by the wavelength
         # solution.
         wave_delta = None
         # If true, an astrometric correction will be applied using the
         # alignment frames.
         astrometric = True
+        # This option performs a small correction for the relative blaze
+        # function of all input frames that have (even slightly)
+        # different grating angles, or if you are flux calibrating your
+        # science data with a standard star that was observed with a
+        # slightly different setup.
+        grating_corr = True
+        # This option performs a small correction for the relative
+        # spectral illumination scale of different spec2D files. specify
+        # the relative path+file to the spec2D file that you would like
+        # to use for the relative scaling. If you want to perform this
+        # correction, it is best to use the spec2d file with the highest
+        # S/N sky spectrum. You should choose the same frame for both
+        # the standards and science frames.
+        scale_corr = None
     # Parameters for slitmask
     [[slitmask]]
         # If slitmask design information is provided, and slit matching
@@ -2156,7 +2332,7 @@
     # Maximum allowed spectral flexure shift in pixels.
     spec_maxshift = 20
     # Archive sky spectrum to be used for the flexure correction.
-    spectrum = /Users/topol/github/PypeIt/pypeit/data/sky_spec/paranal_sky.fits
+    spectrum = paranal_sky.fits
     # Minimum S/N for analyzing sky spectrum for flexure
     multi_min_SN = 1
 # Parameters used by the flux-calibration procedure.  Flux calibration
@@ -2276,7 +2452,7 @@
     nbest = None
     # File containing sensitivity function which is a requirement for
     # echelle coadds. This is only used for Echelle
-    sensfuncfile = ../GD153_IR_sens.fits
+    sensfuncfile = ../GD153_lris_sens.fits
     # Output filename
     coaddfile = J1355-0111_coadd.fits
     # Magnitude type.  AB is the only option currently allowed
@@ -2292,21 +2468,43 @@
     filter_mask = None
 # Par set to control 2D coadds.  Only used in the after-burner script.
 [coadd2d]
-    # User-input list of offsets for the images being combined (spat
-    # pixels). Use ``maskdef_offsets`` to use the offsets computed
-    # during the slitmask design matching (currently available for
-    # DEIMOS and MOSFIRE only).
-    offsets = None
+    # Slit ID, or list of slit IDs that the user want to restrict the
+    # coadd to.I.e., only this/these slit/s will be coadded.
+    only_slits = None
+    # Offsets for the images being combined (spat pixels). Options are:
+    # ``maskdef_offsets``, ``auto``, and a list of offsets.Use
+    # ``maskdef_offsets`` to use the offsets computed during the
+    # slitmask design matching (currently available for DEIMOS and
+    # MOSFIRE only). If ``auto`` is chosen, PypeIt will try to compute
+    # the offsets using a reference object with the highest S/N, or an
+    # object selected by the user (see ``user_obj``). If a list of
+    # offsets is provided, PypeIt will use it.
+    offsets = auto
     # This parameter provides the desired tolerance in spatial pixel
     # used to identify slits in different exposures
     spat_toler = 5
-    # Mode for the weights used to coadd images.  See coadd2d.py for all
-    # options.
+    # Mode for the weights used to coadd images. Options are: ``auto``,
+    # ``uniform``, or a list of weights. If ``auto`` is used, PypeIt
+    # will try to compute the weights using a reference object with the
+    # highest S/N, or an object selected by the user (see ``user_obj``),
+    # if ``uniform`` is used, uniform weights will be applied. If a list
+    # of weights is provided, PypeIt will use it.
     weights = auto
+    # Object that the user wants to use to compute the weights and/or
+    # the offsets for coadding images. For slit spectroscopy, provide
+    # the ``SLITID`` and the ``OBJID``, separated by comma, of the
+    # selected object. For echelle spectroscopy, provide the
+    # ``ECH_OBJID`` of the selected object. See :doc:`out_spec1D` for
+    # more info about ``SLITID``, ``OBJID`` and ``ECH_OBJID``. If this
+    # parameter is not ``None``, it will be used to compute the offsets
+    # only if ``offsets = auto``, and it will used to compute the
+    # weights only if ``weights = auto``.
+    user_obj = None
     # If True, use the slits to set the trace down the center
     use_slits4wvgrid = False
-    # Manual extraction parameters. det:spat:spec:fwhm. comma separated
-    # where spat,spec are in the pseudo-image generated by COADD2D
+    # Manual extraction parameters. det:spat:spec:fwhm. Multiple manual
+    # extractions are semi-colon separated, and spat,spec are in the
+    # pseudo-image generated by COADD2D
     manual = None
 # Par set to control sensitivity function computation.  Only used in the
 # after-burner script.
@@ -2401,9 +2599,12 @@
         # File containing the telluric grid for the observatory in
         # question. These grids are generated from HITRAN models for
         # each observatory using nominal site parameters. They must be
-        # downloaded from the GoogleDrive and stored in
-        # PypeIt/pypeit/data/telluric/
-        telgridfile = /Users/topol/github/PypeIt/pypeit/data/telluric/atm_grids/TelFit_MaunaKea_3100_26100_R20000.fits
+        # downloaded from the GoogleDrive and installed in your PypeIt
+        # installation via the pypeit_install_telluric script. NOTE:
+        # This parameter no longer includes the full pathname to the
+        # Telluric Grid file, but is just the filename of the grid
+        # itself.
+        telgridfile = TelFit_MaunaKea_3100_26100_R20000.fits
         # This adds an error floor to the ivar, preventing too much
         # rejection at high-S/N (i.e. standard stars, bright objects)
         # using the function utils.clip_ivar. A small erorr is added to
@@ -2528,8 +2729,11 @@
         # i.e. the code performs a bounded optimization withinthe
         # redshift +- delta_redshift
         delta_redshift = 0.1
-        # Fits file containing quasar PCA model. Needed for objmodel=qso
-        pca_file = /Users/topol/github/PypeIt/pypeit/data/telluric/models/qso_pca_1200_3100.fits
+        # Fits file containing quasar PCA model. Needed for
+        # objmodel=qso.  NOTE: This parameter no longer includes the
+        # full pathname to the Telluric Model file, but is just the
+        # filename of the model itself.
+        pca_file = qso_pca_1200_3100.fits
         # Number of pca for the objmodel=qso qso PCA fit
         npca = 8
         # Min/max wavelength of broad absorption features. If there are
@@ -2579,7 +2783,10 @@
     # File containing the telluric grid for the observatory in question.
     # These grids are generated from HITRAN models for each observatory
     # using nominal site parameters. They must be downloaded from the
-    # GoogleDrive and stored in PypeIt/pypeit/data/telluric/
+    # GoogleDrive and installed in your PypeIt installation via the
+    # pypeit_install_telluric script. NOTE: This parameter no longer
+    # includes the full pathname to the Telluric Grid file, but is just
+    # the filename of the grid itself.
     telgridfile = None
     # This adds an error floor to the ivar, preventing too much
     # rejection at high-S/N (i.e. standard stars, bright objects) using
@@ -2701,8 +2908,10 @@
     # the code performs a bounded optimization withinthe redshift +-
     # delta_redshift
     delta_redshift = 0.1
-    # Fits file containing quasar PCA model. Needed for objmodel=qso
-    pca_file = /Users/topol/github/PypeIt/pypeit/data/telluric/models/qso_pca_1200_3100.fits
+    # Fits file containing quasar PCA model. Needed for objmodel=qso.
+    # NOTE: This parameter no longer includes the full pathname to the
+    # Telluric Model file, but is just the filename of the model itself.
+    pca_file = qso_pca_1200_3100.fits
     # Number of pca for the objmodel=qso qso PCA fit
     npca = 8
     # Min/max wavelength of broad absorption features. If there are
@@ -2773,6 +2982,9 @@
     exclude_slit_trace_bm = []
     # Whether to exclude SERENDIP objects from collating.
     exclude_serendip = False
+    # If set, any objects with a wavelength RMS > this value are
+    # skipped, else all wavelength RMS values are accepted.
+    wv_rms_thresh = None
     # The path where all coadded output files and report files will be
     # placed.
-    outdir = /Users/topol/workspace/enigma/data_reduction/LRIS_220305/reduced_red/all/J1355-0111
+    outdir = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/reduced/all_redo/J1355-0111

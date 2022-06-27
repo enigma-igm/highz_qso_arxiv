@@ -1,15 +1,16 @@
-# Auto-generated PypeIt file using PypeIt version: 1.7.1.dev544+gbb7e776b9
-# 2022-03-16
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-06-21
 
 # User-defined execution parameters
 [fluxcalib]
   extinct_correct = False # Set to True if your SENSFUNC derived with the UVIS algorithm
+  extrap_sens = True
 
 # Please add your SENSFUNC file name below before running pypeit_flux_calib
 
 # Read in the flux
 flux read
- Science/spec1d_r220305_00178-J1100+0203_OFF_LRISr_20220305T132822.368.fits GD153_IR_sens.fits
+ Science/spec1d_r220305_00178-J1100+0203_OFF_LRISr_20220305T132822.368.fits GD153_lris_sens.fits
  Science/spec1d_r220305_00179-J1100+0203_OFF_LRISr_20220305T133344.640.fits
  Science/spec1d_r220305_00180-J1143-0248_OFF_LRISr_20220305T134121.610.fits
  Science/spec1d_r220305_00181-J1143-0248_OFF_LRISr_20220305T134645.005.fits
