@@ -1,8 +1,0 @@
-[coadd1d]
-coaddfile = J0850+0146_coadd.fits
-sensfuncfile = ../GD153_lris_sens.fits
-wave_method = linear 
-coadd1d read
- ../Science/spec1d_r220306_00038-J0850+0146_OFF_LRISr_20220306T052034.886.fits SPAT0943-SLIT1038-DET01
-# not detected in frame 39
-coadd1d end

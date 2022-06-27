@@ -1,6 +1,6 @@
 [coadd1d]
 coaddfile = J0810+2352_coadd.fits
-sensfuncfile = ../GD153_IR_sens.fits
+sensfuncfile = ../GD153_lris_sens.fits
 wave_method = linear 
 coadd1d read
  ../Science/spec1d_r220306_00036-J0810+2352_OFF_LRISr_20220306T051045.466.fits SPAT0940-SLIT1038-DET01

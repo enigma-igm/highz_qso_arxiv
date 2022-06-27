@@ -1,23 +1,22 @@
-# Auto-generated PypeIt file using PypeIt version: 1.7.1.dev544+gbb7e776b9
-# 2022-03-16
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-06-26
 
 # User-defined execution parameters
 [fluxcalib]
   extinct_correct = False # Set to True if your SENSFUNC derived with the UVIS algorithm
-
+  extrap_sens = True
+  
 # Please add your SENSFUNC file name below before running pypeit_flux_calib
 
 # Read in the flux
 flux read
- Science/spec1d_r220305_00206-GD153_LRISr_20220305T155330.106.fits GD153_IR_sens.fits
- Science/spec1d_r220306_00036-J0810+2352_OFF_LRISr_20220306T051045.466.fits
+ Science/spec1d_r220306_00036-J0810+2352_OFF_LRISr_20220306T051045.466.fits GD153_lris_sens.fits
  Science/spec1d_r220306_00037-J0810+2352_OFF_LRISr_20220306T051623.030.fits
  Science/spec1d_r220306_00038-J0850+0146_OFF_LRISr_20220306T052034.886.fits
  Science/spec1d_r220306_00039-J0850+0146_OFF_LRISr_20220306T052612.624.fits
  Science/spec1d_r220306_00040-J0911+0022_OFF_LRISr_20220306T052818.077.fits
  Science/spec1d_r220306_00041-J0911+0022_OFF_LRISr_20220306T053355.728.fits
  Science/spec1d_r220306_00042-J0947+0111_OFF_LRISr_20220306T053814.755.fits
- Science/spec1d_r220306_00043-J0947+0111_OFF_LRISr_20220306T054352.406.fits
  Science/spec1d_r220306_00044-J0901+2906_OFF_LRISr_20220306T054911.654.fits
  Science/spec1d_r220306_00045-J0901+2906_OFF_LRISr_20220306T055449.306.fits
  Science/spec1d_r220306_00141-J1153-2239_OFF_LRISr_20220306T133732.650.fits
