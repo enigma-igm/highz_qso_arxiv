@@ -64,6 +64,7 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
                      "T0"]
         chi_sq = np.inf
         for template in templates:
+            # TODO: bin multiple templates for each type
             tab = ascii.read(RESOURCE_PATH+f"dwarf/keck_lris_{template}_1.dat")
             wave_template, flux_template = tab["col1"], tab["col2"]/1e-17
             template_interp_func = interp1d(wave_template, flux_template, kind="cubic")
@@ -81,8 +82,9 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
             # choose the template with the lowest chi_sq
             if chi_sq_new < chi_sq:
                 chi_sq = chi_sq_new
-                best_template = (wave[mask_for_scale], scale*flux_template_interp, template)
-        axis.plot(best_template[0], best_template[1], alpha=0.8, label=best_template[2])
+                best_template = (wave[mask_for_scale], scale*flux_template_interp, template, chi_sq)
+        axis.plot(best_template[0], best_template[1], alpha=0.8, label=best_template[2])  
+                #   label=best_template[2]+"\n"+r"$\chi^2=$"+str(round(best_template[3],2)))
 
     if telluric:
         flux =data["telluric"]
@@ -118,7 +120,7 @@ def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, display=T
         fig.savefig(save_file)
     return fig, ax
 
-def plot_series(name_list, fits_list, idx_list, smooth_window=5, telluric=False, display=True, save_file=""):
+def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=None, telluric_list=None, display=True, save_file=""):
     """Plot a series of spectrum given fits files and other parameters
 
     Args:
@@ -132,11 +134,20 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, telluric=False,
     Returns:
         _type_: _description_
     """
+    assert len(name_list) == len(fits_list) == len(idx_list)
+    if template_list is not None:
+        assert len(template_list) == len(name_list)
+    if telluric_list is not None:
+        assert len(telluric_list) == len(name_list)
+
     num = len(fits_list)
     fig, axs = plt.subplots(num, 1, figsize=(12,3*num))
     for i, ax in enumerate(axs):
-        # TODO: telluric for each plot
-        plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, telluric=telluric)
+        if template_list is None: template = True
+        else: template = template_list[i]
+        if telluric_list is None: telluric = False
+        else: telluric = telluric_list[i]
+        plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, template=template, telluric=telluric)
     fig.tight_layout()
     if display:
         plt.show()

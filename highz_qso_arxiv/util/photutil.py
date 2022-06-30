@@ -83,8 +83,10 @@ def get_mosfire_acq_proc(path, skyfile, objfile):
     bkg_img = buildimage.buildimage_fromlist(spectrograph, det, par, 
                                             [sky_file], mosaic=False)
     img = img.sub(bkg_img, par['process'])
+    import matplotlib.pyplot as plt
+    embed()
     # hardcode acq box here
-    return img.image[1031:1050,1029:1063]
+    return img.image[1031:1050,1029:1063], img.ivar[1031:1050,1029:1063]
 
 def naive_bkg_subtract(image, method="median", mask_source=False, mask_radius=6):
     """Naive background subtraction

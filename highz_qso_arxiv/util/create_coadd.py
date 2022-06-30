@@ -1,7 +1,44 @@
 from pypeit.io import read_sensfile
+from pypeit.par.util import parse_pypeit_file
 import re
 import os
 import sys
+import fnmatch
+
+def create_coadd2d_file(pypeit_file, spectrograph="keck_mosfire"):
+    header = "[rdx]\n" + \
+    f"  spectrograph = {spectrograph} \n" + \
+     "  detnum = 1 \n" + \
+     "[reduce] \n" + \
+     "    [[findobj]] \n" + \
+     "        snr_thresh=5.0\n"
+    cfg_lines, data_files, frametype, usrdata, setups, _ = parse_pypeit_file(pypeit_file)
+    frame_type = list(usrdata["frametype"])
+    target_name = list(usrdata["target"])
+
+    targets = []
+    for i, target in enumerate(target_name):
+        if "science" in frame_type[i]:
+            targets.append(target)
+    targets = list(set(targets))
+    for target in targets:
+        f_out = open("coadd2d/{}_coadd2d.cfg".format(target), "w+")
+        
+        # header
+        f_out.write(header)
+
+        f_out.write("spec2d read \n")
+
+        # coaddfile
+        for f_name in os.listdir('./Science/'):
+            if fnmatch.fnmatch(f_name, f'spec2d*{target}*'):
+                f_out.write(f"../Science/{f_name}\n")
+                
+        # read
+        f_out.write("spec2d end")
+
+        f_out.close()
+    return
 
 def create_coadd1d_file(coadd1d_file, sens_file):
     """create individual coadd1d file with the auto-generated coadd1d file
