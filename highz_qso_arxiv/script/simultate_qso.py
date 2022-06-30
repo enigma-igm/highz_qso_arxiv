@@ -22,7 +22,8 @@ def simulate_qso_Npix(redshift, exptime):
 
     # absorption of HI
     # TODO: simulate "real" absorption
-    wl_lya = 1215.67 * (1 + redshift)
+    # wl_lya = 1215.67 * (1 + redshift)
+    wl_lya = 0
     trough = wl_obs < wl_lya
     flux[trough] = 0
 

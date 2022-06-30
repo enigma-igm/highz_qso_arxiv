@@ -13,7 +13,7 @@ from photutils.aperture import CircularAperture, RectangularAperture, aperture_p
 from IPython import embed
 
 path = "../arxiv/MOSFIRE_2204/raw"
-df = pd.read_csv('offset_star_list.csv')
+df = pd.read_csv('offset_star_list_2204.csv')
 # df = df[df["flag"]==1]
 
 m_aper = []
