@@ -14,10 +14,15 @@ import argparse
 from pyds9 import DS9
 from IPython import embed
 
-def get_acq_image(path, prefix, obj_frame, sky_frame, cut_min=None, cut_max=None, sig_min=3.0, sig_max=3.0, plot_ds9=True):
-    sky_file = os.path.join(path, '{:s}{:04d}.fits'.format(prefix, sky_frame))
-    obj_file = os.path.join(path, '{:s}{:04d}.fits'.format(prefix, obj_frame))
-
+def get_acq_image(path, prefix=None, obj_frame=None, sky_frame=None, 
+                  obj_file=None, sky_file=None,
+                  cut_min=None, cut_max=None, sig_min=3.0, sig_max=3.0, plot_ds9=True):
+    if prefix:
+        sky_file = os.path.join(path, '{:s}{:04d}.fits'.format(prefix, sky_frame))
+        obj_file = os.path.join(path, '{:s}{:04d}.fits'.format(prefix, obj_frame))
+    else:
+        sky_file = os.path.join(path, sky_file)
+        obj_file = os.path.join(path, obj_file)
     obj = fits.getdata(obj_file)
     sky = fits.getdata(sky_file)
     diff = obj - sky
