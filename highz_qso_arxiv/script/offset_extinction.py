@@ -23,6 +23,7 @@ lengthy=round(3.5/plate_scale)
 
 extinction, scatter, time_mjd, time_unix, time_closest = np.zeros(len(df)), np.zeros(len(df)), np.zeros(len(df)), np.zeros(len(df)), np.zeros(len(df))
 m_aper, m_aper_err = np.zeros(len(df)), np.zeros(len(df))
+id = []
 for i in range(len(df)):
     idx = df.index[i]
 
@@ -34,7 +35,7 @@ for i in range(len(df)):
     acq_std = inverse(np.sqrt(acq_ivar))
     hdr = fits.getheader("{}/m220409_{}.fits".format(path, "%04d"%df["objframe"][idx]))
     peak = find_peak(acq_img)
-    # plot_acq_and_hist(acq_img, peak, title=df["offset"][idx], display=True)
+    plot_acq_and_hist(acq_img, peak, title=df["offset"][idx], display=True)
 
     """
         do photometry
@@ -52,7 +53,8 @@ for i in range(len(df)):
     m_star_err = np.abs(2.5*phot_table["aperture_sum_err"]/phot_table["aperture_sum"]/np.log(10))
     m_aper[i] = m_star
     m_aper_err[i] = m_star_err
-    print(df["offset"][idx], df["jAperMag3"][idx], m_star, m_star_err)
+    print(df["offset"][idx], df["jAperMag3"][idx], m_star, m_star-df["jAperMag3"][idx], m_star_err)
+    id.append(df["offset"][idx])
 
     """
         get extinction data from SkyProbe
@@ -99,6 +101,9 @@ all_dat = get_skyprobe_extinction(time_unix[0]-2000, time_unix[-1]+2000)
 fig, ax = plt.subplots(figsize=(10,6))
 ax.scatter(time_unix, m_aper-df["jAperMag3"], 
            color="red", label=r"$m_{\rm aper}-m_{J}$")
+# put id on the plot
+for i in range(len(id)):
+    ax.text(time_unix[i], m_aper[i]-df["jAperMag3"][i], id[i], fontsize=10)
 sorted_idx = np.argsort(time_unix)
 ax.plot(time_unix[sorted_idx], m_aper[sorted_idx]-df["jAperMag3"][sorted_idx], color="grey")
 ax.scatter(time_unix[flag_feige], m_aper[flag_feige]-df["jAperMag3"][flag_feige], color="blue", label="flag: feige")
