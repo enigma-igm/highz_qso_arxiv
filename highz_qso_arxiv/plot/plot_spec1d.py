@@ -1,5 +1,6 @@
 from ..util import ivarsmooth, inverse
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from astropy.table import Table
@@ -12,6 +13,49 @@ from IPython import embed
 
 ARXIV_PATH = "/Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/"
 RESOURCE_PATH = "/Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/resource/"
+
+def plot_template_dat(model='qso', redshift=7., star_type='L0', display=True):
+    """Available template models:
+        qso: QSO template (Selsing+2015)
+        star: Dwarf template (L0, L0.5, L1, L1.5, L2, L3, L5, L6, L8, 
+                              M4.5, M5, M6, M7, M8, M9, M9.5, T0)
+    Args:
+        model (str, optional): _description_. Defaults to 'qso'.
+        redshift (_type_, optional): _description_. Defaults to 7..
+        star_type (str, optional): _description_. Defaults to 'L0'.
+        display (bool, optional): _description_. Defaults to True.
+
+    Returns:
+        _type_: _description_
+    """
+    if model == 'qso':
+        dat = ascii.read(os.path.join(RESOURCE_PATH, "Selsing2015.dat"))
+        wl_rest = dat["col1"]
+        wl_obs = wl_rest * (1 + redshift)
+        flux = dat["col2"] # in 1e-17 erg/s/cm2/A
+        flux_err = dat["col3"]
+        wl_lya = 1215.67 * (1 + redshift)
+        trough = wl_obs < wl_lya
+        flux[trough] = 0
+        label = rf"$z={redshift}$; Selsing 2015"
+    elif model == 'star':
+        dat = ascii.read(os.path.join(RESOURCE_PATH, f"dwarf/keck_lris_{star_type}_1.dat"))
+        wl_obs = dat["col1"]
+        flux = dat["col2"] * 1e17 # in 1e-17 erg/s/cm2/A
+        label = star_type
+    fig, ax = plt.subplots(figsize=(12,6))
+    ax.plot(wl_obs, flux, label=label, color="black")
+    # ax.fill_between(wl_obs, flux-flux_err, flux+flux_err, color="black", alpha=0.2)
+    ax.set_xlim(7300, 10500)
+    ax.legend(loc="upper left")
+    ax.set_xlabel(r"wavelength ($\AA$)", fontsize=15)
+    ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=15)
+
+    # ymin, ymax = ax.get_ylim()
+    # ax.vlines(wl_lya, ymin, ymax)
+    if display:
+        plt.show()
+    return fig, ax
 
 def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, telluric=False):
     """Plot single spectrum to axis

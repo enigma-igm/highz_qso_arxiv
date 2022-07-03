@@ -12,8 +12,10 @@ from photutils.aperture import CircularAperture, RectangularAperture, aperture_p
 
 from IPython import embed
 
-path = "../arxiv/MOSFIRE_2204/raw"
-df = pd.read_csv('offset_star_list_2204.csv')
+path = "../arxiv/MOSFIRE_2201/raw"
+df = pd.read_csv('offset_star_list_2201.csv')
+# prefix = "m220409"
+prefix = "MF.20220111"
 # df = df[df["flag"]==1]
 
 m_aper = []
@@ -30,10 +32,10 @@ for i in range(len(df)):
     """
         get aqcquisition image
     """
-    acq_img, acq_ivar = get_mosfire_acq_proc(path, objfile="m220409_{}.fits".format("%04d"%df["objframe"][idx]), 
-                                   skyfile="m220409_{}.fits".format("%04d"%df["skyframe"][idx]))
+    acq_img, acq_ivar = get_mosfire_acq_proc(path, objfile="{}.{}.fits.gz".format(prefix, "%04d"%df["objframe"][idx]), 
+                                   skyfile="{}.{}.fits.gz".format(prefix, "%04d"%df["skyframe"][idx]))
     acq_std = inverse(np.sqrt(acq_ivar))
-    hdr = fits.getheader("{}/m220409_{}.fits".format(path, "%04d"%df["objframe"][idx]))
+    hdr = fits.getheader("{}/{}.{}.fits.gz".format(path, prefix, "%04d"%df["objframe"][idx]))
     peak = find_peak(acq_img)
     plot_acq_and_hist(acq_img, peak, title=df["offset"][idx], display=True)
 
@@ -59,7 +61,7 @@ for i in range(len(df)):
     """
         get extinction data from SkyProbe
     """
-    hdr = fits.getheader("{}/m220409_{}.fits".format(path, "%04d"%df["objframe"][idx]))
+    hdr = fits.getheader("{}/{}.{}.fits.gz".format(path, prefix, "%04d"%df["objframe"][idx]))
     obs_mjd = hdr["MJD-OBS"]
     obs_unix = mjd_to_unix(obs_mjd)
 
