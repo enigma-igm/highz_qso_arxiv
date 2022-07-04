@@ -15,8 +15,6 @@ from scipy import interpolate
 from astropy.stats import sigma_clipped_stats
 from astropy.cosmology import FlatLambdaCDM, z_at_value
 
-from IPython import embed
-
 from pypeit import slittrace
 from pypeit import specobjs
 from pypeit import io
@@ -77,7 +75,6 @@ def simulate_Nlam(model='qso', redshift=None, m_1450=None, M_1450=None,
     # 3. quasar absorption
 
     if model == 'qso':
-        embed()
         if m_1450 != None:
             mAB = m_1450
         elif M_1450 != None:
@@ -181,7 +178,7 @@ Npix_boxwave = Nlam_boxwave * exptime * delta_wave
 # 2) Create a 2d image with an object profile comprising a Gaussian centered on TRACE_SPAT
 # 3) Force the extract_boxcar of the 2d image to equal to the total counts/per second/per real data pixel
 # TODO: use seeing here
-img_gaussians = gauss_comb(spec2DObj.sciimg[mask].shape, sobjs_fake.TRACE_SPAT[mask], sig=0.86)
+img_gaussians = gauss_comb(spec2DObj.sciimg[mask].shape, sobjs_fake.TRACE_SPAT[mask], sig=sobjs_fake.FWHM/2.355)
 flux_gaussians = moment1d(img_gaussians, sobjs_fake.TRACE_SPAT[mask], sobjs_fake.BOX_RADIUS*2, order=[0])[0]
 factor_fake = Npix_boxwave / flux_gaussians
 # TODO try numpy.einsum
