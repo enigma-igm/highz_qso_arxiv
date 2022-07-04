@@ -1,0 +1,10 @@
+# Auto-generated PypeIt file
+# 一 27 06 2022 10:47:53
+
+# User-defined execution parameters
+# This is only an example. Make sure to change the following parameters accordingly.
+[telluric]
+  objmodel = qso
+  redshift = 0.0
+  bal_wv_min_max = 10000.,11000.
+

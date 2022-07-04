@@ -25,7 +25,7 @@
     qadir = QA
     # Path to folder for performing reductions.  Default is the current
     # working directory.
-    redux_path = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all
+    redux_path = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all_redo/coadd2d
     # Ignore bad headers (NOT recommended unless you know it is safe).
     ignore_bad_headers = False
     # Restrict reduction to a set of slit DET:SPAT values (closest slit
@@ -2351,7 +2351,7 @@
     # overide this default behavior. In other words, it will force an
     # extinction correctionif extinct_correct=True, and will not perform
     # an extinction correction if extinct_correct=False.
-    extinct_correct = False
+    extinct_correct = None
     # If False (default), the code will barf if one tries to use
     # sensfunc at wavelengths outside its defined domain. By changing
     # the par['sensfunc']['extrap_blu'] and
@@ -2452,9 +2452,9 @@
     nbest = None
     # File containing sensitivity function which is a requirement for
     # echelle coadds. This is only used for Echelle
-    sensfuncfile = None
+    sensfuncfile = ../GD153_mosfire_sens.fits
     # Output filename
-    coaddfile = None
+    coaddfile = J1333+0919_coadd.fits
     # Magnitude type.  AB is the only option currently allowed
     mag_type = AB
     # Filter for scaling.  See flux_calib.load_fitler_file() for naming.
@@ -2987,4 +2987,4 @@
     wv_rms_thresh = None
     # The path where all coadded output files and report files will be
     # placed.
-    outdir = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all
+    outdir = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all_redo/coadd2d

@@ -140,7 +140,7 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     axis.legend(loc="upper right", frameon=True)
     return axis
 
-def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, display=True, save_file=""):
+def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=False, display=True, save_file=""):
     """Plot single spectrum given fits file and other parameters
 
     Args:
@@ -157,7 +157,7 @@ def plot_single(name, fits_file, idx, smooth_window=5, telluric=False, display=T
         _type_: _description_
     """
     fig, ax = plt.subplots(figsize=(20,6))
-    plot_spec1d(name, fits_file, idx, ax, smooth_window, telluric)
+    plot_spec1d(name, fits_file, idx, ax, smooth_window, template=template, telluric=telluric)
     if display:
         plt.show()
     if save_file:

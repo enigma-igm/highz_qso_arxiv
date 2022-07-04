@@ -1,0 +1,497 @@
+D:
+  --:
+    decker: LONGSLIT-46x1
+    dispname: Y-spectroscopy
+    filter1: Y
+  2:
+    align: []
+    arc:
+    - ../../raw/./m220409_0068.fits
+    - ../../raw/./m220409_0069.fits
+    - ../../raw/./m220409_0070.fits
+    - ../../raw/./m220409_0071.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0068.fits
+    - ../../raw/./m220409_0069.fits
+    - ../../raw/./m220409_0070.fits
+    - ../../raw/./m220409_0071.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0068.fits
+    - ../../raw/./m220409_0069.fits
+    - ../../raw/./m220409_0070.fits
+    - ../../raw/./m220409_0071.fits
+    trace: []
+  4:
+    align: []
+    arc:
+    - ../../raw/./m220409_0072.fits
+    - ../../raw/./m220409_0073.fits
+    - ../../raw/./m220409_0074.fits
+    - ../../raw/./m220409_0075.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0072.fits
+    - ../../raw/./m220409_0073.fits
+    - ../../raw/./m220409_0074.fits
+    - ../../raw/./m220409_0075.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0072.fits
+    - ../../raw/./m220409_0073.fits
+    - ../../raw/./m220409_0074.fits
+    - ../../raw/./m220409_0075.fits
+    trace: []
+  8:
+    align: []
+    arc:
+    - ../../raw/./m220409_0076.fits
+    - ../../raw/./m220409_0077.fits
+    - ../../raw/./m220409_0078.fits
+    - ../../raw/./m220409_0079.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0076.fits
+    - ../../raw/./m220409_0077.fits
+    - ../../raw/./m220409_0078.fits
+    - ../../raw/./m220409_0079.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0076.fits
+    - ../../raw/./m220409_0077.fits
+    - ../../raw/./m220409_0078.fits
+    - ../../raw/./m220409_0079.fits
+    trace: []
+  16:
+    align: []
+    arc:
+    - ../../raw/./m220409_0080.fits
+    - ../../raw/./m220409_0081.fits
+    - ../../raw/./m220409_0082.fits
+    - ../../raw/./m220409_0083.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0080.fits
+    - ../../raw/./m220409_0081.fits
+    - ../../raw/./m220409_0082.fits
+    - ../../raw/./m220409_0083.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0080.fits
+    - ../../raw/./m220409_0081.fits
+    - ../../raw/./m220409_0082.fits
+    - ../../raw/./m220409_0083.fits
+    trace: []
+  32:
+    align: []
+    arc:
+    - ../../raw/./m220409_0088.fits
+    - ../../raw/./m220409_0089.fits
+    - ../../raw/./m220409_0090.fits
+    - ../../raw/./m220409_0091.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0088.fits
+    - ../../raw/./m220409_0089.fits
+    - ../../raw/./m220409_0090.fits
+    - ../../raw/./m220409_0091.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0088.fits
+    - ../../raw/./m220409_0089.fits
+    - ../../raw/./m220409_0090.fits
+    - ../../raw/./m220409_0091.fits
+    trace: []
+  64:
+    align: []
+    arc:
+    - ../../raw/./m220409_0092.fits
+    - ../../raw/./m220409_0093.fits
+    - ../../raw/./m220409_0094.fits
+    - ../../raw/./m220409_0095.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0092.fits
+    - ../../raw/./m220409_0093.fits
+    - ../../raw/./m220409_0094.fits
+    - ../../raw/./m220409_0095.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0092.fits
+    - ../../raw/./m220409_0093.fits
+    - ../../raw/./m220409_0094.fits
+    - ../../raw/./m220409_0095.fits
+    trace: []
+  128:
+    align: []
+    arc:
+    - ../../raw/./m220409_0096.fits
+    - ../../raw/./m220409_0097.fits
+    - ../../raw/./m220409_0098.fits
+    - ../../raw/./m220409_0099.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0096.fits
+    - ../../raw/./m220409_0097.fits
+    - ../../raw/./m220409_0098.fits
+    - ../../raw/./m220409_0099.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0096.fits
+    - ../../raw/./m220409_0097.fits
+    - ../../raw/./m220409_0098.fits
+    - ../../raw/./m220409_0099.fits
+    trace: []
+  256:
+    align: []
+    arc:
+    - ../../raw/./m220409_0114.fits
+    - ../../raw/./m220409_0115.fits
+    - ../../raw/./m220409_0116.fits
+    - ../../raw/./m220409_0117.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0114.fits
+    - ../../raw/./m220409_0115.fits
+    - ../../raw/./m220409_0116.fits
+    - ../../raw/./m220409_0117.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0114.fits
+    - ../../raw/./m220409_0115.fits
+    - ../../raw/./m220409_0116.fits
+    - ../../raw/./m220409_0117.fits
+    trace: []
+  512:
+    align: []
+    arc:
+    - ../../raw/./m220409_0127.fits
+    - ../../raw/./m220409_0128.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0127.fits
+    - ../../raw/./m220409_0128.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0127.fits
+    - ../../raw/./m220409_0128.fits
+    trace: []
+  1024:
+    align: []
+    arc:
+    - ../../raw/./m220409_0135.fits
+    - ../../raw/./m220409_0137.fits
+    - ../../raw/./m220409_0138.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0135.fits
+    - ../../raw/./m220409_0137.fits
+    - ../../raw/./m220409_0138.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0135.fits
+    - ../../raw/./m220409_0137.fits
+    - ../../raw/./m220409_0138.fits
+    trace: []
+  2048:
+    align: []
+    arc:
+    - ../../raw/./m220409_0136.fits
+    - ../../raw/./m220409_0139.fits
+    - ../../raw/./m220409_0140.fits
+    - ../../raw/./m220409_0141.fits
+    - ../../raw/./m220409_0142.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0136.fits
+    - ../../raw/./m220409_0139.fits
+    - ../../raw/./m220409_0140.fits
+    - ../../raw/./m220409_0141.fits
+    - ../../raw/./m220409_0142.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0136.fits
+    - ../../raw/./m220409_0139.fits
+    - ../../raw/./m220409_0140.fits
+    - ../../raw/./m220409_0141.fits
+    - ../../raw/./m220409_0142.fits
+    trace: []
+  4096:
+    align: []
+    arc:
+    - ../../raw/./m220409_0147.fits
+    - ../../raw/./m220409_0148.fits
+    - ../../raw/./m220409_0149.fits
+    - ../../raw/./m220409_0150.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0147.fits
+    - ../../raw/./m220409_0148.fits
+    - ../../raw/./m220409_0149.fits
+    - ../../raw/./m220409_0150.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0147.fits
+    - ../../raw/./m220409_0148.fits
+    - ../../raw/./m220409_0149.fits
+    - ../../raw/./m220409_0150.fits
+    trace: []
+  8192:
+    align: []
+    arc:
+    - ../../raw/./m220409_0151.fits
+    - ../../raw/./m220409_0152.fits
+    - ../../raw/./m220409_0153.fits
+    - ../../raw/./m220409_0154.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0151.fits
+    - ../../raw/./m220409_0152.fits
+    - ../../raw/./m220409_0153.fits
+    - ../../raw/./m220409_0154.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0151.fits
+    - ../../raw/./m220409_0152.fits
+    - ../../raw/./m220409_0153.fits
+    - ../../raw/./m220409_0154.fits
+    trace: []
+  16384:
+    align: []
+    arc:
+    - ../../raw/./m220409_0155.fits
+    - ../../raw/./m220409_0156.fits
+    - ../../raw/./m220409_0157.fits
+    - ../../raw/./m220409_0158.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0155.fits
+    - ../../raw/./m220409_0156.fits
+    - ../../raw/./m220409_0157.fits
+    - ../../raw/./m220409_0158.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0155.fits
+    - ../../raw/./m220409_0156.fits
+    - ../../raw/./m220409_0157.fits
+    - ../../raw/./m220409_0158.fits
+    trace: []
+  32768:
+    align: []
+    arc:
+    - ../../raw/./m220409_0166.fits
+    - ../../raw/./m220409_0167.fits
+    - ../../raw/./m220409_0168.fits
+    - ../../raw/./m220409_0169.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0166.fits
+    - ../../raw/./m220409_0167.fits
+    - ../../raw/./m220409_0168.fits
+    - ../../raw/./m220409_0169.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0166.fits
+    - ../../raw/./m220409_0167.fits
+    - ../../raw/./m220409_0168.fits
+    - ../../raw/./m220409_0169.fits
+    trace: []
+  65536:
+    align: []
+    arc:
+    - ../../raw/./m220409_0170.fits
+    - ../../raw/./m220409_0171.fits
+    - ../../raw/./m220409_0172.fits
+    - ../../raw/./m220409_0173.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0170.fits
+    - ../../raw/./m220409_0171.fits
+    - ../../raw/./m220409_0172.fits
+    - ../../raw/./m220409_0173.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0170.fits
+    - ../../raw/./m220409_0171.fits
+    - ../../raw/./m220409_0172.fits
+    - ../../raw/./m220409_0173.fits
+    trace: []
+  131072:
+    align: []
+    arc:
+    - ../../raw/./m220409_0174.fits
+    - ../../raw/./m220409_0175.fits
+    - ../../raw/./m220409_0176.fits
+    - ../../raw/./m220409_0177.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0174.fits
+    - ../../raw/./m220409_0175.fits
+    - ../../raw/./m220409_0176.fits
+    - ../../raw/./m220409_0177.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0174.fits
+    - ../../raw/./m220409_0175.fits
+    - ../../raw/./m220409_0176.fits
+    - ../../raw/./m220409_0177.fits
+    trace: []
+  262144:
+    align: []
+    arc:
+    - ../../raw/./m220409_0178.fits
+    - ../../raw/./m220409_0179.fits
+    - ../../raw/./m220409_0180.fits
+    - ../../raw/./m220409_0181.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0178.fits
+    - ../../raw/./m220409_0179.fits
+    - ../../raw/./m220409_0180.fits
+    - ../../raw/./m220409_0181.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0178.fits
+    - ../../raw/./m220409_0179.fits
+    - ../../raw/./m220409_0180.fits
+    - ../../raw/./m220409_0181.fits
+    trace: []
+  524288:
+    align: []
+    arc:
+    - ../../raw/./m220409_0186.fits
+    - ../../raw/./m220409_0187.fits
+    - ../../raw/./m220409_0188.fits
+    - ../../raw/./m220409_0189.fits
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./m220409_0186.fits
+    - ../../raw/./m220409_0187.fits
+    - ../../raw/./m220409_0188.fits
+    - ../../raw/./m220409_0189.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./m220409_0186.fits
+    - ../../raw/./m220409_0187.fits
+    - ../../raw/./m220409_0188.fits
+    - ../../raw/./m220409_0189.fits
+    trace: []
+  1048575:
+    align: []
+    arc: []
+    bias: []
+    dark:
+    - ../../raw/./m220409_0007.fits
+    - ../../raw/./m220409_0012.fits
+    - ../../raw/./m220409_0013.fits
+    - ../../raw/./m220409_0014.fits
+    - ../../raw/./m220409_0015.fits
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - ../../raw/./m220409_0006.fits
+    - ../../raw/./m220409_0008.fits
+    - ../../raw/./m220409_0009.fits
+    - ../../raw/./m220409_0010.fits
+    - ../../raw/./m220409_0011.fits

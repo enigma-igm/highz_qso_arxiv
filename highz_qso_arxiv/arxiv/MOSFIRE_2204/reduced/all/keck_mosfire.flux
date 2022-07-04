@@ -4,12 +4,13 @@
 # User-defined execution parameters
 [fluxcalib]
   extinct_correct = False # Set to True if your SENSFUNC derived with the UVIS algorithm
-
+  extrap_sens = True
+  
 # Please add your SENSFUNC file name below before running pypeit_flux_calib
 
 # Read in the flux
 flux read
- Science/spec1d_m220409_0068-J1150-0143_OFF_MOSFIRE_20220409T081847.133.fits GD153_mosfire_sens_58264.fits
+ Science/spec1d_m220409_0068-J1150-0143_OFF_MOSFIRE_20220409T081847.133.fits GD153_mosfire_sens.fits
  Science/spec1d_m220409_0069-J1150-0143_OFF_MOSFIRE_20220409T082149.712.fits
  Science/spec1d_m220409_0072-J1150-0143_OFF_MOSFIRE_20220409T083111.222.fits
  Science/spec1d_m220409_0073-J1150-0143_OFF_MOSFIRE_20220409T083415.842.fits

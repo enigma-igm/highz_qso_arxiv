@@ -25,7 +25,7 @@
     qadir = QA
     # Path to folder for performing reductions.  Default is the current
     # working directory.
-    redux_path = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all
+    redux_path = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all_redo/coadd2d
     # Ignore bad headers (NOT recommended unless you know it is safe).
     ignore_bad_headers = False
     # Restrict reduction to a set of slit DET:SPAT values (closest slit
@@ -2987,4 +2987,4 @@
     wv_rms_thresh = None
     # The path where all coadded output files and report files will be
     # placed.
-    outdir = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all
+    outdir = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/MOSFIRE_2204/reduced/all_redo/coadd2d
