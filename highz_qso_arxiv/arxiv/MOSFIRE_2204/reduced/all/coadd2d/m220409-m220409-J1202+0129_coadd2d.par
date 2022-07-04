@@ -83,6 +83,7 @@
         fwhm_fromlines = True
         reid_arxiv = keck_mosfire_OH_Y.fits
         rms_threshold = 0.3
+        refframe = observed
     [[slitedges]]
         edge_thresh = 50.0
         sync_predict = nearest
@@ -97,13 +98,11 @@
         noise_floor = 0.01
 [reduce]
     [[findobj]]
-        sig_thresh = 5.0
+        snr_thresh = 5.0
     [[skysub]]
         bspline_spacing = 0.8
 [fluxcalib]
     extrap_sens = True
-[coadd2d]
-    offsets = 0.0, -22.24694105, 1.11234705, -23.3592881, 2.78086763, -25.02780868
 [sensfunc]
     extrap_blu = 0.0
     extrap_red = 0.0
