@@ -1,3 +1,3 @@
-**8 non-(highz)-quasar**: could some of them be LRIS targets or BAL? what does dwarf look like in this wavelength? (one of the target **missing** in ``pypeit`` file, might be my mistake. according to previous note and observation note, it is not a quasar); **J1318+2932**: weird shape $\sim 10700 \AA$, also look different from previous results (see [MOSFIRE_2204_old.pdf](../plot/MOSFIRE_2204_old.pdf))
+**8 non-(highz)-quasar**: [MOSFIRE_2204_tellcorr.pdf](../plot/MOSFIRE_2204_tellcorr.pdf). could some of them be LRIS targets or BAL? what does dwarf look like in this wavelength? (one of the target **missing** in ``pypeit`` file, might be my mistake. according to previous note and observation note, it is not a quasar); **J1318+2932**: weird shape $\sim 10700 \AA$, also look different from previous results (see [MOSFIRE_2204_old.pdf](../plot/MOSFIRE_2204_old.pdf))
 
 **J0841+3814**: Eduardo's target, a $z\sim3$ FeLoBAL. see [J0841.pdf](../plot/J0841.pdf)
