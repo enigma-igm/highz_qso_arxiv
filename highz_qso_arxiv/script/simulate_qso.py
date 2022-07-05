@@ -84,27 +84,28 @@ def simulate_Nlam(model='qso', redshift=None, m_1450=None, M_1450=None, m_J=None
     if model == 'qso':
         dL = redshift_to_distance(redshift)
         dat = ascii.read("../resource/Selsing2015.dat")
-        wl_rest = dat["col1"] * u.AA
+        wl_rest = dat["col1"]
         wl_obs = wl_rest * (1 + redshift)
         flux = dat["col2"] * 1e-17 * u.erg / u.s / u.cm**2 / u.AA # in 1e-17 erg/s/cm2/A
         flux_err = dat["col3"]
 
         # for scaling the qso template
-        mask_1450 = (wl_rest > 1445 * u.AA) & (wl_rest < 1455 * u.AA)
+        mask_1450 = (wl_rest > 1445) & (wl_rest < 1455)
         flam_1450_temp = np.median(flux[mask_1450])
+
 
         if m_1450 != None:
             mAB = m_1450 * u.ABmag
-            flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA))
+            flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA*(1+redshift)))
             scale = flam_1450 / flam_1450_temp
 
         elif M_1450 != None:
             mAB = (M_1450 + 5 * np.log10(dL*1e6/10)) * u.ABmag
-            flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA))
+            flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA*(1+redshift)))
             scale = flam_1450 / flam_1450_temp
 
         elif m_J != None:
-            m_J_temp = ukirt.get_ab_magnitudes(flux, wl_obs)[0][0]
+            m_J_temp = ukirt.get_ab_magnitudes(flux, wl_obs*u.AA)[0][0]
             scale = 10**(-(m_J-m_J_temp)/2.5)
 
         else:
@@ -128,7 +129,7 @@ def simulate_Nlam(model='qso', redshift=None, m_1450=None, M_1450=None, m_J=None
 
     # calculate the 1/S_lambda, the factor that converts the flux to N_lambda
     S_lam_units = 1e-17 * u.erg / u.cm**2
-    factor = Flam_to_Nlam(sens.wave, sens.zeropoint, zp_max=20.).flatten() 
+    factor = Flam_to_Nlam(sens.wave, sens.zeropoint).flatten() 
     func_factor = interpolate.interp1d(sens.wave.flatten(), factor)
 
     mask = (wl_obs > sens.wave[0]) & (wl_obs < sens.wave[-1])
@@ -146,8 +147,8 @@ def simulate_Nlam(model='qso', redshift=None, m_1450=None, M_1450=None, m_J=None
     return wl_lris, Nlam_lris
 
 exptime = 300 # seconds
-# wave, Nlam = simulate_Nlam(model='qso', redshift=6.1, m_1450=21, debug=True)
-wave, Nlam = simulate_Nlam(model='qso', redshift=6.1, m_J=20.9)
+wave, Nlam = simulate_Nlam(model='qso', redshift=7.5, m_1450=21)
+# wave, Nlam = simulate_Nlam(model='qso', redshift=6.1, m_J=20.9)
 # wave, Nlam = simulate_Nlam(model='star', star_scale=0.04, star_type='L0')
 
 # sci_path = '/Users/joe/python/PypeIt-development-suite/REDUX_OUT/keck_lris_red_mark4/long_600_10000_d680/Science/'
