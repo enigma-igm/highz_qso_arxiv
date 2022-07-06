@@ -89,6 +89,7 @@
         reid_arxiv = keck_nires.fits
         rms_threshold = 0.2
         n_final = 3, 4, 4, 4, 4
+        refframe = observed
     [[slitedges]]
         fit_min_spec_length = 0.4
         left_right_pca = True
@@ -108,7 +109,7 @@
         use_illumflat = False
 [reduce]
     [[findobj]]
-        sig_thresh = 5.0
+        snr_thresh = 5.0
     [[skysub]]
         bspline_spacing = 0.8
     [[extraction]]

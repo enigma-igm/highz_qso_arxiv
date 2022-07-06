@@ -1,6 +1,6 @@
 [sensfunc]
-    extrap_blu = 0.2
-    extrap_red = 0.2
+    extrap_blu = 0.1
+    extrap_red = 0.1
     samp_fact = 1.5
     multi_spec_det = None
     algorithm = IR
