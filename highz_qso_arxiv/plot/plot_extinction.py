@@ -1,4 +1,5 @@
 from ..util import unix_to_iso
+from ..crawler import get_skyprobe_extinction
 import matplotlib.pyplot as plt
 
 def plot_extinction(extinction_data, star_unix=None, qso_unix=None, offset=0, display=False, save_file=""):

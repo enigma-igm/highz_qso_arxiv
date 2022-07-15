@@ -44,6 +44,18 @@ def ivarsmooth(flux, ivar, window):
 
     return smoothflux, outivar
 
+def luminosity_to_flux(luminosity, luminosity_distance):
+    """
+    convert luminosity to flux
+    """
+    return luminosity / (4 * np.pi * luminosity_distance**2)
+
+def redshift_to_distance(redshift, cosmo):
+    """
+    Returns the distance in Mpc for a given redshift.
+    """
+    return cosmo.luminosity_distance(redshift).value
+    
 def mjd_to_unix(t_in_mjd):
     t = Time(t_in_mjd, format="mjd")
     return t.unix
