@@ -1,4 +1,6 @@
-from ..util import ivarsmooth, inverse
+from re import template
+from highz_qso_arxiv.plot import plot_spec1d
+from highz_qso_arxiv.util import ivarsmooth, inverse
 
 import os
 import numpy as np
@@ -6,56 +8,8 @@ import matplotlib.pyplot as plt
 from astropy.table import Table
 from astropy.io import fits, ascii
 
-import warnings
-warnings.filterwarnings("ignore")
-
-from IPython import embed
-
 ARXIV_PATH = "/Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/"
 RESOURCE_PATH = "/Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/resource/"
-
-def plot_template_dat(model='qso', redshift=7., star_type='L0', display=True):
-    """Available template models:
-        qso: QSO template (Selsing+2015)
-        star: Dwarf template (L0, L0.5, L1, L1.5, L2, L3, L5, L6, L8, 
-                              M4.5, M5, M6, M7, M8, M9, M9.5, T0)
-    Args:
-        model (str, optional): _description_. Defaults to 'qso'.
-        redshift (_type_, optional): _description_. Defaults to 7..
-        star_type (str, optional): _description_. Defaults to 'L0'.
-        display (bool, optional): _description_. Defaults to True.
-
-    Returns:
-        _type_: _description_
-    """
-    if model == 'qso':
-        dat = ascii.read(os.path.join(RESOURCE_PATH, "Selsing2015.dat"))
-        wl_rest = dat["col1"]
-        wl_obs = wl_rest * (1 + redshift)
-        flux = dat["col2"] # in 1e-17 erg/s/cm2/A
-        flux_err = dat["col3"]
-        wl_lya = 1215.67 * (1 + redshift)
-        trough = wl_obs < wl_lya
-        flux[trough] = 0
-        label = rf"$z={redshift}$; Selsing 2015"
-    elif model == 'star':
-        dat = ascii.read(os.path.join(RESOURCE_PATH, f"dwarf/keck_lris_{star_type}_1.dat"))
-        wl_obs = dat["col1"]
-        flux = dat["col2"] * 1e17 # in 1e-17 erg/s/cm2/A
-        label = star_type
-    fig, ax = plt.subplots(figsize=(12,6))
-    ax.plot(wl_obs, flux, label=label, color="black")
-    # ax.fill_between(wl_obs, flux-flux_err, flux+flux_err, color="black", alpha=0.2)
-    ax.set_xlim(7300, 10500)
-    ax.legend(loc="upper left")
-    ax.set_xlabel(r"wavelength ($\AA$)", fontsize=15)
-    ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=15)
-
-    # ymin, ymax = ax.get_ylim()
-    # ax.vlines(wl_lya, ymin, ymax)
-    if display:
-        plt.show()
-    return fig, ax
 
 def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, telluric=False):
     """Plot single spectrum to axis
@@ -85,8 +39,6 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     flux_std = inverse(np.sqrt(flux_ivar_sm[mask]))
     axis.plot(wave[mask], flux_sm[mask], label=name, color="black", lw=1.5)
     axis.plot(wave[mask], flux_std, lw=1, color="red", alpha=0.6)
-    axis.set_xlabel(r"wavelength ($\AA$)", fontsize=20)
-    axis.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=20)
     axis.set_xlim(np.min(wave[mask]), np.max(wave[mask]))
 
     # always want to include the noise vector
@@ -140,30 +92,6 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     axis.legend(loc="upper right", frameon=True, fontsize=12)
     return axis
 
-def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=False, display=True, save_file=""):
-    """Plot single spectrum given fits file and other parameters
-
-    Args:
-        name (_type_): _description_
-        fits_file (_type_): _description_
-        idx (_type_): _description_
-        smooth_window (int, optional): _description_. Defaults to 5.
-        telluric (bool, optional): _description_. Defaults to False.
-        telluric_fits_file (str, optional): _description_. Defaults to "".
-        plot (bool, optional): _description_. Defaults to True.
-        save_file (str, optional): _description_. Defaults to "".
-
-    Returns:
-        _type_: _description_
-    """
-    fig, ax = plt.subplots(figsize=(20,6))
-    plot_spec1d(name, fits_file, idx, ax, smooth_window, template=template, telluric=telluric)
-    if display:
-        plt.show()
-    if save_file:
-        fig.savefig(save_file)
-    return fig, ax
-
 def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=None, telluric_list=None, display=True, save_file=""):
     """Plot a series of spectrum given fits files and other parameters
 
@@ -185,21 +113,33 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=N
         assert len(telluric_list) == len(name_list)
 
     num = len(fits_list)
-    fig, axs = plt.subplots(num, 1, figsize=(10,2*num))
+    fig, axs = plt.subplots(num, sharex=True, figsize=(10,2*num))
     for i, ax in enumerate(axs):
         if template_list is None: template = True
         else: template = template_list[i]
         if telluric_list is None: telluric = False
         else: telluric = telluric_list[i]
         plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, template=template, telluric=telluric)
+    ax.set_xlabel(r"wavelength ($\AA$)", fontsize=20)
+    ax.set_ylim(-0.1,0.8)
+    axs[1].set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=20)
+    axs[1].yaxis.set_label_coords(-0.06, 0.5)
+
     fig.tight_layout()
+    fig.subplots_adjust(hspace=0)
     if display:
         plt.show()
     if save_file:
         fig.savefig(save_file)
     return fig, axs
 
-if __name__ == "__main__":
-    name = "J2212"
-    fits_file = ARXIV_PATH + "J2212/J2212+2040_LRIS_coadd1d_tellcorr.fits"
-    plot_single(name, fits_file, 1)
+targets_0305 = ["J1223+0114","J1250+0347", "J1319+0101"]
+fits_list = [f"../arxiv/LRIS_2203/LRIS_220305/reduced/all/{nm}/{nm}_coadd_tellcorr.fits" for nm in targets_0305]
+idx_list = [1 for i in range(len(targets_0305))]
+
+# a list of True with the same length as fits_list
+template_list = [True for i in range(len(fits_list))]
+template_list[2] = False
+telluric_list = [True for i in range(len(fits_list))]
+plot_series(targets_0305, fits_list, idx_list, smooth_window=3, 
+            template_list=template_list, telluric_list=telluric_list, display=False, save_file="spec_result.pdf")

@@ -29,40 +29,6 @@ from IPython import embed
 
 cosmo = FlatLambdaCDM(H0=70, Om0=0.3)
 
-def normalize_qso_flux(wave_rest, flux, redshift, m_1450, M_1450, m_J):
-    """ 
-        normalize quasar spectrum based on one of the three quantities:
-        - apparent magnitude at 1450 AA
-        - absolute magnitude at 1450 AA
-        - apparent magnitude of J band
-    """
-    dL = redshift_to_distance(redshift, cosmo)
-    wave_obs = wave_rest * (1 + redshift)
-
-    # for scaling the qso template
-    mask_1450 = (wave_rest > 1445) & (wave_rest < 1455)
-    flam_1450_temp = np.median(flux[mask_1450])
-
-    if m_1450 != None:
-        mAB = m_1450 * u.ABmag
-        flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA*(1+redshift)))
-        scale = flam_1450 / flam_1450_temp
-
-    elif M_1450 != None:
-        mAB = (M_1450 + 5 * np.log10(dL*1e6/10)) * u.ABmag
-        flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA*(1+redshift)))
-        scale = flam_1450 / flam_1450_temp
-
-    elif m_J != None:
-        m_J_temp = ukirt.get_ab_magnitudes(flux, wave_obs*u.AA)[0][0]
-        scale = 10**(-(m_J-m_J_temp)/2.5)
-
-    else:
-        raise ValueError('m_1450 or M_1450 or m_J must be specified')
-
-    flux = flux * scale
-    return wave_obs, flux
-
 def load_quasar():
     # TODO: unit of wavelength
     dat = ascii.read("../resource/Selsing2015.dat")
@@ -78,8 +44,27 @@ def parse_quasar(wave_rest, flux, redshift, m_1450=None, M_1450=None, m_J=None):
     """
     Parse quasar spectrum
     """
-    # TODO: add `normalize_qso_flux` here
-    wave_obs, flux = normalize_qso_flux(wave_rest, flux, redshift, m_1450, M_1450, m_J)
+    dL = redshift_to_distance(redshift, cosmo)
+    wave_obs = wave_rest * (1 + redshift)
+
+    # for scaling the qso template
+    mask_1450 = (wave_rest > 1445) & (wave_rest < 1455)
+    flam_1450_temp = np.median(flux[mask_1450])
+
+    if m_1450 != None:
+        mAB = m_1450 * u.ABmag
+        flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA*(1+redshift)))
+        scale = flam_1450 / flam_1450_temp
+    elif M_1450 != None:
+        mAB = (M_1450 + 5 * np.log10(dL*1e6/10)) * u.ABmag
+        flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA*(1+redshift)))
+        scale = flam_1450 / flam_1450_temp
+    elif m_J != None:
+        m_J_temp = ukirt.get_ab_magnitudes(flux, wave_obs*u.AA)[0][0]
+        scale = 10**(-(m_J-m_J_temp)/2.5)
+    else:
+        raise ValueError('m_1450 or M_1450 or m_J must be specified')
+    flux = flux * scale
     wave_obs, flux = extend_to_lower(wave_obs, flux, 5000.)
     flux = gp_trough(wave_obs, flux, redshift)
     return wave_obs, flux
@@ -116,7 +101,6 @@ def simulate(sens, spec2DObj, sobjs, trace_id, offset, exptime, load_func, parse
     sobjs_fake.TRACE_SPAT = sobjs_fake.TRACE_SPAT + offset
 
     gpm = spec2DObj.bpmmask == 0
-    sciimg = spec2DObj.sciimg
 
     # Boxcar extract a new object at this location to get the boxcar wavelengths
     # TODO think about base_var, count_scale and noise_floor
@@ -153,6 +137,7 @@ def simulate(sens, spec2DObj, sobjs, trace_id, offset, exptime, load_func, parse
                                            cuts=(cut_min, cut_max))
     if show_trace:
         display.show_trace(viewer, ch_skysub, sobjs_fake.TRACE_SPAT, 'fake object', color='orange')
+    return img_fake
 
 # hdul = io.fits_open("../resource/sensfunc/GD153_lris_long_8.7_sens.fits")
 # hdul = io.fits_open("../resource/sensfunc/GD153_mosfire_sens.fits")
@@ -171,6 +156,6 @@ spec2DObj = spec2dobj.Spec2DObj.from_file(spec2dfile, detname, chk_version=False
 sobjs = specobjs.SpecObjs.from_fitsfile(spec1dfile, chk_version=False)
 
 simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, trace_id=2, offset=-100, exptime=300., 
-         load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.1, m_J=20.9)
+         load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=7.5, m_1450=21.5)
 # simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, trace_id=2, offset=-100, exptime=300., 
-#          load_func=load_star, parse_func=parse_star, show_trace=False, m_J=22.)
+#          load_func=load_star, parse_func=parse_star, show_trace=False, m_J=21.3)

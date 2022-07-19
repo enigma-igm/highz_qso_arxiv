@@ -1,3 +1,5 @@
+import numpy as np
+
 from IPython import embed
 
 __all__ = ["gp_trough", "damping_wing", "extend_to_lower"]

@@ -1,4 +1,6 @@
 import speclite.filters
+import astropy.units as u
+from astropy.io import ascii
 
 ukirt_J_dat = ascii.read("../resource/UKIRT_UKIDSS.J.dat")
 ukirt_J = speclite.filters.FilterResponse(
