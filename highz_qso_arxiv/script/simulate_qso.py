@@ -23,6 +23,7 @@ from pypeit.sensfunc import IRSensFunc
 from pypeit.core.wavecal import wvutils
 from pypeit.core.moment import moment1d
 from pypeit.core.flux_calib import Flam_to_Nlam
+from pypeit.spectrographs.util import load_spectrograph
 from pypeit.images.detector_container import DetectorContainer
 
 from IPython import embed
@@ -92,10 +93,11 @@ def flux_to_Nlam(flux, wave_obs, sens):
     Nlam = Nlam.to(1/u.AA/u.s).value # 1 / (Angstrom s)
     return wave_obs[mask], Nlam
 
-def simulate(sens, spec2DObj, sobjs, trace_id, offset, exptime, load_func, parse_func, show_trace=False, **kwargs):
-    wl, flux = load_func()
-    wl, flux = parse_func(wl, flux, **kwargs)
-    wl, Nlam = flux_to_Nlam(flux, wl, sens)
+def simulate(sens, spec2DObj, sobjs, header, trace_id, offset, exptime, load_func, parse_func, 
+             show_trace=False, debug=False, **kwargs):
+    wave, flux = load_func()
+    wave, flux = parse_func(wave, flux, **kwargs)
+    wl, Nlam = flux_to_Nlam(flux, wave, sens)
 
     sobjs_fake = sobjs[trace_id].copy()
     sobjs_fake.TRACE_SPAT = sobjs_fake.TRACE_SPAT + offset
@@ -137,7 +139,27 @@ def simulate(sens, spec2DObj, sobjs, trace_id, offset, exptime, load_func, parse
                                            cuts=(cut_min, cut_max))
     if show_trace:
         display.show_trace(viewer, ch_skysub, sobjs_fake.TRACE_SPAT, 'fake object', color='orange')
-    return img_fake
+    if debug:
+        # sanity check - 1: compare fake object with the real one
+        count = moment1d(image+img_fake, sobjs_fake.TRACE_SPAT, sobjs_fake.BOX_RADIUS*2, order=[0])[0]
+        plt.plot(sobjs[2].BOX_WAVE, sobjs[2].BOX_COUNTS)
+        plt.plot(sobjs_fake.BOX_WAVE, count)
+        plt.show()
+
+        # sanity check - 2: fluxing the fake object
+        spectrograph = load_spectrograph(header['PYP_SPEC'])
+        par = spectrograph.default_pypeit_par()['fluxcalib']
+        sobjs_fake.apply_flux_calib(sens.wave[:, 0], sens.zeropoint[:, 0],
+                                    sobjs.header['EXPTIME'],
+                                    extinct_correct=False,
+                                    longitude=spectrograph.telescope['longitude'],
+                                    latitude=spectrograph.telescope['latitude'],
+                                    extrap_sens=par['extrap_sens'],
+                                    airmass=float(sobjs.header['AIRMASS']))
+        plt.plot(sobjs_fake.OPT_WAVE, sobjs_fake.OPT_FLAM)
+        plt.plot(wave, flux*1e17)
+        plt.show()
+    return img_fake, sobjs_fake
 
 # hdul = io.fits_open("../resource/sensfunc/GD153_lris_long_8.7_sens.fits")
 # hdul = io.fits_open("../resource/sensfunc/GD153_mosfire_sens.fits")
@@ -154,8 +176,9 @@ spec1dfile = spec2dfile.replace('spec2d', 'spec1d')
 detname = DetectorContainer.get_name(det=1)
 spec2DObj = spec2dobj.Spec2DObj.from_file(spec2dfile, detname, chk_version=False)
 sobjs = specobjs.SpecObjs.from_fitsfile(spec1dfile, chk_version=False)
+header = fits.getheader(spec1dfile)
 
-simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, trace_id=2, offset=-100, exptime=300., 
-         load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=7.5, m_1450=21.5)
+img_fake, sobjs_fake = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, header=header, trace_id=2, offset=-100, exptime=300., 
+                                load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.1, m_J=20.9, debug=True)
 # simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, trace_id=2, offset=-100, exptime=300., 
 #          load_func=load_star, parse_func=parse_star, show_trace=False, m_J=21.3)

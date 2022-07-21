@@ -7,7 +7,7 @@ from pypeit.core.flux_calib import Nlam_to_Flam
 
 from IPython import embed
 
-def plot_sens(sens=None, sens_file=None, title=None, display=True):
+def plot_sens(sens=None, sens_file=None, title=None, display=True, save_file=""):
     if sens_file is not None:
         hdul = io.fits_open(sens_file)
         sens = IRSensFunc.from_hdu(hdul)
@@ -36,10 +36,13 @@ def plot_sens(sens=None, sens_file=None, title=None, display=True):
 
     fig.suptitle(title)
     fig.tight_layout()
+    if save_file != "":
+        plt.savefig(save_file)
     if display:
         plt.show()
     return fig, ax
 
 if __name__ == "__main__":
-    plot_sens(sens_file="../resource/GD153_mosfire_sens.fits", title="MOSFIRE")
-    plot_sens(sens_file="../resource/GD153_lris_sens.fits", title="LRIS")
+    plot_sens(sens_file="../resource/sensfunc/GD153_lris_sens.fits", title="LRIS", save_file="../resource/sensfunc/sens_lris.pdf")
+    plot_sens(sens_file="../resource/sensfunc/GD153_lris_long_8.7_sens.fits", title="LRIS", save_file="../resource/sensfunc/sens_lris_long_8.7.pdf")
+    plot_sens(sens_file="../resource/sensfunc/GD153_mosfire_sens.fits", title="MOSFIRE", save_file="../resource/sensfunc/sens_mosfire.pdf")
