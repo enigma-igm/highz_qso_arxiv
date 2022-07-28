@@ -12,11 +12,12 @@ from astropy.cosmology import FlatLambdaCDM, z_at_value
 from highz_qso_arxiv.resource.filters import ukirt
 from highz_qso_arxiv.util.spec2dutil import gauss_comb
 from highz_qso_arxiv.util import luminosity_to_flux, redshift_to_distance
-from highz_qso_arxiv.util.spec1dutil import gp_trough, damping_wing, extend_to_lower
+from highz_qso_arxiv.util.spec1dutil import add_gp_trough, add_damping_wing, add_telluric, extend_to_lower
 
 from pypeit import io
 from pypeit import specobjs
 from pypeit import spec2dobj
+from pypeit.utils import inverse
 from pypeit.core import extract
 from pypeit.display import display
 from pypeit.sensfunc import IRSensFunc
@@ -67,7 +68,7 @@ def parse_quasar(wave_rest, flux, redshift, m_1450=None, M_1450=None, m_J=None):
         raise ValueError('m_1450 or M_1450 or m_J must be specified')
     flux = flux * scale
     wave_obs, flux = extend_to_lower(wave_obs, flux, 5000.)
-    flux = gp_trough(wave_obs, flux, redshift)
+    flux = add_gp_trough(wave_obs, flux, redshift)
     return wave_obs, flux
 
 def parse_star(wave_rest, flux, m_J):
@@ -93,14 +94,32 @@ def flux_to_Nlam(flux, wave_obs, sens):
     Nlam = Nlam.to(1/u.AA/u.s).value # 1 / (Angstrom s)
     return wave_obs[mask], Nlam
 
-def simulate(sens, spec2DObj, sobjs, header, trace_id, offset, exptime, load_func, parse_func, 
-             show_trace=False, debug=False, **kwargs):
-    wave, flux = load_func()
-    wave, flux = parse_func(wave, flux, **kwargs)
-    wl, Nlam = flux_to_Nlam(flux, wave, sens)
+def simple_slit_loss(slitwidth, fwhm, platescale, binning):
+    from scipy.special import erf
+    return erf((slitwidth/2)/(np.sqrt(2)*fwhm*platescale*binning/2.355))
 
+def simulate(sens, spec2DObj, sobjs, header, 
+             trace_id, offset, exptime, load_func, parse_func, 
+             telluric=None, damping_wing=None,
+             show_trace=False, debug=False, **kwargs):
     sobjs_fake = sobjs[trace_id].copy()
     sobjs_fake.TRACE_SPAT = sobjs_fake.TRACE_SPAT + offset
+
+    wave, flux = load_func()
+    wave, flux = parse_func(wave, flux, **kwargs)
+    if debug:
+        plt.plot(wave, flux)
+        plt.show()
+    wl, Nlam = flux_to_Nlam(flux, wave, sens)
+    if debug:
+        plt.plot(wl, Nlam)
+        plt.show()
+    slit_trans = simple_slit_loss(1, sobjs_fake.FWHMFIT, 0.123, 2)
+    print('Median Slit transmission:', np.median(slit_trans))
+    func_slit_trans = interpolate.interp1d(sobjs_fake.BOX_WAVE, slit_trans, fill_value="extrapolate")
+    Nlam = Nlam * func_slit_trans(wl)
+    if telluric is not None:
+        wl, Nlam = add_telluric(wl, Nlam, telluric)
 
     gpm = spec2DObj.bpmmask == 0
 
@@ -137,13 +156,36 @@ def simulate(sens, spec2DObj, sobjs, header, trace_id, offset, exptime, load_fun
     viewer, ch_skysub = display.show_image(image+img_fake, chname='skysub',
                                            waveimg=spec2DObj.waveimg,
                                            cuts=(cut_min, cut_max))
+
+    # before calculating signal-to-noise, we first calculate the "snr" with zero exptime
+    wave_min = (1 + kwargs['redshift']) * 1217
+    wave_max = (1 + kwargs['redshift']) * 1227
+    print("wave_min:", wave_min)
+    print("wave_max:", wave_max)
+    snr_mask = (sobjs_fake.BOX_WAVE < wave_max) & (sobjs_fake.BOX_WAVE > wave_min)
+    snr_N = len(sobjs_fake.BOX_WAVE[snr_mask])
+    snr_signal = np.sum(sobjs_fake.BOX_COUNTS[snr_mask]) / snr_N
+    snr_variance = np.sum(inverse(sobjs_fake.BOX_COUNTS_IVAR[snr_mask])) / snr_N**2
+    snr_zero = snr_signal / np.sqrt(snr_variance)
+    print('SNR N:', snr_N)
+    print('SNR zero:', snr_zero)
+
+    # extract again to update sobjs_fake
+    extract.extract_boxcar(spec2DObj.sciimg+img_fake, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel, sobjs_fake,
+                           base_var=None, count_scale=None, noise_floor=None)
+    snr_signal = np.sum(sobjs_fake.BOX_COUNTS[snr_mask]) / snr_N
+    snr_variance = np.sum(inverse(sobjs_fake.BOX_COUNTS_IVAR[snr_mask])) / snr_N**2
+    snr = snr_signal / np.sqrt(snr_variance)
+    print('SNR:', snr-snr_zero)
+
     if show_trace:
         display.show_trace(viewer, ch_skysub, sobjs_fake.TRACE_SPAT, 'fake object', color='orange')
     if debug:
         # sanity check - 1: compare fake object with the real one
-        count = moment1d(image+img_fake, sobjs_fake.TRACE_SPAT, sobjs_fake.BOX_RADIUS*2, order=[0])[0]
-        plt.plot(sobjs[2].BOX_WAVE, sobjs[2].BOX_COUNTS)
-        plt.plot(sobjs_fake.BOX_WAVE, count)
+        # count = moment1d(image+img_fake, sobjs_fake.TRACE_SPAT, sobjs_fake.BOX_RADIUS*2, order=[0])[0]
+        # plt.plot(sobjs[2].BOX_WAVE, sobjs[2].BOX_COUNTS)
+        plt.plot(sobjs_fake.BOX_WAVE, sobjs_fake.BOX_COUNTS)
+        plt.plot(sobjs_fake.BOX_WAVE, np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR)))
         plt.show()
 
         # sanity check - 2: fluxing the fake object
@@ -166,6 +208,9 @@ def simulate(sens, spec2DObj, sobjs, header, trace_id, offset, exptime, load_fun
 hdul = io.fits_open("../resource/sensfunc/GD153_lris_sens.fits")
 sens = IRSensFunc.from_hdu(hdul)
 
+hdul = io.fits_open('../resource/telluric/LRIS_J0901+2906_tellmodel.fits')
+telluric = hdul[1].data
+
 sci_path = '../arxiv/LRIS_2203/LRIS_220306/reduced/sim/Science/'
 # sci_path = '../arxiv/MOSFIRE_2201/reduced/all/Science'
 
@@ -178,7 +223,7 @@ spec2DObj = spec2dobj.Spec2DObj.from_file(spec2dfile, detname, chk_version=False
 sobjs = specobjs.SpecObjs.from_fitsfile(spec1dfile, chk_version=False)
 header = fits.getheader(spec1dfile)
 
-img_fake, sobjs_fake = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, header=header, trace_id=2, offset=-100, exptime=300., 
-                                load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.1, m_J=20.9, debug=True)
+img_fake, sobjs_fake = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, header=header, trace_id=2, offset=-100, exptime=300, 
+                                load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.5, m_J=22., debug=True)
 # simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, trace_id=2, offset=-100, exptime=300., 
 #          load_func=load_star, parse_func=parse_star, show_trace=False, m_J=21.3)

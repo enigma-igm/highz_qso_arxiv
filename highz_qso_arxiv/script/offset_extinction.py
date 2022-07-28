@@ -55,6 +55,7 @@ for i in range(len(df)):
     phot_table = aperture_photometry(star_medsub, aperture, method="exact", error=acq_std)[0]
 
     f_star_photutil = phot_table["aperture_sum"] / hdr["TRUITIME"]
+    # TODO: check this
     m_star = -2.5 * np.log10(f_star_photutil) + mosfire_ZP["J"]
     m_star_err = np.abs(2.5*phot_table["aperture_sum_err"]/phot_table["aperture_sum"]/np.log(10))
     m_aper[i] = m_star
