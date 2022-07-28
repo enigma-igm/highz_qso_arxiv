@@ -105,9 +105,9 @@ def simulate(sens, spec2DObj, sobjs, header,
              telluric=None, damping_wing=None,
              show_trace=False, debug=False, **kwargs):
     sobjs_fake = sobjs[trace_id].copy()
-    sobjs_fake_noiseless = sobjs[trace_id].copy()
-
     sobjs_fake.TRACE_SPAT = sobjs_fake.TRACE_SPAT + offset
+    sobjs_fake_noiseless = sobjs_fake.copy()
+
 
     wave, flux = load_func()
     wave, flux = parse_func(wave, flux, **kwargs)
