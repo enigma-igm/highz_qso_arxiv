@@ -26,6 +26,8 @@ from pypeit.core.moment import moment1d
 from pypeit.core.flux_calib import Flam_to_Nlam
 from pypeit.spectrographs.util import load_spectrograph
 from pypeit.images.detector_container import DetectorContainer
+from pypeit.core import procimg
+
 
 from IPython import embed
 
@@ -171,6 +173,13 @@ def simulate(sens, spec2DObj, sobjs, header,
     print('SNR zero:', snr_zero)
 
     # extract again to update sobjs_fake
+    _base_var = None
+    _count_scale = None
+    adderr = 0.01
+    var = procimg.variance_model(_base_var, counts=spec2DObj.skymodel, count_scale=_count_scale, noise_floor=adderr)
+    ivarmodel = inverse(var)
+    rel_diff = np.mean((ivarmodel - spec2DObj.ivarmodel)/spec2DObj.ivarmodel)
+    embed()
     extract.extract_boxcar(spec2DObj.sciimg+img_fake, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel, sobjs_fake,
                            base_var=None, count_scale=None, noise_floor=None)
     snr_signal = np.sum(sobjs_fake.BOX_COUNTS[snr_mask]) / snr_N
