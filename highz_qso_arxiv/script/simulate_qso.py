@@ -105,6 +105,8 @@ def simulate(sens, spec2DObj, sobjs, header,
              telluric=None, damping_wing=None,
              show_trace=False, debug=False, **kwargs):
     sobjs_fake = sobjs[trace_id].copy()
+    sobjs_fake_noiseless = sobjs[trace_id].copy()
+
     sobjs_fake.TRACE_SPAT = sobjs_fake.TRACE_SPAT + offset
 
     wave, flux = load_func()
@@ -175,13 +177,16 @@ def simulate(sens, spec2DObj, sobjs, header,
     # extract again to update sobjs_fake
     _base_var = None
     _count_scale = None
-    adderr = 0.01
-    embed()
-    var = procimg.variance_model(_base_var, counts=spec2DObj.skymodel, count_scale=_count_scale, noise_floor=adderr)
-    ivarmodel = inverse(var)
-    rel_diff = np.mean((ivarmodel - spec2DObj.ivarmodel)/spec2DObj.ivarmodel)
-    extract.extract_boxcar(spec2DObj.sciimg+img_fake, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel, sobjs_fake,
-                           base_var=None, count_scale=None, noise_floor=None)
+    #adderr = 0.01
+    #embed()
+    #var = procimg.variance_model(_base_var, counts=spec2DObj.skymodel, count_scale=_count_scale, noise_floor=adderr)
+    #ivarmodel = inverse(var)
+    #rel_diff = np.mean((ivarmodel - spec2DObj.ivarmodel)/spec2DObj.ivarmodel)
+    # JFH new line. Compare this to your noise realization
+    extract.extract_boxcar(spec2DObj.skymodel+img_fake, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel,
+                           sobjs_fake_noiseless, base_var=None, count_scale=None, noise_floor=None)
+    extract.extract_boxcar(spec2DObj.sciimg+img_fake, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel,
+                           sobjs_fake, base_var=None, count_scale=None, noise_floor=None)
     snr_signal = np.sum(sobjs_fake.BOX_COUNTS[snr_mask]) / snr_N
     snr_variance = np.sum(inverse(sobjs_fake.BOX_COUNTS_IVAR[snr_mask])) / snr_N**2
     snr = snr_signal / np.sqrt(snr_variance)
@@ -193,8 +198,9 @@ def simulate(sens, spec2DObj, sobjs, header,
         # sanity check - 1: compare fake object with the real one
         # count = moment1d(image+img_fake, sobjs_fake.TRACE_SPAT, sobjs_fake.BOX_RADIUS*2, order=[0])[0]
         # plt.plot(sobjs[2].BOX_WAVE, sobjs[2].BOX_COUNTS)
-        plt.plot(sobjs_fake.BOX_WAVE, sobjs_fake.BOX_COUNTS)
-        plt.plot(sobjs_fake.BOX_WAVE, np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR)))
+        plt.plot(sobjs_fake.BOX_WAVE, sobjs_fake.BOX_COUNTS, drawstyle='steps-mid', color='black')
+        plt.plot(sobjs_fake_noiseless.BOX_WAVE, sobjs_fake_noiseless.BOX_COUNTS, drawstyle='steps-mid', color='blue')
+        plt.plot(sobjs_fake.BOX_WAVE, np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR)), drawstyle='steps-mid', color='red')
         plt.show()
 
         # sanity check - 2: fluxing the fake object
