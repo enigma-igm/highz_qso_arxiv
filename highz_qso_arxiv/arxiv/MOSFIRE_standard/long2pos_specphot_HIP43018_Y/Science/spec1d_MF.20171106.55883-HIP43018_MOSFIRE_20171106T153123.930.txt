@@ -1,0 +1,2 @@
+| slit |                    name | maskdef_id | objname |   objra |   objdec | spat_pixpos | spat_fracpos | box_width | opt_fwhm |    s2n | maskdef_extract | wv_rms |
+|  948 | SPAT0905-SLIT0948-DET01 |          3 |    posC | 0.00000 | -0.00333 |       905.2 |        0.120 |      3.00 |    0.439 | 132.48 |           False |  0.023 |

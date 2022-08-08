@@ -1,0 +1,7 @@
+| slit |                    name | spat_pixpos | spat_fracpos | box_width | opt_fwhm |   s2n | manual_extract | wv_rms |
+| 1037 | SPAT0807-SLIT1037-DET01 |       806.5 |        0.125 |      3.00 |    0.830 | 16.89 |          False |  0.055 |
+| 1037 | SPAT0836-SLIT1037-DET01 |       835.8 |        0.171 |      3.00 |    1.476 | -0.05 |           True |  0.055 |
+| 1037 | SPAT0936-SLIT1037-DET01 |       935.9 |        0.326 |      3.00 |    0.594 |  1.72 |          False |  0.055 |
+| 1037 | SPAT1273-SLIT1037-DET01 |      1273.2 |        0.851 |      3.00 |    6.414 |  0.50 |          False |  0.055 |
+| 1037 | SPAT1306-SLIT1037-DET01 |      1306.3 |        0.902 |      3.00 |    4.224 |  0.89 |          False |  0.055 |
+| 1037 | SPAT1345-SLIT1037-DET01 |      1345.5 |        0.966 |      3.00 |    1.462 |  1.77 |          False |  0.055 |

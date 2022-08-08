@@ -63,6 +63,7 @@
         sigdetect = 10.0
         reid_arxiv = keck_lris_red_600_10000.fits
         rms_threshold = 0.2
+        refframe = observed
     [[slitedges]]
         fit_order = 3
         sync_predict = nearest
@@ -86,11 +87,9 @@
         spat_flexure_correct = True
 [reduce]
     [[findobj]]
-        snr_thresh = 2.0
+        snr_thresh = 5.0
     [[skysub]]
         bspline_spacing = 0.8
-[flexure]
-    spec_method = boxcar
 [sensfunc]
     algorithm = IR
     polyorder = 9

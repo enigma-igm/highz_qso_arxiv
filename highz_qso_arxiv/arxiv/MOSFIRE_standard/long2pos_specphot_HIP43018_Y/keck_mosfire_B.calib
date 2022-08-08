@@ -1,0 +1,40 @@
+B:
+  --:
+    decker_basename: long2pos
+    dispname: Y-spectroscopy
+    filter1: Y
+    slitlength: null
+    slitwid: null
+  2:
+    align: []
+    arc:
+    - ./MF.20171106.09960.fits
+    - ./MF.20171106.10012.fits
+    bias: []
+    dark: []
+    illumflat:
+    - ./MF.20171106.09574.fits
+    - ./MF.20171106.09601.fits
+    - ./MF.20171106.09626.fits
+    lampoffflats: []
+    pinhole: []
+    pixelflat:
+    - ./MF.20171106.09574.fits
+    - ./MF.20171106.09601.fits
+    - ./MF.20171106.09626.fits
+    science: []
+    sky: []
+    standard:
+    - ./MF.20171106.55781.fits
+    - ./MF.20171106.55797.fits
+    - ./MF.20171106.55815.fits
+    - ./MF.20171106.55848.fits
+    - ./MF.20171106.55865.fits
+    - ./MF.20171106.55883.fits
+    tilt:
+    - ./MF.20171106.09960.fits
+    - ./MF.20171106.10012.fits
+    trace:
+    - ./MF.20171106.09574.fits
+    - ./MF.20171106.09601.fits
+    - ./MF.20171106.09626.fits

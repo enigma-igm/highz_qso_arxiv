@@ -1,0 +1,24 @@
+{
+    "1": {
+        "A_1_DET01": {
+            "arc": {
+                "master_key": "A_1_DET01",
+                "master_name": "MasterArc_A_1_DET01.fits",
+                "raw_files": [
+                    "r220615_01008.fits",
+                    "r220615_01009.fits",
+                    "r220615_01010.fits"
+                ]
+            },
+            "tilt": {
+                "master_key": "A_1_DET01",
+                "master_name": "MasterTiltimg_A_1_DET01.fits",
+                "raw_files": [
+                    "r220615_01008.fits",
+                    "r220615_01009.fits",
+                    "r220615_01010.fits"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-07-28
+
+# User-defined execution parameters
+[coadd1d]
+  coaddfile = J1312+5707_coadd.fits # Please set your output file name
+  sensfuncfile = ../GD71_nires_sens.fits # Please set your SENSFUNC file name. Only required for Echelle
+  wave_method = velocity # creates a uniformly space grid in log10(lambda)
+
+# This file includes all extracted objects. You need to figure out which object you want to 
+# coadd before running pypeit_coadd_1dspec!!!
+
+# Read in the coadd1d
+coadd1d read
+ Science_coadd/spec1d_NR.20190314.21243-NR.20190314.21243-J0739+4843.fits OBJ0208-DET01
+ Science_coadd/spec1d_NR.20190314.21243-NR.20190314.21243-J0739+4843.fits OBJ0485-DET01
+ Science_coadd/spec1d_NR.20190314.21243-NR.20190314.21243-J0739+4843.fits OBJ0764-DET01
+ Science_coadd/spec1d_NR.20190314.22418-NR.20190314.22418-J0800+5128.fits OBJ0207-DET01
+ Science_coadd/spec1d_NR.20190314.22418-NR.20190314.22418-J0800+5128.fits OBJ0484-DET01
+ Science_coadd/spec1d_NR.20190314.22418-NR.20190314.22418-J0800+5128.fits OBJ0767-DET01
+ Science_coadd/spec1d_NR.20190314.23543-NR.20190314.25436-J0756+5744.fits OBJ0543-DET01
+ Science_coadd/spec1d_NR.20190314.52459-NR.20190314.52813-J1312+5707.fits OBJ0489-DET01
+ Science_coadd/spec1d_NR.20190314.54277-NR.20190314.54631-J1546+2945.fits OBJ0502-DET01
+ Science_coadd/spec1d_NR.20190315.24463-NR.20190315.24463-J0800+3034.fits OBJ0827-DET01
+ Science_coadd/spec1d_NR.20190315.31485-NR.20190315.31838-J0953.fits OBJ0491-DET01
+ Science_coadd/spec1d_NR.20190315.33275-NR.20190315.33275-J0803+0030.fits OBJ0623-DET01
+ Science_coadd/spec1d_NR.20190315.33275-NR.20190315.33275-J0803+0030.fits OBJ0824-DET01
+ Science_coadd/spec1d_NR.20190315.34007-NR.20190315.34361-J0816+1622.fits OBJ0490-DET01
+ Science_coadd/spec1d_NR.20190315.36689-NR.20190315.37042-J1217+3136.fits OBJ0495-DET01
+ Science_coadd/spec1d_NR.20190315.45339-NR.20190315.53538-J1635+5940.fits OBJ0491-DET01
+ Science_coadd/spec1d_NR.20190315.47367-NR.20190315.47721-J1550+2558.fits OBJ0495-DET01
+ Science_coadd/spec1d_NR.20190315.49129-NR.20190315.49483-1638+5412.fits OBJ0497-DET01
+ Science_coadd/spec1d_NR.20190315.55055-NR.20190315.55409-J1423+2901.fits OBJ0494-DET01
+coadd1d end
+

@@ -1,0 +1,338 @@
+##########################################################
+Setup A
+     dispname: 400/8500
+     dichroic: 500
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 22.936794
+      cenwave: 5524.160325
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01000.fits |      bias | 247.343 |                46.0 | unknown |   mirror |   direct |     1,1 |  59745.04088 |    1.39 | 0.000124928 |    clear | 13.699775 |         0.0 |   4 |    1000 |
+| r220615_01008.fits |  arc,tilt | 247.343 |                46.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.057467 |    1.39 | 1.000126208 |      500 | 22.936794 | 5524.160325 |   2 |    1008 |
+| r220615_01009.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.058128 |   13.37 | 1.000126208 |      500 | 22.936794 | 5524.160325 |   2 |    1009 |
+| r220615_01010.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.058789 |   13.37 | 1.000126208 |      500 | 22.936794 | 5524.160325 |   2 |    1010 |
+##########################################################
+Setup B
+     dispname: 400/8500
+     dichroic: 680
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 22.936794
+      cenwave: 5524.160325
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01011.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.060489 |   13.37 | 1.000126208 |      680 | 22.936794 | 5524.160325 |   2 |    1011 |
+| r220615_01012.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/8500 | sens1.fi |     2,2 |  59745.06115 |   13.37 | 1.000126208 |      680 | 22.936794 | 5524.160325 |   2 |    1012 |
+| r220615_01013.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.061812 |   13.37 | 1.000126464 |      680 | 22.936794 | 5524.160325 |   2 |    1013 |
+##########################################################
+Setup C
+     dispname: 600/10000
+     dichroic: 680
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 24.183973
+      cenwave: 5685.936615
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |      ra |                 dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01014.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 |  59745.06579 |   13.37 | 1.000126208 |      680 | 24.183973 | 5685.936615 |   2 |    1014 |
+| r220615_01015.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.066451 |   13.37 | 1.000126208 |      680 | 24.183973 | 5685.936615 |   2 |    1015 |
+| r220615_01016.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.067124 |   13.37 | 1.000126208 |      680 | 24.183973 | 5685.936615 |   2 |    1016 |
+##########################################################
+Setup D
+     dispname: 600/10000
+     dichroic: 500
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 24.183973
+      cenwave: 5685.936615
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |      ra |                 dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01017.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.068777 |   13.37 | 1.000126464 |      500 | 24.183973 | 5685.936615 |   2 |    1017 |
+| r220615_01018.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.069438 |   13.37 | 1.000126208 |      500 | 24.183973 | 5685.936615 |   2 |    1018 |
+| r220615_01019.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.070099 |   13.37 | 1.000126208 |      500 | 24.183973 | 5685.936615 |   2 |    1019 |
+##########################################################
+Setup E
+     dispname: 600/10000
+     dichroic: 500
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 28.045147
+      cenwave: 7690.778552
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |      ra |                 dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01020.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.075246 |   13.37 | 1.000126208 |      500 | 28.045147 | 7690.778552 |   2 |    1020 |
+| r220615_01021.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.075907 |   13.37 | 1.000126208 |      500 | 28.045147 | 7690.778552 |   2 |    1021 |
+| r220615_01022.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 |  59745.07658 |   13.37 | 1.000126208 |      500 | 28.045147 | 7690.778552 |   2 |    1022 |
+##########################################################
+Setup F
+     dispname: 600/10000
+     dichroic: 680
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 28.045147
+      cenwave: 7690.778552
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |      ra |                 dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01023.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 |  59745.07815 |   13.37 | 1.000126208 |      680 | 28.045147 | 7690.778552 |   2 |    1023 |
+| r220615_01024.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.078812 |   13.37 | 1.000126208 |      680 | 28.045147 | 7690.778552 |   2 |    1024 |
+| r220615_01025.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.079473 |   13.37 | 1.000126208 |      680 | 28.045147 | 7690.778552 |   2 |    1025 |
+##########################################################
+Setup G
+     dispname: 150/7500
+     dichroic: 680
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 16.287811
+      cenwave: 4731.640694
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01026.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.086273 |    1.41 | 1.000126208 |      680 | 16.287811 | 4731.640694 |   2 |    1026 |
+| r220615_01027.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.086922 |    1.41 | 1.000126208 |      680 | 16.287811 | 4731.640694 |   2 |    1027 |
+| r220615_01028.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.087595 |    1.41 | 1.000126208 |      680 | 16.287811 | 4731.640694 |   2 |    1028 |
+##########################################################
+Setup H
+     dispname: 150/7500
+     dichroic: 500
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 16.287811
+      cenwave: 4731.640694
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01029.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.089555 |    1.41 | 1.000126208 |      500 | 16.287811 | 4731.640694 |   2 |    1029 |
+| r220615_01030.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.090216 |    1.41 | 1.000126208 |      500 | 16.287811 | 4731.640694 |   2 |    1030 |
+| r220615_01031.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.090889 |    1.41 | 1.000126208 |      500 | 16.287811 | 4731.640694 |   2 |    1031 |
+##########################################################
+Setup I
+     dispname: 150/7500
+     dichroic: 500
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 17.224606
+      cenwave: 6724.048977
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01032.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.092943 |    1.41 | 1.000126208 |      500 | 17.224606 | 6724.048977 |   2 |    1032 |
+| r220615_01033.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.093403 |    1.41 | 1.000126208 |      500 | 17.224606 | 6724.048977 |   2 |    1033 |
+| r220615_01034.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.093852 |    1.41 | 1.000126208 |      500 | 17.224606 | 6724.048977 |   2 |    1034 |
+##########################################################
+Setup J
+     dispname: 150/7500
+     dichroic: 680
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 17.224606
+      cenwave: 6724.048977
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01035.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.095918 |    1.41 | 1.000126464 |      680 | 17.224606 | 6724.048977 |   2 |    1035 |
+| r220615_01036.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.096366 |    1.41 | 1.000126208 |      680 | 17.224606 | 6724.048977 |   2 |    1036 |
+| r220615_01037.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 150/7500 | sens1.fi |     2,2 | 59745.096827 |    1.41 | 1.000126208 |      680 | 17.224606 | 6724.048977 |   2 |    1037 |
+##########################################################
+Setup K
+     dispname: 400/8500
+     dichroic: 680
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 25.470655
+      cenwave: 7526.468487
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01038.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.101762 |    1.41 | 1.000126208 |      680 | 25.470655 | 7526.468487 |   2 |    1038 |
+| r220615_01039.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.102222 |    1.41 | 1.000126208 |      680 | 25.470655 | 7526.468487 |   2 |    1039 |
+| r220615_01040.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.102671 |    1.41 | 1.000126208 |      680 | 25.470655 | 7526.468487 |   2 |    1040 |
+##########################################################
+Setup L
+     dispname: 400/8500
+     dichroic: 500
+       decker: sens1.fi
+      binning: 2,2
+    dispangle: 25.470655
+      cenwave: 7526.468487
+          amp: 2
+#---------------------------------------------------------
+|           filename | frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01041.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.104229 |    1.41 | 1.000126208 |      500 | 25.470655 | 7526.468487 |   2 |    1041 |
+| r220615_01042.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.104677 |    1.41 | 1.000126208 |      500 | 25.470655 | 7526.468487 |   2 |    1042 |
+| r220615_01043.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.105126 |    1.41 | 1.000126208 |      500 | 25.470655 | 7526.468487 |   2 |    1043 |
+##########################################################
+Setup M
+     dispname: 400/8500
+     dichroic: 500
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 25.470655
+      cenwave: 7526.468487
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01044.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.108255 |    1.41 | 2.000127488 |      500 | 25.470655 | 7526.468487 |   2 |    1044 |
+| r220615_01045.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.111466 |    1.41 | 2.000127488 |      500 | 25.470655 | 7526.468487 |   2 |    1045 |
+| r220615_01046.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.111938 |    1.41 | 2.000127232 |      500 | 25.470655 | 7526.468487 |   2 |    1046 |
+##########################################################
+Setup N
+     dispname: 400/8500
+     dichroic: 500
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 22.935665
+      cenwave: 5523.26573
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |    cenwave | amp | frameno |
+| r220615_01047.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.114807 |    1.41 | 2.000127488 |      500 | 22.935665 | 5523.26573 |   2 |    1047 |
+| r220615_01048.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.115267 |    1.41 | 2.000127232 |      500 | 22.935665 | 5523.26573 |   2 |    1048 |
+| r220615_01049.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.115739 |    1.41 | 2.000127488 |      500 | 22.935665 | 5523.26573 |   2 |    1049 |
+##########################################################
+Setup O
+     dispname: 400/8500
+     dichroic: 680
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 22.935665
+      cenwave: 5523.26573
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |    cenwave | amp | frameno |
+| r220615_01050.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.119741 |    1.41 | 2.000127488 |      680 | 22.935665 | 5523.26573 |   2 |    1050 |
+| r220615_01051.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.120214 |    1.41 | 2.000127488 |      680 | 22.935665 | 5523.26573 |   2 |    1051 |
+| r220615_01052.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.120674 |    1.41 | 2.000127232 |      680 | 22.935665 | 5523.26573 |   2 |    1052 |
+##########################################################
+Setup P
+     dispname: 400/8500
+     dichroic: 680
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 25.470655
+      cenwave: 7526.468487
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01053.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.122893 |    1.41 | 2.000127488 |      680 | 25.470655 | 7526.468487 |   2 |    1053 |
+| r220615_01054.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.123366 |    1.41 | 2.000127488 |      680 | 25.470655 | 7526.468487 |   2 |    1054 |
+| r220615_01055.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.123826 |    1.41 | 2.000127488 |      680 | 25.470655 | 7526.468487 |   2 |    1055 |
+##########################################################
+Setup Q
+     dispname: 150/7500
+     dichroic: 680
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 17.227991
+      cenwave: 6731.247513
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01059.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.133341 |    1.41 | 2.000127488 |      680 | 17.227991 | 6731.247513 |   2 |    1059 |
+| r220615_01060.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.133802 |    1.41 | 2.000127488 |      680 | 17.227991 | 6731.247513 |   2 |    1060 |
+| r220615_01061.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.134274 |    1.41 | 2.000127232 |      680 | 17.227991 | 6731.247513 |   2 |    1061 |
+##########################################################
+Setup R
+     dispname: 150/7500
+     dichroic: 500
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 17.227991
+      cenwave: 6731.247513
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01062.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.135797 |    1.41 | 2.000127488 |      500 | 17.227991 | 6731.247513 |   2 |    1062 |
+| r220615_01063.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.136257 |    1.41 | 2.000127488 |      500 | 17.227991 | 6731.247513 |   2 |    1063 |
+| r220615_01064.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 |  59745.13673 |    1.41 | 2.000127488 |      500 | 17.227991 | 6731.247513 |   2 |    1064 |
+##########################################################
+Setup S
+     dispname: 1200/7500
+     dichroic: 500
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 16.328442
+      cenwave: 4729.719581
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01068.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/7500 | sensfunc |     2,2 | 59745.140602 |    1.41 | 0.500125696 |      500 | 16.328442 | 4729.719581 |   2 |    1068 |
+| r220615_01069.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/7500 | sensfunc |     2,2 |  59745.14105 |    1.41 | 0.500125696 |      500 | 16.328442 | 4729.719581 |   2 |    1069 |
+| r220615_01070.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/7500 | sensfunc |     2,2 | 59745.141499 |    1.41 | 0.500125696 |      500 | 16.328442 | 4729.719581 |   2 |    1070 |
+##########################################################
+Setup T
+     dispname: 600/10000
+     dichroic: 500
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 24.185102
+      cenwave: 5686.526873
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01071.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.145159 |    1.41 | 2.000127232 |      500 | 24.185102 | 5686.526873 |   2 |    1071 |
+| r220615_01072.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.145619 |    1.41 | 2.000127488 |      500 | 24.185102 | 5686.526873 |   2 |    1072 |
+| r220615_01073.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.146091 |    1.41 | 2.000127488 |      500 | 24.185102 | 5686.526873 |   2 |    1073 |
+##########################################################
+Setup U
+     dispname: 600/10000
+     dichroic: 500
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 28.047403
+      cenwave: 7691.941299
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01074.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.147496 |    1.41 | 2.000127488 |      500 | 28.047403 | 7691.941299 |   2 |    1074 |
+| r220615_01075.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.147957 |    1.41 | 2.000127232 |      500 | 28.047403 | 7691.941299 |   2 |    1075 |
+| r220615_01076.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.148429 |    1.41 | 2.000127488 |      500 | 28.047403 | 7691.941299 |   2 |    1076 |
+##########################################################
+Setup V
+     dispname: 600/10000
+     dichroic: 680
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 28.047403
+      cenwave: 7691.941299
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01077.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.151215 |    1.41 | 2.000127488 |      680 | 28.047403 | 7691.941299 |   2 |    1077 |
+| r220615_01078.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.151675 |    1.41 | 2.000127488 |      680 | 28.047403 | 7691.941299 |   2 |    1078 |
+| r220615_01079.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.152154 |    1.41 | 2.000127488 |      680 | 28.047403 | 7691.941299 |   2 |    1079 |
+##########################################################
+Setup W
+     dispname: 600/10000
+     dichroic: 680
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 24.187359
+      cenwave: 5687.707382
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01080.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.153346 |    1.41 | 2.000127488 |      680 | 24.187359 | 5687.707382 |   2 |    1080 |
+| r220615_01081.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.153806 |    1.41 | 2.000127488 |      680 | 24.187359 | 5687.707382 |   2 |    1081 |
+| r220615_01082.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.154279 |    1.41 | 2.000127488 |      680 | 24.187359 | 5687.707382 |   2 |    1082 |
+##########################################################
+Setup X
+     dispname: 150/7500
+     dichroic: 680
+       decker: sensfunc
+      binning: 2,2
+    dispangle: 16.287811
+      cenwave: 4731.640694
+          amp: 2
+#---------------------------------------------------------
+|           filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01083.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.158422 |    1.41 |  0.50012544 |      680 | 16.287811 | 4731.640694 |   2 |    1083 |
+| r220615_01084.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.158871 |    1.41 | 0.500125696 |      680 | 16.287811 | 4731.640694 |   2 |    1084 |
+| r220615_01085.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 150/7500 | sensfunc |     2,2 | 59745.159319 |    1.41 | 0.500125696 |      680 | 16.287811 | 4731.640694 |   2 |    1085 |
+##end

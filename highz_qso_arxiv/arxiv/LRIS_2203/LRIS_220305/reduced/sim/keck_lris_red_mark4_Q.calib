@@ -1,0 +1,56 @@
+Q:
+  --:
+    amp: '4'
+    binning: 2,2
+    cenwave: 0.0
+    decker: direct
+    dichroic: '560'
+    dispangle: 13.702031
+    dispname: mirror
+  1:
+    align: []
+    arc:
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00017.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00018.fits
+    bias:
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00050.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00051.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00052.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00053.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00054.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00055.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00056.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00057.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00058.fits
+    dark: []
+    illumflat:
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00019.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00020.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00021.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00022.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00023.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00024.fits
+    pinhole: []
+    pixelflat:
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00019.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00020.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00021.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00022.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00023.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00024.fits
+    science:
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00190.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00191.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00202.fits
+    sky: []
+    standard: []
+    tilt:
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00017.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00018.fits
+    trace:
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00019.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00020.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00021.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00022.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00023.fits
+    - /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2203/LRIS_220305/raw/r220305_00024.fits

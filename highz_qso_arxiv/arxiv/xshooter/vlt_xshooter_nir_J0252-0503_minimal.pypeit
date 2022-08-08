@@ -1,0 +1,43 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev1+g0cb9c4cb4
+# 2022-07-04
+
+# User-defined execution parameters
+[rdx]
+    spectrograph = vlt_xshooter_nir
+
+# Setup
+setup read
+ Setup A:
+   --:
+     binning: 1,1
+     dichroic: none
+     disperser:
+       angle: none
+       name: default
+     slit:
+       decker: 0.6x11
+       slitlen: none
+       slitwid: none
+setup end
+
+# Read in the data
+data read
+path ./folder_Daming/.
+|                           filename |       frametype |         ra |       dec |       target | dispname | decker | binning |            mjd | airmass | exptime | arm |    dither | calib | comb_id | bkg_id |
+| XSHOO.2019-08-30T14:02:54.961.fits | pixelflat,trace |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58535835 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:03:17.960.fits |            dark |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58562454 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:03:38.880.fits | pixelflat,trace |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58586667 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:04:01.186.fits |            dark |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58612484 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:04:23.492.fits | pixelflat,trace |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58638301 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:04:45.105.fits |            dark |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58663316 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:05:06.024.fits | pixelflat,trace |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58687528 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:05:27.637.fits |            dark |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58712543 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:05:48.556.fits | pixelflat,trace |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58736755 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T14:06:10.863.fits |            dark |       None |      None |    LAMP,FLAT |  default | 0.6x11 |     1,1 | 58725.58762573 |    None |   12.48 | NIR |      None |   2,3 |      -1 |     -1 |
+| XSHOO.2019-08-30T23:08:12.757.fits |        standard | 245.891664 | -39.22876 |     STD,FLUX |  default | 5.0x11 |     1,1 | 58725.96403654 |   1.043 |   120.0 | NIR |       2.5 |     2 |       7 |      8 |
+| XSHOO.2019-08-30T23:12:34.328.fits |        standard | 245.890851 |    -39.23 |     STD,FLUX |  default | 5.0x11 |     1,1 | 58725.96706398 |   1.046 |   120.0 | NIR |      -2.5 |     2 |       8 |      7 |
+| XSHOO.2019-08-31T07:33:38.994.fits |tilt,arc,science |  43.069337 |  -5.05975 |   J0252-0503 |  default | 0.6x11 |     1,1 | 58726.31503465 |   1.135 |  1200.0 | NIR |  2.569035 |     2 |      11 |     12 |
+| XSHOO.2019-08-31T07:54:45.488.fits |tilt,arc,science |  43.070303 |  -5.05881 |   J0252-0503 |  default | 0.6x11 |     1,1 | 58726.32969315 |   1.102 |  1200.0 | NIR |  -2.29131 |     3 |      12 |     11 |
+| XSHOO.2019-08-31T08:22:43.279.fits |tilt,arc,science |  43.069158 |  -5.05958 |   J0252-0503 |  default | 0.6x11 |     1,1 | 58726.34911202 |   1.074 |  1200.0 | NIR |  2.579763 |     2 |      11 |     12 |
+| XSHOO.2019-08-31T08:43:50.439.fits |tilt,arc,science |   43.06978 |  -5.05826 |   J0252-0503 |  default | 0.6x11 |     1,1 | 58726.36377823 |   1.064 |  1200.0 | NIR | -2.674731 |     3 |      12 |     11 |
+data end

@@ -1,0 +1,41 @@
+# Auto-generated PypeIt input file using PypeIt version: 1.10.1.dev21+g55a94b4c1
+# UTC 2022-07-22T23:49:50.073
+
+# User-defined execution parameters
+[rdx]
+    spectrograph = keck_mosfire
+[reduce]
+    [[findobj]]
+        snr_thresh = 100.
+    [[skysub]]
+        global_sky_std = False
+
+
+
+# Setup
+setup read
+Setup B:
+  decker_basename: long2pos_specphot
+  dispname: Y-spectroscopy
+  filter1: Y
+  slitlength: null
+  slitwid: null
+setup end
+
+# Data block 
+data read
+ path .
+              filename |                 frametype |           ra |         dec |    target |       dispname |            decker | binning |            mjd |    airmass |  exptime | filter1 | lampstat01 |  dithpat | dithpos | dithoff | frameno | calib | comb_id | bkg_id
+MF.20171106.09960.fits |                  arc,tilt |        230.0 |        45.0 | DOME FLAT | Y-spectroscopy |          long2pos |     1,1 | 58063.11528933 | 1.41291034 |  1.45479 |       Y |         Ne |    Stare |  object |     0.0 |      34 |     1 |      -1 |     -1
+MF.20171106.10012.fits |                  arc,tilt |        230.0 |        45.0 | DOME FLAT | Y-spectroscopy |          long2pos |     1,1 | 58063.11588307 | 1.41291034 |  1.45479 |       Y |         Ar |    Stare |  object |     0.0 |      37 |     1 |      -1 |     -1
+MF.20171106.09574.fits | pixelflat,illumflat,trace |        230.0 |        45.0 | DOME FLAT | Y-spectroscopy |          long2pos |     1,1 | 58063.11081833 | 1.41291034 | 16.00269 |       Y |         on |    Stare |  object |     0.0 |      21 |     1 |      -1 |     -1
+MF.20171106.09601.fits | pixelflat,illumflat,trace |        230.0 |        45.0 | DOME FLAT | Y-spectroscopy |          long2pos |     1,1 |  58063.1111233 | 1.41291034 | 16.00269 |       Y |         on |    Stare |  object |     0.0 |      22 |     1 |      -1 |     -1
+MF.20171106.09626.fits | pixelflat,illumflat,trace |        230.0 |        45.0 | DOME FLAT | Y-spectroscopy |          long2pos |     1,1 | 58063.11141323 | 1.41291034 | 16.00269 |       Y |         on |    Stare |  object |     0.0 |      23 |     1 |      -1 |     -1
+MF.20171106.55781.fits |                  standard | 131.48318406 | 13.26063384 |  HIP43018 | Y-spectroscopy | long2pos_specphot |     1,1 |  58063.6456161 | 1.01751173 |  2.90958 |       Y |        off | long2pos |       A |     0.0 |     324 |     1 |       1 |      2
+MF.20171106.55797.fits |                  standard | 131.48282328 | 13.25872137 |  HIP43018 | Y-spectroscopy | long2pos_specphot |     1,1 | 58063.64580592 | 1.01734454 |  2.90958 |       Y |        off | long2pos |       B |    -7.0 |     325 |     1 |       2 |      3
+MF.20171106.55815.fits |                  standard | 131.48354485 | 13.26254631 |  HIP43018 | Y-spectroscopy | long2pos_specphot |     1,1 | 58063.64601077 | 1.01715579 |  2.90958 |       Y |        off | long2pos |       A |     7.0 |     326 |     1 |       3 |      2
+MF.20171106.55848.fits |                  standard | 131.50976761 | 13.26656604 |  HIP43018 | Y-spectroscopy | long2pos_specphot |     1,1 |  58063.6463985 | 1.01687002 |  2.90958 |       Y |        off | long2pos |       A |     0.0 |     327 |     1 |       4 |      5
+MF.20171106.55865.fits |                  standard | 131.50940682 | 13.26465357 |  HIP43018 | Y-spectroscopy | long2pos_specphot |     1,1 | 58063.64658831 | 1.01670561 |  2.90958 |       Y |        off | long2pos |       B |    -7.0 |     328 |     1 |       5 |      6
+MF.20171106.55883.fits |                  standard |  131.5101284 | 13.26847851 |  HIP43018 | Y-spectroscopy | long2pos_specphot |     1,1 | 58063.64680474 | 1.01651666 |  2.90958 |       Y |        off | long2pos |       A |     7.0 |     329 |     1 |       6 |      5
+data end
+

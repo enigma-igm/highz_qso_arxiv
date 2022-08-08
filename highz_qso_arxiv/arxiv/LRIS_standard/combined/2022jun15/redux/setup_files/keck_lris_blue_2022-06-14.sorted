@@ -1,0 +1,181 @@
+##########################################################
+Setup A
+    dispname: 300/5000
+    dichroic: 680
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd |     airmass | exptime | dichroic | frameno |
+| b220615_1000.fits |      bias | 247.343 |                46.0 | unknown |    clear |   direct |     1,1 | 59745.040844 |  1.38896912 |     0.0 |    clear |    1000 |
+| b220615_1023.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 300/5000 | sens1.fi |     1,1 | 59745.078109 | 13.37481353 |     3.0 |      680 |    1023 |
+| b220615_1024.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 300/5000 | sens1.fi |     1,1 |  59745.07877 | 13.37481353 |     3.0 |      680 |    1024 |
+| b220615_1025.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 300/5000 | sens1.fi |     1,1 | 59745.079431 | 13.37481353 |     3.0 |      680 |    1025 |
+##########################################################
+Setup B
+    dispname: 400/3400
+    dichroic: 680
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1039.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 | 59745.119836 | 1.41291034 |    60.0 |      680 |    1039 |
+| b220615_1040.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 |  59745.13366 | 1.41291034 |     1.0 |      680 |    1040 |
+| b220615_1053.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 | 59745.166639 | 1.41291034 |    60.0 |      680 |    1053 |
+| b220615_1054.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 | 59745.167955 | 1.41291034 |    60.0 |      680 |    1054 |
+##########################################################
+Setup C
+    dispname: 400/3400
+    dichroic: 500
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd |     airmass | exptime | dichroic | frameno |
+| b220615_1008.fits |  arc,tilt | 247.343 |                46.0 | unknown | 400/3400 | sens1.fi |     1,1 | 59745.057426 |  1.38896912 |     3.0 |      500 |    1008 |
+| b220615_1009.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/3400 | sens1.fi |     1,1 | 59745.058087 | 13.37481353 |     3.0 |      500 |    1009 |
+| b220615_1010.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/3400 | sens1.fi |     1,1 | 59745.058748 | 13.37481353 |     3.0 |      500 |    1010 |
+##########################################################
+Setup D
+    dispname: 400/3400
+    dichroic: 680
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd |     airmass | exptime | dichroic | frameno |
+| b220615_1011.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/3400 | sens1.fi |     1,1 | 59745.060448 | 13.37481353 |     3.0 |      680 |    1011 |
+| b220615_1012.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/3400 | sens1.fi |     1,1 | 59745.061109 | 13.37481353 |     3.0 |      680 |    1012 |
+| b220615_1013.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/3400 | sens1.fi |     1,1 | 59745.061776 | 13.37481353 |     3.0 |      680 |    1013 |
+##########################################################
+Setup E
+    dispname: 600/4000
+    dichroic: 680
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd |     airmass | exptime | dichroic | frameno |
+| b220615_1014.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/4000 | sens1.fi |     1,1 | 59745.065749 | 13.37481353 |     3.0 |      680 |    1014 |
+| b220615_1015.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/4000 | sens1.fi |     1,1 | 59745.066416 | 13.37481353 |     3.0 |      680 |    1015 |
+| b220615_1016.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/4000 | sens1.fi |     1,1 | 59745.067077 | 13.37481353 |     3.0 |      680 |    1016 |
+##########################################################
+Setup F
+    dispname: 600/4000
+    dichroic: 500
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd |     airmass | exptime | dichroic | frameno |
+| b220615_1017.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/4000 | sens1.fi |     1,1 | 59745.068735 | 13.37481353 |     3.0 |      500 |    1017 |
+| b220615_1018.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/4000 | sens1.fi |     1,1 | 59745.069397 | 13.37481353 |     3.0 |      500 |    1018 |
+| b220615_1019.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/4000 | sens1.fi |     1,1 | 59745.070058 | 13.37481353 |     3.0 |      500 |    1019 |
+##########################################################
+Setup G
+    dispname: 300/5000
+    dichroic: 500
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd |     airmass | exptime | dichroic | frameno |
+| b220615_1020.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 300/5000 | sens1.fi |     1,1 | 59745.075205 | 13.37481353 |     3.0 |      500 |    1020 |
+| b220615_1021.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 300/5000 | sens1.fi |     1,1 | 59745.075872 | 13.37481353 |     3.0 |      500 |    1021 |
+| b220615_1022.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 300/5000 | sens1.fi |     1,1 | 59745.076533 | 13.37481353 |     3.0 |      500 |    1022 |
+##########################################################
+Setup H
+    dispname: 1200/3400
+    dichroic: 680
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1026.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sens1.fi |     1,1 | 59745.086225 | 1.41291034 |     3.0 |      680 |    1026 |
+| b220615_1027.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sens1.fi |     1,1 | 59745.086887 | 1.41291034 |     3.0 |      680 |    1027 |
+| b220615_1028.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sens1.fi |     1,1 | 59745.087548 | 1.41291034 |     3.0 |      680 |    1028 |
+| b220615_1032.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sens1.fi |     1,1 | 59745.095646 | 1.41291034 |     3.0 |      680 |    1032 |
+##########################################################
+Setup I
+    dispname: 1200/3400
+    dichroic: 500
+      decker: sens1.fi
+     binning: 1,1
+#---------------------------------------------------------
+|          filename | frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1029.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sens1.fi |     1,1 | 59745.089513 | 1.41291034 |     3.0 |      500 |    1029 |
+| b220615_1030.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sens1.fi |     1,1 |  59745.09018 | 1.41291034 |     3.0 |      500 |    1030 |
+| b220615_1031.fits |  arc,tilt | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sens1.fi |     1,1 | 59745.090841 | 1.41291034 |     3.0 |      500 |    1031 |
+##########################################################
+Setup J
+    dispname: 1200/3400
+    dichroic: 500
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1033.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.108219 | 1.41291034 |    10.0 |      500 |    1033 |
+| b220615_1034.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.109506 | 1.41291034 |    30.0 |      500 |    1034 |
+| b220615_1035.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.111401 | 1.41291034 |    60.0 |      500 |    1035 |
+| b220615_1036.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.112717 | 1.41291034 |    60.0 |      500 |    1036 |
+| b220615_1059.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.185392 | 1.41291034 |   180.0 |      500 |    1059 |
+| b220615_1060.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.188096 | 1.41291034 |   180.0 |      500 |    1060 |
+##########################################################
+Setup K
+    dispname: 400/3400
+    dichroic: 500
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1037.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 | 59745.116188 | 1.41291034 |    60.0 |      500 |    1037 |
+| b220615_1038.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 | 59745.117504 | 1.41291034 |    60.0 |      500 |    1038 |
+| b220615_1041.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 | 59745.136033 | 1.41291034 |     1.0 |      500 |    1041 |
+| b220615_1042.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/3400 | sensfunc |     1,1 | 59745.136665 | 1.41291034 |     1.0 |      500 |    1042 |
+##########################################################
+Setup L
+    dispname: 600/4000
+    dichroic: 500
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1043.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/4000 | sensfunc |     1,1 | 59745.140041 | 1.41291034 |   120.0 |      500 |    1043 |
+| b220615_1044.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/4000 | sensfunc |     1,1 | 59745.142048 | 1.41291034 |   120.0 |      500 |    1044 |
+##########################################################
+Setup M
+    dispname: 300/5000
+    dichroic: 500
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1045.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 300/5000 | sensfunc |     1,1 | 59745.146109 | 1.41291034 |   120.0 |      500 |    1045 |
+| b220615_1046.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 300/5000 | sensfunc |     1,1 | 59745.148122 | 1.41291034 |   120.0 |      500 |    1046 |
+| b220615_1051.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 300/5000 | sensfunc |     1,1 |  59745.16089 | 1.41291034 |    45.0 |      500 |    1051 |
+| b220615_1052.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 300/5000 | sensfunc |     1,1 | 59745.162035 | 1.41291034 |    45.0 |      500 |    1052 |
+##########################################################
+Setup N
+    dispname: 300/5000
+    dichroic: 680
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1049.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 300/5000 | sensfunc |     1,1 | 59745.156486 | 1.41291034 |    45.0 |      680 |    1049 |
+| b220615_1050.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 300/5000 | sensfunc |     1,1 | 59745.157625 | 1.41291034 |    45.0 |      680 |    1050 |
+##########################################################
+Setup O
+    dispname: 600/4000
+    dichroic: 680
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target | dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1055.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/4000 | sensfunc |     1,1 | 59745.171692 | 1.41291034 |   120.0 |      680 |    1055 |
+| b220615_1056.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/4000 | sensfunc |     1,1 | 59745.173705 | 1.41291034 |   120.0 |      680 |    1056 |
+##########################################################
+Setup P
+    dispname: 1200/3400
+    dichroic: 680
+      decker: sensfunc
+     binning: 1,1
+#---------------------------------------------------------
+|          filename |                 frametype |                 ra |  dec |  target |  dispname |   decker | binning |          mjd |    airmass | exptime | dichroic | frameno |
+| b220615_1057.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.178498 | 1.41291034 |   180.0 |      680 |    1057 |
+| b220615_1058.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 1200/3400 | sensfunc |     1,1 | 59745.181207 | 1.41291034 |   180.0 |      680 |    1058 |
+##end

@@ -1,0 +1,2 @@
+| slit |                    name | maskdef_id | objname |   objra |  objdec | spat_pixpos | spat_fracpos | box_width | opt_fwhm |    s2n | maskdef_extract | wv_rms |
+| 1123 | SPAT1124-SLIT1123-DET01 |          1 |    posA | 0.02500 | 0.00556 |      1124.3 |        0.505 |      3.00 |    0.438 | 156.09 |           False |  0.064 |

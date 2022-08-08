@@ -53,7 +53,6 @@ B:
     science:
     - ../../raw/./r220423_00111.fits
     - ../../raw/./r220423_00112.fits
-    - ../../raw/./r220423_00114.fits
     - ../../raw/./r220423_00115.fits
     sky: []
     standard:

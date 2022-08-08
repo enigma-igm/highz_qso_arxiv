@@ -6,7 +6,7 @@
 spectrograph = keck_lris_red_mark4
 [reduce]
   [[findobj]]
-    snr_thresh=2.0
+    snr_thresh=1.0
 
 # Setup
 setup read

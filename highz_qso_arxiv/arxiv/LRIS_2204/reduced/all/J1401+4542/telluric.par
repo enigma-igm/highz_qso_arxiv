@@ -17,7 +17,7 @@
     polish = True
     disp = False
     objmodel = qso
-    redshift = 5.5
+    redshift = 5.46875
     delta_redshift = 0.1
     pca_file = qso_pca_1200_3100.fits
     npca = 8

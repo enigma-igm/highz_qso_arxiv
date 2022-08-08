@@ -1,10 +1,10 @@
 # Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
-# 2022-05-24
+# 2022-08-08
 
 # User-defined execution parameters
 [coadd1d]
-  coaddfile = J2212+2040_LRIS_localskysub_coadd1d.fits # Please set your output file name
-  sensfuncfile = LDS749B_LRIS_sens.fits # Please set your SENSFUNC file name. Only required for Echelle
+  coaddfile = J2212+2040_coadd.fits # Please set your output file name
+  sensfuncfile = GD153_lris_sens.fits # Please set your SENSFUNC file name. Only required for Echelle
   wave_method = linear # creates a uniformly space grid in lambda
 
 # This file includes all extracted objects. You need to figure out which object you want to 
@@ -14,7 +14,6 @@
 coadd1d read
  Science/spec1d_r220423_00111-J2212+2040_OFF_LRISr_20220423T143645.158.fits SPAT0939-SLIT1038-DET01
  Science/spec1d_r220423_00112-J2212+2040_OFF_LRISr_20220423T144221.773.fits SPAT0939-SLIT1038-DET01
-# Science/spec1d_r220423_00114-J2212+2040_OFF_LRISr_20220423T144851.437.fits SPAT0939-SLIT1038-DET01
  Science/spec1d_r220423_00115-J2212+2040_OFF_LRISr_20220423T145416.819.fits SPAT0939-SLIT1038-DET01
 coadd1d end
 

@@ -1,0 +1,57 @@
+# Auto-generated PypeIt file using PypeIt version: 1.7.1.dev51+g6687a9627
+# 2022-06-15
+
+# User-defined execution parameters
+[rdx]
+spectrograph = keck_lris_red_mark4
+[calibrations]
+  [[biasframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[tiltframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[traceframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[arcframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[illumflatframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[pixelflatframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[wavelengths]]
+    method=full_template
+    n_final=6
+  [[slitedges]]
+    sync_predict=nearest
+    det_min_spec_length=0.1
+    fit_min_spec_length=0.15
+
+# Setup
+setup read
+    Setup C:
+         dispname: 600/10000
+         dichroic: 680
+           decker: sens1.fi
+          binning: 2,2
+        dispangle: 24.183973
+          cenwave: 5685.936615
+              amp: 2
+setup end
+
+# Read in the data
+data read
+ path r
+|           filename | frametype |      ra |                 dec |  target |  dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r220615_01080.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.153346 |    1.41 | 2.000127488 |      680 | 24.187359 | 5687.707382 |   2 |    1080 |
+| r220615_01081.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.153806 |    1.41 | 2.000127488 |      680 | 24.187359 | 5687.707382 |   2 |    1081 |
+| r220615_01082.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 600/10000 | sensfunc |     2,2 | 59745.154279 |    1.41 | 2.000127488 |      680 | 24.187359 | 5687.707382 |   2 |    1082 |
+| r220615_01014.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 |  59745.06579 |   13.37 | 1.000126208 |      680 | 24.183973 | 5685.936615 |   2 |    1014 |
+| r220615_01015.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.066451 |   13.37 | 1.000126208 |      680 | 24.183973 | 5685.936615 |   2 |    1015 |
+| r220615_01016.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 600/10000 | sens1.fi |     2,2 | 59745.067124 |   13.37 | 1.000126208 |      680 | 24.183973 | 5685.936615 |   2 |    1016 |
+data end
+

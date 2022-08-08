@@ -1,0 +1,6 @@
+[telluric]
+  objmodel = qso 
+  redshift = 3.24 
+  pca_file = /Users/topol/github/PypeIt/pypeit/data/telluric/models/qso_pca_2200_5100.fits 
+  pca_lower = 2200 
+  pca_upper = 5100 

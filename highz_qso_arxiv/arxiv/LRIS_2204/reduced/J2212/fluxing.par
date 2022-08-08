@@ -25,7 +25,7 @@
     qadir = QA
     # Path to folder for performing reductions.  Default is the current
     # working directory.
-    redux_path = /Volumes/Extreme SSD/enigma/LRIS_2204/reduced/J2212_localskysub
+    redux_path = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2204/reduced/J2212
     # Ignore bad headers (NOT recommended unless you know it is safe).
     ignore_bad_headers = False
     # Restrict reduction to a set of slit DET:SPAT values (closest slit
@@ -2198,7 +2198,7 @@
         combine = False
         # If combining multiple frames, this string sets the output
         # filename of the combined datacube. If combine=False, the
-        # output filenames will be prefixed with "spec3d_"
+        # output filenames will be prefixed with "spec3d_*"
         output_filename = 
         # Filename of a standard star datacube. This cube will be used
         # to correct the relative scales of the slits, and to flux
@@ -2357,7 +2357,7 @@
     # the par['sensfunc']['extrap_blu'] and
     # par['sensfunc']['extrap_red'] this domain can be extended. If True
     # the code will blindly extrapolate.
-    extrap_sens = False
+    extrap_sens = True
     # Use an archived sensfunc to flux calibration
     use_archived_sens = False
 # Par set to control 1D coadds.  Only used in the after-burner script.
@@ -2494,7 +2494,7 @@
     # the offsets for coadding images. For slit spectroscopy, provide
     # the ``SLITID`` and the ``OBJID``, separated by comma, of the
     # selected object. For echelle spectroscopy, provide the
-    # ``ECH_OBJID`` of the selected object. See :doc:`out_spec1D`for
+    # ``ECH_OBJID`` of the selected object. See :doc:`out_spec1D` for
     # more info about ``SLITID``, ``OBJID`` and ``ECH_OBJID``. If this
     # parameter is not ``None``, it will be used to compute the offsets
     # only if ``offsets = auto``, and it will used to compute the
@@ -2987,4 +2987,4 @@
     wv_rms_thresh = None
     # The path where all coadded output files and report files will be
     # placed.
-    outdir = /Volumes/Extreme SSD/enigma/LRIS_2204/reduced/J2212_localskysub
+    outdir = /Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/LRIS_2204/reduced/J2212

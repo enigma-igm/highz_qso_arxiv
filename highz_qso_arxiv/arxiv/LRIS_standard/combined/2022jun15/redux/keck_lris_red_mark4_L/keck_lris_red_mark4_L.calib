@@ -1,0 +1,37 @@
+L:
+  --:
+    amp: '2'
+    binning: 2,2
+    cenwave: 7526.468487
+    decker: sensfunc
+    dichroic: '500'
+    dispangle: 25.470655
+    dispname: 400/8500
+  1:
+    align: []
+    arc:
+    - r/r220615_01041.fits
+    - r/r220615_01042.fits
+    - r/r220615_01043.fits
+    bias: []
+    dark: []
+    illumflat:
+    - r/r220615_01044.fits
+    - r/r220615_01045.fits
+    - r/r220615_01046.fits
+    pinhole: []
+    pixelflat:
+    - r/r220615_01044.fits
+    - r/r220615_01045.fits
+    - r/r220615_01046.fits
+    science: []
+    sky: []
+    standard: []
+    tilt:
+    - r/r220615_01041.fits
+    - r/r220615_01042.fits
+    - r/r220615_01043.fits
+    trace:
+    - r/r220615_01044.fits
+    - r/r220615_01045.fits
+    - r/r220615_01046.fits

@@ -1,0 +1,582 @@
+F:
+  --:
+    decker: LONGSLIT-46x1
+    dispname: Y-spectroscopy
+    filter1: Y
+  2:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.29495.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.29495.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.29495.fits.gz
+    trace: []
+  4:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.30271.fits.gz
+    - ../../raw/./MF.20191118.30943.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.30271.fits.gz
+    - ../../raw/./MF.20191118.30943.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.30271.fits.gz
+    - ../../raw/./MF.20191118.30943.fits.gz
+    trace: []
+  8:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.33822.fits.gz
+    - ../../raw/./MF.20191118.34492.fits.gz
+    - ../../raw/./MF.20191118.38824.fits.gz
+    - ../../raw/./MF.20191118.38950.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.33822.fits.gz
+    - ../../raw/./MF.20191118.34492.fits.gz
+    - ../../raw/./MF.20191118.38824.fits.gz
+    - ../../raw/./MF.20191118.38950.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.33822.fits.gz
+    - ../../raw/./MF.20191118.34492.fits.gz
+    - ../../raw/./MF.20191118.38824.fits.gz
+    - ../../raw/./MF.20191118.38950.fits.gz
+    trace: []
+  16:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.39696.fits.gz
+    - ../../raw/./MF.20191118.40352.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.39696.fits.gz
+    - ../../raw/./MF.20191118.40352.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.39696.fits.gz
+    - ../../raw/./MF.20191118.40352.fits.gz
+    trace: []
+  32:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.42213.fits.gz
+    - ../../raw/./MF.20191118.42866.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.42213.fits.gz
+    - ../../raw/./MF.20191118.42866.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.42213.fits.gz
+    - ../../raw/./MF.20191118.42866.fits.gz
+    trace: []
+  64:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.44344.fits.gz
+    - ../../raw/./MF.20191118.45000.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.44344.fits.gz
+    - ../../raw/./MF.20191118.45000.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.44344.fits.gz
+    - ../../raw/./MF.20191118.45000.fits.gz
+    trace: []
+  128:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.45957.fits.gz
+    - ../../raw/./MF.20191118.46603.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.45957.fits.gz
+    - ../../raw/./MF.20191118.46603.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.45957.fits.gz
+    - ../../raw/./MF.20191118.46603.fits.gz
+    trace: []
+  256:
+    align: []
+    arc:
+    - ../../raw/./MF.20191118.47544.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191118.47544.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191118.47544.fits.gz
+    trace: []
+  512:
+    align: []
+    arc:
+    - ../../raw/./MF.20191119.26551.fits.gz
+    - ../../raw/./MF.20191119.27183.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191119.26551.fits.gz
+    - ../../raw/./MF.20191119.27183.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191119.26551.fits.gz
+    - ../../raw/./MF.20191119.27183.fits.gz
+    trace: []
+  1024:
+    align: []
+    arc:
+    - ../../raw/./MF.20191119.28208.fits.gz
+    - ../../raw/./MF.20191119.28840.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191119.28208.fits.gz
+    - ../../raw/./MF.20191119.28840.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191119.28208.fits.gz
+    - ../../raw/./MF.20191119.28840.fits.gz
+    trace: []
+  2048:
+    align: []
+    arc:
+    - ../../raw/./MF.20191119.29889.fits.gz
+    - ../../raw/./MF.20191119.30521.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191119.29889.fits.gz
+    - ../../raw/./MF.20191119.30521.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191119.29889.fits.gz
+    - ../../raw/./MF.20191119.30521.fits.gz
+    trace: []
+  4096:
+    align: []
+    arc:
+    - ../../raw/./MF.20191119.31698.fits.gz
+    - ../../raw/./MF.20191119.32330.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191119.31698.fits.gz
+    - ../../raw/./MF.20191119.32330.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191119.31698.fits.gz
+    - ../../raw/./MF.20191119.32330.fits.gz
+    trace: []
+  8192:
+    align: []
+    arc:
+    - ../../raw/./MF.20191119.49498.fits.gz
+    - ../../raw/./MF.20191119.50131.fits.gz
+    - ../../raw/./MF.20191119.50972.fits.gz
+    - ../../raw/./MF.20191119.51605.fits.gz
+    - ../../raw/./MF.20191119.52253.fits.gz
+    - ../../raw/./MF.20191119.52435.fits.gz
+    - ../../raw/./MF.20191119.52618.fits.gz
+    - ../../raw/./MF.20191119.52801.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191119.49498.fits.gz
+    - ../../raw/./MF.20191119.50131.fits.gz
+    - ../../raw/./MF.20191119.50972.fits.gz
+    - ../../raw/./MF.20191119.51605.fits.gz
+    - ../../raw/./MF.20191119.52253.fits.gz
+    - ../../raw/./MF.20191119.52435.fits.gz
+    - ../../raw/./MF.20191119.52618.fits.gz
+    - ../../raw/./MF.20191119.52801.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191119.49498.fits.gz
+    - ../../raw/./MF.20191119.50131.fits.gz
+    - ../../raw/./MF.20191119.50972.fits.gz
+    - ../../raw/./MF.20191119.51605.fits.gz
+    - ../../raw/./MF.20191119.52253.fits.gz
+    - ../../raw/./MF.20191119.52435.fits.gz
+    - ../../raw/./MF.20191119.52618.fits.gz
+    - ../../raw/./MF.20191119.52801.fits.gz
+    trace: []
+  16384:
+    align: []
+    arc:
+    - ../../raw/./MF.20191119.55543.fits.gz
+    - ../../raw/./MF.20191119.55754.fits.gz
+    - ../../raw/./MF.20191119.55965.fits.gz
+    - ../../raw/./MF.20191119.56177.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191119.55543.fits.gz
+    - ../../raw/./MF.20191119.55754.fits.gz
+    - ../../raw/./MF.20191119.55965.fits.gz
+    - ../../raw/./MF.20191119.56177.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191119.55543.fits.gz
+    - ../../raw/./MF.20191119.55754.fits.gz
+    - ../../raw/./MF.20191119.55965.fits.gz
+    - ../../raw/./MF.20191119.56177.fits.gz
+    trace: []
+  32768:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.18157.fits.gz
+    - ../../raw/./MF.20191120.18490.fits.gz
+    - ../../raw/./MF.20191120.18840.fits.gz
+    - ../../raw/./MF.20191120.19173.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.18157.fits.gz
+    - ../../raw/./MF.20191120.18490.fits.gz
+    - ../../raw/./MF.20191120.18840.fits.gz
+    - ../../raw/./MF.20191120.19173.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.18157.fits.gz
+    - ../../raw/./MF.20191120.18490.fits.gz
+    - ../../raw/./MF.20191120.18840.fits.gz
+    - ../../raw/./MF.20191120.19173.fits.gz
+    trace: []
+  65536:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.19912.fits.gz
+    - ../../raw/./MF.20191120.20095.fits.gz
+    - ../../raw/./MF.20191120.20277.fits.gz
+    - ../../raw/./MF.20191120.20461.fits.gz
+    - ../../raw/./MF.20191120.20681.fits.gz
+    - ../../raw/./MF.20191120.20864.fits.gz
+    - ../../raw/./MF.20191120.21047.fits.gz
+    - ../../raw/./MF.20191120.21230.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.19912.fits.gz
+    - ../../raw/./MF.20191120.20095.fits.gz
+    - ../../raw/./MF.20191120.20277.fits.gz
+    - ../../raw/./MF.20191120.20461.fits.gz
+    - ../../raw/./MF.20191120.20681.fits.gz
+    - ../../raw/./MF.20191120.20864.fits.gz
+    - ../../raw/./MF.20191120.21047.fits.gz
+    - ../../raw/./MF.20191120.21230.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.19912.fits.gz
+    - ../../raw/./MF.20191120.20095.fits.gz
+    - ../../raw/./MF.20191120.20277.fits.gz
+    - ../../raw/./MF.20191120.20461.fits.gz
+    - ../../raw/./MF.20191120.20681.fits.gz
+    - ../../raw/./MF.20191120.20864.fits.gz
+    - ../../raw/./MF.20191120.21047.fits.gz
+    - ../../raw/./MF.20191120.21230.fits.gz
+    trace: []
+  131072:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.22373.fits.gz
+    - ../../raw/./MF.20191120.22556.fits.gz
+    - ../../raw/./MF.20191120.22741.fits.gz
+    - ../../raw/./MF.20191120.22923.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.22373.fits.gz
+    - ../../raw/./MF.20191120.22556.fits.gz
+    - ../../raw/./MF.20191120.22741.fits.gz
+    - ../../raw/./MF.20191120.22923.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.22373.fits.gz
+    - ../../raw/./MF.20191120.22556.fits.gz
+    - ../../raw/./MF.20191120.22741.fits.gz
+    - ../../raw/./MF.20191120.22923.fits.gz
+    trace: []
+  262144:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.23456.fits.gz
+    - ../../raw/./MF.20191120.23790.fits.gz
+    - ../../raw/./MF.20191120.24585.fits.gz
+    - ../../raw/./MF.20191120.24921.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.23456.fits.gz
+    - ../../raw/./MF.20191120.23790.fits.gz
+    - ../../raw/./MF.20191120.24585.fits.gz
+    - ../../raw/./MF.20191120.24921.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.23456.fits.gz
+    - ../../raw/./MF.20191120.23790.fits.gz
+    - ../../raw/./MF.20191120.24585.fits.gz
+    - ../../raw/./MF.20191120.24921.fits.gz
+    trace: []
+  524288:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.25568.fits.gz
+    - ../../raw/./MF.20191120.25901.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.25568.fits.gz
+    - ../../raw/./MF.20191120.25901.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.25568.fits.gz
+    - ../../raw/./MF.20191120.25901.fits.gz
+    trace: []
+  1048576:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.27025.fits.gz
+    - ../../raw/./MF.20191120.27359.fits.gz
+    - ../../raw/./MF.20191120.27698.fits.gz
+    - ../../raw/./MF.20191120.28031.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.27025.fits.gz
+    - ../../raw/./MF.20191120.27359.fits.gz
+    - ../../raw/./MF.20191120.27698.fits.gz
+    - ../../raw/./MF.20191120.28031.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.27025.fits.gz
+    - ../../raw/./MF.20191120.27359.fits.gz
+    - ../../raw/./MF.20191120.27698.fits.gz
+    - ../../raw/./MF.20191120.28031.fits.gz
+    trace: []
+  2097152:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.28915.fits.gz
+    - ../../raw/./MF.20191120.29247.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.28915.fits.gz
+    - ../../raw/./MF.20191120.29247.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.28915.fits.gz
+    - ../../raw/./MF.20191120.29247.fits.gz
+    trace: []
+  4194304:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.29875.fits.gz
+    - ../../raw/./MF.20191120.30207.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.29875.fits.gz
+    - ../../raw/./MF.20191120.30207.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.29875.fits.gz
+    - ../../raw/./MF.20191120.30207.fits.gz
+    trace: []
+  8388608:
+    align: []
+    arc:
+    - ../../raw/./MF.20191120.31279.fits.gz
+    - ../../raw/./MF.20191120.31611.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20191120.31279.fits.gz
+    - ../../raw/./MF.20191120.31611.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20191120.31279.fits.gz
+    - ../../raw/./MF.20191120.31611.fits.gz
+    trace: []
+  16777215:
+    align: []
+    arc: []
+    bias: []
+    dark:
+    - ../../raw/./MF.20191118.26932.fits.gz
+    - ../../raw/./MF.20191118.26953.fits.gz
+    - ../../raw/./MF.20191118.26973.fits.gz
+    - ../../raw/./MF.20191118.26994.fits.gz
+    - ../../raw/./MF.20191118.27013.fits.gz
+    - ../../raw/./MF.20191118.27034.fits.gz
+    - ../../raw/./MF.20191118.27055.fits.gz
+    - ../../raw/./MF.20191118.27076.fits.gz
+    - ../../raw/./MF.20191118.27096.fits.gz
+    - ../../raw/./MF.20191118.27117.fits.gz
+    - ../../raw/./MF.20191119.16107.fits.gz
+    - ../../raw/./MF.20191119.16127.fits.gz
+    - ../../raw/./MF.20191119.16147.fits.gz
+    - ../../raw/./MF.20191119.16168.fits.gz
+    - ../../raw/./MF.20191119.16189.fits.gz
+    - ../../raw/./MF.20191119.16209.fits.gz
+    - ../../raw/./MF.20191119.16229.fits.gz
+    - ../../raw/./MF.20191119.16249.fits.gz
+    - ../../raw/./MF.20191119.16269.fits.gz
+    - ../../raw/./MF.20191119.16290.fits.gz
+    - ../../raw/./MF.20191120.54044.fits.gz
+    - ../../raw/./MF.20191120.54065.fits.gz
+    - ../../raw/./MF.20191120.54085.fits.gz
+    - ../../raw/./MF.20191120.54106.fits.gz
+    - ../../raw/./MF.20191120.54126.fits.gz
+    - ../../raw/./MF.20191120.54147.fits.gz
+    - ../../raw/./MF.20191120.54167.fits.gz
+    - ../../raw/./MF.20191120.54188.fits.gz
+    - ../../raw/./MF.20191120.54208.fits.gz
+    - ../../raw/./MF.20191120.54229.fits.gz
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - ../../raw/./MF.20191118.26706.fits.gz
+    - ../../raw/./MF.20191118.26727.fits.gz
+    - ../../raw/./MF.20191118.26747.fits.gz
+    - ../../raw/./MF.20191118.26768.fits.gz
+    - ../../raw/./MF.20191118.26787.fits.gz
+    - ../../raw/./MF.20191118.26808.fits.gz
+    - ../../raw/./MF.20191118.26828.fits.gz
+    - ../../raw/./MF.20191118.26849.fits.gz
+    - ../../raw/./MF.20191118.26871.fits.gz
+    - ../../raw/./MF.20191118.26893.fits.gz
+    - ../../raw/./MF.20191119.15130.fits.gz
+    - ../../raw/./MF.20191119.15151.fits.gz
+    - ../../raw/./MF.20191119.15173.fits.gz
+    - ../../raw/./MF.20191119.15880.fits.gz
+    - ../../raw/./MF.20191119.15900.fits.gz
+    - ../../raw/./MF.20191119.15921.fits.gz
+    - ../../raw/./MF.20191119.15942.fits.gz
+    - ../../raw/./MF.20191119.15963.fits.gz
+    - ../../raw/./MF.20191119.16025.fits.gz
+    - ../../raw/./MF.20191119.16045.fits.gz
+    - ../../raw/./MF.20191119.16066.fits.gz
+    - ../../raw/./MF.20191120.53818.fits.gz
+    - ../../raw/./MF.20191120.53839.fits.gz
+    - ../../raw/./MF.20191120.53861.fits.gz
+    - ../../raw/./MF.20191120.53883.fits.gz
+    - ../../raw/./MF.20191120.53904.fits.gz
+    - ../../raw/./MF.20191120.53925.fits.gz
+    - ../../raw/./MF.20191120.53944.fits.gz
+    - ../../raw/./MF.20191120.53965.fits.gz
+    - ../../raw/./MF.20191120.53985.fits.gz
+    - ../../raw/./MF.20191120.54006.fits.gz

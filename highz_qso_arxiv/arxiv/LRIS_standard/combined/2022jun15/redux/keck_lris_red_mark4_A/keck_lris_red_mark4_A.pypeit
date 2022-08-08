@@ -1,0 +1,49 @@
+# Auto-generated PypeIt file using PypeIt version: 1.7.1.dev51+g6687a9627
+# 2022-06-14
+
+# User-defined execution parameters
+[rdx]
+spectrograph = keck_lris_red_mark4
+[calibrations]
+  [[biasframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[tiltframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[traceframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[arcframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[illumflatframe]]
+    [[[process]]]
+      use_biasimage=False
+  [[pixelflatframe]]
+    [[[process]]]
+      use_biasimage=False
+
+# Setup
+setup read
+    Setup A:
+         dispname: 400/8500
+         dichroic: 500
+           decker: sens1.fi
+          binning: 2,2
+        dispangle: 22.936794
+              amp: 2
+setup end
+
+# Read in the data
+data read
+ path r
+|           filename | frametype |      ra |                 dec |  target | dispname |   decker | binning |          mjd | airmass |     exptime | dichroic | dispangle | amp | frameno |
+| r220615_01008.fits |  arc,tilt | 247.343 |                46.0 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.057467 |    1.39 | 1.000126208 |      500 | 22.936794 |   2 |    1008 |
+| r220615_01009.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.058128 |   13.37 | 1.000126208 |      500 | 22.936794 |   2 |    1009 |
+| r220615_01010.fits |  arc,tilt | 247.343 | 0.03869444444444445 | unknown | 400/8500 | sens1.fi |     2,2 | 59745.058789 |   13.37 | 1.000126208 |      500 | 22.936794 |   2 |    1010 |
+| r220615_01047.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.114807 |    1.41 | 2.000127488 |      500 | 22.935665 |   2 |    1047 |
+| r220615_01048.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.115267 |    1.41 | 2.000127232 |      500 | 22.935665 |   2 |    1048 |
+| r220615_01049.fits | pixelflat,illumflat,trace | 232.99999999999997 | 45.0 | unknown | 400/8500 | sensfunc |     2,2 | 59745.115739 |    1.41 | 2.000127488 |      500 | 22.935665 |   2 |    1049 |
+data end
+

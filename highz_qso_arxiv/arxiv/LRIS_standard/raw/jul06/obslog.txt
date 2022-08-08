@@ -1,0 +1,166 @@
+parsing file bfoc0001.fits
+got instrume = LRISBLUE
+
+UT Date: 2022-07-06T00:53:39
+Observers: simha, gomez, yeh
+Data directory: /sdata245/lris5/2022jul06_B
+
+Filename           TargetName        UTC           Airmass SKYPA   PHYSPA  Lamps      Trapdoor Slitmask     Dichroic Grat/Gris Waveln Filter  Exp  Bin Window    Amps Object               
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bfoc0001.fits      unknown           00:53:36.02      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      1 1x1 FullFrame    4 dome flat            
+bfoc0002.fits      unknown           00:54:36.71      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      1 1x1 FullFrame    4 dome flat            
+bfoc0003.fits      unknown           00:55:38.42      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      1 1x1 FullFrame    4 dome flat            
+bfoc0004.fits      unknown           00:56:40.13      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      1 1x1 FullFrame    4 dome flat            
+bfoc0005.fits      unknown           00:57:41.33      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      1 1x1 FullFrame    4 dome flat            
+r220706_00001.fits unknown           00:57:48.47      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500       0 Clear      1 1x1 ?         ?    Focus loop           
+bfoc0006.fits      unknown           00:58:43.04      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      1 1x1 FullFrame    4 dome flat            
+rfoc_00002.fits    unknown           00:59:24.35      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500       0 Clear      1 1x1 ?         ?    Focus loop           
+bfoc0007.fits      unknown           00:59:45.26      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      1 1x1 FullFrame    4 dome flat            
+rfoc_00003.fits    unknown           01:02:22.85      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500       0 Clear      1 1x1 ?         ?    Focus loop           
+rfoc_00004.fits    unknown           01:06:22.55      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500       0 Clear      1 1x1 ?         ?    Focus loop           
+rfoc_00005.fits    unknown           01:07:33.95      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500       0 Clear      1 1x1 ?         ?    goir_test            
+rfoc_00006.fits    unknown           01:11:47.93      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500       0 Clear      1 1x1 ?         ?    goir_test            
+rfoc_00007.fits    unknown           01:14:23.98      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    goir_test            
+rfoc_00008.fits    unknown           01:15:18.05      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    goir_test            
+rfoc00009.fits     unknown           01:16:32.51      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    Focus loop           
+rfoc00010.fits     unknown           01:17:30.65      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    Focus loop           
+rfoc00011.fits     unknown           01:18:27.77      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    Focus loop           
+rfoc00012.fits     unknown           01:19:25.91      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    Focus loop           
+rfoc00013.fits     unknown           01:20:23.98      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    Focus loop           
+rfoc00014.fits     unknown           01:21:21.17      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    Focus loop           
+rfoc00015.fits     unknown           01:22:19.31      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7813 Clear      1 1x1 ?         ?    Focus loop           
+b220706_0008.fits  unknown           01:27:37.55      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      3 1x1 FullFrame    4 arc                  
+r220706_00016.fits unknown           01:27:40.61      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7500 Clear      1 1x1 ?         ?    arc                  
+b220706_0009.fits  unknown           01:28:40.28      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      3 1x1 FullFrame    4 arc                  
+r220706_00017.fits unknown           01:28:43.85      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7500 Clear      1 1x1 ?         ?    arc                  
+b220706_0010.fits  unknown           01:41:52.82      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00018.fits unknown           01:41:56.39      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7500 Clear      1 2x2 ?         ?    arc                  
+b220706_0011.fits  unknown           01:42:41.27      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00019.fits unknown           01:42:44.33      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7500 Clear      1 2x2 ?         ?    arc                  
+b220706_0012.fits  unknown           01:43:29.21      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/3400 .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00020.fits unknown           01:43:33.29      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    7500 Clear      1 2x2 ?         ?    arc                  
+b220706_0013.fits  unknown           01:49:45.59      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      300/5000  .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00021.fits unknown           01:49:49.67      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      600/7500    6001 Clear      1 2x2 ?         ?    arc                  
+b220706_0014.fits  unknown           01:50:34.04      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      300/5000  .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00022.fits unknown           01:50:37.61      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      600/7500    6001 Clear      1 2x2 ?         ?    arc                  
+b220706_0015.fits  unknown           01:51:21.98      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      300/5000  .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00023.fits unknown           01:51:25.55      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      600/7500    6001 Clear      1 2x2 ?         ?    arc                  
+r220706_00024.fits unknown           01:53:27.95      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      600/7500    9000 Clear      1 2x2 ?         ?    arc                  
+r220706_00025.fits unknown           01:54:07.73      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      600/7500    9000 Clear      1 2x2 ?         ?    arc                  
+r220706_00026.fits unknown           01:54:47.51      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      600/7500    9000 Clear      1 2x2 ?         ?    arc                  
+b220706_0016.fits  unknown           01:55:28.82      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/3400 .      clear      3 2x2 FullFrame    4 arc                  
+b220706_0017.fits  unknown           01:56:09.62      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/3400 .      clear      3 2x2 FullFrame    4 arc                  
+b220706_0018.fits  unknown           01:56:48.89      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/3400 .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00027.fits unknown           01:59:11.69      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    9000 Clear      1 2x2 ?         ?    arc                  
+r220706_00028.fits unknown           01:59:51.47      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    9000 Clear      1 2x2 ?         ?    arc                  
+b220706_0019.fits  unknown           02:00:10.85      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      300/5000  .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00029.fits unknown           02:00:31.25      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      600/7500    9000 Clear      1 2x2 ?         ?    arc                  
+b220706_0020.fits  unknown           02:00:51.14      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      300/5000  .      clear      3 2x2 FullFrame    4 arc                  
+b220706_0021.fits  unknown           02:01:31.43      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      300/5000  .      clear      3 2x2 FullFrame    4 arc                  
+r220706_00030.fits unknown           02:08:11.27      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    7999 Clear      1 2x2 ?         ?    arc                  
+r220706_00031.fits unknown           02:08:52.07      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    7999 Clear      1 2x2 ?         ?    arc                  
+r220706_00032.fits unknown           02:09:30.83      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    7999 Clear      1 2x2 ?         ?    arc                  
+r220706_00033.fits unknown           02:13:02.99      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    8998 Clear      1 2x2 ?         ?    arc                  
+r220706_00034.fits unknown           02:13:42.77      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    8998 Clear      1 2x2 ?         ?    arc                  
+r220706_00035.fits unknown           02:14:23.57      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    8998 Clear      1 2x2 ?         ?    arc                  
+r220706_00036.fits unknown           02:15:48.23      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    7498 Clear      1 2x2 ?         ?    arc                  
+r220706_00037.fits unknown           02:16:28.01      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    7498 Clear      1 2x2 ?         ?    arc                  
+r220706_00038.fits unknown           02:17:07.79      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      400/8500    7498 Clear      1 2x2 ?         ?    arc                  
+r220706_00039.fits unknown           02:20:54.23      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      400/8500    5998 Clear      1 2x2 ?         ?    arc                  
+r220706_00040.fits unknown           02:21:35.03      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      400/8500    5998 Clear      1 2x2 ?         ?    arc                  
+r220706_00041.fits unknown           02:22:14.81      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      400/8500    5998 Clear      1 2x2 ?         ?    arc                  
+r220706_00042.fits unknown           02:23:45.59      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      400/8500    8998 Clear      1 2x2 ?         ?    arc                  
+r220706_00043.fits unknown           02:24:25.37      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      400/8500    8998 Clear      1 2x2 ?         ?    arc                  
+r220706_00044.fits unknown           02:25:05.15      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      400/8500    8998 Clear      1 2x2 ?         ?    arc                  
+r220706_00045.fits unknown           02:30:13.19      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/7500   5999 Clear      1 2x2 ?         ?    arc                  
+r220706_00046.fits unknown           02:30:53.99      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/7500   5999 Clear      1 2x2 ?         ?    arc                  
+r220706_00047.fits unknown           02:31:33.77      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/7500   5999 Clear      1 2x2 ?         ?    arc                  
+r220706_00048.fits unknown           02:33:24.95      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/7500   8999 Clear      1 2x2 ?         ?    arc                  
+r220706_00049.fits unknown           02:34:04.73      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/7500   8999 Clear      1 2x2 ?         ?    arc                  
+r220706_00050.fits unknown           02:34:44.51      1.41  -23.07  -23.07 ?          closed   sens1.fi     500      1200/7500   8999 Clear      1 2x2 ?         ?    arc                  
+r220706_00051.fits unknown           02:37:20.57      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/7500   8999 Clear      1 2x2 ?         ?    arc                  
+r220706_00052.fits unknown           02:38:00.35      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/7500   8999 Clear      1 2x2 ?         ?    arc                  
+r220706_00053.fits unknown           02:38:40.13      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/7500   8999 Clear      1 2x2 ?         ?    arc                  
+r220706_00054.fits unknown           02:40:12.95      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/7500   7499 Clear      1 2x2 ?         ?    arc                  
+r220706_00055.fits unknown           02:40:53.75      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/7500   7499 Clear      1 2x2 ?         ?    arc                  
+r220706_00056.fits unknown           02:41:33.53      1.41  -23.07  -23.07 ?          closed   sens1.fi     680      1200/7500   7499 Clear      1 2x2 ?         ?    arc                  
+r220706_00057.fits unknown           02:45:26.09      1.41  -23.07  -23.07 ?          closed   sensfunc     680      1200/7500   7499 Clear      2 2x2 ?         ?    dflat                
+b220706_0022.fits  unknown           02:45:21.50      1.41  -23.07  -23.07 ?          closed   sensfunc     680      300/5000  .      clear     45 2x2 FullFrame    4 dflat                
+r220706_00058.fits unknown           02:46:06.89      1.41  -23.07  -23.07 ?          closed   sensfunc     680      1200/7500   7499 Clear      2 2x2 ?         ?    dflat                
+r220706_00059.fits unknown           02:47:02.99      1.41  -23.07  -23.07 ?          open     sensfunc     680      1200/7500   7499 Clear      2 2x2 ?         ?    dflat                
+r220706_00060.fits unknown           02:47:43.79      1.41  -23.07  -23.07 ?          open     sensfunc     680      1200/7500   7499 Clear      2 2x2 ?         ?    dflat                
+b220706_0023.fits  unknown           02:47:26.45      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     45 2x2 FullFrame    4 dflat                
+r220706_00061.fits unknown           02:48:24.59      1.41  -23.07  -23.07 ?          open     sensfunc     680      1200/7500   7499 Clear      2 2x2 ?         ?    dflat                
+b220706_0024.fits  unknown           02:48:49.07      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     45 2x2 FullFrame    4 dflat                
+b220706_0025.fits  unknown           02:50:10.67      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     30 2x2 FullFrame    4 dflat                
+r220706_00062.fits unknown           02:51:10.85      1.41  -23.07  -23.07 ?          open     sensfunc     680      1200/7500   8999 Clear      2 2x2 ?         ?    dflat                
+b220706_0026.fits  unknown           02:51:18.50      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     30 2x2 FullFrame    4 dflat                
+r220706_00063.fits unknown           02:51:51.65      1.41  -23.07  -23.07 ?          open     sensfunc     680      1200/7500   8999 Clear      2 2x2 ?         ?    dflat                
+b220706_0027.fits  unknown           02:52:19.19      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     20 2x2 FullFrame    4 dflat                
+r220706_00064.fits unknown           02:52:32.45      1.41  -23.07  -23.07 ?          open     sensfunc     680      1200/7500   8999 Clear      2 2x2 ?         ?    dflat                
+b220706_0028.fits  unknown           02:53:16.82      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     20 2x2 FullFrame    4 dflat                
+b220706_0029.fits  unknown           02:53:59.66      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     10 2x2 FullFrame    4 dflat                
+b220706_0030.fits  unknown           02:54:46.58      1.41  -23.07  -23.07 ?          open     sensfunc     680      300/5000  .      clear     10 2x2 FullFrame    4 dflat                
+r220706_00065.fits unknown           02:57:05.81      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/7500   8999 Clear      2 2x2 ?         ?    dflat                
+b220706_0031.fits  unknown           02:57:15.50      1.41  -23.07  -23.07 ?          open     sensfunc     500      300/5000  .      clear     10 2x2 FullFrame    4 dflat                
+r220706_00066.fits unknown           02:57:46.61      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/7500   8999 Clear      2 2x2 ?         ?    dflat                
+b220706_0032.fits  unknown           02:58:02.93      1.41  -23.07  -23.07 ?          open     sensfunc     500      300/5000  .      clear     10 2x2 FullFrame    4 dflat                
+r220706_00067.fits unknown           02:58:27.41      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/7500   8999 Clear      2 2x2 ?         ?    dflat                
+r220706_00068.fits unknown           03:00:16.55      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/7500   5999 Clear      2 2x2 ?         ?    dflat                
+r220706_00069.fits unknown           03:00:57.35      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/7500   5999 Clear      2 2x2 ?         ?    dflat                
+r220706_00070.fits unknown           03:01:37.13      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/7500   5999 Clear      2 2x2 ?         ?    dflat                
+b220706_0033.fits  unknown           03:01:55.49      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/3400 .      clear     20 2x2 FullFrame    4 dflat                
+b220706_0034.fits  unknown           03:02:53.12      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/3400 .      clear     20 2x2 FullFrame    4 dflat                
+b220706_0035.fits  unknown           03:04:24.41      1.41  -23.07  -23.07 ?          open     sensfunc     500      1200/3400 .      clear     30 2x2 FullFrame    4 dflat                
+b220706_0036.fits  unknown           03:08:56.75      1.41  -23.07  -23.07 ?          open     sensfunc     680      1200/3400 .      clear     60 2x2 FullFrame    4 dflat                
+r220706_00071.fits unknown           03:16:26.57      1.41  -23.07  -23.07 ?          open     sensfunc     680      600/7500    7500 Clear      2 2x2 ?         ?    dflat                
+r220706_00072.fits unknown           03:17:07.37      1.41  -23.07  -23.07 ?          open     sensfunc     680      600/7500    7500 Clear      2 2x2 ?         ?    dflat                
+r220706_00073.fits unknown           03:17:48.17      1.41  -23.07  -23.07 ?          open     sensfunc     680      600/7500    7500 Clear      2 2x2 ?         ?    dflat                
+r220706_00074.fits unknown           03:20:55.85      1.41  -23.07  -23.07 ?          open     sensfunc     680      THREE       9001 Clear      2 2x2 ?         ?    dflat                
+r220706_00075.fits unknown           03:21:36.65      1.41  -23.07  -23.07 ?          open     sensfunc     680      THREE       9001 Clear      2 2x2 ?         ?    dflat                
+r220706_00076.fits unknown           03:22:17.45      1.41  -23.07  -23.07 ?          open     sensfunc     680      THREE       9001 Clear      2 2x2 ?         ?    dflat                
+r220706_00077.fits unknown           03:24:40.25      1.41  -23.07  -23.07 ?          open     sensfunc     500      THREE       9001 Clear      2 2x2 ?         ?    dflat                
+r220706_00078.fits unknown           03:25:22.07      1.41  -23.07  -23.07 ?          open     sensfunc     500      THREE       9001 Clear      2 2x2 ?         ?    dflat                
+r220706_00079.fits unknown           03:26:01.85      1.41  -23.07  -23.07 ?          open     sensfunc     500      THREE       9001 Clear      2 2x2 ?         ?    dflat                
+r220706_00080.fits unknown           03:27:59.15      1.41  -23.07  -23.07 ?          open     sensfunc     500      THREE       6002 Clear      2 2x2 ?         ?    dflat                
+r220706_00081.fits unknown           03:28:39.95      1.41  -23.07  -23.07 ?          open     sensfunc     500      THREE       6002 Clear      2 2x2 ?         ?    dflat                
+r220706_00082.fits unknown           03:29:20.75      1.41  -23.07  -23.07 ?          open     sensfunc     500      THREE       6002 Clear      2 2x2 ?         ?    dflat                
+r220706_00083.fits unknown           03:34:59.39      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    8999 Clear      2 2x2 ?         ?    dflat                
+r220706_00084.fits unknown           03:35:40.19      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    8999 Clear      2 2x2 ?         ?    dflat                
+r220706_00085.fits unknown           03:36:20.99      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    8999 Clear      2 2x2 ?         ?    dflat                
+r220706_00086.fits unknown           03:37:53.81      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    5998 Clear      2 2x2 ?         ?    dflat                
+r220706_00087.fits unknown           03:38:34.61      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    5998 Clear      2 2x2 ?         ?    dflat                
+r220706_00088.fits unknown           03:39:15.41      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    5998 Clear      2 2x2 ?         ?    dflat                
+r220706_00089.fits unknown           03:40:44.15      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    7499 Clear      2 2x2 ?         ?    dflat                
+r220706_00090.fits unknown           03:41:24.95      1.41  -23.07  -23.07 ?          open     sensfunc     500      400/8500    7499 Clear      2 2x2 ?         ?    dflat                
+r220706_00091.fits unknown           03:43:45.71      1.41  -23.07  -23.07 ?          open     sensfunc     680      400/8500    7499 Clear      2 2x2 ?         ?    dflat                
+r220706_00092.fits unknown           03:44:26.51      1.41  -23.07  -23.07 ?          open     sensfunc     680      400/8500    7499 Clear      2 2x2 ?         ?    dflat                
+r220706_00093.fits unknown           03:45:07.31      1.41  -23.07  -23.07 ?          open     sensfunc     680      400/8500    7499 Clear      2 2x2 ?         ?    dflat                
+r220706_00094.fits unknown           03:46:48.29      1.41  -23.07  -23.07 ?          open     sensfunc     680      400/8500    8999 Clear      2 2x2 ?         ?    dflat                
+r220706_00095.fits unknown           03:47:28.07      1.41  -23.07  -23.07 ?          open     sensfunc     680      400/8500    8999 Clear      2 2x2 ?         ?    dflat                
+r220706_00096.fits unknown           03:48:08.87      1.41  -23.07  -23.07 ?          open     sensfunc     680      400/8500    8999 Clear      2 2x2 ?         ?    dflat                
+b220706_0037.fits  unknown           04:09:38.66      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      clear     .      G          1 2x2 FullFrame    4 Direct image mask HM3b.fil 
+r220706_00097.fits unknown           04:11:54.83      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      THREE         36 Clear      2 2x2 ?         ?    Direct image mask HM3b.fil 
+r220706_00098.fits unknown           04:14:32.93      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      THREE         36 R          1 2x2 ?         ?    Direct image mask HM3b.fil 
+r220706_00099.fits unknown           04:16:46.55      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      THREE         36 R         10 2x2 ?         ?    Direct image mask HM3b.fil 
+b220706_0038.fits  unknown           04:23:44.75      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      600/4000  .      clear      1 2x2 FullFrame    4 HgNeArCdZnKrXe arc HM3b.fil 
+r220706_00100.fits unknown           04:23:40.67      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      THREE       6002 Clear      1 2x2 ?         ?    HgNeArCdZnKrXe arc HM3b.fil 
+b220706_0039.fits  unknown           04:24:32.69      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      600/4000  .      clear      1 2x2 FullFrame    4 internal flat HM3b.fil 
+r220706_00101.fits unknown           04:24:28.61      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      THREE       6002 Clear      1 2x2 ?         ?    internal flat HM3b.fil 
+b220706_0040.fits  unknown           04:25:10.94      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      600/4000  .      clear      1 2x2 FullFrame    4 internal flat HM3b.fil 
+r220706_00102.fits unknown           04:25:08.39      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      THREE       6002 Clear      1 2x2 ?         ?    internal flat HM3b.fil 
+b220706_0041.fits  unknown           04:25:49.19      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      600/4000  .      clear      1 2x2 FullFrame    4 internal flat HM3b.fil 
+r220706_00103.fits unknown           04:25:49.19      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      THREE       6002 Clear      1 2x2 ?         ?    internal flat HM3b.fil 
+b220706_0042.fits  unknown           04:29:00.95      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      600/4000  .      clear     30 2x2 FullFrame    4 internal flat HM3b.fil 
+b220706_0043.fits  unknown           04:30:08.27      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      600/4000  .      clear     30 2x2 FullFrame    4 internal flat HM3b.fil 
+b220706_0044.fits  unknown           04:31:15.59      1.41  -23.07  -23.07 ?          closed   HM3b.fil     460      600/4000  .      clear     30 2x2 FullFrame    4 internal flat HM3b.fil 
+r220706_00104.fits unknown           04:32:53.51      1.41  -23.07  -23.07 ?          open     HM3b.fil     460      THREE       6002 Clear      1 2x2 ?         ?    internal flat HM3b.fil 
+b220706_0045.fits  unknown           04:34:05.93      1.41  -23.07  -23.07 ?          open     HM3b.fil     460      600/4000  .      clear     30 2x2 FullFrame    4 internal flat HM3b.fil 
+r220706_00105.fits unknown           04:33:53.69      1.41  -23.07  -23.07 ?          open     HM3b.fil     460      THREE       6002 Clear     60 2x2 ?         ?    internal flat HM3b.fil 
+r220706_00106.fits unknown           04:35:58.13      1.41  -23.07  -23.07 ?          open     HM3b.fil     460      THREE       6002 Clear     40 2x2 ?         ?    internal flat HM3b.fil 
+r220706_00107.fits unknown           04:37:16.67      1.41  -23.07  -23.07 ?          open     HM3b.fil     460      THREE       6002 Clear     40 2x2 ?         ?    internal flat HM3b.fil 
+r220706_00108.fits unknown           04:38:34.19      1.41  -23.07  -23.07 ?          open     HM3b.fil     460      THREE       6002 Clear     40 2x2 ?         ?    internal flat HM3b.fil 
+b220706_0046.fits  unknown           04:36:13.43      1.41  -23.07  -23.07 ?          open     HM3b.fil     460      600/4000  .      clear    300 2x2 FullFrame    4 internal flat HM3b.fil 
+r220706_00109.fits eng431            08:37:42.53      1.17    0.00   58.48 ?          closed   HM3b.fil     460      THREE         36 R         10 1x1 ?         ?    internal flat HM3b.fil 
+r220706_00110.fits eng431            08:39:41.87      1.17    0.00   58.79 ?          closed   HM3b.fil     460      THREE         36 R         10 1x1 ?         ?    internal flat HM3b.fil 
+r220706_00111.fits eng431            09:19:04.19      1.11    0.00   63.92 ?          closed   HM3b.fil     460      THREE         36 R          1 2x2 ?         ?    internal flat HM3b.fil 

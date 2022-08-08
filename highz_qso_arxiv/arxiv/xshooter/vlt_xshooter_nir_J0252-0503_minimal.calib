@@ -1,0 +1,71 @@
+A:
+  --:
+    arm: NIR
+  4:
+    align: []
+    arc:
+    - '"./folder_Daming/./XSHOO.2019-08-31T07:33:38.994.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-31T08:22:43.279.fits"'
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - '"./folder_Daming/./XSHOO.2019-08-31T07:33:38.994.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-31T08:22:43.279.fits"'
+    sky: []
+    standard:
+    - '"./folder_Daming/./XSHOO.2019-08-30T23:08:12.757.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T23:12:34.328.fits"'
+    tilt:
+    - '"./folder_Daming/./XSHOO.2019-08-31T07:33:38.994.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-31T08:22:43.279.fits"'
+    trace: []
+  8:
+    align: []
+    arc:
+    - '"./folder_Daming/./XSHOO.2019-08-31T07:54:45.488.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-31T08:43:50.439.fits"'
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - '"./folder_Daming/./XSHOO.2019-08-31T07:54:45.488.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-31T08:43:50.439.fits"'
+    sky: []
+    standard: []
+    tilt:
+    - '"./folder_Daming/./XSHOO.2019-08-31T07:54:45.488.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-31T08:43:50.439.fits"'
+    trace: []
+  12:
+    align: []
+    arc: []
+    bias: []
+    dark:
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:03:17.960.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:04:01.186.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:04:45.105.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:05:27.637.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:06:10.863.fits"'
+    illumflat: []
+    pinhole: []
+    pixelflat:
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:02:54.961.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:03:38.880.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:04:23.492.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:05:06.024.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:05:48.556.fits"'
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:02:54.961.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:03:38.880.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:04:23.492.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:05:06.024.fits"'
+    - '"./folder_Daming/./XSHOO.2019-08-30T14:05:48.556.fits"'

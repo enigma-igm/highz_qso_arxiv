@@ -1,0 +1,2 @@
+| slit |                    name | spat_pixpos | spat_fracpos | box_width | opt_fwhm |    s2n | wv_rms |
+| 1021 | SPAT0861-SLIT1021-DET01 |       860.9 |        0.421 |      3.00 |    1.046 | 128.06 |  0.092 |
