@@ -6,6 +6,15 @@ import sys
 import fnmatch
 
 def create_coadd2d_file(pypeit_file, spectrograph="keck_mosfire"):
+    """use this in a reduction folder (like `all`) to create individual `*_coadd2d.cfg` file for each target in `coadd2d` folder.
+
+    >>> from highz_qso_arxiv.util import create_coadd2d_file
+    >>> create_coadd2d_file("keck_mosfire_D.pypeit", spectrograph="keck_mosfire")
+
+    Args:
+        pypeit_file (_type_): _description_
+        spectrograph (str, optional): _description_. Defaults to "keck_mosfire".
+    """
     header = "[rdx]\n" + \
     f"  spectrograph = {spectrograph} \n" + \
      "  detnum = 1 \n" + \

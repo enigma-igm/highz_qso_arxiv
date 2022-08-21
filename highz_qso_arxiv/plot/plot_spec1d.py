@@ -1,4 +1,5 @@
-from ..util import ivarsmooth, inverse
+from ..util.spec1dutil import rescale
+from ..util import ivarsmooth, inverse, get_project_root
 
 import os
 import numpy as np
@@ -11,8 +12,9 @@ warnings.filterwarnings("ignore")
 
 from IPython import embed
 
-ARXIV_PATH = "/Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/arxiv/"
-RESOURCE_PATH = "/Volumes/Extreme SSD/highz_qso_arxiv/highz_qso_arxiv/resource/"
+path = get_project_root()
+ARXIV_PATH = os.path.join(path, "arxiv")
+RESOURCE_PATH = os.path.join(path, "resource")
 
 def plot_template_dat(model='qso', redshift=7., star_type='L0', display=True):
     """Available template models:
@@ -87,7 +89,10 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     axis.plot(wave[mask], flux_std, lw=1, color="red", alpha=0.6)
     axis.set_xlabel(r"wavelength ($\AA$)", fontsize=20)
     axis.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=20)
-    axis.set_xlim(np.min(wave[mask]), np.max(wave[mask]))
+    xmin = np.min(wave[mask])
+    xmax = np.max(wave[mask])
+    axis.hlines(0, xmin, xmax, color="cyan", alpha=0.8, lw=1, ls='dashed')
+    axis.set_xlim(xmin, xmax)
 
     # always want to include the noise vector
     
@@ -102,31 +107,35 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     axis.set_ylim(ymin, ymax)
 
     if template:
-        from scipy.interpolate import interp1d
-        templates = ["L0", "L0.5", "L1", "L1.5", "L2", "L3", "L5", "L8", "L6",
-                     "M4.5", "M5", "M6", "M7", "M8", "M9", "M9.5",
-                     "T0"]
+        # templates = ["L0", "L0.5", "L1", "L1.5", "L2", "L3", "L5", "L8", "L6",
+        #              "M4.5", "M5", "M6", "M7", "M8", "M9", "M9.5",
+        #              "T0"]
+        templates = ["L0.5", "L6",   "M7",
+                     "L1",   "L7.5", "M8",
+                     "L2",   "L8",   "M9.5",
+                     "L3.5", "M4.5", "M9",
+                     "L3",   "M5",   "T2",
+                     "L4.5", "M6.5", "T4.5",
+                     "L5",   "M6"]
+
         chi_sq = np.inf
         for template in templates:
-            # TODO: bin multiple templates for each type
-            tab = ascii.read(RESOURCE_PATH+f"dwarf/keck_lris_{template}_1.dat")
-            wave_template, flux_template = tab["col1"], tab["col2"]/1e-17
-            template_interp_func = interp1d(wave_template, flux_template, kind="cubic")
-            mask_for_scale = wave < min(np.max(wave_template), np.max(wave))
+            # tab = ascii.read(os.path.join(RESOURCE_PATH, f"dwarf/keck_lris_{template}_1.dat"))
+            try:
+                tab = ascii.read(os.path.join(RESOURCE_PATH, f"dwarf/irtf_{template}_1.dat"))
+            except:
+                print(template)
+            # wave_template, flux_template = tab["col1"], tab["col2"]/1e-17
+            wave_template, flux_template = tab["col1"]*1e4, tab["col2"]
 
-            # interpolate the template to the same wavelength as the data
-            flux_template_interp = template_interp_func(wave[mask_for_scale])
-
-            # calculate the scale factor
-            # d(chi_sq)/d(scale_factor) = 0
-            scale = np.sum(flux_sm[mask_for_scale]*flux_template_interp/flux_std[mask_for_scale]**2) / \
-                    np.sum(flux_template_interp**2/flux_std[mask_for_scale]**2)
-            chi_sq_new = np.sum((flux_sm[mask_for_scale]-scale*flux_template_interp)**2/flux_std[mask_for_scale]**2)
+            flux_template_scaled, chi_sq_new = rescale(wave_template, flux_template, 
+                                                       wave, flux_sm, flux_std)
 
             # choose the template with the lowest chi_sq
+            # print(template, chi_sq_new)
             if chi_sq_new < chi_sq:
                 chi_sq = chi_sq_new
-                best_template = (wave[mask_for_scale], scale*flux_template_interp, template, chi_sq)
+                best_template = (wave_template, flux_template_scaled, template, chi_sq)
         axis.plot(best_template[0], best_template[1], alpha=0.8, label=best_template[2])  
                 #   label=best_template[2]+"\n"+r"$\chi^2=$"+str(round(best_template[3],2)))
 

@@ -1,5 +1,6 @@
 import imp
 import numpy as np
+from pathlib import Path
 from astropy.time import Time
 
 from IPython import embed
@@ -71,3 +72,6 @@ def unix_to_mjd(t_in_unix):
 def unix_to_iso(t_in_unix):
     t = Time(t_in_unix, format="unix")
     return t.iso
+
+def get_project_root() -> Path:
+    return Path(__file__).parent.parent

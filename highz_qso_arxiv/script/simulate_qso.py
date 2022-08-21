@@ -1,5 +1,7 @@
 
+from cProfile import label
 import os
+import speclite
 import numpy as np
 import astropy.units as u
 import astropy.constants as c
@@ -9,9 +11,9 @@ from scipy import interpolate
 from astropy.stats import sigma_clipped_stats
 from astropy.cosmology import FlatLambdaCDM, z_at_value
 
-from highz_qso_arxiv.resource.filters import ukirt
+from highz_qso_arxiv.resource.filters import ukirt_J, hsc_z, decam_z, sdss_i
 from highz_qso_arxiv.util.spec2dutil import gauss_comb
-from highz_qso_arxiv.util import luminosity_to_flux, redshift_to_distance
+from highz_qso_arxiv.util import luminosity_to_flux, redshift_to_distance, get_project_root, ivarsmooth
 from highz_qso_arxiv.util.spec1dutil import add_gp_trough, add_damping_wing, add_telluric, extend_to_lower
 
 from pypeit import io
@@ -28,20 +30,21 @@ from pypeit.spectrographs.util import load_spectrograph
 from pypeit.images.detector_container import DetectorContainer
 from pypeit.core import procimg
 
-
 from IPython import embed
 
 cosmo = FlatLambdaCDM(H0=70, Om0=0.3)
 
+root = get_project_root()
+
 def load_quasar():
     # TODO: unit of wavelength
-    dat = ascii.read("../resource/Selsing2015.dat")
+    dat = ascii.read(os.path.join(root, 'resource/Selsing2015.dat'))
     wl_rest, flux = dat["col1"], dat["col2"] * 1e-17 * u.erg / u.s / u.cm**2 / u.AA
     return wl_rest, flux
 
 def load_star():
-    dat = ascii.read(f"../resource/dwarf/L1_2MASS0746+20.dat")
-    wl_obs, flux = dat["col1"], dat["col2"] * u.erg / u.s / u.cm**2 / u.AA
+    dat = ascii.read(os.path.join(root, f'resource/dwarf/combine_lris_M9.dat'))
+    wl_obs, flux = dat["wave"], dat["flux"] * u.erg / u.s / u.cm**2 / u.AA
     return wl_obs, flux
 
 def parse_quasar(wave_rest, flux, redshift, m_1450=None, M_1450=None, m_J=None):
@@ -64,7 +67,7 @@ def parse_quasar(wave_rest, flux, redshift, m_1450=None, M_1450=None, m_J=None):
         flam_1450 = mAB.to(1e-17 * u.erg/u.s/u.cm**2/u.AA, u.spectral_density(1450*u.AA*(1+redshift)))
         scale = flam_1450 / flam_1450_temp
     elif m_J != None:
-        m_J_temp = ukirt.get_ab_magnitudes(flux, wave_obs*u.AA)[0][0]
+        m_J_temp = ukirt_J.get_ab_magnitudes(flux, wave_obs*u.AA)[0][0]
         scale = 10**(-(m_J-m_J_temp)/2.5)
     else:
         raise ValueError('m_1450 or M_1450 or m_J must be specified')
@@ -77,10 +80,15 @@ def parse_star(wave_rest, flux, m_J):
     """
     Parse star spectrum
     """
-    m_J_temp = ukirt.get_ab_magnitudes(flux, wave_rest*u.AA)[0][0]
+    # flux, wl = sdss_i.pad_spectrum(flux.value, wave_rest.value, method='zero')
+    flux, wl = ukirt_J.pad_spectrum(flux.value, wave_rest.value, method='zero')
+    # m_i = m_J + 1.99 + 0.82 + 0.96 + 0.37 - 0.938 # testing
+    # m_i_temp = sdss_i.get_ab_magnitudes(flux*u.erg/u.s/u.cm**2/u.AA, wl*u.AA)[0][0]
+    m_J_temp = ukirt_J.get_ab_magnitudes(flux, wl*u.AA)[0][0]
     scale = 10**(-(m_J-m_J_temp)/2.5)
-    flux = flux * scale
-    return wave_rest, flux
+    # scale = 10**(-(m_i-m_i_temp)/2.5)
+    flux = flux * scale * u.erg/u.s/u.cm**2/u.AA
+    return wl, flux
 
 def flux_to_Nlam(flux, wave_obs, sens):
     """
@@ -102,8 +110,9 @@ def simple_slit_loss(slitwidth, fwhm, platescale, binning):
 
 def simulate(sens, spec2DObj, sobjs, header, 
              trace_id, offset, exptime, load_func, parse_func, 
-             telluric=None, damping_wing=None,
-             show_trace=False, debug=False, **kwargs):
+             telluric=None, damping_wing=None, slitloss=True,
+             show_trace=False, debug=False, verbose=True, **kwargs):
+    info = {}
     sobjs_fake = sobjs[trace_id].copy()
     sobjs_fake.TRACE_SPAT = sobjs_fake.TRACE_SPAT + offset
     sobjs_fake_noiseless = sobjs_fake.copy()
@@ -111,17 +120,12 @@ def simulate(sens, spec2DObj, sobjs, header,
 
     wave, flux = load_func()
     wave, flux = parse_func(wave, flux, **kwargs)
-    if debug:
-        plt.plot(wave, flux)
-        plt.show()
     wl, Nlam = flux_to_Nlam(flux, wave, sens)
-    if debug:
-        plt.plot(wl, Nlam)
-        plt.show()
-    slit_trans = simple_slit_loss(1, sobjs_fake.FWHMFIT, 0.123, 2)
-    print('Median Slit transmission:', np.median(slit_trans))
-    func_slit_trans = interpolate.interp1d(sobjs_fake.BOX_WAVE, slit_trans, fill_value="extrapolate")
-    Nlam = Nlam * func_slit_trans(wl)
+    if slitloss:
+        slit_trans = simple_slit_loss(1, sobjs_fake.FWHMFIT, 0.123, 2)
+        print('Median Slit transmission:', np.median(slit_trans))
+        func_slit_trans = interpolate.interp1d(sobjs_fake.BOX_WAVE, slit_trans, fill_value="extrapolate")
+        Nlam = Nlam * func_slit_trans(wl)
     if telluric is not None:
         wl, Nlam = add_telluric(wl, Nlam, telluric)
 
@@ -130,26 +134,28 @@ def simulate(sens, spec2DObj, sobjs, header,
     # Boxcar extract a new object at this location to get the boxcar wavelengths
     # TODO think about base_var, count_scale and noise_floor
     extract.extract_boxcar(spec2DObj.sciimg, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel, sobjs_fake,
-                        base_var=None, count_scale=None, noise_floor=None)
+                           base_var=None, count_scale=None, noise_floor=None)
 
     # Interpolate Nlam onto the sobjs_fake.BOX_WAVE
-    Nlam_interp = interpolate.interp1d(wl, Nlam)
+    Nlam_interp = interpolate.interp1d(wl, Nlam, fill_value=0, bounds_error=False)
     mask = (sobjs_fake.BOX_WAVE > wl[0]) & (sobjs_fake.BOX_WAVE < wl[-1])
     try:
         Nlam_boxwave = Nlam_interp(sobjs_fake.BOX_WAVE)
     except ValueError:
+        embed()
         raise ValueError("Nlam_interp failed")
     delta_wave = wvutils.get_delta_wave(sobjs_fake.BOX_WAVE, (sobjs_fake.BOX_WAVE > 1.0))
     Npix_boxwave = Nlam_boxwave * exptime * delta_wave
 
     # Create a 2d image with an object profile comprising a Gaussian centered on TRACE_SPAT
-    img_gaussians = gauss_comb(spec2DObj.sciimg.shape, sobjs_fake.TRACE_SPAT, sig=sobjs_fake.FWHM/2.355)
+    img_gaussians = gauss_comb(spec2DObj.sciimg.shape, sobjs_fake.TRACE_SPAT, sig=sobjs_fake.FWHMFIT/2.355)
 
     # Force the extract_boxcar of the 2d image to equal to the total counts/per second/per real data pixel
     flux_gaussians = moment1d(img_gaussians, sobjs_fake.TRACE_SPAT, sobjs_fake.BOX_RADIUS * 2, order=[0])[0]
     factor_fake = Npix_boxwave / flux_gaussians
     img_fake = (img_gaussians.T * factor_fake).T
-    print('FWHM:', sobjs_fake.FWHM)
+    if verbose:
+        print('FWHM:', sobjs_fake.FWHM)
 
     # Make a plot of fake quasar
     image = (spec2DObj.sciimg - spec2DObj.skymodel) * gpm
@@ -161,21 +167,25 @@ def simulate(sens, spec2DObj, sobjs, header,
                                            waveimg=spec2DObj.waveimg,
                                            cuts=(cut_min, cut_max))
 
-    # before calculating signal-to-noise, we first calculate the "snr" with zero exptime
-    wave_min = (1 + kwargs['redshift']) * 1217
-    wave_max = (1 + kwargs['redshift']) * 1227
-    print("wave_min:", wave_min)
-    print("wave_max:", wave_max)
-    snr_mask = (sobjs_fake.BOX_WAVE < wave_max) & (sobjs_fake.BOX_WAVE > wave_min)
-    snr_N = len(sobjs_fake.BOX_WAVE[snr_mask])
-    snr_signal = np.sum(sobjs_fake.BOX_COUNTS[snr_mask]) / snr_N
-    snr_variance = np.sum(inverse(sobjs_fake.BOX_COUNTS_IVAR[snr_mask])) / snr_N**2
-    snr_zero = snr_signal / np.sqrt(snr_variance)
-    print('SNR N:', snr_N)
-    print('SNR zero:', snr_zero)
+    # before calculating signal-to-noise, we first define the region used in the calculation
+    try:
+        wave_min = (1 + kwargs['redshift']) * 1220
+        wave_max = (1 + kwargs['redshift']) * 1230
+    except KeyError:
+        wave_min = 9500
+        wave_max = 9600
+    if verbose:
+        print("wave_min:", wave_min)
+        print("wave_max:", wave_max)
+    snr_mask_fake = (sobjs_fake.BOX_WAVE < wave_max) & (sobjs_fake.BOX_WAVE > wave_min)
+    snr_N_fake = len(sobjs_fake.BOX_WAVE[snr_mask_fake])
+    snr_mask_target = (sobjs[trace_id].BOX_WAVE < wave_max) & (sobjs[trace_id].BOX_WAVE > wave_min)
+    snr_N_target = len(sobjs[trace_id].BOX_WAVE[snr_mask_target])
+    if verbose:
+        print('SNR N:', snr_N_fake)
 
     # extract again to update sobjs_fake
-    _base_var = None
+    _base_var = inverse(spec2DObj.ivarmodel) - (spec2DObj.skymodel) - (spec2DObj.objmodel)
     _count_scale = None
     #adderr = 0.01
     #embed()
@@ -184,53 +194,103 @@ def simulate(sens, spec2DObj, sobjs, header,
     #rel_diff = np.mean((ivarmodel - spec2DObj.ivarmodel)/spec2DObj.ivarmodel)
     # JFH new line. Compare this to your noise realization
     extract.extract_boxcar(spec2DObj.skymodel+img_fake, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel,
-                           sobjs_fake_noiseless, base_var=None, count_scale=None, noise_floor=None)
+                           sobjs_fake_noiseless, base_var=_base_var, count_scale=None, noise_floor=None)
     extract.extract_boxcar(spec2DObj.sciimg+img_fake, spec2DObj.ivarmodel, gpm, spec2DObj.waveimg, spec2DObj.skymodel,
-                           sobjs_fake, base_var=None, count_scale=None, noise_floor=None)
-    snr_signal = np.sum(sobjs_fake.BOX_COUNTS[snr_mask]) / snr_N
-    snr_variance = np.sum(inverse(sobjs_fake.BOX_COUNTS_IVAR[snr_mask])) / snr_N**2
-    snr = snr_signal / np.sqrt(snr_variance)
-    print('SNR:', snr-snr_zero)
+                           sobjs_fake, base_var=_base_var, count_scale=None, noise_floor=None)
+    snr_signal_fake = np.sum(sobjs_fake_noiseless.BOX_COUNTS[snr_mask_fake]) / snr_N_fake
+    snr_variance_fake = np.sum(inverse(sobjs_fake_noiseless.BOX_COUNTS_IVAR[snr_mask_fake])) / snr_N_fake**2
+    snr_fake = snr_signal_fake / np.sqrt(snr_variance_fake)
+    snr_signal_target = np.sum(sobjs[trace_id].BOX_COUNTS[snr_mask_target]) / snr_N_target
+    snr_variance_target = np.sum(inverse(sobjs[trace_id].BOX_COUNTS_IVAR[snr_mask_target])) / snr_N_target**2
+    snr_target = snr_signal_target / np.sqrt(snr_variance_target)
+    if verbose:
+        print('SNR_fake:', snr_fake)
+        print('SNR_target:', snr_target)
+    info['SNR'] = snr_fake
 
     if show_trace:
         display.show_trace(viewer, ch_skysub, sobjs_fake.TRACE_SPAT, 'fake object', color='orange')
     if debug:
-        # sanity check - 1: compare fake object with the real one
-        # count = moment1d(image+img_fake, sobjs_fake.TRACE_SPAT, sobjs_fake.BOX_RADIUS*2, order=[0])[0]
-        # plt.plot(sobjs[2].BOX_WAVE, sobjs[2].BOX_COUNTS)
-        plt.plot(sobjs_fake.BOX_WAVE, sobjs_fake.BOX_COUNTS, drawstyle='steps-mid', color='black')
-        plt.plot(sobjs_fake_noiseless.BOX_WAVE, sobjs_fake_noiseless.BOX_COUNTS, drawstyle='steps-mid', color='blue')
+        # sanity check - 1: noiseless spectrum vs. noisy spectrum
+        plt.figure(figsize=(20,6))
+        plt.plot(sobjs_fake.BOX_WAVE, sobjs_fake.BOX_COUNTS, drawstyle='steps-mid', color='black', label='noisy')
+        plt.plot(sobjs_fake_noiseless.BOX_WAVE, sobjs_fake_noiseless.BOX_COUNTS, drawstyle='steps-mid', color='blue', label='noiseless')
         plt.plot(sobjs_fake.BOX_WAVE, np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR)), drawstyle='steps-mid', color='red')
+        plt.plot(sobjs_fake.BOX_WAVE, sobjs_fake.BOX_COUNTS_SIG_DET, drawstyle='steps-mid', color='orange')
+        plt.ylim(np.median(sobjs_fake.BOX_COUNTS)-3*np.median(np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))), 
+                 np.median(sobjs_fake.BOX_COUNTS)+8*np.median(np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))))
+        plt.title('noiseless vs. noisy spectrum', fontsize=40)
+        plt.tick_params(labelsize=20)
+        plt.xlabel('Wavelength [Angstrom]', fontsize=40)
+        plt.ylabel('Counts', fontsize=40)
+        plt.legend(fontsize=20)
         plt.show()
 
-        # sanity check - 2: fluxing the fake object
-        spectrograph = load_spectrograph(header['PYP_SPEC'])
-        par = spectrograph.default_pypeit_par()['fluxcalib']
-        sobjs_fake.apply_flux_calib(sens.wave[:, 0], sens.zeropoint[:, 0],
-                                    sobjs.header['EXPTIME'],
-                                    extinct_correct=False,
-                                    longitude=spectrograph.telescope['longitude'],
-                                    latitude=spectrograph.telescope['latitude'],
-                                    extrap_sens=par['extrap_sens'],
-                                    airmass=float(sobjs.header['AIRMASS']))
-        plt.plot(sobjs_fake.OPT_WAVE, sobjs_fake.OPT_FLAM)
-        plt.plot(wave, flux*1e17)
+        # sanity check - 2: noise check
+        from scipy.stats import norm
+
+        plt.figure(figsize=(6,6))
+        chi = (sobjs_fake.BOX_COUNTS-sobjs_fake_noiseless.BOX_COUNTS)/np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))
+        chi_mask = (chi < 10) & (chi > -10) 
+        mean, std = norm.fit(chi[chi_mask])
+        plt.hist(chi, range=(-10,10), bins=36, density=True)
+        xmin, xmax = plt.xlim()
+        ymin, ymax = plt.ylim()
+        x = np.linspace(xmin, xmax, 100)
+        y = norm.pdf(x, mean, std)
+        plt.vlines(mean+std, 0, ymax, color='r', linewidth=2, ls='dashed')
+        plt.vlines(mean-std, 0, ymax, color='r', linewidth=2, ls='dashed')
+        plt.plot(x, y, 'r-', lw=2, label='norm pdf')
+        plt.title('noise check', fontsize=36)
+        plt.tick_params(labelsize=20)
+        plt.xlabel(r'$\chi=\frac{f_{\rm noiseless,\lambda}-f_{\rm noisy,\lambda}}{\sigma_{\lambda}}$', fontsize=36)
         plt.show()
-    return img_fake, sobjs_fake
+
+        # sanity check - 3: vs. real object
+        plt.figure(figsize=(20,6))
+        fake_counts_sm, fake_ivar_sm = ivarsmooth(sobjs_fake.BOX_COUNTS, sobjs_fake.BOX_COUNTS_IVAR, 5)
+        real_counts_sm, real_ivar_sm = ivarsmooth(sobjs[trace_id].BOX_COUNTS, sobjs[trace_id].BOX_COUNTS_IVAR, 5)
+        plt.plot(sobjs_fake.BOX_WAVE, fake_counts_sm, drawstyle='steps-mid', color='black', label='fake')
+        plt.plot(sobjs[trace_id].BOX_WAVE, real_counts_sm, drawstyle='steps-mid', color='blue', label='real')
+        plt.plot(sobjs_fake.BOX_WAVE, np.sqrt(inverse(fake_ivar_sm)), drawstyle='steps-mid', color='red')
+        plt.plot(sobjs_fake.BOX_WAVE, np.sqrt(inverse(real_ivar_sm)), drawstyle='steps-mid', color='orange')
+
+        # plt.plot(sobjs_fake.BOX_WAVE, sobjs_fake.BOX_COUNTS, drawstyle='steps-mid', label='fake')
+        # plt.plot(sobjs[trace_id].BOX_WAVE, sobjs[trace_id].BOX_COUNTS, drawstyle='steps-mid', color='black', label='real')
+        # plt.plot(sobjs_fake.BOX_WAVE, np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR)), drawstyle='steps-mid', color='red')
+        # plt.plot(sobjs[trace_id].BOX_WAVE, np.sqrt(inverse(sobjs[trace_id].BOX_COUNTS_IVAR)), drawstyle='steps-mid', color='orange')
+        plt.ylim(np.median(sobjs_fake.BOX_COUNTS)-3*np.median(np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))), 
+                 np.median(sobjs_fake.BOX_COUNTS)+8*np.median(np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))))
+        plt.title('fake vs. real object', fontsize=40)
+        plt.xlabel('Wavelength [Angstrom]', fontsize=40)
+        plt.ylabel('Counts', fontsize=40)
+        plt.tick_params(labelsize=20)
+        plt.legend(fontsize=20)
+        plt.show()
+        embed()
+
+    return img_fake, sobjs_fake, info
 
 # hdul = io.fits_open("../resource/sensfunc/GD153_lris_long_8.7_sens.fits")
-# hdul = io.fits_open("../resource/sensfunc/GD153_mosfire_sens.fits")
 hdul = io.fits_open("../resource/sensfunc/GD153_lris_sens.fits")
 sens = IRSensFunc.from_hdu(hdul)
 
-hdul = io.fits_open('../resource/telluric/LRIS_J0901+2906_tellmodel.fits')
+sim_lris_path = '../resource/simulation/lris/'
+targets = ['J1319+0101', 'J0901+2906', 'J1724+3718', 'J1326+0927']
+trace_ids = [2, 2, 1, 2]
+redshifts = [5.726, 6.093, 5.733, None]
+m_Js = [21.20, 20.9, 21, 20.12]
+
+i = 3
+target = targets[i]
+trace_id = trace_ids[i]
+redshift = redshifts[i]
+m_J = m_Js[i]
+
+hdul = io.fits_open(os.path.join(sim_lris_path, f'{target}_tellmodel.fits'))
 telluric = hdul[1].data
 
-sci_path = '../arxiv/LRIS_2203/LRIS_220306/reduced/sim/Science/'
-# sci_path = '../arxiv/MOSFIRE_2201/reduced/all/Science'
-
-spec2dfile = os.path.join(sci_path, 'spec2d_r220306_00045-J0901+2906_OFF_LRISr_20220306T055449.306.fits')
-# spec2dfile = os.path.join(sci_path, 'spec2d_MF.20220111.33636-J0637+3812_MOSFIRE_20220111T092036.865.fits')
+spec2dfile = os.path.join(sim_lris_path, f'spec2d_{target}.fits')
 spec1dfile = spec2dfile.replace('spec2d', 'spec1d')
 
 detname = DetectorContainer.get_name(det=1)
@@ -238,7 +298,20 @@ spec2DObj = spec2dobj.Spec2DObj.from_file(spec2dfile, detname, chk_version=False
 sobjs = specobjs.SpecObjs.from_fitsfile(spec1dfile, chk_version=False)
 header = fits.getheader(spec1dfile)
 
-img_fake, sobjs_fake = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, header=header, trace_id=2, offset=-100, exptime=300, 
-                                load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.5, m_J=22., debug=True)
-# simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, trace_id=2, offset=-100, exptime=300., 
-#          load_func=load_star, parse_func=parse_star, show_trace=False, m_J=21.3)
+# 1. simulate the target
+# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=50, 
+#                                       load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=m_J, debug=True)
+img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
+                                      load_func=load_star, parse_func=parse_star, show_trace=False, m_J=m_J, debug=True)
+
+# 2. various magnitude
+# redshifts = np.arange(5.5, 7.7, 0.1)
+# snr = np.zeros_like(redshifts)
+# for i, redshift in enumerate(redshifts):
+#     img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
+#                                           load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=22, debug=False, verbose=False)
+#     snr[i] = info['SNR']
+
+# 3. simulate the target
+# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=80, 
+#                                       load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.5, m_J=22, debug=True)
