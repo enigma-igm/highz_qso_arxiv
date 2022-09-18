@@ -1,0 +1,78 @@
+G:
+  --:
+    decker: LONGSLIT-46x1
+    dispname: Y-spectroscopy
+    filter1: Y
+  2:
+    align: []
+    arc:
+    - ../../raw/./MF.20201023.48683.fits.gz
+    - ../../raw/./MF.20201023.48866.fits.gz
+    - ../../raw/./MF.20201023.49048.fits.gz
+    - ../../raw/./MF.20201023.49232.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20201023.48683.fits.gz
+    - ../../raw/./MF.20201023.48866.fits.gz
+    - ../../raw/./MF.20201023.49048.fits.gz
+    - ../../raw/./MF.20201023.49232.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20201023.48683.fits.gz
+    - ../../raw/./MF.20201023.48866.fits.gz
+    - ../../raw/./MF.20201023.49048.fits.gz
+    - ../../raw/./MF.20201023.49232.fits.gz
+    trace: []
+  4:
+    align: []
+    arc:
+    - ../../raw/./MF.20201023.49428.fits.gz
+    - ../../raw/./MF.20201023.49610.fits.gz
+    - ../../raw/./MF.20201023.49793.fits.gz
+    - ../../raw/./MF.20201023.49975.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20201023.49428.fits.gz
+    - ../../raw/./MF.20201023.49610.fits.gz
+    - ../../raw/./MF.20201023.49793.fits.gz
+    - ../../raw/./MF.20201023.49975.fits.gz
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./MF.20201023.49428.fits.gz
+    - ../../raw/./MF.20201023.49610.fits.gz
+    - ../../raw/./MF.20201023.49793.fits.gz
+    - ../../raw/./MF.20201023.49975.fits.gz
+    trace: []
+  7:
+    align: []
+    arc: []
+    bias: []
+    dark:
+    - ../../raw/./MF.20201022.11946.fits.gz
+    - ../../raw/./MF.20201022.11966.fits.gz
+    - ../../raw/./MF.20201022.11987.fits.gz
+    - ../../raw/./MF.20201022.12007.fits.gz
+    - ../../raw/./MF.20201022.12027.fits.gz
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - ../../raw/./MF.20201022.11814.fits.gz
+    - ../../raw/./MF.20201022.11834.fits.gz
+    - ../../raw/./MF.20201022.11854.fits.gz
+    - ../../raw/./MF.20201022.11874.fits.gz
+    - ../../raw/./MF.20201022.11895.fits.gz

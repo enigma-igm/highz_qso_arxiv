@@ -2454,7 +2454,7 @@
     # echelle coadds. This is only used for Echelle
     sensfuncfile = ../GD71_nires_sens.fits
     # Output filename
-    coaddfile = J0739+4843_coadd.fits
+    coaddfile = J1312+5707_coadd.fits
     # Magnitude type.  AB is the only option currently allowed
     mag_type = AB
     # Filter for scaling.  See flux_calib.load_fitler_file() for naming.

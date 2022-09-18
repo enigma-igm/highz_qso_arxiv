@@ -1,0 +1,22 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-09-13
+
+# User-defined execution parameters
+[coadd1d]
+  coaddfile = _coadd.fits # Please set your output file name
+  sensfuncfile = ../GD71_mosfire_sens.fits # Please set your SENSFUNC file name. Only required for Echelle
+  wave_method = linear # creates a uniformly space grid in lambda
+
+# This file includes all extracted objects. You need to figure out which object you want to 
+# coadd before running pypeit_coadd_1dspec!!!
+
+# not quasar candidate?
+
+# Read in the coadd1d
+coadd1d read
+ Science_coadd/spec1d_MF.20191120.25568-MF.20191120.25901-J2333.fits SPAT0563-SLIT1064-DET01
+ Science_coadd/spec1d_MF.20191120.25568-MF.20191120.25901-J2333.fits SPAT0683-SLIT1064-DET01
+ Science_coadd/spec1d_MF.20191120.25568-MF.20191120.25901-J2333.fits SPAT1177-SLIT1064-DET01
+ Science_coadd/spec1d_MF.20191120.25568-MF.20191120.25901-J2333.fits SPAT1475-SLIT1064-DET01
+coadd1d end
+

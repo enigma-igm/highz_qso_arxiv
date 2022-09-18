@@ -1,0 +1,22 @@
+name,ra,dec,JAB,source,label,note
+J000730.709+251713.234,1.8779542,25.2870094,20.5,,problematic,cannot identify the target
+J002234.276-071302.995,5.6428167,-7.2174986,21.57,,problematic,affected by the acq box
+J003803.780-065322.870,9.5157583,-6.8896872,-1,known qso,qso,z~7.1; interesting that it's actually hard to tell from the 1d and 2d
+J005815.734+171519.008,14.5655583,17.25528,-1,,unknown,
+J020857.883+174943.900,32.2411792,17.8288611,-1,,unknown,
+J023936.720-102617.910,39.9029917,-10.4383086,-1,,problematic,"sky subtraction fails, probably due to wrong tilt solution"
+J025141.782+143646.762,42.9240917,14.6129894,20.5,,problematic,only took imaging data
+J031343.840-180636.400,48.4326625,-18.1101122,-1,known qso,qso,z~7.64
+J042656.482+022153.670,66.7353417,2.3649083,-1,,inconclusive,~9750A
+J042724.768+032738.667,66.8532,3.4607408,-1,,problematic,might be wrong position according to obs note
+J212843.312+223119.520,322.1804667,22.5220889,20.6,,problematic,skip because bad weather according to obs note
+J213232.142-143431.714,323.133925,-14.5754761,20.95,,unknown,
+J214037.157+160813.336,325.1548208,16.1370378,20.6,,problematic,no trace
+J224526.980+270904.200,341.3624167,27.1511667,20.5,,problematic,no trace
+J224742.298+324701.386,341.9262417,32.7837183,20.6,,problematic,no trace
+J225012.242-085943.299,342.5510083,-8.9953608,20.9,,problematic,there are traces but might not be the target
+J225857.342-154001.697,344.738925,-15.6671381,20.6,,unknown,
+J231202.792+321525.516,348.0116333,32.2570878,20.9,,unknown,
+J232858.285+275511.689,352.2428542,27.9199136,21,,problematic,there are traces but might not be the target
+J233316.250-145635.959,353.3177083,-14.9433219,20.9,,problematic,there are traces but might not be the target
+J235202.615+265510.350,358.0108958,26.9195417,20,,problematic,reduction fail; no target in imaging

@@ -7,10 +7,28 @@ B:
     dichroic: '680'
     dispangle: 31.069977
     dispname: 600/10000
-  1:
+  2:
+    align: []
+    arc: []
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./r220423_00047.fits
+    - ../../raw/./r220423_00048.fits
+    sky: []
+    standard: []
+    tilt:
+    - ../../raw/./r220423_00047.fits
+    - ../../raw/./r220423_00048.fits
+    trace: []
+  3:
     align: []
     arc:
-    - ../../raw/./r220423_00048.fits
+    - ../../raw/./r220423_00021.fits
+    - ../../raw/./r220423_00022.fits
     bias:
     - ../../raw/./r220423_00118.fits
     - ../../raw/./r220423_00119.fits
@@ -49,12 +67,10 @@ B:
     - ../../raw/./r220423_00031.fits
     - ../../raw/./r220423_00032.fits
     - ../../raw/./r220423_00033.fits
-    science:
-    - ../../raw/./r220423_00048.fits
+    science: []
     sky: []
     standard: []
-    tilt:
-    - ../../raw/./r220423_00048.fits
+    tilt: []
     trace:
     - ../../raw/./r220423_00023.fits
     - ../../raw/./r220423_00024.fits

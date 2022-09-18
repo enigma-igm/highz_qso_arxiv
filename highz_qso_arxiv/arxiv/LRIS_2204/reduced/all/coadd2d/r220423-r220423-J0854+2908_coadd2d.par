@@ -87,7 +87,7 @@
         spat_flexure_correct = True
 [reduce]
     [[findobj]]
-        snr_thresh = 5.0
+        snr_thresh = 0.5
     [[skysub]]
         bspline_spacing = 0.8
 [sensfunc]

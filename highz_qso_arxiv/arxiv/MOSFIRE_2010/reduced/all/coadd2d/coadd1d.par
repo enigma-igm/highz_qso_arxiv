@@ -2454,7 +2454,7 @@
     # echelle coadds. This is only used for Echelle
     sensfuncfile = ../GD71_mosfire_sens.fits
     # Output filename
-    coaddfile = J0038-0653_coadd.fits
+    coaddfile = J0812+3201_coadd.fits
     # Magnitude type.  AB is the only option currently allowed
     mag_type = AB
     # Filter for scaling.  See flux_calib.load_fitler_file() for naming.

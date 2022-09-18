@@ -1,8 +1,9 @@
-Name, RA, DEC, Note, Daming's Note
-J1432+5746, 14:32:01.52, +57:46:15.86, NQ, not z>7 quasar
-J1458+6300, 14:58:55.84, +63:00:29.52, NQ, not z>7 quasar
-J1450+3302, 14:50:38.45, +33:02:15.25, LSN, not z>7 quasar (what is LSN?)
-J1539-0203, 15:39:19.77, -02:03:27.86, NQ, too faint no spec1d
-J1557+0140, 15:57:31.46, +01:40:43.14, NQ, too faint no spec1d
-J1635+1758, 16:35:36.06, +17:58:47.09, NQ, not z>7 quasar
-J2212+2040, 22:12:32.80, +20:40:09.10, NeedReobserv, no LRIS flux / extended in FIRE (might not be a quasar but still werid)
+name,ra,dec,JAB,label,source,note
+J100758.260+211529.200,151.9927667,21.2581111,-1,qso,known quasar,
+J143202.000+574615.860 ,218.0083333,57.7710722,-1,unknown,,
+J145038.000+330215.250,222.6583333,33.0375694,-1,unknown,,
+J145856.000+630029.520,224.7333333,63.0082,-1,unknown,,NQ
+J153920.000-020328.000,234.8333333,-2.0577778,-1,problematic,,no trace
+J155731.000+014043.140,239.3791667,1.67865,-1,problematic,,no trace
+J163536.000+175847.090,248.9,17.9797472,-1,unknown,,
+J221233.000+204009.100,333.1375,20.6691944,-1,inconclusive,,no LRIS flux; might be extend source

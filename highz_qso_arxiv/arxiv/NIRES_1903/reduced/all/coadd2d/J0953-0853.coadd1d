@@ -3,7 +3,7 @@
 
 # User-defined execution parameters
 [coadd1d]
-  coaddfile = J0953-0853_coadd1d.fits # Please set your output file name
+  coaddfile = J0953-0853_coadd.fits # Please set your output file name
   sensfuncfile = ../GD71_nires_sens.fits # Please set your SENSFUNC file name. Only required for Echelle
   wave_method = velocity # creates a uniformly space grid in log10(lambda)
 

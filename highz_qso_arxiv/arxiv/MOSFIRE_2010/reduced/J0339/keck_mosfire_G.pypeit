@@ -1,0 +1,53 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-05-26
+
+# User-defined execution parameters
+[rdx]
+spectrograph = keck_mosfire
+[baseprocess]
+    use_pixelflat=False
+    use_illumflat=False
+[calibrations]
+    [[flatfield]]
+        tweak_slits = False
+    [[traceframe]]
+         [[[process]]]
+                use_darkimage = True
+    [[slitedges]]
+        fit_min_spec_length = 0.3
+[reduce]
+    [[findobj]]
+         find_trim_edge = 10,10 
+
+# Setup
+setup read
+    Setup G:
+          decker: LONGSLIT-46x1
+        dispname: Y-spectroscopy
+         filter1: Y
+setup end
+
+# Read in the data
+data read
+ path ../../raw/.
+|                  filename |                 frametype |           ra |          dec |         target |       dispname |        decker | binning |            mjd |    airmass |   exptime | filter1 | lampstat01 |  dithpat | dithpos |    dithoff | frameno | calib | comb_id | bkg_id |
+| MF.20201022.11814.fits.gz |                     trace |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13673826 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |        0.0 |      47 |   all |      -1 |     -1 |
+| MF.20201022.11834.fits.gz |                     trace |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13696847 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |        0.0 |      48 |   all |      -1 |     -1 |
+| MF.20201022.11854.fits.gz |                     trace |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13721048 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |        0.0 |      49 |   all |      -1 |     -1 |
+| MF.20201022.11874.fits.gz |                     trace |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13744069 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |        0.0 |      50 |   all |      -1 |     -1 |
+| MF.20201022.11895.fits.gz |                     trace |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |  59144.1376827 | 1.41291034 |  11.63832 |       Y |         on |    Stare |  object |        0.0 |      51 |   all |      -1 |     -1 |
+| MF.20201022.11946.fits.gz |                      dark |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13826708 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |        0.0 |      52 |   all |      -1 |     -1 |
+| MF.20201022.11966.fits.gz |                      dark |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13850319 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |        0.0 |      53 |   all |      -1 |     -1 |
+| MF.20201022.11987.fits.gz |                      dark |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 |  59144.1387393 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |        0.0 |      54 |   all |      -1 |     -1 |
+| MF.20201022.12007.fits.gz |                      dark |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13898132 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |        0.0 |      55 |   all |      -1 |     -1 |
+| MF.20201022.12027.fits.gz |                      dark |        230.0 |         45.0 |        unknown | Y-spectroscopy | LONGSLIT-46x1 |     1,1 | 59144.13921152 | 1.41291034 |  11.63832 |       Y |        off |    Stare |  object |        0.0 |      56 |   all |      -1 |     -1 |
+| MF.20201023.48683.fits.gz |          arc,science,tilt |  54.92060879 | -16.17264726 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 | 59145.56347194 | 1.37313049 | 149.84337 |       Y |        off | Mask Nod |       A |     2.5 |     184 |     1 |     1 |     2 |
+| MF.20201023.48866.fits.gz |          arc,science,tilt |  54.92204454 | -16.17281325 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 | 59145.56558513 | 1.38270983 | 149.84337 |       Y |        off | Mask Nod |       B |    -2.5 |     185 |     1 |     2 |     1 |
+| MF.20201023.49048.fits.gz |          arc,science,tilt |  54.92060879 | -16.17264726 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 | 59145.56769243 | 1.39278926 | 149.84337 |       Y |        off | Mask Nod |       A |     2.5 |     186 |     1 |     1 |     2 |
+| MF.20201023.49232.fits.gz |          arc,science,tilt |  54.92204454 | -16.17281325 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 | 59145.56981743 | 1.40329928 | 149.84337 |       Y |        off | Mask Nod |       B |    -2.5 |     187 |     1 |     2 |     1 |
+| MF.20201023.49428.fits.gz |          arc,science,tilt |  54.92060879 | -16.17264726 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 |    59145.57209 | 1.41503697 | 149.84337 |       Y |        off | Mask Nod |       A |     2.5 |     188 |     2 |     3 |     4 |
+| MF.20201023.49610.fits.gz |          arc,science,tilt |  54.92204454 | -16.17281325 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 | 59145.57419729 | 1.42632385 | 149.84337 |       Y |        off | Mask Nod |       B |    -2.5 |     189 |     2 |     4 |     3 |
+| MF.20201023.49793.fits.gz |          arc,science,tilt |  54.92060879 | -16.17264726 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 | 59145.57631048 | 1.43828225 | 149.84337 |       Y |        off | Mask Nod |       A |     2.5 |     190 |     2 |     3 |     4 |
+| MF.20201023.49975.fits.gz |          arc,science,tilt |  54.92204454 | -16.17281325 |     J0339-1610 | Y-spectroscopy | LONGSLIT-46x0.7 |     1,1 | 59145.57842368 | 1.45062829 | 149.84337 |       Y |        off | Mask Nod |       B |    -2.5 |     191 |     2 |     4 |     3 |
+data end
+

@@ -4,7 +4,6 @@
 # User-defined execution parameters
 [coadd1d]
   coaddfile = J0812+3201_coadd.fits # Please set your output file name
-  coaddfile = J0812+3201_coadd.fits # Please set your output file name
   sensfuncfile = ../GD71_mosfire_sens.fits # Please set your SENSFUNC file name. Only required for Echelle
   wave_method = linear # creates a uniformly space grid in lambda
 
@@ -13,6 +12,6 @@
 
 # Read in the coadd1d
 coadd1d read
-050-SLIT1035-DET01
+ Science_coadd/spec1d_MF.20201023.54617-MF.20201023.54800-z7.fits SPAT1050-SLIT1035-DET01
 coadd1d end
 
