@@ -75,3 +75,10 @@ def unix_to_iso(t_in_unix):
 
 def get_project_root() -> Path:
     return Path(__file__).parent.parent
+
+def rgb2gray(rgb):
+
+    r, g, b = rgb[:,:,0], rgb[:,:,1], rgb[:,:,2]
+    gray = 0.2989 * r + 0.5870 * g + 0.1140 * b
+
+    return gray

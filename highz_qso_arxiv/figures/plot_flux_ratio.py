@@ -30,6 +30,7 @@ parser.add_argument('--no-litdwf', action='store_true')
 parser.add_argument('--no-colorcut', action='store_true')
 parser.add_argument('--no-cov', action='store_true')
 parser.add_argument('--no-meancov', action='store_true')
+parser.add_argument('--show', action='store_true')
 args = parser.parse_args()
 
 def flux_to_mag(flux):
@@ -203,110 +204,178 @@ def dwarf_track(setting):
     return temp, czJ_dwarftrack, cJW1_dwarftrack
 temp, czJ_dwarftrack, cJW1_dwarftrack = dwarf_track('logg-5-metallicity-0')
 
+dwarf_color = [["M5", 0.91, 0.47, 0.55, 0.45, 0.32, 0.11, 0.17],
+                ["M6", 1.45, 0.60, 0.67, 0.53, 0.39, 0.22, 0.21],
+                ["M7", 1.77, 0.70, 0.78, 0.56, 0.44, 0.25, 0.24],
+                ["M8", 1.93, 0.77, 0.87, 0.58, 0.47, 0.26, 0.26],
+                ["M9", 1.99, 0.82, 0.96, 0.60, 0.51, 0.27, 0.27],
+                ["L0", 2.01, 0.86, 1.04, 0.63, 0.54, 0.29, 0.27],
+                ["L1", 2.02, 0.88, 1.11, 0.67, 0.58, 0.33, 0.28],
+                ["L2", 2.04, 0.90, 1.18, 0.73, 0.63, 0.40, 0.28],
+                ["L3", 2.10, 0.92, 1.23, 0.79, 0.67, 0.48, 0.29],
+                ["L4", 2.20, 0.94, 1.27, 0.86, 0.71, 0.56, 0.30],
+                ["L5", 2.33, 0.97, 1.31, 0.91, 0.74, 0.65, 0.32],
+                ["L6", 2.51, 1.00, 1.33, 0.96, 0.75, 0.72, 0.36],
+                ["L7", 2.71, 1.04, 1.35, 0.97, 0.75, 0.77, 0.41],
+                ["L8", 2.93, 1.09, 1.21, 0.96, 0.71, 0.79, 0.48],
+                ["L9", 3.15, 1.16, 1.20, 0.90, 0.65, 0.79, 0.57],
+                ["T0", 3.36, 1.23, 1.19, 0.80, 0.56, 0.76, 0.68],
+                ["T1", 3.55, 1.33, 1.19, 0.65, 0.45, 0.71, 0.82],
+                ["T2", 3.70, 1.43, 1.18, 0.46, 0.31, 0.65, 0.99],
+                ["T3", 3.82, 1.55, 1.18, 0.25, 0.16, 0.59, 1.19],
+                ["T4", 3.90, 1.68, 1.17, 0.02, 0.01, 0.55, 1.43],
+                ["T5", 3.95, 1.81, 1.16, -0.19, -0.11, 0.54, 1.70],
+                ["T6", 3.98, 1.96, 1.16, -0.35, -0.19, 0.59, 2.02],
+                ["T7", 4.01, 2.11, 1.15, -0.43, -0.20, 0.70, 2.38],
+                ["T8", 4.08, 2.26, 1.15, -0.36, -0.09, 0.90, 2.79]]
+spectype = [dwarf_color[i][0] for i in range(len(dwarf_color))]
+czY = [dwarf_color[i][2] for i in range(len(dwarf_color))]
+cYJ = [dwarf_color[i][3] for i in range(len(dwarf_color))]
+cJH = [dwarf_color[i][4] for i in range(len(dwarf_color))]
+cHK = [dwarf_color[i][5] for i in range(len(dwarf_color))]
+cKW1 = [dwarf_color[i][6] for i in range(len(dwarf_color))]
+cW1W2 = [dwarf_color[i][7] for i in range(len(dwarf_color))]
+czJ = np.array(czY) + np.array(cYJ) + 0.54 - 0.938
+cW1J = -np.array(cKW1) - np.array(cHK) - np.array(cJH) + 2.699 - 0.938
+fzJ = flux_ratio(czJ)
+fW1J = flux_ratio(cW1J)
+
 # Plotting
 
+# fig, (ax, ax1) = plt.subplots(2, 1, figsize=(10, 14.4), gridspec_kw={'height_ratios': [10, 4.4]})
 fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 
-if not args.no_litdwf:
-    ax.scatter(fz_mltq[indm] / fJ_mltq[indm], fW1_mltq[indm] / fJ_mltq[indm], s=20, marker='o', 
-                facecolors='none', edgecolors=CB_color_cycle[2], zorder=2, alpha=0.6, label='lit. M dwarfs')
-    ax.scatter(fz_mltq[indl] / fJ_mltq[indl], fW1_mltq[indl] / fJ_mltq[indl], s=20, marker='v', 
-                facecolors='none', edgecolors=CB_color_cycle[2], zorder=2, alpha=0.6, label='lit. L dwarfs')
-    ax.scatter(fz_mltq[indt] / fJ_mltq[indt], fW1_mltq[indt] / fJ_mltq[indt], s=20, marker='s', 
-                facecolors='none', edgecolors=CB_color_cycle[2], zorder=2, alpha=0.6, label='lit. T dwarfs')
-    ax.text(0.7, 0, 'M dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
-    ax.text(0.02, 2.8, 'L dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
-    ax.text(0.05, -0.5, 'T dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
+ax.scatter(fz_mltq[indm] / fJ_mltq[indm], fW1_mltq[indm] / fJ_mltq[indm], s=20, marker='o', 
+            facecolors='none', edgecolors=CB_color_cycle[2], zorder=2, alpha=0.6, label='lit. M dwarfs')
+ax.scatter(fz_mltq[indl] / fJ_mltq[indl], fW1_mltq[indl] / fJ_mltq[indl], s=20, marker='v', 
+            facecolors='none', edgecolors=CB_color_cycle[2], zorder=2, alpha=0.6, label='lit. L dwarfs')
+ax.scatter(fz_mltq[indt] / fJ_mltq[indt], fW1_mltq[indt] / fJ_mltq[indt], s=20, marker='s', 
+            facecolors='none', edgecolors=CB_color_cycle[2], zorder=2, alpha=0.6, label='lit. T dwarfs')
+ax.text(0.7, 0, 'M dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
+ax.text(0.02, 2.8, 'L dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
+ax.text(0.05, -0.5, 'T dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
 
 ax.scatter(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-            s=20, marker='o', c=CB_color_cycle[0], label='M dwarf candidates', zorder=4)
-if not args.no_cov:
-    cov = flux_ratio_cov(fz_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf], fJ_dwarf[mask_Mdwarf], 
-                        fz_err_dwarf[mask_Mdwarf], fW1_err_dwarf[mask_Mdwarf], fJ_err_dwarf[mask_Mdwarf])
-    ax = plot_cov(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-                fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-                cov, ax, color=CB_color_cycle[0], alpha=0.5)
-
+            s=20, marker='o', c=CB_color_cycle[0], label='M dwarf', zorder=4)
 ax.scatter(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], 
-            s=20, marker='v', c=CB_color_cycle[5], label='L dwarf candidates', zorder=4)
-if not args.no_cov:
-    cov = flux_ratio_cov(fz_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf], fJ_dwarf[mask_Ldwarf],
-                        fz_err_dwarf[mask_Ldwarf], fW1_err_dwarf[mask_Ldwarf], fJ_err_dwarf[mask_Ldwarf])
-    ax = plot_cov(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
-                fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
-                cov, ax, color=CB_color_cycle[5], alpha=0.5)
-
+            s=20, marker='v', c=CB_color_cycle[5], label='L dwarf', zorder=4)
 ax.scatter(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown], fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
             s=20, marker='d', c='black', alpha=0.6, label='unknown', zorder=3)
-if not args.no_cov:
-    cov = flux_ratio_cov(fz_dwarf[mask_unknown], fW1_dwarf[mask_unknown], fJ_dwarf[mask_unknown],
-                        fz_err_dwarf[mask_unknown], fW1_err_dwarf[mask_unknown], fJ_err_dwarf[mask_unknown])
-    ax = plot_cov(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
-                fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
-                cov, ax, color='black', alpha=0.5)
-
-if not args.no_meancov:
-    cov = flux_ratio_cov(fz_dwarf, fW1_dwarf, fJ_dwarf,
-                        fz_err_dwarf, fW1_err_dwarf, fJ_err_dwarf)
-    mean_cov = np.mean(cov, axis=0)
-    ax = error_cov(ax, 1.1, -1, mean_cov, color='black', alpha=0.5)
+cov = flux_ratio_cov(fz_dwarf, fW1_dwarf, fJ_dwarf,
+                    fz_err_dwarf, fW1_err_dwarf, fJ_err_dwarf)
+mean_cov = np.mean(cov, axis=0)
+ax = error_cov(ax, 1.1, -1, mean_cov, color='black', alpha=0.5)
 
 ax.scatter(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso], fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
             s=100, marker='*', c='red', label='quasar', zorder=5)
-if not args.no_cov:
-    cov = flux_ratio_cov(fz_dwarf[mask_qso], fW1_dwarf[mask_qso], fJ_dwarf[mask_qso],
-                        fz_err_dwarf[mask_qso], fW1_err_dwarf[mask_qso], fJ_err_dwarf[mask_qso])
-    ax = plot_cov(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso],
-                fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
-                cov, ax, color='red', alpha=0.5)
 
-if not args.no_litqso:
-    ax.scatter(fz_litqso / fJ_litqso, fW1_litqso / fJ_litqso, s=40, marker='*',
-            facecolors='none', edgecolors='red', alpha=0.5, label='Known quasars', zorder=4)
-    z7mask = redshift_litqso > 7.
-    ax.scatter(fz_litqso[z7mask] / fJ_litqso[z7mask], fW1_litqso[z7mask] / fJ_litqso[z7mask], s=100,
-            facecolors='none', edgecolors='red', alpha=1.0, 
-            marker='*', label=r'Known quasars $(z>7)$', zorder=4)
-
+ax.scatter(fz_litqso / fJ_litqso, fW1_litqso / fJ_litqso, s=40, marker='*',
+        facecolors='none', edgecolors='red', alpha=0.5, label='Known quasars', zorder=4)
+z7mask = redshift_litqso > 7.
+ax.scatter(fz_litqso[z7mask] / fJ_litqso[z7mask], fW1_litqso[z7mask] / fJ_litqso[z7mask], s=100,
+        facecolors='none', edgecolors='red', alpha=1.0, 
+        marker='*', label=r'Known quasars $(z>7)$', zorder=4)
 ax = plot_contour(fz_all / fJ_all,
                   fW1_all / fJ_all, 
                   ax=ax, bins=150, range=((-0.2, 2), (-2, 8)),
                   levels=np.linspace(0.1, 0.9, 5), 
                   color='grey', zorder=0, label='all candidates')
-
 ax = plot_contour(fz_simqso / fJ_simqso,
                   fW1_simqso / fJ_simqso,
                   ax=ax, bins=150, range=((-0.2, 2), (-2, 8)),
                   levels=np.linspace(0.1, 0.9, 5), 
                   color='tomato', zorder=1)
+plot_cline(10**(-zJ_simqso_mean/2.5), 10**(JW1_simqso_mean/2.5), ax=ax, cmap=plt.get_cmap('autumn_r'), linewidth=2)
 
-ax = plot_cline(10**(-zJ_simqso_mean/2.5), 10**(JW1_simqso_mean/2.5), ax=ax, cmap=plt.get_cmap('autumn_r'), linewidth=2)
-
-# for setting in ['logg-5-metallicity-0', 'logg-5-metallicity--2', 'logg-5-metallicity-0.5', 'logg-3-metallicity-0']:
 for setting in ['logg-5-metallicity-0']:
     temp, czJ_dwarftrack, cJW1_dwarftrack = dwarf_track(setting)
     ax.plot(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], 
             label='Dwarf temperature track', zorder=2)
     ax.scatter(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], s=5, alpha=0.8, zorder=2)
+ax.scatter(fzJ, fW1J, c='k', s=10)
+ax.plot(fzJ, fW1J, c='k', alpha=0.5, zorder=2, label='Dwarf tracks (Skrzypek+2015)')
 
-if not args.no_colorcut:
-    ax.plot(flux_ratio(np.array([-1., 0.562])), 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
-    ax.plot(flux_ratio(np.array([-1., 0.562])), 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
-    ax.plot(flux_ratio(np.array([0.562, 0.562])), 1/flux_ratio(np.array([-0.261, 1.239])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
-    ax.plot(flux_ratio(np.array([0.562, 1.562])), 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
-    ax.plot(flux_ratio(np.array([0.562, 1.062])), 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
-    ax.plot(flux_ratio(np.array([1.062, 1.562])), 1/flux_ratio(np.array([-0.261, 1.239])), ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
-    ax.plot(flux_ratio(np.array([2.062, 2.062])), 1/flux_ratio(np.array([-0.261, 1.239])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
-    x = flux_ratio(np.array([2.062, 8]))
-    x[1] = -0.1 
-    ax.plot(x, 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
-    ax.plot(x, 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
+ax.plot(flux_ratio(np.array([-1., 0.562])), 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
+ax.plot(flux_ratio(np.array([-1., 0.562])), 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
+ax.plot(flux_ratio(np.array([0.562, 0.562])), 1/flux_ratio(np.array([-0.261, 1.239])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
+ax.plot(flux_ratio(np.array([0.562, 1.562])), 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
+ax.plot(flux_ratio(np.array([0.562, 1.062])), 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
+ax.plot(flux_ratio(np.array([1.062, 1.562])), 1/flux_ratio(np.array([-0.261, 1.239])), ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
+ax.plot(flux_ratio(np.array([2.062, 2.062])), 1/flux_ratio(np.array([-0.261, 1.239])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
+x = flux_ratio(np.array([2.062, 8]))
+x[1] = -0.1 
+ax.plot(x, 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
+ax.plot(x, 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
 
 ax.legend(loc='upper right', fontsize=15)
 ax.tick_params(axis='both', which='major', labelsize=20)
 ax.set_xlabel(r'$f_{\rm z} / f_{\rm J}$', fontsize=25)
 ax.set_ylabel(r'$f_{\rm W1} / f_{\rm J}$', fontsize=25)
-ax.set_xlim(-0.1, 1.3)
-ax.set_ylim(-2, 7)
-# plt.show()
-plt.savefig('flux_ratio.eps')
+ax.set_xlim(xmin=-0.1, xmax=1.3)
+ax.set_ylim(ymin=-2, ymax=7)
+
+# # ax1 
+# ax1.scatter(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
+#             s=20, marker='o', c=CB_color_cycle[0], label='M dwarf', zorder=4)
+# cov = flux_ratio_cov(fz_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf], fJ_dwarf[mask_Mdwarf], 
+#                     fz_err_dwarf[mask_Mdwarf], fW1_err_dwarf[mask_Mdwarf], fJ_err_dwarf[mask_Mdwarf])
+# ax1 = plot_cov(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
+#             fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
+#             cov, ax1, color=CB_color_cycle[0], alpha=0.5)
+
+# ax1.scatter(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], 
+#             s=20, marker='v', c=CB_color_cycle[5], label='L dwarf', zorder=4)
+# cov = flux_ratio_cov(fz_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf], fJ_dwarf[mask_Ldwarf],
+#                     fz_err_dwarf[mask_Ldwarf], fW1_err_dwarf[mask_Ldwarf], fJ_err_dwarf[mask_Ldwarf])
+# ax1 = plot_cov(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
+#             fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
+#             cov, ax1, color=CB_color_cycle[5], alpha=0.5)
+
+# ax1.scatter(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown], fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
+#             s=20, marker='d', c='black', alpha=0.6, label='unknown', zorder=3)
+# cov = flux_ratio_cov(fz_dwarf[mask_unknown], fW1_dwarf[mask_unknown], fJ_dwarf[mask_unknown],
+#                     fz_err_dwarf[mask_unknown], fW1_err_dwarf[mask_unknown], fJ_err_dwarf[mask_unknown])
+# ax1 = plot_cov(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
+#             fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
+#             cov, ax1, color='black', alpha=0.5)
+
+# ax1.scatter(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso], fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
+#             s=100, marker='*', c='red', label='quasar', zorder=5)
+# cov = flux_ratio_cov(fz_dwarf[mask_qso], fW1_dwarf[mask_qso], fJ_dwarf[mask_qso],
+#                     fz_err_dwarf[mask_qso], fW1_err_dwarf[mask_qso], fJ_err_dwarf[mask_qso])
+# ax1 = plot_cov(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso],
+#             fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
+#             cov, ax1, color='red', alpha=0.5)
+# ax1 = plot_contour(fz_all / fJ_all,
+#                   fW1_all / fJ_all, 
+#                   ax=ax1, bins=150, range=((-0.2, 2), (-2, 8)),
+#                   levels=np.linspace(0.1, 0.9, 5), 
+#                   color='grey', zorder=0, label='all candidates')
+# ax1 = plot_contour(fz_simqso / fJ_simqso,
+#                   fW1_simqso / fJ_simqso,
+#                   ax=ax1, bins=150, range=((-0.2, 2), (-2, 8)),
+#                   levels=np.linspace(0.1, 0.9, 5), 
+#                   color='tomato', zorder=1)
+# ax1 = plot_cline(10**(-zJ_simqso_mean/2.5), 10**(JW1_simqso_mean/2.5), ax=ax1, cmap=plt.get_cmap('autumn_r'), linewidth=2)
+
+# for setting in ['logg-5-metallicity-0']:
+#     temp, czJ_dwarftrack, cJW1_dwarftrack = dwarf_track(setting)
+#     ax1.plot(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], zorder=2)
+#     ax1.scatter(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], s=5, alpha=0.8, zorder=2)
+
+# # ax.legend(loc='upper right', fontsize=15)
+# ax1.tick_params(axis='both', which='major', labelsize=20)
+# ax1.set_xlabel(r'$f_{\rm z} / f_{\rm J}$', fontsize=25)
+# # ax.set_ylabel(r'$f_{\rm W1} / f_{\rm J}$', fontsize=25)
+# ax1.set_xlim(-0.1, 1.3)
+# ax1.set_ylim(0, 4)
+# ax1.set_yticklabels([0, 1, 2, 3])
+# # ax.set_xticklabels([-1, 0, 1, 2, 3, 4, 5, 6, 7])
+# ax.set_yticklabels([None, -1, 0, 1, 2, 3, 4, 5, 6, 7])
+
+plt.subplots_adjust(hspace=0.)
+
+if args.show:
+    plt.show()
+else:
+    plt.savefig('flux_ratio.png', dpi=300)

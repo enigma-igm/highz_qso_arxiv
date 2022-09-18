@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from astropy.table import Table
 from astropy.io import fits, ascii
+from matplotlib.ticker import MaxNLocator
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -87,8 +88,6 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     flux_std = inverse(np.sqrt(flux_ivar_sm[mask]))
     axis.plot(wave[mask], flux_sm[mask], label=name, color="black", lw=1.5)
     axis.plot(wave[mask], flux_std, lw=1, color="red", alpha=0.6)
-    axis.set_xlabel(r"wavelength ($\AA$)", fontsize=20)
-    axis.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=20)
     xmin = np.min(wave[mask])
     xmax = np.max(wave[mask])
     axis.hlines(0, xmin, xmax, color="cyan", alpha=0.8, lw=1, ls='dashed')
@@ -105,29 +104,25 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     if ymin > 0: ymin = 0
     # if ymax < np.max(flux_sm[mask]): ymax =  np.mean(flux_sm)+3*np.std(flux_sm)
     axis.set_ylim(ymin, ymax)
+    axis.yaxis.set_major_locator(MaxNLocator(2, prune='upper'))
+    yt = axis.get_yticks()
+    if yt[-1] + 0.1 > ymax:
+        axis.set_ylim(ymin, ymax+0.2)
+        axis.set_yticks(yt[1:])
+    # axis.set_yticks([])
 
     if template:
-        # templates = ["L0", "L0.5", "L1", "L1.5", "L2", "L3", "L5", "L8", "L6",
-        #              "M4.5", "M5", "M6", "M7", "M8", "M9", "M9.5",
-        #              "T0"]
-        templates = ["L0.5", "L6",   "M7",
-                     "L1",   "L7.5", "M8",
-                     "L2",   "L8",   "M9.5",
-                     "L3.5", "M4.5", "M9",
-                     "L3",   "M5",   "T2",
-                     "L4.5", "M6.5", "T4.5",
-                     "L5",   "M6"]
-
+        templates = ["L0.5", "L5",   "M7",
+                     "L1",   "M4.5", "M8",
+                     "L2",   "M5",   "M9.5",
+                     "L3",   "M6",   "M9", "L6", "L8", "T"]
         chi_sq = np.inf
         for template in templates:
-            # tab = ascii.read(os.path.join(RESOURCE_PATH, f"dwarf/keck_lris_{template}_1.dat"))
             try:
-                tab = ascii.read(os.path.join(RESOURCE_PATH, f"dwarf/irtf_{template}_1.dat"))
+                tab = ascii.read(os.path.join(RESOURCE_PATH, f"dwarf/combine_lris_{template}.dat"))
             except:
                 print(template)
-            # wave_template, flux_template = tab["col1"], tab["col2"]/1e-17
-            wave_template, flux_template = tab["col1"]*1e4, tab["col2"]
-
+            wave_template, flux_template = tab["wave"], tab["flux"]
             flux_template_scaled, chi_sq_new = rescale(wave_template, flux_template, 
                                                        wave, flux_sm, flux_std)
 
@@ -144,9 +139,9 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
         ax2 = axis.twinx()
         ax2.plot(wave[mask], flux[mask], color="navy", zorder=1, alpha=0.4)
         ax2.set_ylim(-2,1.)
-        ax2.set_yticks([0,0.5,1])
-    axis.tick_params(axis='both', which='major', labelsize=15)
-    axis.legend(loc="upper right", frameon=True, fontsize=12)
+        ax2.set_yticks([])
+    axis.tick_params(axis='both', which='major', labelsize=10)
+    axis.legend(loc="upper right", frameon=True, fontsize=6)
     return axis
 
 def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=False, display=True, save_file=""):
@@ -194,14 +189,22 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=N
         assert len(telluric_list) == len(name_list)
 
     num = len(fits_list)
-    fig, axs = plt.subplots(num, 1, figsize=(10,2*num))
+    fig, axs = plt.subplots(num, sharex=True, figsize=(10,1*num))
     for i, ax in enumerate(axs):
         if template_list is None: template = True
         else: template = template_list[i]
         if telluric_list is None: telluric = False
         else: telluric = telluric_list[i]
-        plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, template=template, telluric=telluric)
-    fig.tight_layout()
+        ax = plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, template=template, telluric=telluric)
+    ax.set_xlabel(r"Wavelength ($\AA$)", fontsize=20)
+    mid_idx = int(len(name_list)/2)
+
+    axs[mid_idx].set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=20)
+    axs[mid_idx].yaxis.set_label_coords(-0.06, 0.5)
+
+    # fig.tight_layout()
+    fig.subplots_adjust(hspace=0)
+
     if display:
         plt.show()
     if save_file:

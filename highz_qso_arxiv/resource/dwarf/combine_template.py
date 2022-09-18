@@ -11,7 +11,7 @@ from highz_qso_arxiv.util.spec1dutil import rescale
 from highz_qso_arxiv.resource.filters import ukirt_J
 from IPython import embed
 
-for tp in ['M4.5', 'M5', 'M6', 'M7', 'M8', 'M9', 'M9.5', 'L0.5', 'L1', 'L2', 'L3', 'L5']:
+for tp in ['M4.5', 'M5', 'M6', 'M7', 'M8', 'M9', 'M9.5', 'L0.5', 'L1', 'L2', 'L3', 'L5', 'L6', 'L8', 'T']:
     temp_irtf = ascii.read(f'irtf_{tp}_1.dat')
     temp_lris = ascii.read(f'keck_lris_{tp}_1.dat')
     wl_irtf, flux_irtf, err_irtf = temp_irtf["col1"] * 1e4, temp_irtf["col2"], temp_irtf["col3"]
@@ -48,6 +48,6 @@ for tp in ['M4.5', 'M5', 'M6', 'M7', 'M8', 'M9', 'M9.5', 'L0.5', 'L1', 'L2', 'L3
     dat = Table([wl_comb_lris, flux_comb_lris], names=['wave', 'flux'], units=['angstrom', 'W/m^2/um'])
     dat.write(f'combine_lris_{tp}.dat', format='ascii.ecsv', overwrite=True)
 
-    dat = Table([wl_comb_lris, flux_comb_lris], names=['wave', 'flux'], units=['angstrom', 'W/m^2/um'])
+    dat = Table([wl_comb_irtf, flux_comb_irtf], names=['wave', 'flux'], units=['angstrom', 'W/m^2/um'])
     dat.write(f'combine_irtf_{tp}.dat', format='ascii.ecsv', overwrite=True)
 

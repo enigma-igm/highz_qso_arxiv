@@ -31,6 +31,7 @@ flux_qso = qso_spec["col2"] # in 1e-17 erg/s/cm2/A
 flux_qso_err = qso_spec["col3"]
 wl_lya = 1215.67 * (1 + redshift)
 trough = wl_qso_obs < wl_lya
+flux_qso[trough] = 0.0
 label_qso = rf"$z={redshift}$; Selsing+2015"
 
 m_J_temp = ukirt_J.get_ab_magnitudes(flux_qso * 1e-17 * u.erg / u.s / u.cm**2 / u.AA, wl_qso_obs*u.AA)[0][0]
@@ -54,8 +55,8 @@ flux_star = flux_star * scale
 fig, ax = plt.subplots(figsize=(12,6))
 # ax.plot(wl_qso_obs[~trough], flux_qso[~trough], label=label_qso, color="black", zorder=3)
 # ax.plot(wl_qso_obs, flux_qso, color="grey", ls="--", zorder=2)
-ax.plot(wl_qso_obs[~trough], flux_qso[~trough], label=label_qso, color=CB_color_cycle[1], lw=2, zorder=3)
-ax.plot(wl_qso_obs, flux_qso, color=CB_color_cycle[1], alpha=0.5, lw=2, ls="--", zorder=2)
+ax.plot(wl_qso_obs, flux_qso, label=label_qso, color=CB_color_cycle[1], lw=2, zorder=3)
+# ax.plot(wl_qso_obs, flux_qso, color=CB_color_cycle[1], alpha=0.5, lw=2, ls="--", zorder=2)
 
 ax.plot(wl_star_obs, flux_star, label=label_star, color=CB_color_cycle[0], zorder=1, lw=2)
 
@@ -89,4 +90,6 @@ ax.set_ylim(0, 1.5)
 # put text on upper right corner
 ax.text(0.95, 0.95, r"$M_{J}=21.0$", ha="right", va="top", transform=ax.transAxes, fontsize=25)
 ax.tick_params(labelsize=20)
-plt.show()
+ax.set_ylim(-0.05, 1.5)
+# plt.show()
+plt.savefig('qso_star.pdf')

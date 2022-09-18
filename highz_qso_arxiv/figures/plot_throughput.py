@@ -9,6 +9,7 @@ from pypeit import io
 from pypeit.sensfunc import IRSensFunc
 from pypeit.core.flux_calib import Nlam_to_Flam
 from highz_qso_arxiv import plot as hz_plot
+from highz_qso_arxiv.plot import args
 
 from IPython import embed
 
@@ -18,12 +19,13 @@ fig, ax = plt.subplots(figsize=(10, 6))
 # wave = dat["col1"]
 # throughput = dat["col2"]
 
-hdul = io.fits_open("../resource/sensfunc/GD153_lris_long_8.7_sens.fits")
+# hdul = io.fits_open("../resource/sensfunc/GD153_lris_long_8.7_sens.fits")
+hdul = io.fits_open("../resource/sensfunc/GD153_lris_sens.fits")
 sens = IRSensFunc.from_hdu(hdul)
 wave = sens.wave
 throughput = sens.throughput
 
-ax.plot(wave/1e4, throughput, label="LRIS")
+ax.plot(wave/1e4, throughput, label="LRIS Red", lw=2)
 
 # dat = ascii.read("../resource/sensfunc/keck_mosfire_throughput.dat")
 # wave = dat["col1"]
@@ -33,7 +35,7 @@ hdul = io.fits_open("../resource/sensfunc/GD153_mosfire_sens.fits")
 sens = IRSensFunc.from_hdu(hdul)
 wave = sens.wave
 throughput = sens.throughput
-ax.plot(wave/1e4, throughput, label="MOSFIRE")
+ax.plot(wave/1e4, throughput, label="MOSFIRE-Y", lw=2)
 
 hdul = io.fits_open("../resource/sensfunc/GD153_nires_sens.fits")
 sens = IRSensFunc.from_hdu(hdul)
@@ -44,12 +46,12 @@ for j in range(wave.shape[1]):
     _throughput = throughput[:, j]
     mask = _throughput > 0
     label = f"NIRES order={7-j}"
-    ax.plot(_wave[mask]/1e4, _throughput[mask], label=label)
+    ax.plot(_wave[mask]/1e4, _throughput[mask], label=label, lw=2)
 
-ax.set_ylim(0, 0.5)
+ax.set_ylim(0, 0.3)
 ax.set_xlabel(r'Wavelength [$\mu m$]', fontsize=20)
 ax.set_ylabel('Throughput', fontsize=20)
-ax.legend(fontsize=18)
+ax.legend(fontsize=15)
 ax.tick_params(axis='both', which='major', labelsize=18)
 
 wave_min, wave_max = ax.get_xlim()
@@ -77,5 +79,8 @@ ax2.tick_params(axis='both', which='major', labelsize=18)
 # ax.set_xscale("log")
 # ax2.set_xscale("log")
 # ax3.set_xscale("log")
-# plt.show()
-plt.savefig("./throughput.pdf")
+
+if args.show:
+    plt.show()
+else:
+    plt.savefig("./throughput.pdf")

@@ -2,7 +2,7 @@ import numpy as np
 
 from IPython import embed
 
-def plot_contour(x, y, ax, levels=None, range=None, bins=200):
+def plot_contour(x, y, ax, levels=None, range=None, bins=200, color='grey', zorder=1, label=None):
     """Plot a density contour of the points x, y
     modified from https://github.com/dfm/corner.py
 
@@ -79,15 +79,15 @@ def plot_contour(x, y, ax, levels=None, range=None, bins=200):
         ]
     )
 
-    ax.scatter(x, y, color='grey', alpha=0.1, zorder=-1, s=0.1)
+    ax.scatter(x, y, alpha=0.1, zorder=zorder, s=0.1, color=color)
     ax.contourf(
         X2,
         Y2,
         H2.T,
         [V.min(), H.max()],
         cmap=base_cmap,
-        antialiased=False, zorder=1
+        antialiased=False, zorder=zorder
     )
-    ax.contour(X2, Y2, H2.T, V, colors='grey', alpha=0.5, zorder=1)
+    ax.contour(X2, Y2, H2.T, V, colors=color, alpha=0.5, zorder=zorder, label=label)
 
     return ax

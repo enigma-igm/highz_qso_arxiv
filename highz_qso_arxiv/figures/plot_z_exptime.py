@@ -80,5 +80,5 @@ for i, tp in enumerate(star_type):
 fig.tight_layout()
 fig.subplots_adjust(wspace=0)
 
-plt.show()
-# plt.savefig('z_exptime.pdf')
+# plt.show()
+plt.savefig('z_exptime.pdf')

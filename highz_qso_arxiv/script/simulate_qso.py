@@ -172,8 +172,8 @@ def simulate(sens, spec2DObj, sobjs, header,
         wave_min = (1 + kwargs['redshift']) * 1220
         wave_max = (1 + kwargs['redshift']) * 1230
     except KeyError:
-        wave_min = 9500
-        wave_max = 9600
+        wave_min = 9600
+        wave_max = 9700
     if verbose:
         print("wave_min:", wave_min)
         print("wave_max:", wave_max)
@@ -261,11 +261,14 @@ def simulate(sens, spec2DObj, sobjs, header,
         # plt.plot(sobjs[trace_id].BOX_WAVE, np.sqrt(inverse(sobjs[trace_id].BOX_COUNTS_IVAR)), drawstyle='steps-mid', color='orange')
         plt.ylim(np.median(sobjs_fake.BOX_COUNTS)-3*np.median(np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))), 
                  np.median(sobjs_fake.BOX_COUNTS)+8*np.median(np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))))
+        plt.xlim(np.min(sobjs_fake.BOX_WAVE), np.max(sobjs_fake.BOX_WAVE))
         plt.title('fake vs. real object', fontsize=40)
         plt.xlabel('Wavelength [Angstrom]', fontsize=40)
         plt.ylabel('Counts', fontsize=40)
         plt.tick_params(labelsize=20)
         plt.legend(fontsize=20)
+        plt.text(0.1, 0.9,'J1326+0927 (M9)', ha='center', va='center', transform=plt.gca().transAxes, fontsize=20)
+        # plt.savefig('dwarf_spec_test.pdf')
         plt.show()
         embed()
 
@@ -281,7 +284,7 @@ trace_ids = [2, 2, 1, 2]
 redshifts = [5.726, 6.093, 5.733, None]
 m_Js = [21.20, 20.9, 21, 20.12]
 
-i = 3
+i = 0
 target = targets[i]
 trace_id = trace_ids[i]
 redshift = redshifts[i]
@@ -299,10 +302,10 @@ sobjs = specobjs.SpecObjs.from_fitsfile(spec1dfile, chk_version=False)
 header = fits.getheader(spec1dfile)
 
 # 1. simulate the target
-# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=50, 
-#                                       load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=m_J, debug=True)
 img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
-                                      load_func=load_star, parse_func=parse_star, show_trace=False, m_J=m_J, debug=True)
+                                      load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=m_J, debug=True)
+# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
+#                                       load_func=load_star, parse_func=parse_star, show_trace=False, m_J=m_J, debug=True)
 
 # 2. various magnitude
 # redshifts = np.arange(5.5, 7.7, 0.1)
@@ -312,6 +315,5 @@ img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobj
 #                                           load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=22, debug=False, verbose=False)
 #     snr[i] = info['SNR']
 
-# 3. simulate the target
-# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=80, 
-#                                       load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.5, m_J=22, debug=True)
+# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
+#                                       load_func=load_star, parse_func=parse_star, show_trace=False, m_J=22, debug=False)

@@ -1,6 +1,8 @@
+import os
 import corner
 import numpy as np
 import matplotlib as mpl
+import astropy.units as u
 import mpl_scatter_density
 import matplotlib.pyplot as plt
 import astropy.io.fits as pyfits
@@ -25,8 +27,12 @@ def flux_to_mag(flux):
     return 22.5 - 2.5 * np.log10(flux)
 def mag_to_flux(mag):
     return 10**((22.5 - mag) / 2.5)
+def flux_ratio(color):
+    return 10**(-color/2.5)
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+
+### Load Data
 
 # 1. Riccardo's targets, contour plot
 
@@ -56,11 +62,6 @@ fz_all = np.concatenate([fz_uki, fz_vik])
 fW1_all = np.concatenate([fW1_uki, fW1_vik])
 fJ_all = np.concatenate([fJ_uki, fJ_vik])
 
-ax = plot_contour(mz_all[mask] - mJ_all[mask],
-                  mJ_all[mask] - mW1_all[mask], 
-                  ax=ax, bins=150, 
-                  levels=np.linspace(0.1, 0.9, 5))
-
 # 2. Literature dwarfs (provided by Feige)
 
 dwarf_cat = pyfits.getdata('../resource/catalog/mltq_flux_lsdr9.fits', 1)
@@ -78,18 +79,6 @@ type = dwarf_cat['t1_redshift']
 indm = np.where(type == 'M') 
 indl = np.where(type == 'L')
 indt = np.where(type == 'T')
-
-# plotting literature dwarfs
-ax.scatter(mz_mltq[indm] - mJ_mltq[indm], mJ_mltq[indm] - mW1_mltq[indm], zorder=2,
-           s=20, marker='o', facecolors='none', edgecolors='grey') #, label='M dwarfs')
-ax.scatter(mz_mltq[indl] - mJ_mltq[indl], mJ_mltq[indl] - mW1_mltq[indl], zorder=2,
-           s=20, marker='v', facecolors='none', edgecolors='grey') #, label='L dwarfs')
-ax.scatter(mz_mltq[indt] - mJ_mltq[indt], mJ_mltq[indt] - mW1_mltq[indt], zorder=2,
-           s=20, marker='s', facecolors='none', edgecolors='grey') #, label='T dwarfs')
-ax.text(-0.5, -1.4, 'M dwarf', fontsize=15, zorder=2)
-ax.text(2.2, 1.2, 'L dwarf', fontsize=15, zorder=2)
-ax.text(4, -2, 'T dwarf', fontsize=15, zorder=2)
-
 
 # 3. Dwarfs in our sample
 
@@ -125,42 +114,28 @@ mask_Ldwarf = (type_init == 'L')
 mask_unknown = (type_init == 'u')
 mask_qso = (type_init == 'q')
 
-ax.scatter(mz_dwarf[mask_Mdwarf] - mJ_dwarf[mask_Mdwarf], 
-           mJ_dwarf[mask_Mdwarf] - mW1_dwarf[mask_Mdwarf], 
-           s=30, c=CB_color_cycle[0], marker='o', label='M dwarf candidates', zorder=4)
-ax.scatter(mz_dwarf[mask_Ldwarf] - mJ_dwarf[mask_Ldwarf], 
-           mJ_dwarf[mask_Ldwarf] - mW1_dwarf[mask_Ldwarf], 
-           s=30, c=CB_color_cycle[1], marker='v', label='L dwarf candidates', zorder=4)
-ax.scatter(mz_dwarf[mask_qso] - mJ_dwarf[mask_qso], 
-           mJ_dwarf[mask_qso] - mW1_dwarf[mask_qso], 
-           s=50, c='red', marker='*', label='quasar', zorder=5)
-ax.scatter(mz_dwarf[mask_unknown] - mJ_dwarf[mask_unknown], 
-           mJ_dwarf[mask_unknown] - mW1_dwarf[mask_unknown], 
-           s=30, facecolors='black', edgecolors=None, marker='d', label='unknown', zorder=3, alpha=0.6)
-
 # 4. Known quasars
 uki_litqso = pyfits.getdata('../resource/catalog/qso_literature_uki.fits', 1)
+redshift_litqso_uki = uki_litqso['redshift']
 fz_litqso_uki, fz_err_litqso_uki = uki_litqso['flux_z_2'], uki_litqso['flux_err_z']
 fW1_litqso_uki, fW1_err_litqso_uki = uki_litqso['flux_W1_2'], uki_litqso['flux_err_W1']
 fJ_litqso_uki, fJ_err_litqso_uki = uki_litqso['flux_J'], uki_litqso['flux_J_err']
 mz_litqso_uki, mW1_litqso_uki, mJ_litqso_uki = flux_to_mag(fz_litqso_uki), flux_to_mag(fW1_litqso_uki), flux_to_mag(fJ_litqso_uki)
 
 vik_litqso = pyfits.getdata('../resource/catalog/qso_literature_vik.fits', 1)
+redshift_litqso_vik = vik_litqso['redshift']
 fz_litqso_vik, fz_err_litqso_vik = vik_litqso['flux_z_2'], vik_litqso['flux_z_err']
 fW1_litqso_vik, fW1_err_litqso_vik = vik_litqso['flux_w1_2'], vik_litqso['flux_w1_err']
 fJ_litqso_vik, fJ_err_litqso_vik = vik_litqso['J_flux_aper_3p0'], vik_litqso['J_flux_aper_err_3p0']
 mz_litqso_vik, mW1_litqso_vik, mJ_litqso_vik = flux_to_mag(fz_litqso_vik), flux_to_mag(fW1_litqso_vik), flux_to_mag(fJ_litqso_uki)
 
+redshift_litqso = np.concatenate((redshift_litqso_uki, redshift_litqso_vik))
 mz_litqso = np.concatenate((mz_litqso_uki, mz_litqso_vik))
 mW1_litqso = np.concatenate((mW1_litqso_uki, mW1_litqso_vik))
 mJ_litqso = np.concatenate((mJ_litqso_uki, mJ_litqso_vik))
 fz_litqso = np.concatenate((fz_litqso_uki, fz_litqso_vik))
 fW1_litqso = np.concatenate((fW1_litqso_uki, fW1_litqso_vik))
 fJ_litqso = np.concatenate((fJ_litqso_uki, fJ_litqso_vik))
-
-ax.scatter(mz_litqso - mJ_litqso, mJ_litqso - mW1_litqso, s=40, 
-           facecolors='none', edgecolors='red', alpha=0.5, 
-           marker='*', label='Known quasars', zorder=4)
 
 # 5. Quasar redshift track
 sim_qso = pyfits.getdata('../resource/catalog/high_z_QSOs.fits', 1)
@@ -180,108 +155,118 @@ for i in range(len(redshift_bins) - 1):
     zJ_simqso_mean[i] = np.mean(zJ_simqso[bins_idx == i + 1])
     JW1_simqso_mean[i] = np.mean(JW1_simqso[bins_idx == i + 1])
 
-ax.scatter(zJ_simqso_mean, JW1_simqso_mean, c='red', s=20, alpha=0.5, zorder=2)
-ax.plot(zJ_simqso_mean, JW1_simqso_mean, c='red', alpha=0.5,
+# 6. Dwarf spectral type track
+czJ_dwarftrack, cJW1_dwarftrack = [], []
+temp = []
+setting = 'logg-5-metallicity-0'
+btsettl_path = get_project_root() / 'resource' / 'dwarf' / 'bt-settl'
+files = [f for f in os.listdir(btsettl_path / setting) if f.startswith('lte-')]
+for f in files:
+    dat = pyfits.getdata(btsettl_path / setting / f, 1)
+    wl, flux = dat['wave'], dat['flux']
+    wl, ind = np.unique(wl, return_index=True)
+    flux = flux[ind]
+
+    wl, flux = wl * u.AA, flux * u.erg / u.cm ** 2/ u.s / u.AA
+
+    _zJ = decam_z.get_ab_magnitudes(flux, wl)[0][0] - ukirt_J.get_ab_magnitudes(flux, wl)[0][0]
+    _JW1 = ukirt_J.get_ab_magnitudes(flux, wl)[0][0] - wise_W1.get_ab_magnitudes(flux, wl)[0][0]
+    czJ_dwarftrack.append(_zJ)
+    cJW1_dwarftrack.append(_JW1)
+    # extract the number between 'lte-' and 'K.fits'
+    temp.append(int(f[4:-8]))
+index = np.argsort(temp)
+czJ_dwarftrack = np.array(czJ_dwarftrack)[index]
+cJW1_dwarftrack = np.array(cJW1_dwarftrack)[index]
+
+
+# plotting Riccardo's targets
+ax = plot_contour(mz_all[mask] - mJ_all[mask],
+                  mJ_all[mask] - mW1_all[mask], 
+                  ax=ax, bins=150, 
+                  levels=np.linspace(0.1, 0.9, 5))
+
+# plotting literature dwarfs
+ax.scatter(mz_mltq[indm] - mJ_mltq[indm], mJ_mltq[indm] - mW1_mltq[indm], zorder=2,
+           s=20, marker='o', facecolors='none', edgecolors='grey') #, label='M dwarfs')
+ax.scatter(mz_mltq[indl] - mJ_mltq[indl], mJ_mltq[indl] - mW1_mltq[indl], zorder=2,
+           s=20, marker='v', facecolors='none', edgecolors='grey') #, label='L dwarfs')
+ax.scatter(mz_mltq[indt] - mJ_mltq[indt], mJ_mltq[indt] - mW1_mltq[indt], zorder=2,
+           s=20, marker='s', facecolors='none', edgecolors='grey') #, label='T dwarfs')
+ax.text(-0.5, -1.4, 'M dwarf', fontsize=15, zorder=2)
+ax.text(2.2, 1., 'L dwarf', fontsize=15, zorder=2)
+ax.text(4, -2, 'T dwarf', fontsize=15, zorder=2)
+
+# plotting our dwarfs
+ax.scatter(mz_dwarf[mask_Mdwarf] - mJ_dwarf[mask_Mdwarf], 
+           mJ_dwarf[mask_Mdwarf] - mW1_dwarf[mask_Mdwarf], 
+           s=10, c=CB_color_cycle[0], marker='o', label='M dwarf candidates', zorder=4)
+ax.scatter(mz_dwarf[mask_Ldwarf] - mJ_dwarf[mask_Ldwarf], 
+           mJ_dwarf[mask_Ldwarf] - mW1_dwarf[mask_Ldwarf], 
+           s=10, c=CB_color_cycle[1], marker='v', label='L dwarf candidates', zorder=4)
+ax.scatter(mz_dwarf[mask_qso] - mJ_dwarf[mask_qso], 
+           mJ_dwarf[mask_qso] - mW1_dwarf[mask_qso], 
+           s=100, c='red', marker='*', label='quasar', zorder=5)
+ax.scatter(mz_dwarf[mask_unknown] - mJ_dwarf[mask_unknown], 
+           mJ_dwarf[mask_unknown] - mW1_dwarf[mask_unknown], 
+           s=10, facecolors='black', edgecolors=None, marker='d', label='unknown', zorder=3, alpha=0.6)
+
+# plotting literature quasars
+ax.scatter(mz_litqso - mJ_litqso, mJ_litqso - mW1_litqso, s=40, 
+           facecolors='none', edgecolors='red', alpha=0.5, 
+           marker='*', label='Known quasars', zorder=4)
+z7mask = redshift_litqso > 7.
+ax.scatter(mz_litqso[z7mask] - mJ_litqso[z7mask], mJ_litqso[z7mask] - mW1_litqso[z7mask], s=100,
+              facecolors='yellow', edgecolors='red', alpha=0.5, 
+                marker='*', label=r'Known quasars $(z>7)$', zorder=4)
+
+# plotting quasar track
+ax.scatter(zJ_simqso_mean, JW1_simqso_mean, c='red', s=5, alpha=0.8, zorder=2)
+ax.plot(zJ_simqso_mean, JW1_simqso_mean, c='red', alpha=0.8,
         lw=1, label='QSO redshift track', zorder=2)
 
-# 6. Dwarf spectral type track
-# dwarf_path = get_project_root() / 'resource' / 'dwarf'
-# Mdwarf_type = ['M4.5', 'M5', 'M6', 'M7', 'M8', 'M9', 'M9.5', 'L0.5', 'L1', 'L2', 'L3', 'L5']
-# czJ, cJW1 = [], []
-# for tp in Mdwarf_type:
-#     spec_irtf = ascii.read(dwarf_path / f'combine_irtf_{tp}.dat')
-#     wl_irtf, flux_irtf = spec_irtf['wave'], spec_irtf['flux']
-#     flux, wl = decam_z.pad_spectrum(flux_irtf, wl_irtf)
-#     mask = flux < 0
-#     flux, wl = flux[~mask], wl[~mask]
-#     zJ = decam_z.get_ab_magnitudes(flux, wl)[0][0] - ukirt_J.get_ab_magnitudes(flux, wl)[0][0]
-#     JW1 = ukirt_J.get_ab_magnitudes(flux, wl)[0][0] - wise_W1.get_ab_magnitudes(flux, wl)[0][0]
-#     czJ.append(zJ)
-#     cJW1.append(JW1)
+# plotting dwarf track
+ax.scatter(czJ_dwarftrack, cJW1_dwarftrack, c=CB_color_cycle[2], s=5, alpha=0.5, zorder=2)
+ax.plot(czJ_dwarftrack, cJW1_dwarftrack, ls='dashed', alpha=0.5, c=CB_color_cycle[2], lw=1, zorder=2, label=f'Dwarf temperature track')
 
-# ax.scatter(czJ, cJW1, c=CB_color_cycle[2], s=20, 
-#            alpha=0.5, label='Dwarf spectral type track', zorder=2)
-# ax.plot(czJ, cJW1, c=CB_color_cycle[2], 
-#         lw=1, alpha=0.5, zorder=2)
-# for i, tp in enumerate(Mdwarf_type):
-#     plt.annotate(str(tp), (czJ[i], cJW1[i]), fontsize=15)
+dwarf_path = get_project_root() / 'resource' / 'dwarf'
+Mdwarf_type = ['M4.5', 'M5', 'M6', 'M7', 'M8', 'M9', 'M9.5', 'L0.5', 'L1', 'L2', 'L3', 'L5']
+czJ, cJW1 = [], []
+for tp in Mdwarf_type:
+    spec_irtf = ascii.read(dwarf_path / f'combine_irtf_{tp}.dat')
+    wl_irtf, flux_irtf = spec_irtf['wave'], spec_irtf['flux']
+    flux, wl = decam_z.pad_spectrum(flux_irtf, wl_irtf)
+    mask = flux < 0
+    flux, wl = flux[~mask], wl[~mask]
+    zJ = decam_z.get_ab_magnitudes(flux, wl)[0][0] - ukirt_J.get_ab_magnitudes(flux, wl)[0][0]
+    JW1 = ukirt_J.get_ab_magnitudes(flux, wl)[0][0] - wise_W1.get_ab_magnitudes(flux, wl)[0][0]
+    czJ.append(zJ)
+    cJW1.append(JW1)
 
-def plot_bt(setting, ax=ax, color_idx=0):
-    import os
-    import astropy.units as u
-    czJ, cJW1 = [], []
-    temp = []
-    btsettl_path = get_project_root() / 'resource' / 'dwarf' / 'bt-settl'
-    files = [f for f in os.listdir(btsettl_path / setting) if f.startswith('lte-')]
-    for f in files:
-        dat = pyfits.getdata(btsettl_path / setting / f, 1)
-        wl, flux = dat['wave'], dat['flux']
-        wl, ind = np.unique(wl, return_index=True)
-        flux = flux[ind]
+ax.scatter(czJ, cJW1, label='IRTF template', s=10, c='black', zorder=2)
+ax.plot(czJ, cJW1, ls='dashed', alpha=0.5, c='black', lw=1, zorder=2)
 
-        wl, flux = wl * u.AA, flux * u.erg / u.cm ** 2/ u.s / u.AA
+# plotting Feige's color-color cuts
+ax.text(-0.8, 1.5, r'$z\lesssim 6.5$', fontsize=12, color='black', zorder=5)
+ax.text(0.8, 1.5, r'$z\gtrsim 6.5$', fontsize=12, color='black', zorder=5)
+ax.text(7, 1.5, r'$z>7$', fontsize=12, color='black', zorder=5)
 
-        zJ = decam_z.get_ab_magnitudes(flux, wl)[0][0] - ukirt_J.get_ab_magnitudes(flux, wl)[0][0]
-        JW1 = ukirt_J.get_ab_magnitudes(flux, wl)[0][0] - wise_W1.get_ab_magnitudes(flux, wl)[0][0]
-        czJ.append(zJ)
-        cJW1.append(JW1)
-        # extract the number between 'lte-' and 'K.fits'
-        temp.append(int(f[4:-8]))
-
-    index = np.argsort(temp)
-    czJ = np.array(czJ)[index]
-    cJW1 = np.array(cJW1)[index]
-
-    ax.scatter(czJ, cJW1, label=f'BT-{setting}', c=CB_color_cycle[color_idx], s=20, alpha=0.5, zorder=2)
-    ax.plot(czJ, cJW1, ls='dashed', alpha=0.5, c=CB_color_cycle[color_idx], lw=1, zorder=2)
-
-# plot_bt('logg-3-metallicity-0', ax=ax, color_idx=2)
-plot_bt('logg-5-metallicity-0', ax=ax, color_idx=2)
-# plot_bt('logg-5-metallicity--2', ax=ax, color_idx=4)
-# plot_bt('logg-5-metallicity-0.5', ax=ax, color_idx=5)
-
-# 7. Feige's color-color cuts
+ax.plot([-1., 0.562], [-0.261, -0.261], ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
+ax.plot([-1., 0.562], [1.239, 1.239], ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
+ax.plot([0.562, 0.562], [-0.261, 1.239], ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
+ax.plot([0.562, 1.562], [1.239, 1.239], ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
+ax.plot([0.562, 1.062], [-0.261, -0.261], ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
+ax.plot([1.062, 1.562], [-0.261, 1.239], ls='dashed', lw=1, alpha=0.5, color='orange', zorder=2)
+ax.plot([2.062, 2.062], [-0.261, 1.239], ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
+ax.plot([2.062, 8], [-0.261, -0.261], ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
+ax.plot([2.062, 8], [1.239, 1.239], ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
 
 ax.legend(fontsize=15)
 ax.set_xlabel(r'$z_{\rm AB}$ - $J_{\rm AB}$', fontsize=25)
 ax.set_ylabel(r'$J_{\rm AB}$ - $W1_{\rm AB}$', fontsize=25)
-# ax.set_xlim(-2.5, 8.5)
-# ax.set_ylim(-5, 6.5)
 ax.set_xlim(-1, 8)
 ax.set_ylim(-4, 6)
+
+ax.tick_params(axis='both', which='major', labelsize=20)
+
 plt.show()
-
-# # flux ratio
-# # TODO: use flux from fits, not converting from magnitude
-
-# fig, ax = plt.subplots(1, 1, figsize=(10, 10))
-
-# ax.scatter(fz_mltq[indm] / fJ_mltq[indm], fW1_mltq[indm] / fJ_mltq[indm], s=20, marker='o', 
-#             facecolors='none', edgecolors=CB_color_cycle[0], label='M dwarfs', zorder=2)
-# ax.scatter(fz_mltq[indl] / fJ_mltq[indl], fW1_mltq[indl] / fJ_mltq[indl], s=20, marker='o', 
-#             facecolors='none', edgecolors=CB_color_cycle[1], label='L dwarfs', zorder=2)
-# ax.scatter(fz_mltq[indt] / fJ_mltq[indt], fW1_mltq[indt] / fJ_mltq[indt], s=20, marker='o', 
-#             facecolors='none', edgecolors=CB_color_cycle[2], label='T dwarfs', zorder=2)
-# ax.scatter(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-#             s=30, marker='v', c=CB_color_cycle[0], label='M dwarf candidates', zorder=4)
-# ax.scatter(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], 
-#             s=30, marker='v', c=CB_color_cycle[1], label='L dwarf candidates', zorder=4)
-# ax.scatter(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown], fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
-#             s=30, marker='s', c='black', alpha=0.6, label='unknown', zorder=3)
-# ax.scatter(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso], fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
-#             s=50, marker='*', c='red', alpha=0.8, label='quasar', zorder=5)
-
-# ax.scatter(fz_litqso / fJ_litqso, fW1_litqso / fJ_litqso, s=30, marker='*',
-#            facecolors='none', edgecolors='red', label='Known quasars', zorder=4)
-
-# ax = plot_contour(fz_all / fJ_all,
-#                   fW1_all / fJ_all, 
-#                   ax=ax, bins=150, range=((-0.2, 2), (-2, 8)),
-#                   levels=np.linspace(0.1, 0.9, 5))
-
-# ax.legend(fontsize=15)
-# ax.set_xlabel(r'$f_{\rm z} / f_{\rm J}$', fontsize=25)
-# ax.set_ylabel(r'$f_{\rm W1} / f_{\rm J}$', fontsize=25)
-# ax.set_xlim(-0.1, 1.3)
-# ax.set_ylim(-2, 7)
-# plt.show()
