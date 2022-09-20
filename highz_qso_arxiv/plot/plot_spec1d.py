@@ -60,7 +60,7 @@ def plot_template_dat(model='qso', redshift=7., star_type='L0', display=True):
         plt.show()
     return fig, ax
 
-def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, telluric=False):
+def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, telluric=False, qso=False):
     """Plot single spectrum to axis
 
     Args:
@@ -103,6 +103,8 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     ymax = np.mean(flux_sm[mask])+2*np.std(flux_sm[mask])
     if ymin > 0: ymin = 0
     # if ymax < np.max(flux_sm[mask]): ymax =  np.mean(flux_sm)+3*np.std(flux_sm)
+    if qso:
+        ymax = np.mean(flux_sm[mask])+4*np.std(flux_sm[mask])
     axis.set_ylim(ymin, ymax)
     axis.yaxis.set_major_locator(MaxNLocator(2, prune='upper'))
     yt = axis.get_yticks()
@@ -144,7 +146,7 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     axis.legend(loc="upper right", frameon=True, fontsize=6)
     return axis
 
-def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=False, display=True, save_file=""):
+def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=False, qso=False, display=True, save_file=""):
     """Plot single spectrum given fits file and other parameters
 
     Args:
@@ -161,14 +163,14 @@ def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=F
         _type_: _description_
     """
     fig, ax = plt.subplots(figsize=(20,6))
-    plot_spec1d(name, fits_file, idx, ax, smooth_window, template=template, telluric=telluric)
+    plot_spec1d(name, fits_file, idx, ax, smooth_window, template=template, telluric=telluric, qso=qso)
     if display:
         plt.show()
     if save_file:
         fig.savefig(save_file)
     return fig, ax
 
-def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=None, telluric_list=None, display=True, save_file=""):
+def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=None, telluric_list=None, qso_list=None, display=True, save_file=""):
     """Plot a series of spectrum given fits files and other parameters
 
     Args:
@@ -187,7 +189,9 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=N
         assert len(template_list) == len(name_list)
     if telluric_list is not None:
         assert len(telluric_list) == len(name_list)
-
+    if qso_list is not None:
+        assert len(qso_list) == len(name_list)
+        
     num = len(fits_list)
     fig, axs = plt.subplots(num, sharex=True, figsize=(10,1*num))
     for i, ax in enumerate(axs):
@@ -195,7 +199,7 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=N
         else: template = template_list[i]
         if telluric_list is None: telluric = False
         else: telluric = telluric_list[i]
-        ax = plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, template=template, telluric=telluric)
+        ax = plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, template=template, telluric=telluric, qso=qso_list[i])
     ax.set_xlabel(r"Wavelength ($\AA$)", fontsize=20)
     mid_idx = int(len(name_list)/2)
 

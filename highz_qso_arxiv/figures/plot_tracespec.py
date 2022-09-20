@@ -212,14 +212,14 @@ def simulate(sens, spec2DObj, sobjs, header,
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(20,8), gridspec_kw={'height_ratios': [1, 4]})
         fake_counts_sm, fake_ivar_sm = ivarsmooth(sobjs_fake.BOX_COUNTS, sobjs_fake.BOX_COUNTS_IVAR, 5)
         real_counts_sm, real_ivar_sm = ivarsmooth(sobjs[trace_id].BOX_COUNTS, sobjs[trace_id].BOX_COUNTS_IVAR, 5)
-        # trace = plt.imread('../resource/simqso.png')
-        trace = plt.imread('../resource/simdwarf.png')
+        trace = plt.imread('../resource/simqso.png')
+        # trace = plt.imread('../resource/simdwarf.png')
         trace = rgb2gray(trace)
         ax1.imshow(np.flip(trace.T), cmap='gray', aspect='auto')
         ax1.text(0.27, 0.58, 'fake', color='white', 
-                 ha='center', va='center', transform=ax1.transAxes, fontsize=15)
+                 ha='center', va='center', transform=ax1.transAxes, fontsize=25)
         ax1.text(0.27, 0.16, 'real', color='white', 
-                 ha='center', va='center', transform=ax1.transAxes, fontsize=15)
+                 ha='center', va='center', transform=ax1.transAxes, fontsize=25)
         ax1.set_xticklabels([])
         ax1.set_yticklabels([])
         ax2.plot(sobjs_fake.BOX_WAVE, fake_counts_sm, drawstyle='steps-mid', color='black', label='fake')
@@ -231,15 +231,16 @@ def simulate(sens, spec2DObj, sobjs, header,
                  np.median(sobjs_fake.BOX_COUNTS)+8*np.median(np.sqrt(inverse(sobjs_fake.BOX_COUNTS_IVAR))))
         ax2.set_xlim(np.min(sobjs_fake.BOX_WAVE), np.max(sobjs_fake.BOX_WAVE))
         # ax2.title('fake vs. real object', fontsize=40)
-        ax2.set_xlabel('Wavelength [Angstrom]', fontsize=30)
-        ax2.set_ylabel('Counts', fontsize=30)
-        ax2.tick_params(labelsize=20)
-        ax2.legend(fontsize=20)
-        # ax2.text(0.12, 0.9,'J1319+0101 (QSO, z=5.726)', ha='center', va='center', transform=ax2.transAxes, fontsize=20)
-        ax2.text(0.12, 0.9,'J1326+0927 (M9)', ha='center', va='center', transform=ax2.transAxes, fontsize=20)
+        ax2.set_xlabel('Wavelength [Angstrom]', fontsize=35)
+        ax2.set_ylabel('Counts', fontsize=35)
+        ax2.tick_params(labelsize=30)
+        ax2.legend(fontsize=30)
+        ax2.text(0.18, 0.9,'J1319+0101 (QSO, z=5.726)', ha='center', va='center', transform=ax2.transAxes, fontsize=30)
+        # ax2.text(0.12, 0.9,'J1326+0927 (M9)', ha='center', va='center', transform=ax2.transAxes, fontsize=30)
         plt.subplots_adjust(hspace=0.)
         # plt.show()
-        plt.savefig('dwarf_tracespec.pdf')
+        # plt.savefig('dwarf_tracespec.pdf')
+        plt.savefig('qso_tracespec.pdf')
 
     return img_fake, sobjs_fake, info
 
@@ -253,7 +254,7 @@ trace_ids = [2, 2, 1, 2]
 redshifts = [5.726, 6.093, 5.733, None]
 m_Js = [21.20, 20.9, 21, 20.12]
 
-i = 3
+i = 0
 target = targets[i]
 trace_id = trace_ids[i]
 redshift = redshifts[i]
@@ -271,8 +272,8 @@ sobjs = specobjs.SpecObjs.from_fitsfile(spec1dfile, chk_version=False)
 header = fits.getheader(spec1dfile)
 
 # 1. simulate the target
-# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
-#                                       load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=m_J, debug=True)
 img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
-                                      load_func=load_star, parse_func=parse_star, show_trace=False, m_J=m_J, debug=True)
+                                      load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=m_J, debug=True)
+# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
+#                                       load_func=load_star, parse_func=parse_star, show_trace=False, m_J=m_J, debug=True)
 

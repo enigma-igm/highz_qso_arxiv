@@ -62,9 +62,9 @@ ax.plot(wl_star_obs, flux_star, label=label_star, color=CB_color_cycle[0], zorde
 
 # ax.fill_between(wl_obs, flux-flux_err, flux+flux_err, color="black", alpha=0.2)
 # ax.set_xlim(7300, 10500)
-ax.legend(loc="upper left", fontsize=15)
-ax.set_xlabel(r"wavelength ($\AA$)", fontsize=25)
-ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=25)
+ax.legend(loc="upper left", fontsize=20)
+ax.set_xlabel(r"wavelength ($\AA$)", fontsize=28)
+ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=28)
 
 filter_J = ascii.read(os.path.join(RESOURCE_PATH, f"filter/UKIRT_UKIDSS.J.dat"))
 filter_z = ascii.read(os.path.join(RESOURCE_PATH, f"filter/decam_z.dat"))
@@ -88,8 +88,17 @@ ax.set_xlim(8000, 14000)
 ax.set_ylim(0, 1.5)
 
 # put text on upper right corner
-ax.text(0.95, 0.95, r"$M_{J}=21.0$", ha="right", va="top", transform=ax.transAxes, fontsize=25)
+ax.text(0.95, 0.95, r"$m_{J}=21.0$", ha="right", va="top", transform=ax.transAxes, fontsize=25)
 ax.tick_params(labelsize=20)
-ax.set_ylim(-0.05, 1.5)
-# plt.show()
-plt.savefig('qso_star.pdf')
+ax.set_ylim(-0.05, 1.8)
+ax.tick_params(axis='both', which='major', labelsize=20)
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--show', action='store_true')
+args = parser.parse_args()
+
+if args.show:
+    plt.show()
+else:
+    plt.savefig('qso_star.pdf')

@@ -12,6 +12,11 @@ CB_color_cycle = ['#377eb8', '#ff7f00', '#4daf4a',
 
 mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=CB_color_cycle) 
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--show', action='store_true')
+args = parser.parse_args()
+
 snr_thresh = 6
 snr = np.array([15.2255819 , 18.4389655 , 20.86029965, 11.36261624, 13.44583139,
        20.16298293, 13.65737015, 13.01396451, 12.36416336, 19.4181692 ,
@@ -39,7 +44,8 @@ exptime_mag_22_5_star = exptime_mag_22_star * 10**(0.5*2/2.5)
 exptime_mag_23 = exptime_mag_22 * 10**(1*2/2.5)
 exptime_mag_23_star = exptime_mag_22_star * 10**(1*2/2.5)
 
-fig, (ax, ax2) = plt.subplots(1, 2, figsize=(10, 8), gridspec_kw={'width_ratios': [5, 1]}, sharey=True)
+# fig, (ax, ax2) = plt.subplots(1, 2, figsize=(10, 8), gridspec_kw={'width_ratios': [5, 1]}, sharey=True)
+fig, (ax2, ax) = plt.subplots(1, 2, figsize=(10, 8), gridspec_kw={'width_ratios': [1, 5]}, sharey=True)
 ax.plot(redshift, exptime_mag_21_5, color=CB_color_cycle[0])
 ax.scatter(redshift, exptime_mag_21_5, label=r'$m_{J}=21.5$', color=CB_color_cycle[0])
 
@@ -52,17 +58,17 @@ ax.scatter(redshift, exptime_mag_22_5, label=r'$m_{J}=22.5$', color=CB_color_cyc
 ax.plot(redshift, exptime_mag_23, color=CB_color_cycle[3])
 ax.scatter(redshift, exptime_mag_23, label=r'$m_{J}=23$', color=CB_color_cycle[3])
 
-ax.set_xlabel('Redshift', fontsize=20)
-ax.set_ylabel('Exposure time (s)', fontsize=20)
+ax.set_xlabel('Redshift', fontsize=25)
+# ax.set_ylabel('Exposure time (s)', fontsize=20)
 ax.set_yscale('log')
 ax.set_xticks([5.5, 6., 6.5, 7., 7.5])
-ax.set_title(f'LRIS: S/N={snr_thresh}', fontsize=24)
+ax.set_title(f'LRIS: S/N={snr_thresh}', fontsize=25)
 xmin, xmax = ax.get_xlim()
 ymin, ymax = ax.get_ylim()
 ax.hlines(300, xmin, xmax, linestyle='--', color='k', label='efficiency=0.5')
 ax.fill_between([5.,8], 0, 300, color='grey', alpha=0.3)
 ax.set_xlim(xmin, xmax)
-ax.tick_params(axis='both', which='major', labelsize=18)
+ax.tick_params(axis='both', which='major', labelsize=20)
 ax.legend(fontsize=20)
 
 x = np.arange(len(star_type))
@@ -74,11 +80,16 @@ ax2.set_xticks([])
 ax2.set_xlim(-0.5, 1.5)
 ax2.set_ylim(ymin, ymax)
 ax2.set_yscale('log')
+ax2.set_ylabel('Exposure time (s)', fontsize=25)
+ax2.tick_params(axis='both', which='major', labelsize=20)
+
 for i, tp in enumerate(star_type):
     ax2.text(x[i], 10, tp, fontsize=20)
 
 fig.tight_layout()
 fig.subplots_adjust(wspace=0)
 
-# plt.show()
-plt.savefig('z_exptime.pdf')
+if args.show:
+    plt.show()
+else:
+    plt.savefig('z_exptime.pdf')

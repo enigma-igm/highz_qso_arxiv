@@ -29,11 +29,31 @@ template_list[targets_list.index('J1458+1012')] = False
 template_list[targets_list.index('J1724+3718')] = False
 
 telluric_list = [False for i in range(len(fits_list))]
+qso_list = [False for i in range(len(fits_list))]
+qso_list[targets_list.index('J0901+2906')] = True
+qso_list[targets_list.index('J1319+0101')] = True
+qso_list[targets_list.index('J1458+1012')] = True
+qso_list[targets_list.index('J1724+3718')] = True
+
+# divide the list into three parts and plot
+
+plot_series(targets_list[:10], fits_list[:10], idx_list[:10], telluric_list=telluric_list[:10], 
+            template_list=template_list[:10], qso_list=qso_list[:10], display=False, save_file="LRIS_2203_part1.pdf")
+plot_series(targets_list[10:20], fits_list[10:20], idx_list[10:20], telluric_list=telluric_list[10:20], 
+            template_list=template_list[10:20], qso_list=qso_list[10:20], display=False, save_file="LRIS_2203_part2.pdf")
+plot_series(targets_list[20:], fits_list[20:], idx_list[20:], telluric_list=telluric_list[20:], 
+            template_list=template_list[20:], qso_list=qso_list[20:], display=False, save_file="LRIS_2203_part3.pdf")
 
 plot_series(targets_list, fits_list, idx_list, smooth_window=3, 
-            template_list=template_list, telluric_list=telluric_list, display=False, save_file="LRIS_2203.pdf")
+            template_list=template_list, telluric_list=telluric_list, qso_list=qso_list, display=False, save_file="LRIS_2203.pdf")
 
 fits_list = [f[:-5] + '_tellcorr' + f[-5:] for f in fits_list]
 telluric_list = [True for i in range(len(fits_list))]
+plot_series(targets_list[:10], fits_list[:10], idx_list[:10], telluric_list=telluric_list[:10], 
+            template_list=template_list[:10], qso_list=qso_list[:10], display=False, save_file="LRIS_2203_tellcorr_part1.pdf")
+plot_series(targets_list[10:20], fits_list[10:20], idx_list[10:20], telluric_list=telluric_list[10:20], 
+            template_list=template_list[10:20], qso_list=qso_list[10:20], display=False, save_file="LRIS_2203_tellcorr_part2.pdf")
+plot_series(targets_list[20:], fits_list[20:], idx_list[20:], telluric_list=telluric_list[20:], 
+            template_list=template_list[20:], qso_list=qso_list[20:], display=False, save_file="LRIS_2203_tellcorr_part3.pdf")
 plot_series(targets_list, fits_list, idx_list, smooth_window=3,
-            template_list=template_list, telluric_list=telluric_list, display=False, save_file="LRIS_2203_tellcorr.pdf")
+            template_list=template_list, telluric_list=telluric_list, qso_list=qso_list, display=False, save_file="LRIS_2203_tellcorr.pdf")

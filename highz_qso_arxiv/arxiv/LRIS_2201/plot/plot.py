@@ -12,8 +12,14 @@ fits_list[11] = f"../reduced/all/coadd2d/{name_list[11]}_coadd.fits"
 fits_list[15] = f"../reduced/all/coadd2d/{name_list[15]}_coadd.fits"
 idx_list = [1 for i in range(len(name_list))]
 template_list = [True for i in range(len(name_list))]
-plot_series(name_list, fits_list, idx_list, template_list=template_list, display=False, save_file="LRIS_2201.pdf")
+qso_list = [False for i in range(len(name_list))]
+# divide the list into two parts and plot them separately
+plot_series(name_list[:9], fits_list[:9], idx_list[:9], template_list=template_list[:9], qso_list=qso_list[:9], display=False, save_file="LRIS_2201_part1.pdf")
+plot_series(name_list[9:], fits_list[9:], idx_list[9:], template_list=template_list[9:], qso_list=qso_list[9:], display=False, save_file="LRIS_2201_part2.pdf")
+plot_series(name_list, fits_list, idx_list, template_list=template_list, qso_list=qso_list, display=False, save_file="LRIS_2201.pdf")
 
 fits_list = [f[:-5] + '_tellcorr' + f[-5:] for f in fits_list]
 telluric_list = [True for i in range(len(name_list))]
-plot_series(name_list, fits_list, idx_list, template_list=template_list, telluric_list=telluric_list, display=False, save_file="LRIS_2201_tellcorr.pdf")
+plot_series(name_list[:9], fits_list[:9], idx_list[:9], template_list=template_list[:9], qso_list=qso_list[:9], display=False, save_file="LRIS_2201_tellcorr_part1.pdf")
+plot_series(name_list[9:], fits_list[9:], idx_list[9:], template_list=template_list[9:], qso_list=qso_list[9:], display=False, save_file="LRIS_2201_tellcorr_part2.pdf")
+plot_series(name_list, fits_list, idx_list, template_list=template_list, telluric_list=telluric_list, qso_list=qso_list, display=False, save_file="LRIS_2201_tellcorr.pdf")

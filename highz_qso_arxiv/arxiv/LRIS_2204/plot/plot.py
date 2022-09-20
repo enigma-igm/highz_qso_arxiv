@@ -17,19 +17,41 @@ fits_list[-1] = "../reduced/J2212/J2212+2040_coadd.fits"
 idx_list = [1 for i in range(len(name_list))]
 template_list = [True for i in range(len(fits_list))]
 telluric_list = [False for i in range(len(fits_list))]
+
+template_list = [True for i in range(len(fits_list))]
+template_list[name_list.index('J1111+0640')] = False
+template_list[name_list.index('J1401+4542')] = False
+template_list[name_list.index('J1523+2935')] = False
+
+qso_list = [False for i in range(len(fits_list))]
+qso_list[name_list.index('J1111+0640')] = True
+qso_list[name_list.index('J1401+4542')] = True
+qso_list[name_list.index('J1523+2935')] = True
+
+# divide list into three parts and plot
+
+plot_series(name_list[:8], fits_list[:8], idx_list[:8], telluric_list=telluric_list[:8], template_list=template_list[:8], 
+            qso_list=qso_list[:8], display=False, save_file="LRIS_2204_part1.pdf")
+plot_series(name_list[8:16], fits_list[8:16], idx_list[8:16], telluric_list=telluric_list[8:16], template_list=template_list[8:16], 
+            qso_list=qso_list[8:16], display=False, save_file="LRIS_2204_part2.pdf")
+plot_series(name_list[16:], fits_list[16:], idx_list[16:], telluric_list=telluric_list[16:], template_list=template_list[16:], 
+            qso_list=qso_list[16:], display=False, save_file="LRIS_2204_part3.pdf")
+
 plot_series(name_list, fits_list, idx_list, template_list=template_list, telluric_list=telluric_list, 
-            display=False, save_file="LRIS_2204.pdf")
+            qso_list=qso_list, display=False, save_file="LRIS_2204.pdf")
 
 """
     plot all with telluric
 """
-fits_list = [f"../reduced/all/{nm}/{nm}_coadd_tellcorr.fits" for nm in name_list]
-fits_list[0] = "../reduced/all/coadd2d/J0854+2908_coadd_tellcorr.fits"
-fits_list[2] = "../reduced/J1100/coadd2d/J1100+0237_coadd_tellcorr.fits"
-fits_list[-1] = "../reduced/J2212/J2212+2040_coadd_tellcorr.fits"
-fits_list[0] = "../reduced/all/coadd2d/J0854+2908_coadd_tellcorr.fits"
-idx_list = [1 for i in range(len(name_list))]
-template_list = [True for i in range(len(fits_list))]
+fits_list = [f[:-5] + '_tellcorr' + f[-5:] for f in fits_list]
 telluric_list = [True for i in range(len(fits_list))]
+
+plot_series(name_list[:8], fits_list[:8], idx_list[:8], telluric_list=telluric_list[:8], template_list=template_list[:8], 
+            qso_list=qso_list[:8], display=False, save_file="LRIS_2204_tellcorr_part1.pdf")
+plot_series(name_list[8:16], fits_list[8:16], idx_list[8:16], telluric_list=telluric_list[8:16], template_list=template_list[8:16], 
+            qso_list=qso_list[8:16], display=False, save_file="LRIS_2204_tellcorr_part2.pdf")
+plot_series(name_list[16:], fits_list[16:], idx_list[16:], telluric_list=telluric_list[16:], template_list=template_list[16:], 
+            qso_list=qso_list[16:], display=False, save_file="LRIS_2204_tellcorr_part3.pdf")
+
 plot_series(name_list, fits_list, idx_list, template_list=template_list, telluric_list=telluric_list, 
-            display=False, save_file="LRIS_2204_tellcorr.pdf")
+            qso_list=qso_list, display=False, save_file="LRIS_2204_tellcorr.pdf")

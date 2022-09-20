@@ -144,3 +144,6 @@ dmypy.json
 *.html
 *.dat
 *.dat.txt
+
+# Big figures
+flux_ratio.pdf

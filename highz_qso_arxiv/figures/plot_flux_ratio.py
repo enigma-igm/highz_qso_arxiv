@@ -255,10 +255,14 @@ ax.text(0.7, 0, 'M dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
 ax.text(0.02, 2.8, 'L dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
 ax.text(0.05, -0.5, 'T dwarf', fontsize=15, zorder=2, color=CB_color_cycle[2])
 
+# ax.scatter(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
+#             s=20, marker='o', c=CB_color_cycle[0], label='M dwarf', zorder=4)
+# ax.scatter(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], 
+#             s=20, marker='v', c=CB_color_cycle[5], label='L dwarf', zorder=4)
 ax.scatter(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-            s=20, marker='o', c=CB_color_cycle[0], label='M dwarf', zorder=4)
+            s=30, marker='o', c=CB_color_cycle[2], label='M dwarf', zorder=4)
 ax.scatter(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], 
-            s=20, marker='v', c=CB_color_cycle[5], label='L dwarf', zorder=4)
+            s=30, marker='v', edgecolors='black', facecolors=CB_color_cycle[2], label='L dwarf', zorder=4)
 ax.scatter(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown], fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
             s=20, marker='d', c='black', alpha=0.6, label='unknown', zorder=3)
 cov = flux_ratio_cov(fz_dwarf, fW1_dwarf, fJ_dwarf,
@@ -290,10 +294,10 @@ plot_cline(10**(-zJ_simqso_mean/2.5), 10**(JW1_simqso_mean/2.5), ax=ax, cmap=plt
 for setting in ['logg-5-metallicity-0']:
     temp, czJ_dwarftrack, cJW1_dwarftrack = dwarf_track(setting)
     ax.plot(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], 
-            label='Dwarf temperature track', zorder=2)
+            label='Dwarf track (Allard+2012)', zorder=2)
     ax.scatter(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], s=5, alpha=0.8, zorder=2)
 ax.scatter(fzJ, fW1J, c='k', s=10)
-ax.plot(fzJ, fW1J, c='k', alpha=0.5, zorder=2, label='Dwarf tracks (Skrzypek+2015)')
+ax.plot(fzJ, fW1J, c='k', alpha=0.5, zorder=2, label='Dwarf track (Skrzypek+2015)')
 
 ax.plot(flux_ratio(np.array([-1., 0.562])), 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
 ax.plot(flux_ratio(np.array([-1., 0.562])), 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='blue', zorder=2)
@@ -307,7 +311,7 @@ x[1] = -0.1
 ax.plot(x, 1/flux_ratio(np.array([-0.261, -0.261])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
 ax.plot(x, 1/flux_ratio(np.array([1.239, 1.239])), ls='dashed', lw=1, alpha=0.5, color='red', zorder=2)
 
-ax.legend(loc='upper right', fontsize=15)
+ax.legend(loc='upper right', fontsize=12)
 ax.tick_params(axis='both', which='major', labelsize=20)
 ax.set_xlabel(r'$f_{\rm z} / f_{\rm J}$', fontsize=25)
 ax.set_ylabel(r'$f_{\rm W1} / f_{\rm J}$', fontsize=25)
