@@ -1,0 +1,194 @@
+name,ra,dec,JAB,label,spectral type,redshift,source,note,run
+J0739+2328,114.9565,23.4737,20.49,star,M9.5,,RN,,lris-2201
+J0759+2811,119.7644,28.1922,19.98,star,M6,,RN,,lris-2201
+J0820+2412,125.0318,24.2079,20.26,problematic,,,RN,"wrong target, candidate unobserved",lris-2201
+J0831+2558,127.7506,25.9824,20.03,star,M6,,RN,,lris-2201
+J0849+2601,132.4605,26.0252,20.49,star,M8,,EB,,lris-2201
+J0936+3244,144.0621,32.7369,20.11,star,M8,,RN,,lris-2201
+J0936+3346,144.1918,33.7672,20.14,star,M7,,RN,,lris-2201
+J0938+3332,144.7305,33.55,20.25,star,M6,,RN,,lris-2201
+J1003-2610,150.9141,-26.1712,-1.0,star,M6,,EB,,lris-2201
+J1030-0031,157.6601,-0.5216,19.95,star,M9.5,,RN,,lris-2201
+J1145+0933,176.3326,9.5629,-1.0,uNQ,,,RN,coadd2d; low S/N but unlikely to be qso,lris-2201
+J1146+0039,176.506,0.6609,20.33,uNQ,,,RN,,lris-2201
+J1206-0051,181.5325,-0.8515,20.99,uNQ,,,RN,coadd2d; low S/N but unlikely to be qso,lris-2201
+J1209+0135,182.3079,1.5873,20.2,star,L0.5,,RN,,lris-2201
+J1241-0134,190.4628,-1.5691,20.26,star,M4.5,,RN,,lris-2201
+J1246-3045,191.5318,-30.7624,-1.0,star,M6,,EB,,lris-2201
+J1256-0306,194.1415,-3.1166,21.28,uNQ,,,RN,,lris-2201
+J1305-1549,196.4318,-15.8288,-1.0,star,M8,,EB,,lris-2201
+J1326+0927,201.6527,9.4554,20.12,star,M9,,RN,,lris-2201
+J0810+2352,122.6679,23.8764,20.2,star,M9,,RN,,lris-2203
+J0850+0146,132.5352,1.7786,20.95,star,L2,,RN,,lris-2203
+J0901+2906,135.4089,29.1154,20.59,QSO,,6.1,RN,z~6.1,lris-2203
+J0911+0022,137.9179,0.3785,21.29,star,M9,,RN,,lris-2203
+J0947+0111,146.9812,1.1908,20.57,star,M8,,RN,,lris-2203
+J1100+0203,165.0121,2.0501,21.52,uNQ,,,RN,coadd2d; low S/N but unlikely to be qso,lris-2203
+J1143-0248,175.9838,-2.8082,21.76,uNQ,,,RN,,lris-2203
+J1153-2239,178.3398,-22.6503,-1.0,star,M9,,EB,,lris-2203
+J1200+0112,180.0132,1.204,21.67,uNQ,,,RN,coadd2d; low S/N but unlikely to be qso,lris-2203
+J1223+0114,185.7974,1.2348,20.82,star,M8,,RN,,lris-2203
+J1233-2807,188.4635,-28.1307,-1.0,star,M9,,EB,,lris-2203
+J1250+0347,192.6192,3.7842,21.51,uNQ,,,RN,,lris-2203
+J1319+0101,199.8647,1.0323,21.43,QSO,,5.7,RN,z~5.7,lris-2203
+J1327-0207,201.8314,-2.1207,21.43,uNQ,,,RN,,lris-2203
+J1335+0103,203.768,1.0655,21.22,star,M4.5,,RN,,lris-2203
+J1355-0044,208.7694,-0.739,21.19,uNQ,,,RN,,lris-2203
+J1355-0111,208.9151,-1.1915,21.55,uNQ,,,RN,,lris-2203
+J1356+0050,209.1527,0.8444,21.55,uNQ,,,RN,,lris-2203
+J1358-0118,209.6825,-1.3059,20.54,star,M9,,RN,,lris-2203
+J1412-2757,213.0457,-27.9584,-1.0,star,M6,,EB,,lris-2203
+J1422+0307,215.6111,3.1317,21.21,star,M9,,RN,,lris-2203
+J1425+0004,216.3505,0.0715,20.98,star,M8,,RN,,lris-2203
+J1427+0202,216.9523,2.0409,21.74,uNQ,,,RN,coadd2d; low S/N but unlikely to be qso,lris-2203
+J1443+0210,220.9054,2.1678,21.41,problematic,,,RN,reduction fail,lris-2203
+J1458+1012,224.6507,10.2138,-1.0,QSO,,5.6,EB,z~5.6,lris-2203
+J1510-0144,227.6352,-1.7405,21.66,uNQ,,,RN,,lris-2203
+J1514-0121,228.5783,-1.3623,21.55,star,M9.5,,RN,,lris-2203
+J1522+0051,230.6429,0.8647,21.48,uNQ,,,RN,,lris-2203
+J1534+0046,233.7204,0.7793,20.9,star,M9,,RN,,lris-2203
+J1655-0051,253.7865,-0.856,-1.0,star,M4.5,,EB,,lris-2203
+J1724+3718,261.1247,37.3061,-1.0,QSO,,5.74,EB,z~5.74,lris-2203
+J0739+2645,114.9618,26.7584,21.49,problematic,,,RN,observed but close to moon?,lris-2204
+J0744+2352,116.1866,23.8809,20.73,problematic,,,RN,observed but close to moon?,lris-2204
+J0854+2908,133.6171,29.1425,20.71,uNQ,,,RN,coadd2d,lris-2204
+J0954-0117,148.5633,-1.2986,20.29,star,T,,RN,,lris-2204
+J1100+0237,165.1637,2.6226,20.54,star,M9.5,,RN,science as tilt; coadd2d,lris-2204
+J1111+0640,167.8548,6.6817,20.75,QSO,,6.0,RN,z~6,lris-2204
+J1152+0059,178.0774,0.9928,20.3,problematic,,,RN,reduction fail due to bright nearby source,lris-2204
+J1238+0234,189.601,2.5833,20.69,uNQ,,,RN,,lris-2204
+J1253-0200,193.3015,-2.0114,20.88,uNQ,,,RN,,lris-2204
+J1317-0302,199.3735,-3.0466,21.0,star,M4.5,,RN,,lris-2204
+J1340+1422,205.1192,14.3791,21.08,uNQ,,,RN,,lris-2204
+J1349+0805,207.3444,8.0848,20.87,uNQ,,,RN,,lris-2204
+J1351+0128,207.8848,1.4694,20.88,star,M8,,RN,,lris-2204
+J1352+0002,208.0073,0.0402,20.7,star,M9,,RN,,lris-2204
+J1401+4542,210.3369,45.7148,21.1,QSO,,5.5,AG,z~5.5,lris-2204
+J1423+2901,215.7862,29.0268,20.7,uNQ,,,FW,extended from 2d,lris-2204
+J1426+0148,216.5661,1.8117,21.36,star,M6,,RN,,lris-2204
+J1429+0219,217.3907,2.3227,21.32,star,M9.5,,RN,,lris-2204
+J1432+0015,218.0553,0.2631,21.5,problematic,,,RN,reduced 2d looks bad; not qso from raw image,lris-2204
+J1434+0240,218.6668,2.6782,21.48,star,M8,,RN,,lris-2204
+J1437-0151,219.3224,-1.8607,21.69,problematic,,,RN,reduction fail due to bright nearby source; not quasar from 2d,lris-2204
+J1438-0103,219.7245,-1.0571,20.84,uNQ,,,RN,71-72 wrong PA (don't use),lris-2204
+J1441+0149,220.4742,1.8176,21.26,uNQ,,,RN,,lris-2204
+J1450+0228,222.5056,2.4722,21.63,uNQ,,,RN,reduction fail due to bright nearby sourcer; not quasar from 2d,lris-2204
+J1508-0109,227.1612,-1.1622,21.62,uNQ,,,RN,,lris-2204
+J1513-0059,228.267,-0.9837,20.83,star,M7,,RN,,lris-2204
+J1523+2935,230.8778,29.5944,20.2,QSO,,5.7,AG,z~5.7,lris-2204
+J1532-0155,233.037,-1.9186,21.07,star,M8,,RN,didn't apply offset,lris-2204
+J1535+6145,233.9451,61.7665,21.5,uNQ,,,AG,,lris-2204
+J1625+2414,246.4992,24.2385,20.99,uNQ,,,RN,,lris-2204
+J1635+5940,248.7858,59.6788,20.8,uNQ,,,FW,,lris-2204
+J2212+2040,333.1367,20.6692,20.3,uNQ,,,FW,no LRIS flux; extended from FIRE observation,lris-2204
+J0007+2517,1.878,25.287,20.5,problematic,,,,cannot identify the target,mosfire-1911
+J0022-0713,5.6428,-7.2175,21.57,problematic,,,,affected by the acq box,mosfire-1911
+J0038-0653,9.5158,-6.8897,-1.0,QSO,,7.1,known qso,z~7.1,mosfire-1911
+J0058+1715,14.5656,17.2553,-1.0,uNQ,,,,,mosfire-1911
+J0208+1749,32.2412,17.8289,-1.0,uNQ,,,,,mosfire-1911
+J0239-1026,39.903,-10.4383,-1.0,problematic,,,,"sky subtraction fails, probably due to wrong tilt solution",mosfire-1911
+J0251+1436,42.9241,14.613,20.5,problematic,,,,only took imaging data,mosfire-1911
+J0313-1806,48.4327,-18.1101,-1.0,QSO,,7.64,known qso,z~7.64,mosfire-1911
+J0426+0221,66.7353,2.3649,-1.0,inconclusive,,,,~9750A,mosfire-1911
+J0427+0327,66.8532,3.4607,-1.0,problematic,,,,might be wrong position according to obs note,mosfire-1911
+J2128+2231,322.1805,22.5221,20.6,problematic,,,,skip because bad weather according to obs note,mosfire-1911
+J2132-1434,323.1339,-14.5755,20.95,uNQ,,,,,mosfire-1911
+J2140+1608,325.1548,16.137,20.6,problematic,,,,no trace,mosfire-1911
+J2245+2709,341.3624,27.1512,20.5,problematic,,,,no trace,mosfire-1911
+J2247+3247,341.9262,32.7837,20.6,problematic,,,,no trace,mosfire-1911
+J2250-0859,342.551,-8.9954,20.9,problematic,,,,there are traces but might not be the target,mosfire-1911
+J2258-1540,344.7389,-15.6671,20.6,uNQ,,,,,mosfire-1911
+J2312+3215,348.0116,32.2571,20.9,uNQ,,,,,mosfire-1911
+J2328+2755,352.2429,27.9199,21.0,problematic,,,,there are traces but might not be the target,mosfire-1911
+J2333-1456,353.3177,-14.9433,20.9,problematic,,,,there are traces but might not be the target,mosfire-1911
+J2352+2655,358.0109,26.9195,20.0,problematic,,,,reduction fail; no target in imaging,mosfire-1911
+J1056+4613,164.0283,46.2248,20.7,problematic,,,,no trace,mosfire-2005
+J1100+5215,165.0265,52.2588,20.5,problematic,,,,no trace,mosfire-2005
+J1141+2822,175.356,28.371,20.3,problematic,,,,no trace,mosfire-2005
+J1311+5932,197.8284,59.5419,20.7,uNQ,,,,,mosfire-2005
+J1342+0928,205.5338,9.4774,20.6,QSO,,7.54,known quasar,z~7.54,mosfire-2005
+J1410+3927,212.7213,39.457,20.1,problematic,,,,no trace,mosfire-2005
+J1517+2846,229.403,28.7692,20.7,problematic,,,,no trace,mosfire-2005
+J1517+2551,229.4647,25.8527,20.7,problematic,,,,no trace,mosfire-2005
+J1526+2848,231.6328,28.8089,20.6,problematic,,,,no trace,mosfire-2005
+J1600+3127,240.1348,31.4611,20.2,uNQ,,,,,mosfire-2005
+J1626+1337,246.7402,13.6299,20.8,inconclusive,,,,hard to extract; could be LRIS target?,mosfire-2005
+J1642+2731,250.671,27.5183,20.6,problematic,,,,trace is barely visible,mosfire-2005
+J2129+0601,322.4129,6.0204,20.8,problematic,,,,no trace,mosfire-2005
+J2133+0605,323.2536,6.0891,20.1,problematic,,,,no trace,mosfire-2005
+J2212+2040,333.1367,20.6692,20.5,problematic,,,,no trace; but we have the obs of this target in other runs,mosfire-2005
+J2033-0428,308.3373,-4.4744,20.7,problematic,,,JY & FW,fall on a bright stripe,mosfire-2010
+J2105-0049,316.2843,-0.826,20.86,uNQ,,,JY & FW,,mosfire-2010
+J2119-1335,319.9394,-13.5912,20.78,uNQ,,,JY & FW,,mosfire-2010
+J2129+0601,322.4129,6.0204,20.84,uNQ,,,JY & FW,,mosfire-2010
+J2212+2040,333.1367,20.6692,20.5,inconclusive,,,JY & FW,no LRIS flux; but might be an extend source,mosfire-2010
+J2243+1340,340.9548,13.6694,20.93,problematic,,,JY & FW,no trace,mosfire-2010
+J2244+2907,341.1797,29.1174,20.54,uNQ,,,JY & FW,,mosfire-2010
+J2247+3247,341.9262,32.7837,20.62,uNQ,,,JY & FW,,mosfire-2010
+J2312+3215,348.0116,32.2571,20.92,uNQ,,,JY & FW,,mosfire-2010
+J2328+2755,352.2429,27.9199,21.02,uNQ,,,JY & FW,,mosfire-2010
+J2346+2545,356.5846,25.7568,20.67,uNQ,,,JY & FW,,mosfire-2010
+J2352+2655,358.0109,26.9195,19.92,uNQ,,,JY & FW,might be FeLoBAL,mosfire-2010
+J2355+2048,358.7588,20.8166,20.76,uNQ,,,JY & FW,,mosfire-2010
+J0007-0657,1.8499,-6.9539,21.36,problematic,,,JY & FW,no trace,mosfire-2010
+J0020+1956,5.1417,19.9473,20.85,uNQ,,,JY & FW,,mosfire-2010
+J0038-0653,9.5158,-6.8897,20.82,QSO,,7.1,known quasar,z~7.1,mosfire-2010
+J0058-2903,14.6262,-29.0659,21.9,problematic,,,RN,no trace,mosfire-2010
+J0102-3327,15.5523,-33.4614,21.3,uNQ,,,RN,,mosfire-2010
+J0159-2017,29.9318,-20.2993,21.46,uNQ,,,JY & FW,,mosfire-2010
+J0200+2520,30.2277,25.3447,20.39,problematic,,,EB,no trace,mosfire-2010
+J0208+3222,32.1246,32.3791,20.56,problematic,,,JY & FW,no trace,mosfire-2010
+J0220+3458,35.143,34.9733,20.46,inconclusive,,,LOFAR,might need LRIS reobs,mosfire-2010
+J0251+1724,42.9514,17.4097,20.76,uNQ,,,JY & FW,,mosfire-2010
+J0339-1610,54.921,-16.1725,21.32,uNQ,,,JY & FW,,mosfire-2010
+J0705+2859,106.4665,28.9878,20.38,uNQ,,,EB,,mosfire-2010
+J0753+3750,118.3745,37.8394,20.17,problematic,,,EB,bright central source,mosfire-2010
+J0758+0040,119.734,0.6814,20.83,uNQ,,,JY & FW,,mosfire-2010
+J0759+0735,119.9502,7.5841,20.94,uNQ,,,JY & FW,,mosfire-2010
+J0808+3855,122.174,38.9309,20.43,problematic,,,EB,no trace,mosfire-2010
+J0812+3201,123.0085,32.024,20.22,uNQ,,,EB,,mosfire-2010
+J0813+2219,123.4995,22.3187,21.04,uNQ,,,JY & FW,,mosfire-2010
+J0822+5045,125.6844,50.7631,19.75,uNQ,,,EB,might need LRIS reobs; unlikely since it should look brighter (JAB=19.75),mosfire-2010
+J0826+1217,126.5086,12.2947,20.43,uNQ,,,JY & FW,,mosfire-2010
+J0845+3033,131.2871,30.5507,20.86,uNQ,,,JY & FW,,mosfire-2010
+J0851+4358,132.8213,43.9709,20.49,problematic,,,JY & FW,no trace,mosfire-2010
+J0637+3812,99.3565,38.2139,20.48,uNQ,,,FW,,mosfire-2201
+J0730+5949,112.5323,59.818,20.5,problematic,,,FW,no trace,mosfire-2201
+J0838-0112,129.5247,-1.2046,20.58,uNQ,,,RN,,mosfire-2201
+J0847+0139,131.97,1.6563,20.51,uNQ,,,RN,,mosfire-2201
+J0854+2908,133.6171,29.1425,20.71,uNQ,,,RN,might be wrong target,mosfire-2201
+J0938+1341,144.7297,13.6956,19.3,uNQ,,,FW,,mosfire-2201
+J1024-0037,156.2024,-0.6267,20.74,problematic,,,RN,fall on a bright stripe; the trace itself is very faint,mosfire-2201
+J1506+3316,226.7225,33.2788,20.43,problematic,,,FW,two traces at the position of the target,mosfire-2201
+J0841+3814,130.4087,38.2356,-1.0,FeLoBAL,,,EB,in J2,mosfire-2204
+J1150-0143,177.7019,-1.7189,21.18,uNQ,,,RN,,mosfire-2204
+J1202+0129,180.6675,1.4847,21.54,uNQ,,,RN,,mosfire-2204
+J1315+1533,198.9532,15.5656,19.92,uNQ,,,RN,,mosfire-2204
+J1318+2932,199.6751,29.5497,20.1,uNQ,,,RN,,mosfire-2204
+J1332+0150,203.2356,1.842,21.42,uNQ,,,RN,,mosfire-2204
+J1333+0919,203.4055,9.3275,20.99,uNQ,,,RN,,mosfire-2204
+J1424+2527,216.2031,25.464,20.69,problematic,,,FW,trace very faint; unlikely to be quasar,mosfire-2204
+J1511+0344,227.943,3.735,20.37,uNQ,,,RN,,mosfire-2204
+J0739+4843,114.9604,48.7208,19.88,problematic,,,,multiple traces,nires-1903
+J0744+1536,116.1208,15.6019,20.38,problematic,,,,very faint,nires-1903
+J0756+5744,119.1214,57.7411,20.05,uNQ,,,,,nires-1903
+J0800+5128,120.1225,51.48,19.92,problematic,,,,multiple traces,nires-1903
+J0800+3034,120.1499,30.5719,20.19,uNQ,,,,red end saturated,nires-1903
+J0803+0030,120.9272,0.5097,19.33,star,L3,,,,nires-1903
+J0816+1622,124.0367,16.3805,19.55,star,L8,,,,nires-1903
+J0953-0853,148.3353,-8.8933,19.35,star,L6,,,,nires-1903
+J1217+3136,184.4048,31.6055,19.21,star,L,,,,nires-1903
+J1312+5707,198.1211,57.1283,19.24,star,T,,,,nires-1903
+J1423+2901,215.7862,29.0268,19.77,star,L3,,,,nires-1903
+J1546+2945,236.5652,29.7537,19.03,star,L3,,,,nires-1903
+J1550+2558,237.7417,25.9781,19.57,star,L3,,,,nires-1903
+J1635+5940,248.7858,59.6788,19.4,star,L3,,,,nires-1903
+J1638+5412,249.6888,54.2155,19.59,star,L3,,,,nires-1903
+J1007+2115,151.9928,21.2581,-1.0,QSO,,7.52,known quasar,z~7.52,nires-1905
+J1432+5746,218.0083,57.7711,-1.0,uNQ,,,,,nires-1905
+J1450+3302,222.6583,33.0376,-1.0,star,L3,,,,nires-1905
+J1458+6300,224.7333,63.0082,-1.0,star,M8,,,,nires-1905
+J1539-0203,234.8333,-2.0578,-1.0,problematic,,,,no trace,nires-1905
+J1557+0140,239.3792,1.6786,-1.0,problematic,,,,no trace,nires-1905
+J1635+1758,248.9,17.9797,-1.0,uNQ,,,,,nires-1905
+J2212+2040,333.1375,20.6692,-1.0,uNQ,,,,no LRIS flux; might be extend source,nires-1905

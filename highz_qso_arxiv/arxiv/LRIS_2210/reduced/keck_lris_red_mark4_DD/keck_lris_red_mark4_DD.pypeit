@@ -1,0 +1,27 @@
+# Auto-generated PypeIt file using PypeIt version: 1.8.2.dev481+g93e899a45
+# 2022-12-02
+
+# User-defined execution parameters
+[rdx]
+spectrograph = keck_lris_red_mark4
+
+# Setup
+setup read
+    Setup DD:
+         dispname: 600/10000
+         dichroic: 680
+           decker: long_8.7
+          binning: 2,2
+        dispangle: 31.071106
+          cenwave: 8926.487689
+              amp: 4
+setup end
+
+# Read in the data
+data read
+ path raw
+|              filename | frametype |                ra |                dec | target |  dispname |   decker | binning |          mjd | airmass |      exptime | dichroic | dispangle |     cenwave | amp | frameno |
+| r221026_00173.fits.gz |   science | 88.11512499999999 | 15.887527777777777 |   gd71 | 600/10000 | long_8.7 |     2,2 | 59878.644252 |    1.08 | 60.000184064 |      680 | 31.071106 | 8926.487689 |   4 |     173 |
+| r221026_00174.fits.gz |   science | 88.11512499999999 | 15.887527777777777 |   gd71 | 600/10000 | long_8.7 |     2,2 | 59878.646318 |    1.09 | 60.000184064 |      680 | 31.071106 | 8926.487689 |   4 |     174 |
+data end
+

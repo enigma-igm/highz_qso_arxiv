@@ -5,6 +5,8 @@ import os
 import sys
 import fnmatch
 
+from IPython import embed
+
 def create_coadd2d_file(pypeit_file, spectrograph="keck_mosfire"):
     """use this in a reduction folder (like `all`) to create individual `*_coadd2d.cfg` file for each target in `coadd2d` folder.
 
@@ -68,7 +70,7 @@ def create_coadd1d_file(coadd1d_file, sens_file):
     for i in range(idx_start+1, idx_end):
         # find all matched strings
         # which are our targets
-        target = re.findall('-[a-zA-Z0-9+-]+_', f[i])[0][1:-1]
+        target = re.findall('-J[a-zA-Z0-9+-]+.', f[i])[0][1:-1]
         if target != target_previous:
             targets[target] = [i]
         else:
@@ -76,8 +78,8 @@ def create_coadd1d_file(coadd1d_file, sens_file):
         target_previous = target
 
     for target in targets:
-        os.mkdir(target)
-        f_out = open("{}/{}.coadd1d".format(target, target), "w+")
+        # os.mkdir(target)
+        f_out = open("{}.coadd1d".format(target), "w+")
         
         # [coadd1d]
         f_out.write(f[0]+"\n")
@@ -96,7 +98,7 @@ def create_coadd1d_file(coadd1d_file, sens_file):
 
         # list
         for i in targets[target]:
-            f_out.write(" ../"+f[i]+"\n")
+            f_out.write(" "+f[i]+"\n")
 
         # end
         f_out.write(f[idx_end])

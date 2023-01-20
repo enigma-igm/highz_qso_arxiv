@@ -98,16 +98,16 @@
         noise_floor = 0.01
 [reduce]
     [[findobj]]
-        snr_thresh = 0.02
-        find_trim_edge = 800, 950
-        maxnumber_sci = 20
-        find_negative = False
+        snr_thresh = 1
+        find_trim_edge = 800, 800
+        maxnumber_sci = 5
     [[skysub]]
         bspline_spacing = 0.8
 [fluxcalib]
     extrap_sens = True
 [coadd2d]
     offsets = 0, -44.4938820912, -22.2469410456, -66.7408231368, -44.4938820912, -88.9877641824, 22.2469410456, -111.234705228
+    manual = 1:1116:1150:5
 [sensfunc]
     extrap_blu = 0.0
     extrap_red = 0.0

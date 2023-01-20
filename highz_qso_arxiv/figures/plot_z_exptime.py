@@ -9,6 +9,7 @@ import matplotlib as mpl
 CB_color_cycle = ['#377eb8', '#ff7f00', '#4daf4a',
                   '#f781bf', '#a65628', '#984ea3',
                   '#999999', '#e41a1c', '#dede00']
+CB_color_cycle = ['#b2182b', '#ef8a62', '#67a9cf', '#2166ac']
 
 mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=CB_color_cycle) 
 
@@ -58,18 +59,22 @@ ax.scatter(redshift, exptime_mag_22_5, label=r'$m_{J}=22.5$', color=CB_color_cyc
 ax.plot(redshift, exptime_mag_23, color=CB_color_cycle[3])
 ax.scatter(redshift, exptime_mag_23, label=r'$m_{J}=23$', color=CB_color_cycle[3])
 
-ax.set_xlabel('Redshift', fontsize=25)
+ax.set_xlabel('Redshift', fontsize=35)
 # ax.set_ylabel('Exposure time (s)', fontsize=20)
 ax.set_yscale('log')
 ax.set_xticks([5.5, 6., 6.5, 7., 7.5])
-ax.set_title(f'LRIS: S/N={snr_thresh}', fontsize=25)
+# ax.set_title(f'LRIS: S/N={snr_thresh}', fontsize=25)
+ax.set_ylim(5e0, 3e5)
+
 xmin, xmax = ax.get_xlim()
 ymin, ymax = ax.get_ylim()
-ax.hlines(300, xmin, xmax, linestyle='--', color='k', label='efficiency=0.5')
+ax.hlines(300, xmin, xmax, linestyle='--', color='k', label='observing efficiency=0.5')
 ax.fill_between([5.,8], 0, 300, color='grey', alpha=0.3)
 ax.set_xlim(xmin, xmax)
-ax.tick_params(axis='both', which='major', labelsize=20)
-ax.legend(fontsize=20)
+ax.tick_params(axis='both', which='major', labelsize=30, width=1, size=8)
+ax.tick_params(axis='both', which='minor', labelsize=30, width=1, size=4)
+# ax.legend(fontsize=20)
+ax.set_title('LRIS: SNR=6', fontsize=35)
 
 x = np.arange(len(star_type))
 ax2.scatter(x, exptime_mag_21_5_star, color=CB_color_cycle[0])
@@ -80,11 +85,12 @@ ax2.set_xticks([])
 ax2.set_xlim(-0.5, 1.5)
 ax2.set_ylim(ymin, ymax)
 ax2.set_yscale('log')
-ax2.set_ylabel('Exposure time (s)', fontsize=25)
-ax2.tick_params(axis='both', which='major', labelsize=20)
+ax2.set_ylabel('Exposure time (s)', fontsize=35)
+ax2.tick_params(axis='both', which='major', labelsize=30, width=1, size=8)
+ax2.tick_params(axis='both', which='minor', labelsize=30, width=1, size=4)
 
 for i, tp in enumerate(star_type):
-    ax2.text(x[i], 10, tp, fontsize=20)
+    ax2.text(x[i]-0.2, 10, tp, fontsize=28)
 
 fig.tight_layout()
 fig.subplots_adjust(wspace=0)

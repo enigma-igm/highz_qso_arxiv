@@ -267,8 +267,6 @@ def simulate(sens, spec2DObj, sobjs, header,
         plt.ylabel('Counts', fontsize=40)
         plt.tick_params(labelsize=20)
         plt.legend(fontsize=20)
-        plt.text(0.1, 0.9,'J1326+0927 (M9)', ha='center', va='center', transform=plt.gca().transAxes, fontsize=20)
-        # plt.savefig('dwarf_spec_test.pdf')
         plt.show()
         embed()
 
@@ -302,8 +300,10 @@ sobjs = specobjs.SpecObjs.from_fitsfile(spec1dfile, chk_version=False)
 header = fits.getheader(spec1dfile)
 
 # 1. simulate the target
+# img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
+#                                       load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=m_J, debug=True)
 img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
-                                      load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=redshift, m_J=m_J, debug=True)
+                                      load_func=load_quasar, parse_func=parse_quasar, show_trace=False, redshift=6.574, m_J=23, debug=True)
 # img_fake, sobjs_fake, info = simulate(sens=sens, spec2DObj=spec2DObj, sobjs=sobjs, telluric=telluric, slitloss=False, header=header, trace_id=trace_id, offset=-100, exptime=300, 
 #                                       load_func=load_star, parse_func=parse_star, show_trace=False, m_J=m_J, debug=True)
 

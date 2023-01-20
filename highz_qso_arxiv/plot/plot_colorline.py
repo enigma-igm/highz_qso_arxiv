@@ -5,7 +5,7 @@ import matplotlib.collections as mcoll
 
 # see https://stackoverflow.com/questions/8500700/how-to-plot-a-gradient-color-line-in-matplotlib
 
-def plot_cline(x, y, ax, z=None, cmap=plt.get_cmap('copper'), norm=plt.Normalize(0.0, 1.0), linewidth=3, alpha=1.0):
+def plot_cline(x, y, ax, z=None, cmap=plt.get_cmap('copper'), norm=plt.Normalize(0.0, 1.0), linewidth=3, alpha=1.0, zorder=1):
     """
     http://nbviewer.ipython.org/github/dpsanders/matplotlib-examples/blob/master/colorline.ipynb
     http://matplotlib.org/examples/pylab_examples/multicolored_line.html
@@ -26,7 +26,7 @@ def plot_cline(x, y, ax, z=None, cmap=plt.get_cmap('copper'), norm=plt.Normalize
 
     segments = make_segments(x, y)
     lc = mcoll.LineCollection(segments, array=z, cmap=cmap, norm=norm,
-                              linewidth=linewidth, alpha=alpha)
+                              linewidth=linewidth, alpha=alpha, zorder=zorder)
 
     # ax = plt.gca()
     ax.add_collection(lc)

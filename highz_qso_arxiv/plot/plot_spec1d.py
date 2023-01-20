@@ -17,6 +17,13 @@ path = get_project_root()
 ARXIV_PATH = os.path.join(path, "arxiv")
 RESOURCE_PATH = os.path.join(path, "resource")
 
+import matplotlib as mpl
+CB_color_cycle = ['#377eb8', '#ff7f00', '#4daf4a',
+                  '#f781bf', '#a65628', '#984ea3',
+                  '#999999', '#e41a1c', '#dede00']
+
+mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=CB_color_cycle) 
+
 def plot_template_dat(model='qso', redshift=7., star_type='L0', display=True):
     """Available template models:
         qso: QSO template (Selsing+2015)
@@ -51,8 +58,8 @@ def plot_template_dat(model='qso', redshift=7., star_type='L0', display=True):
     # ax.fill_between(wl_obs, flux-flux_err, flux+flux_err, color="black", alpha=0.2)
     ax.set_xlim(7300, 10500)
     ax.legend(loc="upper left")
-    ax.set_xlabel(r"wavelength ($\AA$)", fontsize=15)
-    ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=15)
+    ax.set_xlabel(r"wavelength ($\mathring{A}$)", fontsize=15)
+    ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\mathring{A}^{-1}$)", fontsize=15)
 
     # ymin, ymax = ax.get_ylim()
     # ax.vlines(wl_lya, ymin, ymax)
@@ -60,7 +67,8 @@ def plot_template_dat(model='qso', redshift=7., star_type='L0', display=True):
         plt.show()
     return fig, ax
 
-def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, telluric=False, qso=False):
+def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, 
+                template=True, telluric=False, qso=False, plot_telluric=True):
     """Plot single spectrum to axis
 
     Args:
@@ -87,24 +95,24 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
     flux_sm, flux_ivar_sm = ivarsmooth(flux, flux_ivar, smooth_window)
     flux_std = inverse(np.sqrt(flux_ivar_sm[mask]))
     axis.plot(wave[mask], flux_sm[mask], label=name, color="black", lw=1.5)
-    axis.plot(wave[mask], flux_std, lw=1, color="red", alpha=0.6)
+    axis.plot(wave[mask], flux_std, lw=1, color=CB_color_cycle[0], alpha=0.8)
     xmin = np.min(wave[mask])
     xmax = np.max(wave[mask])
-    axis.hlines(0, xmin, xmax, color="cyan", alpha=0.8, lw=1, ls='dashed')
+    axis.hlines(0, xmin, xmax, color="grey", alpha=0.8, lw=1, ls='dashed')
     axis.set_xlim(xmin, xmax)
 
     # always want to include the noise vector
     
     # TODO: dynamically determine the ylim
 
-    mask = flux_std < .5
+    mask_std = flux_std < .5
     # flux_oversm, _ = ivarsmooth(flux, flux_ivar, 11)
-    ymin = np.mean(flux_sm[mask])-2*np.std(flux_sm[mask])
-    ymax = np.mean(flux_sm[mask])+2*np.std(flux_sm[mask])
-    if ymin > 0: ymin = 0
-    # if ymax < np.max(flux_sm[mask]): ymax =  np.mean(flux_sm)+3*np.std(flux_sm)
+    ymin = np.mean(flux_sm[mask][mask_std])-2*np.std(flux_sm[mask][mask_std])
+    ymax = np.mean(flux_sm[mask][mask_std])+2*np.std(flux_sm[mask][mask_std])
+    if ymin > 0: ymin = -0.1
+    # if ymax < np.max(flux_sm[mask][mask_std]): ymax =  np.mean(flux_sm[mask])+3*np.std(flux_sm[mask])
     if qso:
-        ymax = np.mean(flux_sm[mask])+4*np.std(flux_sm[mask])
+        ymax = np.mean(flux_sm[mask][mask_std])+4*np.std(flux_sm[mask][mask_std])
     axis.set_ylim(ymin, ymax)
     axis.yaxis.set_major_locator(MaxNLocator(2, prune='upper'))
     yt = axis.get_yticks()
@@ -133,20 +141,32 @@ def plot_spec1d(name, fits_file, idx, axis, smooth_window=5, template=True, tell
             if chi_sq_new < chi_sq:
                 chi_sq = chi_sq_new
                 best_template = (wave_template, flux_template_scaled, template, chi_sq)
-        axis.plot(best_template[0], best_template[1], alpha=0.8, label=best_template[2])  
+        axis.plot(best_template[0], best_template[1], alpha=0.8, label=best_template[2], color=CB_color_cycle[1])  
                 #   label=best_template[2]+"\n"+r"$\chi^2=$"+str(round(best_template[3],2)))
 
     if telluric:
         flux =data["telluric"]
-        ax2 = axis.twinx()
-        ax2.plot(wave[mask], flux[mask], color="navy", zorder=1, alpha=0.4)
-        ax2.set_ylim(-2,1.)
-        ax2.set_yticks([])
+        if plot_telluric:
+            ax2 = axis.twinx()
+            ax2.plot(wave[mask], flux[mask], color="navy", zorder=1, alpha=0.4)
+            ax2.set_ylim(-2,1.)
+            ax2.set_yticks([])
     axis.tick_params(axis='both', which='major', labelsize=10)
     axis.legend(loc="upper right", frameon=True, fontsize=6)
-    return axis
+    if plot_telluric:
+        if template:
+            return axis, None, None, chi_sq
+        else:
+            return axis, None, None
+    else:
+        if template:
+            return axis, wave[mask], flux[mask], chi_sq
+        else:
+            return axis, wave[mask], flux[mask]
 
-def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=False, qso=False, display=True, save_file=""):
+def plot_single(name, fits_file, idx, smooth_window=5, 
+                template=True, telluric=False, qso=False,
+                display=True, save_file=""):
     """Plot single spectrum given fits file and other parameters
 
     Args:
@@ -163,14 +183,20 @@ def plot_single(name, fits_file, idx, smooth_window=5, template=True, telluric=F
         _type_: _description_
     """
     fig, ax = plt.subplots(figsize=(20,6))
-    plot_spec1d(name, fits_file, idx, ax, smooth_window, template=template, telluric=telluric, qso=qso)
+    plot_spec1d(name, fits_file, idx, ax, smooth_window, 
+                template=template, telluric=telluric, qso=qso)
+    ax.set_xlabel(r"Wavelength ($\mathring{A}$)", fontsize=20)
+    ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\mathring{A}^{-1}$)", fontsize=20)
+    ax.legend(loc="upper right", frameon=True, fontsize=15)
     if display:
         plt.show()
     if save_file:
         fig.savefig(save_file)
     return fig, ax
 
-def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=None, telluric_list=None, qso_list=None, display=True, save_file=""):
+def plot_series(name_list, fits_list, idx_list, smooth_window=5, 
+                template_list=None, telluric=False, qso_list=None,
+                xrange=None, display=True, save_file=""):
     """Plot a series of spectrum given fits files and other parameters
 
     Args:
@@ -187,24 +213,64 @@ def plot_series(name_list, fits_list, idx_list, smooth_window=5, template_list=N
     assert len(name_list) == len(fits_list) == len(idx_list)
     if template_list is not None:
         assert len(template_list) == len(name_list)
-    if telluric_list is not None:
-        assert len(telluric_list) == len(name_list)
     if qso_list is not None:
         assert len(qso_list) == len(name_list)
         
     num = len(fits_list)
-    fig, axs = plt.subplots(num, sharex=True, figsize=(10,1*num))
-    for i, ax in enumerate(axs):
-        if template_list is None: template = True
-        else: template = template_list[i]
-        if telluric_list is None: telluric = False
-        else: telluric = telluric_list[i]
-        ax = plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, smooth_window, template=template, telluric=telluric, qso=qso_list[i])
-    ax.set_xlabel(r"Wavelength ($\AA$)", fontsize=20)
+    height_ratios = []
+    for _ in range(num):
+        height_ratios += [2]
+    if telluric:
+        num = num + 1
+        height_ratios += [1]
+
+    fig, axs = plt.subplots(num, sharex=True, figsize=(10,1*num), gridspec_kw={'height_ratios': height_ratios})
+    telluric_all = []
+    if telluric:
+        _axs = axs[:-1]
+    else:
+        _axs = axs
+    if num == 1:
+        axs = _axs = [_axs]
+    for i, ax in enumerate(_axs):
+        if template_list is None: 
+            template = True
+        else: 
+            template = template_list[i]
+        if template:
+            ax, wl, tell, chi_sq = plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, 
+                                    smooth_window, template=template, telluric=telluric, qso=qso_list[i], plot_telluric=False)
+        else:
+            ax, wl, tell = plot_spec1d(name_list[i], fits_list[i], idx_list[i], ax, 
+                                       smooth_window, template=template, telluric=telluric, qso=qso_list[i], plot_telluric=False)
+
+        # interpolate telluric, and apply on a grid
+        from scipy.interpolate import interp1d
+        if i == 0:
+            wl_grid = np.arange(wl[0], wl[-1] , 0.1)
+        if telluric:
+            tell_interp = interp1d(wl, tell, fill_value="extrapolate")
+            tell_grid = tell_interp(wl_grid)
+            tell_grid[tell_grid < 0] = 0
+            tell_grid[tell_grid > 1] = 1
+            telluric_all.append(tell_grid)
+    if telluric:
+        ax = axs[-1]
+        ax.plot(wl_grid, np.mean(np.array(telluric_all), axis=0), color="grey", zorder=1, alpha=0.8)
+        ax.set_ylim(0,1.5)
+        ax.set_yticks([0, 1])
+        # text on lower right
+        ax.text(0.98, 0.1, "average telluric model", horizontalalignment='right', verticalalignment='bottom', transform=ax.transAxes, fontsize=10)
+    ax.set_xlabel(r"Wavelength ($\mathring{A}$)", fontsize=20)
     mid_idx = int(len(name_list)/2)
 
-    axs[mid_idx].set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=20)
+    axs[mid_idx].set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\mathring{A}^{-1}$)", fontsize=20)
     axs[mid_idx].yaxis.set_label_coords(-0.06, 0.5)
+
+    for ax in axs:
+        ax.set_xlim(xrange[0], xrange[1])
+        ax.tick_params(axis='both', which='major', labelsize=14, width=1, size=6)
+        ax.tick_params(axis='both', which='minor', labelsize=14, width=1, size=3)
 
     # fig.tight_layout()
     fig.subplots_adjust(hspace=0)

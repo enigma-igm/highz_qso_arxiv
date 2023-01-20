@@ -1,0 +1,65 @@
+L:
+  --:
+    decker: LONGSLIT-46x1
+    dispname: Y-spectroscopy
+    filter1: Y
+  8192:
+    align: []
+    arc:
+    - ../../raw/./MF.20220111.56422.fits.gz
+    - ../../raw/./MF.20220111.56605.fits.gz
+    - ../../raw/./MF.20220111.56789.fits.gz
+    - ../../raw/./MF.20220111.56971.fits.gz
+    bias: []
+    dark: []
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science:
+    - ../../raw/./MF.20220111.56422.fits.gz
+    - ../../raw/./MF.20220111.56605.fits.gz
+    - ../../raw/./MF.20220111.56789.fits.gz
+    - ../../raw/./MF.20220111.56971.fits.gz
+    sky: []
+    standard:
+    - ../../raw/./MF.20220111.58264.fits.gz
+    - ../../raw/./MF.20220111.58358.fits.gz
+    - ../../raw/./MF.20220111.58467.fits.gz
+    - ../../raw/./MF.20220111.58563.fits.gz
+    tilt:
+    - ../../raw/./MF.20220111.56422.fits.gz
+    - ../../raw/./MF.20220111.56605.fits.gz
+    - ../../raw/./MF.20220111.56789.fits.gz
+    - ../../raw/./MF.20220111.56971.fits.gz
+    trace: []
+  16383:
+    align: []
+    arc: []
+    bias: []
+    dark:
+    - ../../raw/./MF.20220111.07778.fits.gz
+    - ../../raw/./MF.20220111.07800.fits.gz
+    - ../../raw/./MF.20220111.07821.fits.gz
+    - ../../raw/./MF.20220111.07843.fits.gz
+    - ../../raw/./MF.20220111.07862.fits.gz
+    - ../../raw/./MF.20220111.07883.fits.gz
+    - ../../raw/./MF.20220111.07905.fits.gz
+    - ../../raw/./MF.20220111.07926.fits.gz
+    - ../../raw/./MF.20220111.07947.fits.gz
+    illumflat: []
+    pinhole: []
+    pixelflat: []
+    science: []
+    sky: []
+    standard: []
+    tilt: []
+    trace:
+    - ../../raw/./MF.20220111.07574.fits.gz
+    - ../../raw/./MF.20220111.07595.fits.gz
+    - ../../raw/./MF.20220111.07615.fits.gz
+    - ../../raw/./MF.20220111.07636.fits.gz
+    - ../../raw/./MF.20220111.07655.fits.gz
+    - ../../raw/./MF.20220111.07676.fits.gz
+    - ../../raw/./MF.20220111.07697.fits.gz
+    - ../../raw/./MF.20220111.07719.fits.gz
+    - ../../raw/./MF.20220111.07740.fits.gz

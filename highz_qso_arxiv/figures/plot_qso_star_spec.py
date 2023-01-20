@@ -14,7 +14,7 @@ import matplotlib as mpl
 CB_color_cycle = ['#377eb8', '#ff7f00', '#4daf4a',
                   '#f781bf', '#a65628', '#984ea3',
                   '#999999', '#e41a1c', '#dede00']
-
+CB_color_cycle = ['#2166ac', '#b2182b']
 mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=CB_color_cycle) 
 
 path = get_project_root()
@@ -32,7 +32,7 @@ flux_qso_err = qso_spec["col3"]
 wl_lya = 1215.67 * (1 + redshift)
 trough = wl_qso_obs < wl_lya
 flux_qso[trough] = 0.0
-label_qso = rf"$z={redshift}$; Selsing+2015"
+label_qso = rf"$z={redshift}$; Selsing+2016"
 
 m_J_temp = ukirt_J.get_ab_magnitudes(flux_qso * 1e-17 * u.erg / u.s / u.cm**2 / u.AA, wl_qso_obs*u.AA)[0][0]
 scale = 10**(-(m_J-m_J_temp)/2.5)
@@ -55,15 +55,16 @@ flux_star = flux_star * scale
 fig, ax = plt.subplots(figsize=(12,6))
 # ax.plot(wl_qso_obs[~trough], flux_qso[~trough], label=label_qso, color="black", zorder=3)
 # ax.plot(wl_qso_obs, flux_qso, color="grey", ls="--", zorder=2)
-ax.plot(wl_qso_obs, flux_qso, label=label_qso, color=CB_color_cycle[1], lw=2, zorder=3)
+ax.plot(wl_qso_obs, flux_qso, label=label_qso, color=CB_color_cycle[1], alpha=0.8, lw=2, zorder=3)
 # ax.plot(wl_qso_obs, flux_qso, color=CB_color_cycle[1], alpha=0.5, lw=2, ls="--", zorder=2)
 
-ax.plot(wl_star_obs, flux_star, label=label_star, color=CB_color_cycle[0], zorder=1, lw=2)
+ax.plot(wl_star_obs, flux_star, label=label_star, color=CB_color_cycle[0], alpha=0.8, zorder=1, lw=2)
 
 # ax.fill_between(wl_obs, flux-flux_err, flux+flux_err, color="black", alpha=0.2)
 # ax.set_xlim(7300, 10500)
 ax.legend(loc="upper left", fontsize=20)
-ax.set_xlabel(r"wavelength ($\AA$)", fontsize=28)
+# ax.set_xlabel(r"wavelength ($\mathring{A}$)", fontsize=28)
+ax.set_xlabel(r"wavelength ($\mu m$)", fontsize=28)
 ax.set_ylabel(r"f$_{\lambda}$ ($10^{-17}$ ergs$^{-1}$cm$^{-2}\AA^{-1}$)", fontsize=28)
 
 filter_J = ascii.read(os.path.join(RESOURCE_PATH, f"filter/UKIRT_UKIDSS.J.dat"))
@@ -90,8 +91,11 @@ ax.set_ylim(0, 1.5)
 # put text on upper right corner
 ax.text(0.95, 0.95, r"$m_{J}=21.0$", ha="right", va="top", transform=ax.transAxes, fontsize=25)
 ax.tick_params(labelsize=20)
-ax.set_ylim(-0.05, 1.8)
-ax.tick_params(axis='both', which='major', labelsize=20)
+ax.set_ylim(-0.0, 1.8)
+ax.set_yticks([0.5, 1.0, 1.5])
+ax.tick_params(axis='both', which='major', labelsize=30, width=1, size=6)
+ax.tick_params(axis='both', which='minor', labelsize=30, width=1, size=3)
+ax.set_xticklabels(["0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4"])
 
 import argparse
 parser = argparse.ArgumentParser()

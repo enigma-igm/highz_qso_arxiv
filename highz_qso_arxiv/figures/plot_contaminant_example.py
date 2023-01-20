@@ -1,6 +1,12 @@
 from re import template
 from highz_qso_arxiv.plot import plot_series
 
+# import argparse
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--show', action='store_true')
+# parser.add_argument('--save', action='store_true')
+# args = parser.parse_args()
+
 name_list = ['J0739+2328',
              'J1206-0051', 'J1319+0101']
 fits_list = [f"../arxiv/LRIS_2201/reduced/all/{nm}/{nm}_coadd_tellcorr.fits" for nm in name_list]

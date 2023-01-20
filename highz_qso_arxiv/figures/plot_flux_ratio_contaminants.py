@@ -12,6 +12,7 @@ from astropy.io import ascii
 from astropy.table import Table
 from highz_qso_arxiv import plot
 
+from highz_qso_arxiv.util.photutil import add_noise
 from highz_qso_arxiv.util import get_project_root, inverse
 from highz_qso_arxiv.plot import plot_contour, plot_cov, plot_cline, error_cov
 from highz_qso_arxiv.resource.filters import ukirt_J, wise_W1, decam_z
@@ -97,24 +98,32 @@ indt = np.where(type == 'T')
 
 # 3. Dwarfs in our sample
 
-cand_uki_cat = pyfits.getdata('../resource/catalog/lris_arxiv_ukidss.fits', 1)
+# cand_uki_cat = pyfits.getdata('../resource/catalog/lris_arxiv_ukidss.fits', 1)
+cand_uki_cat = pyfits.getdata('../resource/catalog/hizqa_uki.fits', 1)
+
 # using Riccardo's flux
 # flux_z_2 and flux_z_1 (cross match with lsdr9 with a small table) might be different
 # flux_z_1 should be more accurate, but for consistency we use flux_z_2 now
-fz_dwarf_uki, fz_err_dwarf_uki = cand_uki_cat['flux_z_2'], cand_uki_cat['flux_err_z'] 
-fW1_dwarf_uki, fW1_err_dwarf_uki = cand_uki_cat['flux_W1_2'], cand_uki_cat['flux_err_W1']
+fz_dwarf_uki, fz_err_dwarf_uki = cand_uki_cat['flux_z'], cand_uki_cat['flux_err_z'] 
+fW1_dwarf_uki, fW1_err_dwarf_uki = cand_uki_cat['flux_W1'], cand_uki_cat['flux_err_W1']
 fJ_dwarf_uki, fJ_err_dwarf_uki = cand_uki_cat['flux_J'], cand_uki_cat['flux_J_err']
 mz_dwarf_uki, mW1_dwarf_uki, mJ_dwarf_uki = flux_to_mag(fz_dwarf_uki), flux_to_mag(fW1_dwarf_uki), flux_to_mag(fJ_dwarf_uki)
-type_uki = list(cand_uki_cat['t1_type'])
-type_init_uki = np.array([x[0] for x in type_uki])
+label_uki = cand_uki_cat['label']
+type_uki = list(cand_uki_cat['spectral type'])
+type_init_uki = np.array([x[:1] for x in type_uki])
+source_uki = cand_uki_cat['source']
 
-cand_vik_cat = pyfits.getdata('../resource/catalog/lris_arxiv_viking.fits', 1)
-fz_dwarf_vik, fz_err_dwarf_vik = cand_vik_cat['flux_z_2'], cand_vik_cat['flux_z_err']
-fW1_dwarf_vik, fW1_err_dwarf_vik = cand_vik_cat['flux_w1_2'], cand_vik_cat['flux_w1_err']
+# cand_vik_cat = pyfits.getdata('../resource/catalog/lris_arxiv_viking.fits', 1)
+cand_vik_cat = pyfits.getdata('../resource/catalog/hizqa_vik.fits', 1)
+
+fz_dwarf_vik, fz_err_dwarf_vik = cand_vik_cat['flux_z'], cand_vik_cat['flux_z_err']
+fW1_dwarf_vik, fW1_err_dwarf_vik = cand_vik_cat['flux_w1'], cand_vik_cat['flux_w1_err']
 fJ_dwarf_vik, fJ_err_dwarf_vik = cand_vik_cat['J_flux_aper_3p0'], cand_vik_cat['J_flux_aper_err_3p0']
 mz_dwarf_vik, mW1_dwarf_vik, mJ_dwarf_vik = flux_to_mag(fz_dwarf_vik), flux_to_mag(fW1_dwarf_vik), flux_to_mag(fJ_dwarf_vik)
-type_vik = list(cand_vik_cat['t1_type'])
-type_init_vik = np.array([x[0] for x in type_vik])
+label_vik = cand_vik_cat['label']
+type_vik = list(cand_vik_cat['spectral type'])
+type_init_vik = np.array([x[:1] for x in type_vik])
+source_vik = cand_vik_cat['source']
 
 mz_dwarf = np.concatenate((mz_dwarf_uki, mz_dwarf_vik))
 mW1_dwarf = np.concatenate((mW1_dwarf_uki, mW1_dwarf_vik))
@@ -126,11 +135,14 @@ fJ_dwarf = np.concatenate((fJ_dwarf_uki, fJ_dwarf_vik))
 fz_err_dwarf = np.concatenate((fz_err_dwarf_uki, fz_err_dwarf_vik))
 fW1_err_dwarf = np.concatenate((fW1_err_dwarf_uki, fW1_err_dwarf_vik))
 fJ_err_dwarf = np.concatenate((fJ_err_dwarf_uki, fJ_err_dwarf_vik))
+source_dwarf = np.concatenate((source_uki, source_vik))
+label_dwarf = np.concatenate((label_uki, label_vik))
 
-mask_Mdwarf = (type_init == 'M') 
-mask_Ldwarf = (type_init == 'L')
-mask_unknown = (type_init == 'u')
-mask_qso = (type_init == 'q')
+mask_Mdwarf = (type_init == 'M') & (mJ_dwarf > 0) 
+mask_Ldwarf = (type_init == 'L') & (mJ_dwarf > 0) 
+mask_Tdwarf = (type_init == 'T') & (mJ_dwarf > 0) 
+mask_unknown = (label_dwarf == 'uNQ') & (mJ_dwarf > 0) 
+mask_qso = (label_dwarf == 'QSO') & (source_dwarf != 'known quasar') & (mJ_dwarf > 0) 
 
 # 4. Known quasars
 uki_litqso = pyfits.getdata('../resource/catalog/qso_literature_uki.fits', 1)
@@ -242,46 +254,52 @@ fW1J = flux_ratio(cW1J)
 
 # Plotting
 
-# fig, (ax, ax1) = plt.subplots(2, 1, figsize=(10, 14.4), gridspec_kw={'height_ratios': [10, 4.4]})
 fig, ax1 = plt.subplots(1, 1, figsize=(10, 10))
 
-# # ax1 
 ax1.scatter(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-            s=20, marker='o', c=CB_color_cycle[0], label='M dwarf', zorder=4)
+            s=20, marker='o', c=CB_color_cycle[0], label=r'$\textbf{M dwarf}$', zorder=4)
 cov = flux_ratio_cov(fz_dwarf[mask_Mdwarf], fW1_dwarf[mask_Mdwarf], fJ_dwarf[mask_Mdwarf], 
                     fz_err_dwarf[mask_Mdwarf], fW1_err_dwarf[mask_Mdwarf], fJ_err_dwarf[mask_Mdwarf])
-ax1 = plot_cov(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-            fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
-            cov, ax1, color=CB_color_cycle[0], alpha=0.5)
+# ax1 = plot_cov(fz_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
+#             fW1_dwarf[mask_Mdwarf] / fJ_dwarf[mask_Mdwarf], 
+#             cov, ax1, color=CB_color_cycle[0], alpha=0.5)
 
 ax1.scatter(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf], 
-            s=20, marker='v', c=CB_color_cycle[5], label='L dwarf', zorder=4)
+            s=20, marker='v', c=CB_color_cycle[0], label=r'$\textbf{L dwarf}$', zorder=4)
 cov = flux_ratio_cov(fz_dwarf[mask_Ldwarf], fW1_dwarf[mask_Ldwarf], fJ_dwarf[mask_Ldwarf],
                     fz_err_dwarf[mask_Ldwarf], fW1_err_dwarf[mask_Ldwarf], fJ_err_dwarf[mask_Ldwarf])
-ax1 = plot_cov(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
-            fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
-            cov, ax1, color=CB_color_cycle[5], alpha=0.5)
+# ax1 = plot_cov(fz_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
+#             fW1_dwarf[mask_Ldwarf] / fJ_dwarf[mask_Ldwarf],
+#             cov, ax1, color=CB_color_cycle[0], alpha=0.5)
+
+ax1.scatter(fz_dwarf[mask_Tdwarf] / fJ_dwarf[mask_Tdwarf], fW1_dwarf[mask_Tdwarf] / fJ_dwarf[mask_Tdwarf], 
+            s=20, marker='s', c=CB_color_cycle[0], label=r'$\textbf{T dwarf}$', zorder=4)
+cov = flux_ratio_cov(fz_dwarf[mask_Tdwarf], fW1_dwarf[mask_Tdwarf], fJ_dwarf[mask_Tdwarf],
+                    fz_err_dwarf[mask_Tdwarf], fW1_err_dwarf[mask_Tdwarf], fJ_err_dwarf[mask_Tdwarf])
+# ax1 = plot_cov(fz_dwarf[mask_Tdwarf] / fJ_dwarf[mask_Tdwarf],
+#             fW1_dwarf[mask_Tdwarf] / fJ_dwarf[mask_Tdwarf],
+#             cov, ax1, color=CB_color_cycle[0], alpha=0.5)
 
 ax1.scatter(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown], fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
-            s=20, marker='d', c='black', alpha=0.6, label='unknown', zorder=3)
+            s=20, marker='d', c='black', alpha=0.6, label=r'$\textbf{unknown non-QSO}$', zorder=3)
 cov = flux_ratio_cov(fz_dwarf[mask_unknown], fW1_dwarf[mask_unknown], fJ_dwarf[mask_unknown],
                     fz_err_dwarf[mask_unknown], fW1_err_dwarf[mask_unknown], fJ_err_dwarf[mask_unknown])
-ax1 = plot_cov(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
-            fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
-            cov, ax1, color='black', alpha=0.5)
+# ax1 = plot_cov(fz_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
+#             fW1_dwarf[mask_unknown] / fJ_dwarf[mask_unknown],
+#             cov, ax1, color='black', alpha=0.5)
 
 ax1.scatter(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso], fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
-            s=100, marker='*', c='red', label='quasar', zorder=5)
+            s=100, marker='*', c='red', label=r'$\textbf{QSO}$', zorder=5)
 cov = flux_ratio_cov(fz_dwarf[mask_qso], fW1_dwarf[mask_qso], fJ_dwarf[mask_qso],
                     fz_err_dwarf[mask_qso], fW1_err_dwarf[mask_qso], fJ_err_dwarf[mask_qso])
-ax1 = plot_cov(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso],
-            fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
-            cov, ax1, color='red', alpha=0.5)
-ax1 = plot_contour(fz_all / fJ_all,
-                  fW1_all / fJ_all, 
-                  ax=ax1, bins=150, range=((-0.2, 2), (-2, 8)),
-                  levels=np.linspace(0.1, 0.9, 5), 
-                  color='grey', zorder=0, label='all candidates')
+# ax1 = plot_cov(fz_dwarf[mask_qso] / fJ_dwarf[mask_qso],
+#             fW1_dwarf[mask_qso] / fJ_dwarf[mask_qso],
+#             cov, ax1, color='red', alpha=0.5)
+# ax1 = plot_contour(fz_all / fJ_all,
+#                   fW1_all / fJ_all, 
+#                   ax=ax1, bins=150, range=((-0.2, 2), (-2, 8)),
+#                   levels=np.linspace(0.1, 0.9, 5), 
+#                   color='grey', zorder=0, label='all candidates')
 ax1 = plot_contour(fz_simqso / fJ_simqso,
                   fW1_simqso / fJ_simqso,
                   ax=ax1, bins=150, range=((-0.2, 2), (-2, 8)),
@@ -289,25 +307,32 @@ ax1 = plot_contour(fz_simqso / fJ_simqso,
                   color='tomato', zorder=1)
 ax1 = plot_cline(10**(-zJ_simqso_mean/2.5), 10**(JW1_simqso_mean/2.5), ax=ax1, cmap=plt.get_cmap('autumn_r'), linewidth=2)
 
-for setting in ['logg-5-metallicity-0']:
-    temp, czJ_dwarftrack, cJW1_dwarftrack = dwarf_track(setting)
-    ax1.plot(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], zorder=2, label='Dwarf track (Allard+2012)')
-    ax1.scatter(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], s=5, alpha=0.8, zorder=2)
-ax1.scatter(fzJ, fW1J, c='k', s=10)
-ax1.plot(fzJ, fW1J, c='k', alpha=0.5, zorder=2, label='Dwarf track (Skrzypek+2015)')
+# for setting in ['logg-5-metallicity-0']:
+#     temp, czJ_dwarftrack, cJW1_dwarftrack = dwarf_track(setting)
+#     ax1.plot(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[0], zorder=2, label=r'$\textbf{Dwarf track (Allard+2012)}$')
+    # ax1.scatter(10**(-czJ_dwarftrack/2.5), 10**(cJW1_dwarftrack/2.5), c=CB_color_cycle[2], s=5, alpha=0.8, zorder=2)
+# ax1.scatter(fzJ, fW1J, c='k', s=10)
+
+ax1.plot(fzJ, fW1J, c=CB_color_cycle[0], alpha=0.8, zorder=2, label=r'$\textbf{Dwarf track (Skrzypek+2015)}$', lw=2)
+syn_flux = np.load('../resource/catalog/all_syn_flux.npy')
+ax1.scatter(syn_flux[1] / syn_flux[0], syn_flux[2] / syn_flux[0], c=CB_color_cycle[0], s=5, alpha=0.3, zorder=2)
+# ax1 = plot_contour(syn_flux[1] / syn_flux[0],
+#                   syn_flux[2] / syn_flux[0],
+#                   ax=ax1, bins=50, range=((-0.2, 0.6), (-0.5, 2.5)),
+#                   levels=np.linspace(0.1, 0.9, 3), 
+#                   color=CB_color_cycle[0], zorder=1)
+
 
 # ax.legend(loc='upper right', fontsize=15)
 ax1.tick_params(axis='both', which='major', labelsize=20)
 ax1.set_xlabel(r'$f_{\rm z} / f_{\rm J}$', fontsize=25)
 ax1.set_ylabel(r'$f_{\rm W1} / f_{\rm J}$', fontsize=25)
 # ax.set_ylabel(r'$f_{\rm W1} / f_{\rm J}$', fontsize=25)
-ax1.set_xlim(-0.05, 1.4)
-ax1.set_ylim(0, 4)
-ax1.legend(fontsize=15)
-
-plt.subplots_adjust(hspace=0.)
+ax1.set_xlim(-0.1, 1.4)
+ax1.set_ylim(0, 3.5)
+ax1.legend(loc='upper right', fontsize=12, frameon=True, framealpha=0.8)
 
 if args.show:
     plt.show()
 else:
-    plt.savefig('flux_ratio_contaminants.pdf')
+    plt.savefig('flux_ratio_contaminants.png', dpi=300)

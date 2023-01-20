@@ -19,9 +19,3 @@ CB_color_cycle = ['#377eb8', '#ff7f00', '#4daf4a',
                   '#999999', '#e41a1c', '#dede00']
 
 mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=CB_color_cycle) 
-
-import argparse
-
-parser = argparse.ArgumentParser(description='Plot throughput curves')
-parser.add_argument('--show', action='store_true', help='Show the plot')
-args = parser.parse_args()

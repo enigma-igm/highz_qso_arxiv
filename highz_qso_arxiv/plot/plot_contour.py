@@ -1,8 +1,10 @@
 import numpy as np
+from scipy.ndimage import gaussian_filter
 
 from IPython import embed
 
-def plot_contour(x, y, ax, levels=None, range=None, bins=200, color='grey', zorder=1, label=None):
+def plot_contour(x, y, ax, levels=None, range=None, bins=200, color='grey', 
+                 zorder=1, smooth=None, label=None, plot_datapoints=True, lw=1, alpha=1):
     """Plot a density contour of the points x, y
     modified from https://github.com/dfm/corner.py
 
@@ -29,6 +31,8 @@ def plot_contour(x, y, ax, levels=None, range=None, bins=200, color='grey', zord
         bins=bins,
         range=list(map(np.sort, range))
     )
+    if smooth is not None:
+        H = gaussian_filter(H, smooth)
 
     # Compute the density levels.
     Hflat = H.flatten()
@@ -79,15 +83,16 @@ def plot_contour(x, y, ax, levels=None, range=None, bins=200, color='grey', zord
         ]
     )
 
-    ax.scatter(x, y, alpha=0.1, zorder=zorder, s=0.1, color=color)
-    ax.contourf(
-        X2,
-        Y2,
-        H2.T,
-        [V.min(), H.max()],
-        cmap=base_cmap,
-        antialiased=False, zorder=zorder
-    )
-    ax.contour(X2, Y2, H2.T, V, colors=color, alpha=0.5, zorder=zorder, label=label)
+    if plot_datapoints:
+        ax.scatter(x, y, alpha=0.1, zorder=zorder, s=0.1, color=color)
+        ax.contourf(
+            X2,
+            Y2,
+            H2.T,
+            [V.min(), H.max()],
+            cmap=base_cmap,
+            antialiased=False, zorder=zorder
+        )
+    cnt = ax.contour(X2, Y2, H2.T, V, colors=color, alpha=alpha, zorder=zorder, label=label, linewidths=lw)
 
-    return ax
+    return ax, cnt

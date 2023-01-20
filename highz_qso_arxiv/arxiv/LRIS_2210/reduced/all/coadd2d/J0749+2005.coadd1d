@@ -1,0 +1,15 @@
+[coadd1d]
+coaddfile = J0749+2005_coadd.fits
+sensfuncfile = ../GD71_lris_sens.fits
+wave_method = linear 
+
+# source not seen?
+coadd1d read
+ Science_coadd/spec1d_r221028-r221028-J0749+2005.fits SPAT0177-SLIT0345-DET01
+ Science_coadd/spec1d_r221028-r221028-J0749+2005.fits SPAT0275-SLIT0345-DET01
+ Science_coadd/spec1d_r221028-r221028-J0749+2005.fits SPAT0346-SLIT0345-DET01
+ Science_coadd/spec1d_r221028-r221028-J0749+2005.fits SPAT0393-SLIT0345-DET01
+ Science_coadd/spec1d_r221028-r221028-J0749+2005.fits SPAT0462-SLIT0345-DET01
+ Science_coadd/spec1d_r221028-r221028-J0749+2005.fits SPAT0592-SLIT0345-DET01
+ Science_coadd/spec1d_r221028-r221028-J0749+2005.fits SPAT0610-SLIT0345-DET01
+coadd1d end

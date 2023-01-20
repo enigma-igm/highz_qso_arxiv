@@ -48,7 +48,9 @@ plot_series(name_list[9:18], fits_list[9:18], idx_list[9:18], template_list=temp
 plot_series(name_list[18:], fits_list[18:], idx_list[18:], template_list=template_list[18:], telluric_list=telluric_list[18:],
             qso_list=qso_list[18:], display=False, save_file="MOSFIRE_2010_part3.pdf")
 
-plot_series(name_list, fits_list, idx_list, telluric_list=telluric_list, template_list=template_list, qso_list=qso_list, display=False, save_file="MOSFIRE_2010.pdf")
+plot_series(name_list, fits_list, idx_list, telluric_list=telluric_list, 
+            template_list=template_list, qso_list=qso_list,
+            display=False, save_file="MOSFIRE_2010.pdf")
 
 fits_list = [f[:-5] + '_tellcorr' + f[-5:] for f in fits_list]
 telluric_list = [True for i in range(len(name_list))]
